@@ -62,6 +62,8 @@ void writeString( char *string ){
     puts( string );
     __delay_us(200);
 }
+
+void 
 /*
  * 
  */
