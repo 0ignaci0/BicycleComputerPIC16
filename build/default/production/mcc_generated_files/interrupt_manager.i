@@ -16940,6 +16940,14 @@ extern __bank0 __bit __timeout;
 void PIN_MANAGER_Initialize (void);
 # 119 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
+# 132 "mcc_generated_files/pin_manager.h"
+void IOCCF5_ISR(void);
+# 155 "mcc_generated_files/pin_manager.h"
+void IOCCF5_SetInterruptHandler(void (* InterruptHandler)(void));
+# 179 "mcc_generated_files/pin_manager.h"
+extern void (*IOCCF5_InterruptHandler)(void);
+# 203 "mcc_generated_files/pin_manager.h"
+void IOCCF5_DefaultInterruptHandler(void);
 # 51 "mcc_generated_files/mcc.h" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 1 3
@@ -17040,8 +17048,14 @@ uint8_t TMR0_ReadTimer(void);
 void TMR0_WriteTimer(uint8_t timerVal);
 # 204 "mcc_generated_files/tmr0.h"
 void TMR0_Reload(void);
-# 242 "mcc_generated_files/tmr0.h"
-_Bool TMR0_HasOverflowOccured(void);
+# 219 "mcc_generated_files/tmr0.h"
+void TMR0_ISR(void);
+# 238 "mcc_generated_files/tmr0.h"
+ void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
+# 256 "mcc_generated_files/tmr0.h"
+extern void (*TMR0_InterruptHandler)(void);
+# 274 "mcc_generated_files/tmr0.h"
+void TMR0_DefaultInterruptHandler(void);
 # 55 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/eusart.h" 1
@@ -17193,42 +17207,26 @@ typedef union {
     };
     uint8_t status;
 }eusart_status_t;
-
-
-
-
-extern volatile uint8_t eusartTxBufferRemaining;
-extern volatile uint8_t eusartRxCount;
-
-
-
-
-
-void (*EUSART_TxDefaultInterruptHandler)(void);
-# 118 "mcc_generated_files/eusart.h"
+# 112 "mcc_generated_files/eusart.h"
 void EUSART_Initialize(void);
-# 171 "mcc_generated_files/eusart.h"
-uint8_t EUSART_is_tx_ready(void);
-# 219 "mcc_generated_files/eusart.h"
+# 160 "mcc_generated_files/eusart.h"
+_Bool EUSART_is_tx_ready(void);
+# 208 "mcc_generated_files/eusart.h"
 _Bool EUSART_is_rx_ready(void);
-# 266 "mcc_generated_files/eusart.h"
+# 255 "mcc_generated_files/eusart.h"
 _Bool EUSART_is_tx_done(void);
-# 314 "mcc_generated_files/eusart.h"
+# 303 "mcc_generated_files/eusart.h"
 eusart_status_t EUSART_get_last_status(void);
-# 334 "mcc_generated_files/eusart.h"
+# 323 "mcc_generated_files/eusart.h"
 uint8_t EUSART_Read(void);
-# 354 "mcc_generated_files/eusart.h"
+# 343 "mcc_generated_files/eusart.h"
 void EUSART_Write(uint8_t txData);
-# 375 "mcc_generated_files/eusart.h"
-void EUSART_Transmit_ISR(void);
-# 394 "mcc_generated_files/eusart.h"
+# 363 "mcc_generated_files/eusart.h"
 void EUSART_SetFramingErrorHandler(void (* interruptHandler)(void));
-# 412 "mcc_generated_files/eusart.h"
+# 381 "mcc_generated_files/eusart.h"
 void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void));
-# 430 "mcc_generated_files/eusart.h"
+# 399 "mcc_generated_files/eusart.h"
 void EUSART_SetErrorHandler(void (* interruptHandler)(void));
-# 450 "mcc_generated_files/eusart.h"
-void EUSART_SetTxInterruptHandler(void (* interruptHandler)(void));
 # 56 "mcc_generated_files/mcc.h" 2
 # 71 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
@@ -17240,15 +17238,12 @@ void OSCILLATOR_Initialize(void);
 void __attribute__((picinterrupt(("")))) INTERRUPT_InterruptManager (void)
 {
 
-    if(INTCONbits.IOCIE == 1 && INTCONbits.IOCIF == 1)
+    if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
+    {
+        TMR0_ISR();
+    }
+    else if(INTCONbits.IOCIE == 1 && INTCONbits.IOCIF == 1)
     {
         PIN_MANAGER_IOC();
-    }
-    else if(INTCONbits.PEIE == 1)
-    {
-        if(PIE1bits.TXIE == 1 && PIR1bits.TXIF == 1)
-        {
-            EUSART_TxDefaultInterruptHandler();
-        }
     }
 }

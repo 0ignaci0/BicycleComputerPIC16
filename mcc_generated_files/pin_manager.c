@@ -51,6 +51,8 @@
 
 
 
+void (*IOCCF5_InterruptHandler)(void);
+
 
 void PIN_MANAGER_Initialize(void)
 {
@@ -66,7 +68,7 @@ void PIN_MANAGER_Initialize(void)
     */
     TRISA = 0x37;
     TRISB = 0x70;
-    TRISC = 0xDF;
+    TRISC = 0xFF;
 
     /**
     ANSELx registers
@@ -98,9 +100,20 @@ void PIN_MANAGER_Initialize(void)
     SLRCONC = 0xFF;
 
 
+    /**
+    IOCx registers 
+    */
+    //interrupt on change for group IOCCF - flag
+    IOCCFbits.IOCCF5 = 0;
+    //interrupt on change for group IOCCN - negative
+    IOCCNbits.IOCCN5 = 0;
+    //interrupt on change for group IOCCP - positive
+    IOCCPbits.IOCCP5 = 0;
 
 
 
+    // register default IOC callback functions at runtime; use these methods to register a custom function
+    IOCCF5_SetInterruptHandler(IOCCF5_DefaultInterruptHandler);
    
     // Enable IOCI interrupt 
     INTCONbits.IOCIE = 1; 
@@ -111,6 +124,41 @@ void PIN_MANAGER_Initialize(void)
   
 void PIN_MANAGER_IOC(void)
 {   
+	// interrupt on change for pin IOCCF5
+    if(IOCCFbits.IOCCF5 == 1)
+    {
+        IOCCF5_ISR();  
+    }	
+}
+
+/**
+   IOCCF5 Interrupt Service Routine
+*/
+void IOCCF5_ISR(void) {
+
+    // Add custom IOCCF5 code
+
+    // Call the interrupt handler for the callback registered at runtime
+    if(IOCCF5_InterruptHandler)
+    {
+        IOCCF5_InterruptHandler();
+    }
+    IOCCFbits.IOCCF5 = 0;
+}
+
+/**
+  Allows selecting an interrupt handler for IOCCF5 at application runtime
+*/
+void IOCCF5_SetInterruptHandler(void (* InterruptHandler)(void)){
+    IOCCF5_InterruptHandler = InterruptHandler;
+}
+
+/**
+  Default interrupt handler for IOCCF5
+*/
+void IOCCF5_DefaultInterruptHandler(void){
+    // add your IOCCF5 interrupt custom code
+    // or set custom function using IOCCF5_SetInterruptHandler()
 }
 
 /**

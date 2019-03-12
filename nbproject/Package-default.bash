@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/PIC16F1619_Test.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=PIC16F1619_Test.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=pic16f1619test.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/BicycleComputerPIC16.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=BicycleComputerPIC16.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=bicyclecomputerpic16.x/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/pic16f1619test.x/bin
+makeDirectory ${TMPDIR}/bicyclecomputerpic16.x/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/pic16f1619test.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/bicyclecomputerpic16.x.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/pic16f1619test.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/bicyclecomputerpic16.x.tar *
 checkReturnCode
 
 # Cleanup

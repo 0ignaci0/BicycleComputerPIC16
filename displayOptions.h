@@ -99,12 +99,14 @@ void writeString();
   @Summary
   @Description
   @Preconditions
-  @Param 
-    none
+  @Param a
+    valued 1 - 4, corresponds to each row of LCD
   @Returns
     None
  */
 void setCursor( uint8_t a, uint8_t b );
+
+void writePrintf( char *string );
 
 // Comment a function and leverage automatic documentation with slash star star
 /**
