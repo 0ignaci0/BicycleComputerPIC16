@@ -49,6 +49,21 @@
 */
 #include "eusart.h"
 
+/**
+  Section: Macro Declarations
+*/
+
+#define EUSART_TX_BUFFER_SIZE 8
+#define EUSART_RX_BUFFER_SIZE 8
+
+/**
+  Section: Global Variables
+*/
+volatile uint8_t eusartTxHead = 0;
+volatile uint8_t eusartTxTail = 0;
+volatile uint8_t eusartTxBuffer[EUSART_TX_BUFFER_SIZE];
+volatile uint8_t eusartTxBufferRemaining;
+
 volatile eusart_status_t eusartRxLastError;
 
 /**
@@ -64,6 +79,9 @@ void EUSART_DefaultErrorHandler(void);
 
 void EUSART_Initialize(void)
 {
+    // disable interrupts before changing states
+    PIE1bits.TXIE = 0;
+    EUSART_SetTxInterruptHandler(EUSART_Transmit_ISR);
     // Set the EUSART module to the options selected in the user interface.
 
     // ABDOVF no_overflow; SCKP Non-Inverted; BRG16 16bit_generator; WUE disabled; ABDEN enabled; 
@@ -88,11 +106,15 @@ void EUSART_Initialize(void)
 
     eusartRxLastError.status = 0;
 
+    // initializing the driver state
+    eusartTxHead = 0;
+    eusartTxTail = 0;
+    eusartTxBufferRemaining = sizeof(eusartTxBuffer);
 }
 
-bool EUSART_is_tx_ready(void)
+uint8_t EUSART_is_tx_ready(void)
 {
-    return (bool)(PIR1bits.TXIF && TX1STAbits.TXEN);
+    return eusartTxBufferRemaining;
 }
 
 bool EUSART_is_rx_ready(void)
@@ -136,11 +158,25 @@ uint8_t EUSART_Read(void)
 
 void EUSART_Write(uint8_t txData)
 {
-    while(0 == PIR1bits.TXIF)
+    while(0 == eusartTxBufferRemaining)
     {
     }
 
-    TX1REG = txData;    // Write the data byte to the USART.
+    if(0 == PIE1bits.TXIE)
+    {
+        TX1REG = txData;
+    }
+    else
+    {
+        PIE1bits.TXIE = 0;
+        eusartTxBuffer[eusartTxHead++] = txData;
+        if(sizeof(eusartTxBuffer) <= eusartTxHead)
+        {
+            eusartTxHead = 0;
+        }
+        eusartTxBufferRemaining--;
+    }
+    PIE1bits.TXIE = 1;
 }
 
 char getch(void)
@@ -153,6 +189,24 @@ void putch(char txData)
     EUSART_Write(txData);
 }
 
+void EUSART_Transmit_ISR(void)
+{
+
+    // add your EUSART interrupt custom code
+    if(sizeof(eusartTxBuffer) > eusartTxBufferRemaining)
+    {
+        TX1REG = eusartTxBuffer[eusartTxTail++];
+        if(sizeof(eusartTxBuffer) <= eusartTxTail)
+        {
+            eusartTxTail = 0;
+        }
+        eusartTxBufferRemaining++;
+    }
+    else
+    {
+        PIE1bits.TXIE = 0;
+    }
+}
 
 
 void EUSART_DefaultFramingErrorHandler(void){}
@@ -180,6 +234,9 @@ void EUSART_SetErrorHandler(void (* interruptHandler)(void)){
     EUSART_ErrorHandler = interruptHandler;
 }
 
+void EUSART_SetTxInterruptHandler(void (* interruptHandler)(void)){
+    EUSART_TxDefaultInterruptHandler = interruptHandler;
+}
 
 /**
   End of File

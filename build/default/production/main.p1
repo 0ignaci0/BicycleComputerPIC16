@@ -1,11 +1,15 @@
 Version 4.0 HI-TECH Software Intermediate Code
+[v F9968 `(v ~T0 @X0 0 tf ]
 [p mainexit ]
-"69 ./mcc_generated_files/mcc.h
-[; ;./mcc_generated_files/mcc.h: 69: void SYSTEM_Initialize(void);
+"71 ./mcc_generated_files/mcc.h
+[; ;./mcc_generated_files/mcc.h: 71: void SYSTEM_Initialize(void);
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
 "84 ./displayOptions.h
 [; ;./displayOptions.h: 84: void resetCursor();
 [v _resetCursor `(v ~T0 @X0 0 e? ]
+"107
+[; ;./displayOptions.h: 107: void setCursor( uint8_t a, uint8_t b );
+[v _setCursor `(v ~T0 @X0 0 ef2`uc`uc ]
 "95
 [; ;./displayOptions.h: 95: void writeString();
 [v _writeString `(v ~T0 @X0 0 e? ]
@@ -1335,20 +1339,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27877
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h: 27877: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
+"96 ./mcc_generated_files/eusart.h
+[; ;./mcc_generated_files/eusart.h: 96: void (*EUSART_TxDefaultInterruptHandler)(void);
+[v _EUSART_TxDefaultInterruptHandler `*F9968 ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"59 main.c
-[; ;main.c: 59: void main(void)
+"60 main.c
+[; ;main.c: 60: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"60
-[; ;main.c: 60: {
+"61
+[; ;main.c: 61: {
 {
 [e :U _main ]
 [f ]
-[v F9989 `uc ~T0 @X0 -> 8 `i s ]
-[i F9989
+[v F10007 `uc ~T0 @X0 -> 8 `i s ]
+[i F10007
 :U ..
-"61
-[; ;main.c: 61:     char speed[] = "Speed: ";
+"63
+[; ;main.c: 63:     char speed[] = "Speed: " ;
 -> 83 `c
 -> 112 `c
 -> 101 `c
@@ -1360,31 +1367,107 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _speed `uc ~T0 @X0 -> 8 `i a ]
-[e = _speed F9989 ]
-"63
-[; ;main.c: 63:     SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
+[e = _speed F10007 ]
+[v F10009 `uc ~T0 @X0 -> 13 `i s ]
+[i F10009
+:U ..
 "64
-[; ;main.c: 64:     resetCursor();
-[e ( _resetCursor ..  ]
+[; ;main.c: 64:     char heartRate[] = "Heart Rate: " ;
+-> 72 `c
+-> 101 `c
+-> 97 `c
+-> 114 `c
+-> 116 `c
+-> 32 `c
+-> 82 `c
+-> 97 `c
+-> 116 `c
+-> 101 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+..
+]
+[v _heartRate `uc ~T0 @X0 -> 13 `i a ]
+[e = _heartRate F10009 ]
+[v F10011 `uc ~T0 @X0 -> 11 `i s ]
+[i F10011
+:U ..
+"65
+[; ;main.c: 65:     char distance[] = "Distance: " ;
+-> 68 `c
+-> 105 `c
+-> 115 `c
+-> 116 `c
+-> 97 `c
+-> 110 `c
+-> 99 `c
+-> 101 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+..
+]
+[v _distance `uc ~T0 @X0 -> 11 `i a ]
+[e = _distance F10011 ]
+[v F10013 `uc ~T0 @X0 -> 8 `i s ]
+[i F10013
+:U ..
 "66
-[; ;main.c: 66:     writeString(speed);
+[; ;main.c: 66:     char timer[] = "Timer: " ;
+-> 84 `c
+-> 105 `c
+-> 109 `c
+-> 101 `c
+-> 114 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+..
+]
+[v _timer `uc ~T0 @X0 -> 8 `i a ]
+[e = _timer F10013 ]
+"70
+[; ;main.c: 70:     SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
+"72
+[; ;main.c: 72:     resetCursor();
+[e ( _resetCursor ..  ]
+"74
+[; ;main.c: 74:     setCursor(0,0);
+[e ( _setCursor (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+"75
+[; ;main.c: 75:     writeString(speed);
 [e ( _writeString &U _speed ]
-"68
-[; ;main.c: 68:     int n = 0;
-[v _n `i ~T0 @X0 1 a ]
-[e = _n -> 0 `i ]
-"69
-[; ;main.c: 69:     while(1){
+"76
+[; ;main.c: 76:     setCursor(64,0);
+[e ( _setCursor (2 , -> -> 64 `i `uc -> -> 0 `i `uc ]
+"77
+[; ;main.c: 77:     writeString(distance);
+[e ( _writeString &U _distance ]
+"78
+[; ;main.c: 78:     setCursor(20,0);
+[e ( _setCursor (2 , -> -> 20 `i `uc -> -> 0 `i `uc ]
+"79
+[; ;main.c: 79:     writeString(heartRate);
+[e ( _writeString &U _heartRate ]
+"80
+[; ;main.c: 80:     setCursor(84,0);
+[e ( _setCursor (2 , -> -> 84 `i `uc -> -> 0 `i `uc ]
+"81
+[; ;main.c: 81:     writeString(timer);
+[e ( _writeString &U _timer ]
+"82
+[; ;main.c: 82:     while(1){
 [e :U 1222 ]
 {
-"77
-[; ;main.c: 77:           };
+"84
+[; ;main.c: 84:     };
 }
 [e :U 1221 ]
 [e $U 1222  ]
 [e :U 1223 ]
-"78
-[; ;main.c: 78: }
+"85
+[; ;main.c: 85: }
 [e :UE 1220 ]
 }

@@ -94,6 +94,18 @@ void resetCursor();
  */
 void writeString();
 
+
+/**
+  @Summary
+  @Description
+  @Preconditions
+  @Param 
+    none
+  @Returns
+    None
+ */
+void setCursor( uint8_t a, uint8_t b );
+
 // Comment a function and leverage automatic documentation with slash star star
 /**
     <p><b>Function prototype:</b></p>

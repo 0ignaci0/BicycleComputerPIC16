@@ -11,6 +11,8 @@
         <itemPath>mcc_generated_files/pin_manager.h</itemPath>
         <itemPath>mcc_generated_files/mcc.h</itemPath>
         <itemPath>mcc_generated_files/eusart.h</itemPath>
+        <itemPath>mcc_generated_files/tmr0.h</itemPath>
+        <itemPath>mcc_generated_files/interrupt_manager.h</itemPath>
       </logicalFolder>
       <itemPath>displayOptions.h</itemPath>
     </logicalFolder>
@@ -28,8 +30,9 @@
         <itemPath>mcc_generated_files/device_config.c</itemPath>
         <itemPath>mcc_generated_files/mcc.c</itemPath>
         <itemPath>mcc_generated_files/pin_manager.c</itemPath>
+        <itemPath>mcc_generated_files/tmr0.c</itemPath>
+        <itemPath>mcc_generated_files/interrupt_manager.c</itemPath>
       </logicalFolder>
-      <itemPath>newmain1.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>displayOptions.c</itemPath>
     </logicalFolder>
@@ -176,14 +179,6 @@
         <property key="stack-type" value="compiled"/>
         <property key="user-pack-device-support" value=""/>
       </XC8-config-global>
-      <item path="newmain1.c" ex="true" overriding="false">
-        <HI-TECH-COMP>
-        </HI-TECH-COMP>
-        <HI-TECH-LINK>
-        </HI-TECH-LINK>
-        <XC8-config-global>
-        </XC8-config-global>
-      </item>
       <pk4hybrid>
         <property key="AutoSelectMemRanges" value="auto"/>
         <property key="Freeze Peripherals" value="true"/>

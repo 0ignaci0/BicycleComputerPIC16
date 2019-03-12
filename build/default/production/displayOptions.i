@@ -17035,6 +17035,22 @@ typedef uint32_t uint_fast32_t;
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdbool.h" 1 3
 # 53 "./mcc_generated_files/mcc.h" 2
 
+# 1 "./mcc_generated_files/interrupt_manager.h" 1
+# 54 "./mcc_generated_files/mcc.h" 2
+
+# 1 "./mcc_generated_files/tmr0.h" 1
+# 98 "./mcc_generated_files/tmr0.h"
+void TMR0_Initialize(void);
+# 129 "./mcc_generated_files/tmr0.h"
+uint8_t TMR0_ReadTimer(void);
+# 168 "./mcc_generated_files/tmr0.h"
+void TMR0_WriteTimer(uint8_t timerVal);
+# 204 "./mcc_generated_files/tmr0.h"
+void TMR0_Reload(void);
+# 242 "./mcc_generated_files/tmr0.h"
+_Bool TMR0_HasOverflowOccured(void);
+# 55 "./mcc_generated_files/mcc.h" 2
+
 # 1 "./mcc_generated_files/eusart.h" 1
 # 57 "./mcc_generated_files/eusart.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdio.h" 1 3
@@ -17184,30 +17200,46 @@ typedef union {
     };
     uint8_t status;
 }eusart_status_t;
-# 112 "./mcc_generated_files/eusart.h"
+
+
+
+
+extern volatile uint8_t eusartTxBufferRemaining;
+extern volatile uint8_t eusartRxCount;
+
+
+
+
+
+void (*EUSART_TxDefaultInterruptHandler)(void);
+# 118 "./mcc_generated_files/eusart.h"
 void EUSART_Initialize(void);
-# 160 "./mcc_generated_files/eusart.h"
-_Bool EUSART_is_tx_ready(void);
-# 208 "./mcc_generated_files/eusart.h"
+# 171 "./mcc_generated_files/eusart.h"
+uint8_t EUSART_is_tx_ready(void);
+# 219 "./mcc_generated_files/eusart.h"
 _Bool EUSART_is_rx_ready(void);
-# 255 "./mcc_generated_files/eusart.h"
+# 266 "./mcc_generated_files/eusart.h"
 _Bool EUSART_is_tx_done(void);
-# 303 "./mcc_generated_files/eusart.h"
+# 314 "./mcc_generated_files/eusart.h"
 eusart_status_t EUSART_get_last_status(void);
-# 323 "./mcc_generated_files/eusart.h"
+# 334 "./mcc_generated_files/eusart.h"
 uint8_t EUSART_Read(void);
-# 343 "./mcc_generated_files/eusart.h"
+# 354 "./mcc_generated_files/eusart.h"
 void EUSART_Write(uint8_t txData);
-# 363 "./mcc_generated_files/eusart.h"
+# 375 "./mcc_generated_files/eusart.h"
+void EUSART_Transmit_ISR(void);
+# 394 "./mcc_generated_files/eusart.h"
 void EUSART_SetFramingErrorHandler(void (* interruptHandler)(void));
-# 381 "./mcc_generated_files/eusart.h"
+# 412 "./mcc_generated_files/eusart.h"
 void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void));
-# 399 "./mcc_generated_files/eusart.h"
+# 430 "./mcc_generated_files/eusart.h"
 void EUSART_SetErrorHandler(void (* interruptHandler)(void));
-# 54 "./mcc_generated_files/mcc.h" 2
-# 69 "./mcc_generated_files/mcc.h"
+# 450 "./mcc_generated_files/eusart.h"
+void EUSART_SetTxInterruptHandler(void (* interruptHandler)(void));
+# 56 "./mcc_generated_files/mcc.h" 2
+# 71 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 82 "./mcc_generated_files/mcc.h"
+# 84 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
 # 23 "./displayOptions.h" 2
 # 41 "./displayOptions.h"
@@ -17220,6 +17252,8 @@ void backlightOff();
 void resetCursor();
 # 95 "./displayOptions.h"
 void writeString();
+# 107 "./displayOptions.h"
+void setCursor( uint8_t a, uint8_t b );
 # 8 "displayOptions.c" 2
 
 
@@ -17276,5 +17310,14 @@ void resetCursor(){
 void writeString( char *string ){
     while( !EUSART_is_tx_ready() ) ;
     puts( string );
+    _delay((unsigned long)((200)*(500000/4000000.0)));
+}
+
+void setCursor( uint8_t a, uint8_t b ){
+    while( !EUSART_is_tx_ready() ) ;
+    EUSART_Write( 254 );
+    _delay((unsigned long)((200)*(500000/4000000.0)));
+    while( !EUSART_is_tx_ready() ) ;
+    EUSART_Write( 128 + a + b );
     _delay((unsigned long)((200)*(500000/4000000.0)));
 }

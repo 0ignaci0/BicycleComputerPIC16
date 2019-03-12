@@ -53,31 +53,37 @@
 #define blueOn          0xD9
 #define offSet 15
 
+
 /*
                          Main application
  */
 void main(void)
 {
-    char speed[] = "Speed: ";
+//~~~~~ LCD strings ~~~~~~//
+    char speed[]     = "Speed: " ;      // need to add a variable for calculated speed
+    char heartRate[] = "Heart Rate: " ; // add var for calc HR
+    char distance[]  = "Distance: " ;   // add var for calc dist
+    char timer[]     = "Timer: " ;
+//~~~~~~~~~~~~~~~~~~~~~~~~//
+    
     // initialize the device
     SYSTEM_Initialize();
+    // clear screen, set cursor to origin
     resetCursor();
-    
-    writeString(speed);
-    
-    int n = 0;
+    // initialize display   //set cursor to
+    setCursor(0,0);         // row 1, origin
+    writeString(speed);     
+    setCursor(64,0);        // row 2, position 0 (leftmost)
+    writeString(distance);
+    setCursor(20,0);        // row 3
+    writeString(heartRate);
+    setCursor(84,0);        // row 4
+    writeString(timer);
     while(1){
         
-        /*if ( n != 1){
-            if(EUSART_is_tx_ready()){
-                puts("Hello");
-                n = 1;  
-                __delay_us(200);
-            };
-        */};
+    };
 }
       
-    
 
 /**
  End of File

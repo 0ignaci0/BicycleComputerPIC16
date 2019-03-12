@@ -16983,7 +16983,16 @@ void PIN_MANAGER_Initialize(void)
     SLRCONA = 0x37;
     SLRCONB = 0xF0;
     SLRCONC = 0xFF;
-# 107 "mcc_generated_files/pin_manager.c"
+
+
+
+
+
+
+
+    INTCONbits.IOCIE = 1;
+
+
     RB7PPS = 0x12;
 }
 

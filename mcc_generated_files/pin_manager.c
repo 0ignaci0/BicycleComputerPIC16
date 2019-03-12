@@ -102,6 +102,8 @@ void PIN_MANAGER_Initialize(void)
 
 
    
+    // Enable IOCI interrupt 
+    INTCONbits.IOCIE = 1; 
     
 	
     RB7PPS = 0x12;   //RB7->EUSART:TX;    

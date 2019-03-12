@@ -63,7 +63,14 @@ void writeString( char *string ){
     __delay_us(200);
 }
 
-void 
+void setCursor( uint8_t a, uint8_t b  ){
+    while( !EUSART_is_tx_ready() ) ;
+    EUSART_Write( 254 );
+    __delay_us(200);
+    while( !EUSART_is_tx_ready() ) ;
+    EUSART_Write( 128 + a + b );
+    __delay_us(200);
+}
 /*
  * 
  */
