@@ -1,7 +1,6 @@
 # Bicycle Computer: Speed, Distance and Heart Rate
 
-## A semester project for ECE471: Embedded Systems, Spring 2019 at Purdue School of 
-Engineering&Technology, IUPUI, pursuant of Bachelor of Science Electrical Engineering.
+## A semester project for ECE471: Embedded Systems, Spring 2019 at Purdue School of Engineering&Technology, IUPUI, pursuant of Bachelor of Science Electrical Engineering.
 
 This project is written for Microchip PIC16F1619 microcontroller. The goal is to prototype and 
 demonstrate proof of concept operation of a bicycle computer.
