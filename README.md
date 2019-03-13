@@ -46,8 +46,7 @@ Principle of Operation
    *(To be implemented.)*
 
 4. Display
-<<<<<<< HEAD
-All sensor data is displayed to user via a 4 row, 20 column dot-matrix LCD. The Sparkfun 
-SerLCD is a fully integrated display package with its own on-board ATmega328P controller 
-handling text formatting and display. The PIC16 simply sends sensor data and text over UART.
 
+    All sensor data is displayed to user via a 4 row, 20 column dot-matrix LCD. The Sparkfun 
+    SerLCD is a fully integrated display package with its own on-board ATmega328P controller 
+    handling text formatting and display. The PIC16 simply sends sensor data and text over UART.
