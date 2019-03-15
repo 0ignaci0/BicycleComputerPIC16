@@ -2,8 +2,7 @@
 
 #include "mcc_generated_files/mcc.h"    // MPLAB Configurator; contains initialization routines
 #include "displayOptions.h"             // functions for modifying LCD parameters and writing to display
-#define _XTAL_FREQ 500000               
-#define CIRCUMFERENCE 2.096             // circumference of 700x23C bicycle wheel in meters
+#define CIRCUMFERENCE 2096             // circumference of 700x23C bicycle wheel in millimeters
 
 // constant defines for modifying LCD
 #define configMode      0x7C 
@@ -15,11 +14,11 @@
 #define blueOn          0xD9
 #define offSet          15
 
-int rpm      = 0 ;
-int second   = 0 ;
-int counter  = 0 ;
-int distance = 0 ;
-int speed    = 0 ;
+long int rpm      = 0 ;
+long int second   = 0 ;
+long int counter  = 0 ;
+long int distance = 0 ;
+long int speed    = 0 ;
 
 void timerISR  ( void ) ;
 void speedCalc ( void ) ;
@@ -40,7 +39,7 @@ void main(void)
     SYSTEM_Initialize();
     // set timer and interrupt-on-change handlers
     TMR0_SetInterruptHandler( timerISR ) ;
-    IOCCF5_SetInterruptHandler( speedCalc ) ;
+    IOCCF7_SetInterruptHandler( speedCalc ) ;
 
     // clear screen, set cursor to origin
     resetCursor() ;
@@ -57,31 +56,31 @@ void main(void)
     INTERRUPT_PeripheralInterruptEnable();
     while(1){
         setCursor(1,10) ;
-        printf( "%d", speed ) ;
+        printf( "%d m/s", speed ) ;
         setCursor(2,11) ;      
-        printf( "%d", distance ) ;
+        printf( "%d m", distance ) ;
         
         
     };
 }
 
-
-
-void timerISR ( void ){
+void timerISR ( void ){ // timer set to 1ms period
     counter++ ;
-    if ( counter % 1000 == 0 ){ // every 1000ms count 1 second
+    if ( counter % 2 == 0 ){ // every 1 second
         second++ ;
-    }
+    }  
+
 }
 
 void speedCalc ( void ){
     // calculate rotations per minute by multiplying by 60 sec/min
-    rpm      = second * 60 ;    
+    rpm      = second * 60 ;    // counter increments every 1 milli-sec, therefore divide by 1000 to achieve seconds
     // calculate speed in km/hr; speed = ( (2*pi*r) * rpm ) * (60 min/1 hr) * (1 km/1000 m)
-    // speed = circumference * rpm * 0.06
-    speed    = CIRCUMFERENCE * rpm * 0.06 ; 
+    // below gives circum * rpm gives millimeters per second ; to get m/s, multiply by 1 m / 1000 mm
+    speed    = CIRCUMFERENCE * rpm * (0.001) ; 
+    counter  = 0 ;
     second   = 0 ;
-    distance = distance + CIRCUMFERENCE ;
+    distance = (distance + CIRCUMFERENCE) * (0.001) ;
 }
 
 

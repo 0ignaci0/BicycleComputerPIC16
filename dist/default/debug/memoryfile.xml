@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/debug\PIC16F1619_Test.X.debug.hex">
+  <executable name="dist/default/debug\BicycleComputerPIC16.debug.hex">
     <memory name="program">
       <units>words</units>
       <length>8192</length>
-      <used>348</used>
-      <free>7844</free>
+      <used>3477</used>
+      <free>4715</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>1024</length>
-      <used>51</used>
-      <free>973</free>
+      <used>244</used>
+      <free>780</free>
     </memory>
   </executable>
 </project>

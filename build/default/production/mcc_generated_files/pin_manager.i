@@ -16928,25 +16928,25 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 2 3
 # 54 "mcc_generated_files/pin_manager.h" 2
-# 107 "mcc_generated_files/pin_manager.h"
+# 110 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 119 "mcc_generated_files/pin_manager.h"
+# 122 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 132 "mcc_generated_files/pin_manager.h"
-void IOCCF5_ISR(void);
-# 155 "mcc_generated_files/pin_manager.h"
-void IOCCF5_SetInterruptHandler(void (* InterruptHandler)(void));
-# 179 "mcc_generated_files/pin_manager.h"
-extern void (*IOCCF5_InterruptHandler)(void);
-# 203 "mcc_generated_files/pin_manager.h"
-void IOCCF5_DefaultInterruptHandler(void);
+# 135 "mcc_generated_files/pin_manager.h"
+void IOCCF7_ISR(void);
+# 158 "mcc_generated_files/pin_manager.h"
+void IOCCF7_SetInterruptHandler(void (* InterruptHandler)(void));
+# 182 "mcc_generated_files/pin_manager.h"
+extern void (*IOCCF7_InterruptHandler)(void);
+# 206 "mcc_generated_files/pin_manager.h"
+void IOCCF7_DefaultInterruptHandler(void);
 # 49 "mcc_generated_files/pin_manager.c" 2
 
 
 
 
 
-void (*IOCCF5_InterruptHandler)(void);
+void (*IOCCF7_InterruptHandler)(void);
 
 
 void PIN_MANAGER_Initialize(void)
@@ -16968,7 +16968,7 @@ void PIN_MANAGER_Initialize(void)
 
 
 
-    ANSELC = 0xCF;
+    ANSELC = 0x4F;
     ANSELB = 0x70;
     ANSELA = 0x17;
 
@@ -16999,16 +16999,16 @@ void PIN_MANAGER_Initialize(void)
 
 
 
-    IOCCFbits.IOCCF5 = 0;
+    IOCCFbits.IOCCF7 = 0;
 
-    IOCCNbits.IOCCN5 = 0;
+    IOCCNbits.IOCCN7 = 0;
 
-    IOCCPbits.IOCCP5 = 0;
-
-
+    IOCCPbits.IOCCP7 = 1;
 
 
-    IOCCF5_SetInterruptHandler(IOCCF5_DefaultInterruptHandler);
+
+
+    IOCCF7_SetInterruptHandler(IOCCF7_DefaultInterruptHandler);
 
 
     INTCONbits.IOCIE = 1;
@@ -17020,38 +17020,38 @@ void PIN_MANAGER_Initialize(void)
 void PIN_MANAGER_IOC(void)
 {
 
-    if(IOCCFbits.IOCCF5 == 1)
+    if(IOCCFbits.IOCCF7 == 1)
     {
-        IOCCF5_ISR();
+        IOCCF7_ISR();
     }
 }
 
 
 
 
-void IOCCF5_ISR(void) {
+void IOCCF7_ISR(void) {
 
 
 
 
-    if(IOCCF5_InterruptHandler)
+    if(IOCCF7_InterruptHandler)
     {
-        IOCCF5_InterruptHandler();
+        IOCCF7_InterruptHandler();
     }
-    IOCCFbits.IOCCF5 = 0;
+    IOCCFbits.IOCCF7 = 0;
 }
 
 
 
 
-void IOCCF5_SetInterruptHandler(void (* InterruptHandler)(void)){
-    IOCCF5_InterruptHandler = InterruptHandler;
+void IOCCF7_SetInterruptHandler(void (* InterruptHandler)(void)){
+    IOCCF7_InterruptHandler = InterruptHandler;
 }
 
 
 
 
-void IOCCF5_DefaultInterruptHandler(void){
+void IOCCF7_DefaultInterruptHandler(void){
 
 
 }

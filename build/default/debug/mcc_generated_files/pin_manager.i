@@ -16928,15 +16928,25 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 2 3
 # 54 "mcc_generated_files/pin_manager.h" 2
-# 107 "mcc_generated_files/pin_manager.h"
+# 110 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 119 "mcc_generated_files/pin_manager.h"
+# 122 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
+# 135 "mcc_generated_files/pin_manager.h"
+void IOCCF7_ISR(void);
+# 158 "mcc_generated_files/pin_manager.h"
+void IOCCF7_SetInterruptHandler(void (* InterruptHandler)(void));
+# 182 "mcc_generated_files/pin_manager.h"
+extern void (*IOCCF7_InterruptHandler)(void);
+# 206 "mcc_generated_files/pin_manager.h"
+void IOCCF7_DefaultInterruptHandler(void);
 # 49 "mcc_generated_files/pin_manager.c" 2
 
 
 
 
+
+void (*IOCCF7_InterruptHandler)(void);
 
 
 void PIN_MANAGER_Initialize(void)
@@ -16953,12 +16963,12 @@ void PIN_MANAGER_Initialize(void)
 
     TRISA = 0x37;
     TRISB = 0x70;
-    TRISC = 0xDF;
+    TRISC = 0xFF;
 
 
 
 
-    ANSELC = 0xCF;
+    ANSELC = 0x4F;
     ANSELB = 0x70;
     ANSELA = 0x17;
 
@@ -16983,10 +16993,65 @@ void PIN_MANAGER_Initialize(void)
     SLRCONA = 0x37;
     SLRCONB = 0xF0;
     SLRCONC = 0xFF;
-# 107 "mcc_generated_files/pin_manager.c"
+
+
+
+
+
+
+    IOCCFbits.IOCCF7 = 0;
+
+    IOCCNbits.IOCCN7 = 0;
+
+    IOCCPbits.IOCCP7 = 1;
+
+
+
+
+    IOCCF7_SetInterruptHandler(IOCCF7_DefaultInterruptHandler);
+
+
+    INTCONbits.IOCIE = 1;
+
+
     RB7PPS = 0x12;
 }
 
 void PIN_MANAGER_IOC(void)
 {
+
+    if(IOCCFbits.IOCCF7 == 1)
+    {
+        IOCCF7_ISR();
+    }
+}
+
+
+
+
+void IOCCF7_ISR(void) {
+
+
+
+
+    if(IOCCF7_InterruptHandler)
+    {
+        IOCCF7_InterruptHandler();
+    }
+    IOCCFbits.IOCCF7 = 0;
+}
+
+
+
+
+void IOCCF7_SetInterruptHandler(void (* InterruptHandler)(void)){
+    IOCCF7_InterruptHandler = InterruptHandler;
+}
+
+
+
+
+void IOCCF7_DefaultInterruptHandler(void){
+
+
 }

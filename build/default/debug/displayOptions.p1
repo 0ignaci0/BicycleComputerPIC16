@@ -12,6 +12,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "102 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c99\stdio.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c99\stdio.h: 102: int puts(const char *);
 [v _puts `(i ~T0 @X0 0 ef1`*Cuc ]
+"113
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1534,4 +1536,129 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;displayOptions.c: 64: }
 [e :UE 1240 ]
 }
+"66
+[; ;displayOptions.c: 66: void writePrintf( char *string ){
+[v _writePrintf `(v ~T0 @X0 1 ef1`*uc ]
+{
+[e :U _writePrintf ]
+[v _string `*uc ~T0 @X0 1 r1 ]
+[f ]
+"67
+[; ;displayOptions.c: 67:     while( !EUSART_is_tx_ready() ) ;
+[e $U 1245  ]
+[e :U 1246 ]
+[e :U 1245 ]
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1246  ]
+[e :U 1247 ]
+"68
+[; ;displayOptions.c: 68:     printf( string ) ;
+[e ( _printf -> _string `*Cuc ]
+"69
+[; ;displayOptions.c: 69:     _delay((unsigned long)((200)*(500000/4000000.0))) ;
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 500000 `l `d .4000000.0 `ul ]
+"70
+[; ;displayOptions.c: 70: }
+[e :UE 1244 ]
+}
+"72
+[; ;displayOptions.c: 72: void setCursor( uint8_t a, uint8_t b ){
+[v _setCursor `(v ~T0 @X0 1 ef2`uc`uc ]
+{
+[e :U _setCursor ]
+[v _a `uc ~T0 @X0 1 r1 ]
+[v _b `uc ~T0 @X0 1 r2 ]
+[f ]
+"73
+[; ;displayOptions.c: 73:     while( !EUSART_is_tx_ready() ) ;
+[e $U 1249  ]
+[e :U 1250 ]
+[e :U 1249 ]
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1250  ]
+[e :U 1251 ]
+"74
+[; ;displayOptions.c: 74:     EUSART_Write( 254 );
+[e ( _EUSART_Write (1 -> -> 254 `i `uc ]
+"75
+[; ;displayOptions.c: 75:     _delay((unsigned long)((200)*(500000/4000000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 500000 `l `d .4000000.0 `ul ]
+"76
+[; ;displayOptions.c: 76:     switch ( a ){
+[e $U 1253  ]
+{
+"77
+[; ;displayOptions.c: 77:         case 1:
+[e :U 1254 ]
+"78
+[; ;displayOptions.c: 78:         {
+{
+"79
+[; ;displayOptions.c: 79:             EUSART_Write(128 + 0 + b) ;
+[e ( _EUSART_Write (1 -> + + -> 128 `i -> 0 `i -> _b `i `uc ]
+"80
+[; ;displayOptions.c: 80:             break ;
+[e $U 1252  ]
+"81
+[; ;displayOptions.c: 81:         }
+}
+"82
+[; ;displayOptions.c: 82:         case 2:
+[e :U 1255 ]
+"83
+[; ;displayOptions.c: 83:         {
+{
+"84
+[; ;displayOptions.c: 84:            EUSART_Write(128 + 64 + b) ;
+[e ( _EUSART_Write (1 -> + + -> 128 `i -> 64 `i -> _b `i `uc ]
+"85
+[; ;displayOptions.c: 85:            break ;
+[e $U 1252  ]
+"86
+[; ;displayOptions.c: 86:         }
+}
+"87
+[; ;displayOptions.c: 87:         case 3:
+[e :U 1256 ]
+"88
+[; ;displayOptions.c: 88:         {
+{
+"89
+[; ;displayOptions.c: 89:             EUSART_Write(128 + 20 + b) ;
+[e ( _EUSART_Write (1 -> + + -> 128 `i -> 20 `i -> _b `i `uc ]
+"90
+[; ;displayOptions.c: 90:             break ;
+[e $U 1252  ]
+"91
+[; ;displayOptions.c: 91:         }
+}
+"92
+[; ;displayOptions.c: 92:         case 4:
+[e :U 1257 ]
+"93
+[; ;displayOptions.c: 93:         {
+{
+"94
+[; ;displayOptions.c: 94:             EUSART_Write(128 + 84 + b) ;
+[e ( _EUSART_Write (1 -> + + -> 128 `i -> 84 `i -> _b `i `uc ]
+"95
+[; ;displayOptions.c: 95:             break ;
+[e $U 1252  ]
+"96
+[; ;displayOptions.c: 96:         }
+}
+"97
+[; ;displayOptions.c: 97:     }
+}
+[e $U 1252  ]
+[e :U 1253 ]
+[e [\ -> _a `i , $ -> 1 `i 1254
+ , $ -> 2 `i 1255
+ , $ -> 3 `i 1256
+ , $ -> 4 `i 1257
+ 1252 ]
+[e :U 1252 ]
+"98
+[; ;displayOptions.c: 98: }
+[e :UE 1248 ]
+}
+[p f _printf 9437696 ]
 [a 1C 124 45 0 ]

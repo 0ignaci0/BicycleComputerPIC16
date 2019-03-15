@@ -9,8 +9,8 @@
 [v ___aodiv __aodiv `(o  1 e 8 0 ]
 "7 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\aomod.c
 [v ___aomod __aomod `(o  1 e 8 0 ]
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\awmod.c
-[v ___awmod __awmod `(i  1 e 2 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
 "72 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c
 [v _pad pad `(i  1 s 2 pad ]
 "274
@@ -41,7 +41,7 @@
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
-"11 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\displayOptions.c
+"11 C:\Users\igna\BicycleComputerPIC16\displayOptions.c
 [v _backlightBrightness backlightBrightness `(v  1 e 1 0 ]
 "56
 [v _resetCursor resetCursor `(v  1 e 1 0 ]
@@ -49,13 +49,13 @@
 [v _writeString writeString `(v  1 e 1 0 ]
 "72
 [v _setCursor setCursor `(v  1 e 1 0 ]
-"37 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\main.c
+"37 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _main main `(v  1 e 1 0 ]
-"70
+"68
 [v _timerISR timerISR `(v  1 e 1 0 ]
-"77
+"72
 [v _speedCalc speedCalc `(v  1 e 1 0 ]
-"65 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/eusart.c
+"65 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/eusart.c
 [v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
 "93
 [v _EUSART_is_tx_ready EUSART_is_tx_ready `(a  1 e 1 0 ]
@@ -77,13 +77,13 @@
 [v _EUSART_SetOverrunErrorHandler EUSART_SetOverrunErrorHandler `(v  1 e 1 0 ]
 "179
 [v _EUSART_SetErrorHandler EUSART_SetErrorHandler `(v  1 e 1 0 ]
-"52 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/interrupt_manager.c
+"52 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
-"50 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/mcc.c
+"50 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 "58
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
-"57 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/pin_manager.c
+"57 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 "125
 [v _PIN_MANAGER_IOC PIN_MANAGER_IOC `(v  1 e 1 0 ]
@@ -93,13 +93,13 @@
 [v _IOCCF5_SetInterruptHandler IOCCF5_SetInterruptHandler `(v  1 e 1 0 ]
 "159
 [v _IOCCF5_DefaultInterruptHandler IOCCF5_DefaultInterruptHandler `(v  1 e 1 0 ]
-"64 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/tmr0.c
+"18 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
-"108
+"62
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
-"125
+"79
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
-"129
+"83
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
 [s S346 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
@@ -277,10 +277,8 @@
 [v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
 "69
 [v _nout nout `i  1 s 2 nout ]
-"18 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\main.c
+"18 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _rpm rpm `i  1 e 2 0 ]
-"19
-[v _second second `i  1 e 2 0 ]
 "20
 [v _counter counter `i  1 e 2 0 ]
 "21
@@ -298,7 +296,7 @@
 `uc 1 oerr 1 0 :1:2 
 `uc 1 reserved 1 0 :5:3 
 ]
-"52 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/eusart.c
+"52 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/eusart.c
 [u S27 . 1 `S22 1 . 1 0 `uc 1 status 1 0 ]
 [v _eusartRxLastError eusartRxLastError `VES27  1 e 1 0 ]
 "57
@@ -307,18 +305,18 @@
 [v _EUSART_OverrunErrorHandler EUSART_OverrunErrorHandler `*.37(v  1 e 2 0 ]
 "59
 [v _EUSART_ErrorHandler EUSART_ErrorHandler `*.37(v  1 e 2 0 ]
-"54 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/pin_manager.c
+"54 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/pin_manager.c
 [v _IOCCF5_InterruptHandler IOCCF5_InterruptHandler `*.37(v  1 e 2 0 ]
-"58 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/tmr0.c
+"12 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/tmr0.c
 [v _timer0ReloadVal timer0ReloadVal `VEuc  1 e 1 0 ]
-"59
+"13
 [v _TMR0_InterruptHandler TMR0_InterruptHandler `*.37(v  1 e 2 0 ]
-"37 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\main.c
+"37 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _main main `(v  1 e 1 0 ]
 {
 "66
 } 0
-"60 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\displayOptions.c
+"60 C:\Users\igna\BicycleComputerPIC16\displayOptions.c
 [v _writeString writeString `(v  1 e 1 0 ]
 {
 [v writeString@string string `*.5uc  1 a 1 wreg ]
@@ -335,12 +333,12 @@
 [v setCursor@a a `uc  1 a 1 4 ]
 "98
 } 0
-"93 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/eusart.c
+"93 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/eusart.c
 [v _EUSART_is_tx_ready EUSART_is_tx_ready `(a  1 e 1 0 ]
 {
 "96
 } 0
-"56 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\displayOptions.c
+"56 C:\Users\igna\BicycleComputerPIC16\displayOptions.c
 [v _resetCursor resetCursor `(v  1 e 1 0 ]
 {
 "58
@@ -464,7 +462,7 @@
 [v fputc@fp fp `*.1S987  1 p 1 4 ]
 "21
 } 0
-"151 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/eusart.c
+"151 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/eusart.c
 [v _putch putch `(v  1 e 1 0 ]
 {
 [v putch@txData txData `uc  1 a 1 wreg ]
@@ -511,23 +509,23 @@
 [v ___aodiv@dividend dividend `o  1 p 8 8 ]
 "43
 } 0
-"50 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/mcc.c
+"50 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
 "56
 } 0
-"64 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/tmr0.c
+"18 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 {
-"85
+"39
 } 0
-"125
+"79
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
 {
 [v TMR0_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
-"127
+"81
 } 0
-"57 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/pin_manager.c
+"57 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 {
 "123
@@ -538,12 +536,12 @@
 [v IOCCF5_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
 "154
 } 0
-"58 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/mcc.c
+"58 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
 "66
 } 0
-"65 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/eusart.c
+"65 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/eusart.c
 [v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
 {
 "91
@@ -566,38 +564,27 @@
 [v EUSART_SetErrorHandler@interruptHandler interruptHandler `*.37(v  1 p 2 0 ]
 "181
 } 0
-"52 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/interrupt_manager.c
+"52 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 {
 "63
 } 0
-"108 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/tmr0.c
+"62 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/tmr0.c
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
 {
-"122
+"76
 } 0
-"129
+"83
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
 {
-"132
+"86
 } 0
-"70 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\main.c
+"68 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _timerISR timerISR `(v  1 e 1 0 ]
 {
-"75
+"70
 } 0
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\awmod.c
-[v ___awmod __awmod `(i  1 e 2 0 ]
-{
-"10
-[v ___awmod@sign sign `uc  1 a 1 6 ]
-[v ___awmod@counter counter `uc  1 a 1 5 ]
-"5
-[v ___awmod@divisor divisor `i  1 p 2 0 ]
-[v ___awmod@dividend dividend `i  1 p 2 2 ]
-"34
-} 0
-"125 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\mcc_generated_files/pin_manager.c
+"125 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_IOC PIN_MANAGER_IOC `(v  1 e 1 0 ]
 {
 "132
@@ -612,10 +599,10 @@
 {
 "162
 } 0
-"77 C:\Users\rguerra\MPLABXProjects\BicycleComputerPIC16.X\main.c
+"72 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _speedCalc speedCalc `(v  1 e 1 0 ]
 {
-"85
+"79
 } 0
 "10 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
@@ -636,10 +623,10 @@
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 {
 "17
-[v ___wmul@product product `ui  1 a 2 4 ]
+[v ___wmul@product product `ui  1 a 2 0 ]
 "15
-[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+[v ___wmul@multiplier multiplier `ui  1 p 2 9 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 11 ]
 "53
 } 0
 "43 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\fltol.c
@@ -706,4 +693,17 @@
 [v ___fladd@b b `d  1 p 4 0 ]
 [v ___fladd@a a `d  1 p 4 4 ]
 "237
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
 } 0

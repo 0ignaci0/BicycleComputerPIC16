@@ -51,7 +51,7 @@
 
 
 
-void (*IOCCF5_InterruptHandler)(void);
+void (*IOCCF7_InterruptHandler)(void);
 
 
 void PIN_MANAGER_Initialize(void)
@@ -73,7 +73,7 @@ void PIN_MANAGER_Initialize(void)
     /**
     ANSELx registers
     */
-    ANSELC = 0xCF;
+    ANSELC = 0x4F;
     ANSELB = 0x70;
     ANSELA = 0x17;
 
@@ -104,16 +104,16 @@ void PIN_MANAGER_Initialize(void)
     IOCx registers 
     */
     //interrupt on change for group IOCCF - flag
-    IOCCFbits.IOCCF5 = 0;
+    IOCCFbits.IOCCF7 = 0;
     //interrupt on change for group IOCCN - negative
-    IOCCNbits.IOCCN5 = 0;
+    IOCCNbits.IOCCN7 = 0;
     //interrupt on change for group IOCCP - positive
-    IOCCPbits.IOCCP5 = 0;
+    IOCCPbits.IOCCP7 = 1;
 
 
 
     // register default IOC callback functions at runtime; use these methods to register a custom function
-    IOCCF5_SetInterruptHandler(IOCCF5_DefaultInterruptHandler);
+    IOCCF7_SetInterruptHandler(IOCCF7_DefaultInterruptHandler);
    
     // Enable IOCI interrupt 
     INTCONbits.IOCIE = 1; 
@@ -124,41 +124,41 @@ void PIN_MANAGER_Initialize(void)
   
 void PIN_MANAGER_IOC(void)
 {   
-	// interrupt on change for pin IOCCF5
-    if(IOCCFbits.IOCCF5 == 1)
+	// interrupt on change for pin IOCCF7
+    if(IOCCFbits.IOCCF7 == 1)
     {
-        IOCCF5_ISR();  
+        IOCCF7_ISR();  
     }	
 }
 
 /**
-   IOCCF5 Interrupt Service Routine
+   IOCCF7 Interrupt Service Routine
 */
-void IOCCF5_ISR(void) {
+void IOCCF7_ISR(void) {
 
-    // Add custom IOCCF5 code
+    // Add custom IOCCF7 code
 
     // Call the interrupt handler for the callback registered at runtime
-    if(IOCCF5_InterruptHandler)
+    if(IOCCF7_InterruptHandler)
     {
-        IOCCF5_InterruptHandler();
+        IOCCF7_InterruptHandler();
     }
-    IOCCFbits.IOCCF5 = 0;
+    IOCCFbits.IOCCF7 = 0;
 }
 
 /**
-  Allows selecting an interrupt handler for IOCCF5 at application runtime
+  Allows selecting an interrupt handler for IOCCF7 at application runtime
 */
-void IOCCF5_SetInterruptHandler(void (* InterruptHandler)(void)){
-    IOCCF5_InterruptHandler = InterruptHandler;
+void IOCCF7_SetInterruptHandler(void (* InterruptHandler)(void)){
+    IOCCF7_InterruptHandler = InterruptHandler;
 }
 
 /**
-  Default interrupt handler for IOCCF5
+  Default interrupt handler for IOCCF7
 */
-void IOCCF5_DefaultInterruptHandler(void){
-    // add your IOCCF5 interrupt custom code
-    // or set custom function using IOCCF5_SetInterruptHandler()
+void IOCCF7_DefaultInterruptHandler(void){
+    // add your IOCCF7 interrupt custom code
+    // or set custom function using IOCCF7_SetInterruptHandler()
 }
 
 /**

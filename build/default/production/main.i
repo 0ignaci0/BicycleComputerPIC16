@@ -16934,18 +16934,18 @@ extern __bank0 __bit __timeout;
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 107 "./mcc_generated_files/pin_manager.h"
+# 110 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 119 "./mcc_generated_files/pin_manager.h"
+# 122 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 132 "./mcc_generated_files/pin_manager.h"
-void IOCCF5_ISR(void);
-# 155 "./mcc_generated_files/pin_manager.h"
-void IOCCF5_SetInterruptHandler(void (* InterruptHandler)(void));
-# 179 "./mcc_generated_files/pin_manager.h"
-extern void (*IOCCF5_InterruptHandler)(void);
-# 203 "./mcc_generated_files/pin_manager.h"
-void IOCCF5_DefaultInterruptHandler(void);
+# 135 "./mcc_generated_files/pin_manager.h"
+void IOCCF7_ISR(void);
+# 158 "./mcc_generated_files/pin_manager.h"
+void IOCCF7_SetInterruptHandler(void (* InterruptHandler)(void));
+# 182 "./mcc_generated_files/pin_manager.h"
+extern void (*IOCCF7_InterruptHandler)(void);
+# 206 "./mcc_generated_files/pin_manager.h"
+void IOCCF7_DefaultInterruptHandler(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 1 3
@@ -17250,12 +17250,12 @@ void setCursor( uint8_t a, uint8_t b );
 
 void writePrintf( char *string );
 # 4 "main.c" 2
-# 18 "main.c"
-int rpm = 0 ;
-int second = 0 ;
-int counter = 0 ;
-int distance = 0 ;
-int speed = 0 ;
+# 17 "main.c"
+long int rpm = 0 ;
+long int second = 0 ;
+long int counter = 0 ;
+long int distance = 0 ;
+long int speed = 0 ;
 
 void timerISR ( void ) ;
 void speedCalc ( void ) ;
@@ -17276,7 +17276,7 @@ void main(void)
     SYSTEM_Initialize();
 
     TMR0_SetInterruptHandler( timerISR ) ;
-    IOCCF5_SetInterruptHandler( speedCalc ) ;
+    IOCCF7_SetInterruptHandler( speedCalc ) ;
 
 
     resetCursor() ;
@@ -17293,21 +17293,20 @@ void main(void)
     (INTCONbits.PEIE = 1);
     while(1){
         setCursor(1,10) ;
-        printf( "%d", speed ) ;
+        printf( "%d m/s", speed ) ;
         setCursor(2,11) ;
-        printf( "%d", distance ) ;
+        printf( "%d m", distance ) ;
 
 
     };
 }
 
-
-
 void timerISR ( void ){
     counter++ ;
-    if ( counter % 1000 == 0 ){
+    if ( counter % 2 == 0 ){
         second++ ;
     }
+
 }
 
 void speedCalc ( void ){
@@ -17315,7 +17314,8 @@ void speedCalc ( void ){
     rpm = second * 60 ;
 
 
-    speed = 2.096 * rpm * 0.06 ;
+    speed = 2096 * rpm * (0.001) ;
+    counter = 0 ;
     second = 0 ;
-    distance = distance + 2.096 ;
+    distance = (distance + 2096) * (0.001) ;
 }

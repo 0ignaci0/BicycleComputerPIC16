@@ -60,6 +60,10 @@ void __interrupt() INTERRUPT_InterruptManager (void)
     {
         PIN_MANAGER_IOC();
     }
+    else
+    {
+        //Unhandled Interrupt
+    }
 }
 /**
  End of File
