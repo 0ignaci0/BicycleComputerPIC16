@@ -17293,9 +17293,9 @@ void main(void)
     (INTCONbits.PEIE = 1);
     while(1){
         setCursor(1,10) ;
-        printf( "%d m/s", speed ) ;
+        printf( "%d mi/hr", speed ) ;
         setCursor(2,11) ;
-        printf( "%d m", distance ) ;
+        printf( "%d mi", distance ) ;
 
 
     };
@@ -17314,8 +17314,8 @@ void speedCalc ( void ){
     rpm = second * 60 ;
 
 
-    speed = 2096 * rpm * (0.001) ;
+    speed = 83 * rpm * (0.00095) ;
     counter = 0 ;
     second = 0 ;
-    distance = (distance + 2096) * (0.001) ;
+    distance = (distance + 83) * (0.000016) ;
 }

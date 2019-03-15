@@ -1508,13 +1508,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 58:         setCursor(1,10) ;
 [e ( _setCursor (2 , -> -> 1 `i `uc -> -> 10 `i `uc ]
 "59
-[; ;main.c: 59:         printf( "%d m/s", speed ) ;
+[; ;main.c: 59:         printf( "%d mi/hr", speed ) ;
 [e ( _printf , (. :s 1C _speed ]
 "60
 [; ;main.c: 60:         setCursor(2,11) ;
 [e ( _setCursor (2 , -> -> 2 `i `uc -> -> 11 `i `uc ]
 "61
-[; ;main.c: 61:         printf( "%d m", distance ) ;
+[; ;main.c: 61:         printf( "%d mi", distance ) ;
 [e ( _printf , (. :s 2C _distance ]
 "64
 [; ;main.c: 64:     };
@@ -1560,8 +1560,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 77:     rpm = second * 60 ;
 [e = _rpm * _second -> -> 60 `i `l ]
 "80
-[; ;main.c: 80:     speed = 2096 * rpm * (0.001) ;
-[e = _speed -> * -> * -> -> 2096 `i `l _rpm `d .0.001 `l ]
+[; ;main.c: 80:     speed = 83 * rpm * (0.00095) ;
+[e = _speed -> * -> * -> -> 83 `i `l _rpm `d .0.00095 `l ]
 "81
 [; ;main.c: 81:     counter = 0 ;
 [e = _counter -> -> 0 `i `l ]
@@ -1569,12 +1569,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 82:     second = 0 ;
 [e = _second -> -> 0 `i `l ]
 "83
-[; ;main.c: 83:     distance = (distance + 2096) * (0.001) ;
-[e = _distance -> * -> + _distance -> -> 2096 `i `l `d .0.001 `l ]
+[; ;main.c: 83:     distance = (distance + 83) * (0.000016) ;
+[e = _distance -> * -> + _distance -> -> 83 `i `l `d .0.000016 `l ]
 "84
 [; ;main.c: 84: }
 [e :UE 1226 ]
 }
 [p f _printf 8388736 ]
-[a 1C 37 100 32 109 47 115 0 ]
-[a 2C 37 100 32 109 0 ]
+[a 1C 37 100 32 109 105 47 104 114 0 ]
+[a 2C 37 100 32 109 105 0 ]

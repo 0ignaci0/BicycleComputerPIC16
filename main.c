@@ -2,7 +2,7 @@
 
 #include "mcc_generated_files/mcc.h"    // MPLAB Configurator; contains initialization routines
 #include "displayOptions.h"             // functions for modifying LCD parameters and writing to display
-#define CIRCUMFERENCE 2096             // circumference of 700x23C bicycle wheel in millimeters
+#define CIRCUMFERENCE 83             // circumference of 700x23C bicycle wheel in inches
 
 // constant defines for modifying LCD
 #define configMode      0x7C 
@@ -56,9 +56,9 @@ void main(void)
     INTERRUPT_PeripheralInterruptEnable();
     while(1){
         setCursor(1,10) ;
-        printf( "%d m/s", speed ) ;
+        printf( "%d mi/hr", speed ) ;
         setCursor(2,11) ;      
-        printf( "%d m", distance ) ;
+        printf( "%d mi", distance ) ;
         
         
     };
@@ -75,12 +75,12 @@ void timerISR ( void ){ // timer set to 1ms period
 void speedCalc ( void ){
     // calculate rotations per minute by multiplying by 60 sec/min
     rpm      = second * 60 ;    // counter increments every 1 milli-sec, therefore divide by 1000 to achieve seconds
-    // calculate speed in km/hr; speed = ( (2*pi*r) * rpm ) * (60 min/1 hr) * (1 km/1000 m)
-    // below gives circum * rpm gives millimeters per second ; to get m/s, multiply by 1 m / 1000 mm
-    speed    = CIRCUMFERENCE * rpm * (0.001) ; 
+    // calculate speed in mi/hr; speed = ( (2*pi*r) * rpm ) * (60 min/1 hr) * (1 km/1000 m)
+    // below  circum * rpm gives inches per minute ; to get mi/hr, multiply by (1 mi / 63360 inches) * 60 min / 1 hr) = 0.00095
+    speed    = CIRCUMFERENCE * rpm * (0.00095) ; 
     counter  = 0 ;
     second   = 0 ;
-    distance = (distance + CIRCUMFERENCE) * (0.001) ;
+    distance = (distance + CIRCUMFERENCE) * (0.000016) ; // to get miles, multiply by (1 mi/63360 in)
 }
 
 
