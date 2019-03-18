@@ -1376,8 +1376,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;displayOptions.c: 18:                 EUSART_Write( 0x80 + offSet );
 [e ( _EUSART_Write (1 -> + -> 128 `i -> _offSet `i `uc ]
 "19
-[; ;displayOptions.c: 19:                 _delay((unsigned long)((104)*(500000/4000000.0))) ;
-[e ( __delay (1 -> * -> -> 104 `i `d / -> -> 500000 `l `d .4000000.0 `ul ]
+[; ;displayOptions.c: 19:                 _delay((unsigned long)((104)*(16000000/4000000.0))) ;
+[e ( __delay (1 -> * -> -> 104 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 "20
 [; ;displayOptions.c: 20:                 break;
 [e $U 1222  ]
@@ -1401,8 +1401,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;displayOptions.c: 25:                 EUSART_Write( 0x9E + offSet );
 [e ( _EUSART_Write (1 -> + -> 158 `i -> _offSet `i `uc ]
 "26
-[; ;displayOptions.c: 26:                 _delay((unsigned long)((104)*(500000/4000000.0))) ;
-[e ( __delay (1 -> * -> -> 104 `i `d / -> -> 500000 `l `d .4000000.0 `ul ]
+[; ;displayOptions.c: 26:                 _delay((unsigned long)((104)*(16000000/4000000.0))) ;
+[e ( __delay (1 -> * -> -> 104 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 "27
 [; ;displayOptions.c: 27:                 break;
 [e $U 1222  ]
@@ -1426,8 +1426,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;displayOptions.c: 32:                 EUSART_Write( 0xBC + offSet );
 [e ( _EUSART_Write (1 -> + -> 188 `i -> _offSet `i `uc ]
 "33
-[; ;displayOptions.c: 33:                 _delay((unsigned long)((104)*(500000/4000000.0))) ;
-[e ( __delay (1 -> * -> -> 104 `i `d / -> -> 500000 `l `d .4000000.0 `ul ]
+[; ;displayOptions.c: 33:                 _delay((unsigned long)((104)*(16000000/4000000.0))) ;
+[e ( __delay (1 -> * -> -> 104 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 "34
 [; ;displayOptions.c: 34:                 break;
 [e $U 1222  ]
@@ -1530,8 +1530,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;displayOptions.c: 62:     puts( string );
 [e ( _puts (1 -> _string `*Cuc ]
 "63
-[; ;displayOptions.c: 63:     _delay((unsigned long)((200)*(500000/4000000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 500000 `l `d .4000000.0 `ul ]
+[; ;displayOptions.c: 63:     _delay((unsigned long)((200)*(16000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 "64
 [; ;displayOptions.c: 64: }
 [e :UE 1240 ]
@@ -1554,8 +1554,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;displayOptions.c: 68:     printf( string ) ;
 [e ( _printf -> _string `*Cuc ]
 "69
-[; ;displayOptions.c: 69:     _delay((unsigned long)((200)*(500000/4000000.0))) ;
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 500000 `l `d .4000000.0 `ul ]
+[; ;displayOptions.c: 69:     _delay((unsigned long)((200)*(16000000/4000000.0))) ;
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 "70
 [; ;displayOptions.c: 70: }
 [e :UE 1244 ]
@@ -1579,8 +1579,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;displayOptions.c: 74:     EUSART_Write( 254 );
 [e ( _EUSART_Write (1 -> -> 254 `i `uc ]
 "75
-[; ;displayOptions.c: 75:     _delay((unsigned long)((200)*(500000/4000000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 500000 `l `d .4000000.0 `ul ]
+[; ;displayOptions.c: 75:     _delay((unsigned long)((200)*(16000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 "76
 [; ;displayOptions.c: 76:     switch ( a ){
 [e $U 1253  ]

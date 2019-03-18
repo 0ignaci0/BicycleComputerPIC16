@@ -17246,7 +17246,7 @@ void SYSTEM_Initialize(void)
 void OSCILLATOR_Initialize(void)
 {
 
-    OSCCON = 0x52;
+    OSCCON = 0x7A;
 
     OSCTUNE = 0x00;
 

@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=BicycleComputerPIC16
+PROJECTNAME=BicycleComputerPIC16.X
 
 # Active Configuration
 DEFAULTCONF=default

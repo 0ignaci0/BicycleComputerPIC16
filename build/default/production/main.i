@@ -17251,11 +17251,10 @@ void setCursor( uint8_t a, uint8_t b );
 void writePrintf( char *string );
 # 4 "main.c" 2
 # 17 "main.c"
-long int rpm = 0 ;
-long int second = 0 ;
-long int counter = 0 ;
-long int distance = 0 ;
-long int speed = 0 ;
+long int volatile rpm = 0 ;
+long int volatile counter = 0 ;
+float volatile speed = 0 ;
+float volatile distance = 0 ;
 
 void timerISR ( void ) ;
 void speedCalc ( void ) ;
@@ -17293,29 +17292,25 @@ void main(void)
     (INTCONbits.PEIE = 1);
     while(1){
         setCursor(1,10) ;
-        printf( "%d mi/hr", speed ) ;
+        printf( "   %d kmh    ", speed ) ;
         setCursor(2,11) ;
-        printf( "%d mi", distance ) ;
+        printf("   %d m  ", distance ) ;
 
 
-    };
-}
-
-void timerISR ( void ){
-    counter++ ;
-    if ( counter % 2 == 0 ){
-        second++ ;
     }
 
 }
 
+void timerISR ( void ){
+    counter++ ;
+}
+
 void speedCalc ( void ){
 
-    rpm = second * 60 ;
+    rpm = ( counter / 1000 ) * 60 ;
 
 
-    speed = 83 * rpm * (0.00095) ;
+    speed = 2.1 * rpm * (0.06) ;
     counter = 0 ;
-    second = 0 ;
-    distance = (distance + 83) * (0.000016) ;
+    distance = distance + 2.1 ;
 }

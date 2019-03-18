@@ -17266,21 +17266,21 @@ void backlightBrightness( int color, uint8_t offSet ) {
             {
                 while( !EUSART_is_tx_ready() ) ;
                 EUSART_Write( 0x80 + offSet );
-                _delay((unsigned long)((104)*(500000/4000000.0))) ;
+                _delay((unsigned long)((104)*(16000000/4000000.0))) ;
                 break;
             }
             case 2:
             {
                 while( !EUSART_is_tx_ready() ) ;
                 EUSART_Write( 0x9E + offSet );
-                _delay((unsigned long)((104)*(500000/4000000.0))) ;
+                _delay((unsigned long)((104)*(16000000/4000000.0))) ;
                 break;
             }
             case 3:
             {
                 while( !EUSART_is_tx_ready() ) ;
                 EUSART_Write( 0xBC + offSet );
-                _delay((unsigned long)((104)*(500000/4000000.0))) ;
+                _delay((unsigned long)((104)*(16000000/4000000.0))) ;
                 break;
             }
             default:
@@ -17310,19 +17310,19 @@ void resetCursor(){
 void writeString( char *string ){
     while( !EUSART_is_tx_ready() ) ;
     puts( string );
-    _delay((unsigned long)((200)*(500000/4000000.0)));
+    _delay((unsigned long)((200)*(16000000/4000000.0)));
 }
 
 void writePrintf( char *string ){
     while( !EUSART_is_tx_ready() ) ;
     printf( string ) ;
-    _delay((unsigned long)((200)*(500000/4000000.0))) ;
+    _delay((unsigned long)((200)*(16000000/4000000.0))) ;
 }
 
 void setCursor( uint8_t a, uint8_t b ){
     while( !EUSART_is_tx_ready() ) ;
     EUSART_Write( 254 );
-    _delay((unsigned long)((200)*(500000/4000000.0)));
+    _delay((unsigned long)((200)*(16000000/4000000.0)));
     switch ( a ){
         case 1:
         {
