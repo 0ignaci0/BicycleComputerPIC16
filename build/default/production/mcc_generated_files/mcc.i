@@ -7,7 +7,6 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "mcc_generated_files/mcc.c" 2
-# 47 "mcc_generated_files/mcc.c"
 # 1 "mcc_generated_files/mcc.h" 1
 # 49 "mcc_generated_files/mcc.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 1 3
@@ -17231,7 +17230,7 @@ void EUSART_SetErrorHandler(void (* interruptHandler)(void));
 void SYSTEM_Initialize(void);
 # 84 "mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 47 "mcc_generated_files/mcc.c" 2
+# 1 "mcc_generated_files/mcc.c" 2
 
 
 

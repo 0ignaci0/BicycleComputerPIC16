@@ -7,8 +7,6 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-
-
 # 1 "./mcc_generated_files/mcc.h" 1
 # 49 "./mcc_generated_files/mcc.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 1 3
@@ -17232,7 +17230,7 @@ void EUSART_SetErrorHandler(void (* interruptHandler)(void));
 void SYSTEM_Initialize(void);
 # 84 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 3 "main.c" 2
+# 1 "main.c" 2
 
 # 1 "./displayOptions.h" 1
 # 41 "./displayOptions.h"
@@ -17249,15 +17247,17 @@ void writeString();
 void setCursor( uint8_t a, uint8_t b );
 
 void writePrintf( char *string );
-# 4 "main.c" 2
-# 17 "main.c"
-long int volatile rpm = 0 ;
+# 2 "main.c" 2
+# 15 "main.c"
 long int volatile counter = 0 ;
+float volatile rpm = 0 ;
 float volatile speed = 0 ;
 float volatile distance = 0 ;
 
-void timerISR ( void ) ;
-void speedCalc ( void ) ;
+
+    void timerISR ( void ) ;
+    void speedCalc ( void ) ;
+
 
 
 
@@ -17274,11 +17274,13 @@ void main(void)
 
     SYSTEM_Initialize();
 
+
     TMR0_SetInterruptHandler( timerISR ) ;
     IOCCF7_SetInterruptHandler( speedCalc ) ;
 
 
     resetCursor() ;
+
 
     setCursor(1,0) ;
     writeString(speedDisp);
@@ -17288,8 +17290,10 @@ void main(void)
     writeString(hrDisp);
     setCursor(4,0) ;
 
+
     (INTCONbits.GIE = 1);
     (INTCONbits.PEIE = 1);
+
     while(1){
         setCursor(1,10) ;
         printf( "   %d kmh    ", speed ) ;
@@ -17310,7 +17314,10 @@ void speedCalc ( void ){
     rpm = ( counter / 1000 ) * 60 ;
 
 
-    speed = 2.1 * rpm * (0.06) ;
+
+    speed = 2 * rpm * (0.06) ;
+
+
     counter = 0 ;
-    distance = distance + 2.1 ;
+    distance = distance + 2 ;
 }
