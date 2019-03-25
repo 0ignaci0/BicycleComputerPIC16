@@ -1508,14 +1508,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 1222 ]
 {
 "64
-[; ;main.c: 64:         int speedInt = speed ;
+[; ;main.c: 64:         setCursor(1,7) ;
+[e ( _setCursor (2 , -> -> 1 `i `uc -> -> 7 `i `uc ]
+"65
+[; ;main.c: 65:         int speedInt = speed ;
 [v _speedInt `i ~T0 @X0 1 a ]
 [e = _speedInt -> _speed `i ]
-"65
-[; ;main.c: 65:         setCursor(1,7) ;
-[e ( _setCursor (2 , -> -> 1 `i `uc -> -> 7 `i `uc ]
 "66
-[; ;main.c: 66:         printf( "%d kmh", speedInt) ;
+[; ;main.c: 66:         printf( "%d kmh      ", speedInt ) ;
 [e ( _printf , (. :s 1C _speedInt ]
 "68
 [; ;main.c: 68:         int distInt = distance ;
@@ -1525,7 +1525,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 69:         setCursor(2,10) ;
 [e ( _setCursor (2 , -> -> 2 `i `uc -> -> 10 `i `uc ]
 "70
-[; ;main.c: 70:         printf("%d m", distInt ) ;
+[; ;main.c: 70:         printf("%d m     ", distInt ) ;
 [e ( _printf , (. :s 2C _distInt ]
 "73
 [; ;main.c: 73:     }
@@ -1573,5 +1573,5 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 1225 ]
 }
 [p f _printf 8388736 ]
-[a 2C 37 100 32 109 0 ]
-[a 1C 37 100 32 107 109 104 0 ]
+[a 2C 37 100 32 109 32 32 32 32 32 0 ]
+[a 1C 37 100 32 107 109 104 32 32 32 32 32 32 0 ]

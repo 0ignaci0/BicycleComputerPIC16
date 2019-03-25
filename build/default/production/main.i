@@ -17300,13 +17300,13 @@ void main(void)
     (INTCONbits.PEIE = 1);
 
     while(1){
-        int speedInt = speed ;
         setCursor(1,7) ;
-        printf( "%d kmh", speedInt) ;
+        int speedInt = speed ;
+        printf( "%d kmh      ", speedInt ) ;
 
         int distInt = distance ;
         setCursor(2,10) ;
-        printf("%d m", distInt ) ;
+        printf("%d m     ", distInt ) ;
 
 
     }
