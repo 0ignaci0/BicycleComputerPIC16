@@ -37,6 +37,9 @@ void main(void)
     // initialize the device
     SYSTEM_Initialize();
     
+    EUSART_Write( configMode ) ;
+    EUSART_Write( 0x0D ) ; 
+    
     // set timer and interrupt-on-change handlers
     TMR0_SetInterruptHandler( timerISR ) ;
     IOCCF7_SetInterruptHandler( speedCalc ) ;
@@ -58,14 +61,12 @@ void main(void)
     INTERRUPT_PeripheralInterruptEnable();
     
     while(1){
-        clearLine(1);
-        setCursor(1,10) ;
         int speedInt = speed ;
+        setCursor(1,7) ;
         printf( "%d kmh", speedInt) ;
         
-        clearLine(2);
-        setCursor(2,11) ;
         int distInt = distance ; 
+        setCursor(2,10) ;
         printf("%d m", distInt ) ;
 
 
@@ -88,6 +89,9 @@ void speedCalc ( void ){
     // reset counter, keep track of distance
     counter  = 0 ;
     distance = distance + CIRCUMFERENCE ; // distance in meters
+    
+
+    
 }
 
 

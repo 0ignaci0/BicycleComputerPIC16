@@ -17276,6 +17276,9 @@ void main(void)
 
     SYSTEM_Initialize();
 
+    EUSART_Write( 0x7C ) ;
+    EUSART_Write( 0x0D ) ;
+
 
     TMR0_SetInterruptHandler( timerISR ) ;
     IOCCF7_SetInterruptHandler( speedCalc ) ;
@@ -17297,14 +17300,12 @@ void main(void)
     (INTCONbits.PEIE = 1);
 
     while(1){
-        clearLine(1);
-        setCursor(1,10) ;
         int speedInt = speed ;
+        setCursor(1,7) ;
         printf( "%d kmh", speedInt) ;
 
-        clearLine(2);
-        setCursor(2,11) ;
         int distInt = distance ;
+        setCursor(2,10) ;
         printf("%d m", distInt ) ;
 
 
@@ -17327,4 +17328,7 @@ void speedCalc ( void ){
 
     counter = 0 ;
     distance = distance + 2 ;
+
+
+
 }
