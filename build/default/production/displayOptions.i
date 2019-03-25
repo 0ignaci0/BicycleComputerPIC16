@@ -17243,21 +17243,57 @@ void OSCILLATOR_Initialize(void);
 # 41 "./displayOptions.h"
 void backlightBrightness( int color, uint8_t offset );
 # 56 "./displayOptions.h"
-void backlightReset();
+void backlightReset( void );
 # 70 "./displayOptions.h"
-void backlightOff();
+void backlightOff( void );
 # 84 "./displayOptions.h"
-void resetCursor();
+void resetCursor( void );
 # 95 "./displayOptions.h"
-void writeString();
+void writeString( char *string );
 # 107 "./displayOptions.h"
 void setCursor( uint8_t a, uint8_t b );
+
+void clearLine ( int lineNo ) ;
 
 void writePrintf( char *string );
 # 8 "displayOptions.c" 2
 
 
 
+
+void clearLine ( int lineNo ) {
+    switch( lineNo ){
+        case 1:
+        {
+            setCursor( 1, 8 ) ;
+            for( int i = 0 ; i < 12 ; i++ ){
+                printf(" ") ;
+            }
+        }
+        case 2:
+        {
+            setCursor( 2, 11 ) ;
+            for( int i = 0 ; i < 9; i++ ){
+                printf(" ") ;
+            }
+        }
+        case 3:
+        {
+            setCursor( 3, 13 ) ;
+            for( int i = 0 ; i < 7 ; i++ ){
+                printf(" ") ;
+            }
+        }
+        case 4:
+        {
+
+        }
+        default:
+        {
+
+        }
+    }
+}
 void backlightBrightness( int color, uint8_t offSet ) {
     EUSART_Write(0x7C);
     if( offSet <= 29 ){

@@ -19,6 +19,8 @@
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 "1368
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
+"43 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputs.c
@@ -39,19 +41,21 @@
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
-"11 C:\Users\igna\BicycleComputerPIC16\displayOptions.c
+"12 C:\Users\igna\BicycleComputerPIC16\displayOptions.c
+[v _clearLine clearLine `(v  1 e 1 0 ]
+"45
 [v _backlightBrightness backlightBrightness `(v  1 e 1 0 ]
-"56
+"90
 [v _resetCursor resetCursor `(v  1 e 1 0 ]
-"60
+"94
 [v _writeString writeString `(v  1 e 1 0 ]
-"72
+"106
 [v _setCursor setCursor `(v  1 e 1 0 ]
 "35 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _main main `(v  1 e 1 0 ]
-"71
+"76
 [v _timerISR timerISR `(v  1 e 1 0 ]
-"75
+"80
 [v _speedCalc speedCalc `(v  1 e 1 0 ]
 "65 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/eusart.c
 [v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
@@ -312,34 +316,24 @@
 "35 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"69
+"68
+[v main@distInt distInt `i  1 a 2 24 ]
+"63
+[v main@speedInt speedInt `i  1 a 2 22 ]
+"74
 } 0
-"60 C:\Users\igna\BicycleComputerPIC16\displayOptions.c
+"94 C:\Users\igna\BicycleComputerPIC16\displayOptions.c
 [v _writeString writeString `(v  1 e 1 0 ]
 {
 [v writeString@string string `*.5uc  1 a 1 wreg ]
 [v writeString@string string `*.5uc  1 a 1 wreg ]
 [v writeString@string string `*.5uc  1 a 1 24 ]
-"64
-} 0
-"72
-[v _setCursor setCursor `(v  1 e 1 0 ]
-{
-[v setCursor@a a `uc  1 a 1 wreg ]
-[v setCursor@a a `uc  1 a 1 wreg ]
-[v setCursor@b b `uc  1 p 1 1 ]
-[v setCursor@a a `uc  1 a 1 4 ]
 "98
 } 0
-"93 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/eusart.c
-[v _EUSART_is_tx_ready EUSART_is_tx_ready `(a  1 e 1 0 ]
-{
-"96
-} 0
-"56 C:\Users\igna\BicycleComputerPIC16\displayOptions.c
+"90
 [v _resetCursor resetCursor `(v  1 e 1 0 ]
 {
-"58
+"92
 } 0
 "3 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\puts.c
 [v _puts puts `(i  1 e 2 0 ]
@@ -347,54 +341,81 @@
 [v puts@s s `*.26DCuc  1 p 2 19 ]
 "10
 } 0
+"12 C:\Users\igna\BicycleComputerPIC16\displayOptions.c
+[v _clearLine clearLine `(v  1 e 1 0 ]
+{
+"31
+[v clearLine@i_606 i `i  1 a 2 19 ]
+"24
+[v clearLine@i_604 i `i  1 a 2 17 ]
+"17
+[v clearLine@i i `i  1 a 2 15 ]
+"12
+[v clearLine@lineNo lineNo `i  1 p 2 12 ]
+"44
+} 0
+"106
+[v _setCursor setCursor `(v  1 e 1 0 ]
+{
+[v setCursor@a a `uc  1 a 1 wreg ]
+[v setCursor@a a `uc  1 a 1 wreg ]
+[v setCursor@b b `uc  1 p 1 1 ]
+[v setCursor@a a `uc  1 a 1 4 ]
+"132
+} 0
+"93 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/eusart.c
+[v _EUSART_is_tx_ready EUSART_is_tx_ready `(a  1 e 1 0 ]
+{
+"96
+} 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\printf.c
 [v _printf printf `(i  1 e 2 0 ]
 {
 "8
-[v printf@ap ap `[1]*.5v  1 a 1 2 ]
+[v printf@ap ap `[1]*.5v  1 a 1 11 ]
 "5
-[v printf@fmt fmt `*.25DCuc  1 p 2 6 ]
+[v printf@fmt fmt `*.25DCuc  1 p 2 5 ]
 "13
 } 0
 "1368 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
 {
-[s S639 _IO_FILE 0 ]
-[v vfprintf@fp fp `*.1S639  1 a 1 wreg ]
+[s S656 _IO_FILE 0 ]
+[v vfprintf@fp fp `*.1S656  1 a 1 wreg ]
 "1371
-[v vfprintf@cfmt cfmt `*.25uc  1 a 2 4 ]
+[v vfprintf@cfmt cfmt `*.25uc  1 a 2 3 ]
 "1368
-[v vfprintf@fp fp `*.1S639  1 a 1 wreg ]
-[v vfprintf@fmt fmt `*.25DCuc  1 p 2 0 ]
-[v vfprintf@ap ap `*.5*.5v  1 p 1 2 ]
+[v vfprintf@fp fp `*.1S656  1 a 1 wreg ]
+[v vfprintf@fmt fmt `*.25DCuc  1 p 2 76 ]
+[v vfprintf@ap ap `*.5*.5v  1 p 1 78 ]
 "1373
 "1368
-[v vfprintf@fp fp `*.1S639  1 a 1 3 ]
+[v vfprintf@fp fp `*.1S656  1 a 1 2 ]
 "1382
 } 0
 "670
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 {
-[s S639 _IO_FILE 0 ]
-[v vfpfcnvrt@fp fp `*.1S639  1 a 1 wreg ]
+[s S656 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.1S656  1 a 1 wreg ]
 "674
 [v vfpfcnvrt@ll ll `o  1 a 8 65 ]
 "677
 [v vfpfcnvrt@vp vp `*.39v  1 a 2 73 ]
 "670
-[v vfpfcnvrt@fp fp `*.1S639  1 a 1 wreg ]
+[v vfpfcnvrt@fp fp `*.1S656  1 a 1 wreg ]
 [v vfpfcnvrt@fmt fmt `*.5*.25uc  1 p 1 58 ]
 [v vfpfcnvrt@ap ap `*.5*.5v  1 p 1 59 ]
 "680
 "670
-[v vfpfcnvrt@fp fp `*.1S639  1 a 1 75 ]
+[v vfpfcnvrt@fp fp `*.1S656  1 a 1 75 ]
 "1365
 } 0
 "274
 [v _dtoa dtoa `(i  1 s 2 dtoa ]
 {
-[s S639 _IO_FILE 0 ]
-[v dtoa@fp fp `*.1S639  1 a 1 wreg ]
+[s S656 _IO_FILE 0 ]
+[v dtoa@fp fp `*.1S656  1 a 1 wreg ]
 "277
 [v dtoa@n n `o  1 a 8 48 ]
 "276
@@ -403,28 +424,28 @@
 [v dtoa@w w `i  1 a 2 44 ]
 [v dtoa@p p `i  1 a 2 42 ]
 "274
-[v dtoa@fp fp `*.1S639  1 a 1 wreg ]
+[v dtoa@fp fp `*.1S656  1 a 1 wreg ]
 [v dtoa@d d `o  1 p 8 28 ]
 "280
 "274
-[v dtoa@fp fp `*.1S639  1 a 1 41 ]
+[v dtoa@fp fp `*.1S656  1 a 1 41 ]
 "315
 } 0
 "72
 [v _pad pad `(i  1 s 2 pad ]
 {
-[s S639 _IO_FILE 0 ]
-[v pad@fp fp `*.1S639  1 a 1 wreg ]
+[s S656 _IO_FILE 0 ]
+[v pad@fp fp `*.1S656  1 a 1 wreg ]
 "74
 [v pad@w w `i  1 a 2 25 ]
 [v pad@i i `i  1 a 2 23 ]
 "72
-[v pad@fp fp `*.1S639  1 a 1 wreg ]
+[v pad@fp fp `*.1S656  1 a 1 wreg ]
 [v pad@buf buf `*.5uc  1 p 1 19 ]
 [v pad@p p `i  1 p 2 20 ]
 "77
 "72
-[v pad@fp fp `*.1S639  1 a 1 27 ]
+[v pad@fp fp `*.1S656  1 a 1 27 ]
 "95
 } 0
 "12 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\strlen.c
@@ -448,16 +469,16 @@
 [v fputs@c c `uc  1 a 1 16 ]
 "8
 [v fputs@s s `*.26DCuc  1 p 2 10 ]
-[s S986 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputs@fp fp `*.1S986  1 p 1 12 ]
+[s S1003 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputs@fp fp `*.1S1003  1 p 1 12 ]
 "19
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 2 ]
-[s S986 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputc@fp fp `*.1S986  1 p 1 4 ]
+[s S1003 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputc@fp fp `*.1S1003  1 p 1 4 ]
 "21
 } 0
 "151 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/eusart.c
@@ -506,6 +527,16 @@
 [v ___aodiv@divisor divisor `o  1 p 8 0 ]
 [v ___aodiv@dividend dividend `o  1 p 8 8 ]
 "43
+} 0
+"43 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+{
+"45
+[v ___fltol@exp1 exp1 `uc  1 a 1 10 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 9 ]
+"43
+[v ___fltol@f1 f1 `d  1 p 4 0 ]
+"70
 } 0
 "4 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -577,10 +608,10 @@
 {
 "86
 } 0
-"71 C:\Users\igna\BicycleComputerPIC16\main.c
+"76 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _timerISR timerISR `(v  1 e 1 0 ]
 {
-"73
+"78
 } 0
 "74 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_IOC PIN_MANAGER_IOC `(v  1 e 1 0 ]
@@ -597,10 +628,10 @@
 {
 "111
 } 0
-"75 C:\Users\igna\BicycleComputerPIC16\main.c
+"80 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _speedCalc speedCalc `(v  1 e 1 0 ]
 {
-"86
+"91
 } 0
 "10 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
@@ -630,17 +661,17 @@
 "8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S842 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S859 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S847 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S850 . 4 `l 1 i 4 0 `d 1 f 4 0 `S842 1 fAsBytes 4 0 `S847 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S850  1 a 4 15 ]
+[s S864 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S867 . 4 `l 1 i 4 0 `d 1 f 4 0 `S859 1 fAsBytes 4 0 `S864 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S867  1 a 4 15 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 9 ]
-[s S919 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S936 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S922 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S919 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S922  1 a 2 19 ]
+[u S939 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S936 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S939  1 a 2 19 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 14 ]
 "11

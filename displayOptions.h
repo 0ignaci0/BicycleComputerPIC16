@@ -53,7 +53,7 @@ void backlightBrightness( int color, uint8_t offset );
   @Returns
     None
  */
-void backlightReset();
+void backlightReset( void );
 
 /**
   @Summary
@@ -67,7 +67,7 @@ void backlightReset();
   @Returns
     None
  */
-void backlightOff();
+void backlightOff( void );
 
 /**
   @Summary
@@ -81,7 +81,7 @@ void backlightOff();
   @Returns
     None
  */
-void resetCursor();
+void resetCursor( void );
 
 /**
   @Summary
@@ -92,7 +92,7 @@ void resetCursor();
   @Returns
     None
  */
-void writeString();
+void writeString( char *string );
 
 
 /**
@@ -105,6 +105,8 @@ void writeString();
     None
  */
 void setCursor( uint8_t a, uint8_t b );
+
+void clearLine ( int lineNo ) ;
 
 void writePrintf( char *string );
 

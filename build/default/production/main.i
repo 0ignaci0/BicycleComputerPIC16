@@ -17236,15 +17236,17 @@ void OSCILLATOR_Initialize(void);
 # 41 "./displayOptions.h"
 void backlightBrightness( int color, uint8_t offset );
 # 56 "./displayOptions.h"
-void backlightReset();
+void backlightReset( void );
 # 70 "./displayOptions.h"
-void backlightOff();
+void backlightOff( void );
 # 84 "./displayOptions.h"
-void resetCursor();
+void resetCursor( void );
 # 95 "./displayOptions.h"
-void writeString();
+void writeString( char *string );
 # 107 "./displayOptions.h"
 void setCursor( uint8_t a, uint8_t b );
+
+void clearLine ( int lineNo ) ;
 
 void writePrintf( char *string );
 # 2 "main.c" 2
@@ -17295,10 +17297,15 @@ void main(void)
     (INTCONbits.PEIE = 1);
 
     while(1){
+        clearLine(1);
         setCursor(1,10) ;
-        printf( "   %d kmh    ", speed ) ;
+        int speedInt = speed ;
+        printf( "%d kmh", speedInt) ;
+
+        clearLine(2);
         setCursor(2,11) ;
-        printf("   %d m  ", distance ) ;
+        int distInt = distance ;
+        printf("%d m", distInt ) ;
 
 
     }

@@ -58,10 +58,15 @@ void main(void)
     INTERRUPT_PeripheralInterruptEnable();
     
     while(1){
+        clearLine(1);
         setCursor(1,10) ;
-        printf( "   %d kmh    ", speed ) ;
+        int speedInt = speed ;
+        printf( "%d kmh", speedInt) ;
+        
+        clearLine(2);
         setCursor(2,11) ;
-        printf("   %d m  ", distance ) ;
+        int distInt = distance ; 
+        printf("%d m", distInt ) ;
 
 
     }
