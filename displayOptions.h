@@ -106,7 +106,6 @@ void writeString( char *string );
  */
 void setCursor( uint8_t a, uint8_t b );
 
-void clearLine ( int lineNo ) ;
 
 void writePrintf( char *string );
 

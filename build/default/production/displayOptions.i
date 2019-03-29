@@ -17253,7 +17253,6 @@ void writeString( char *string );
 # 107 "./displayOptions.h"
 void setCursor( uint8_t a, uint8_t b );
 
-void clearLine ( int lineNo ) ;
 
 void writePrintf( char *string );
 # 8 "displayOptions.c" 2
@@ -17261,33 +17260,6 @@ void writePrintf( char *string );
 
 
 
-void clearLine ( int lineNo ) {
-    switch( lineNo ){
-        case 1:
-        {
-            setCursor( 1, 7 ) ;
-            printf("             ") ;
-        }
-        case 2:
-        {
-            setCursor( 2, 10 ) ;
-            printf("          ") ;
-        }
-        case 3:
-        {
-            setCursor( 3, 12 ) ;
-            printf("        ") ;
-        }
-        case 4:
-        {
-
-        }
-        default:
-        {
-
-        }
-    }
-}
 void backlightBrightness( int color, uint8_t offSet ) {
     EUSART_Write(0x7C);
     if( offSet <= 29 ){

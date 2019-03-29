@@ -9,33 +9,6 @@
 #include "mcc_generated_files/mcc.h"
 
 
-void clearLine ( int lineNo ) {
-    switch( lineNo ){
-        case 1: 
-        {
-            setCursor( 1, 7 ) ;
-            printf("             ") ;
-        }
-        case 2:
-        {
-            setCursor( 2, 10 ) ;
-            printf("          ") ;            
-        }
-        case 3:
-        {
-            setCursor( 3, 12 ) ;
-            printf("        ") ;           
-        }
-        case 4:
-        {
-            
-        }
-        default:
-        {
-            //do nothing
-        }
-    }
-}
 void backlightBrightness( int color, uint8_t offSet ) {
     EUSART_Write(configMode);
     if( offSet <= 29 ){

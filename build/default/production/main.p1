@@ -10,15 +10,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "238 ./mcc_generated_files/tmr0.h
 [; ;./mcc_generated_files/tmr0.h: 238:  void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
 [v _TMR0_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F9647 ]
-"21 main.c
-[; ;main.c: 21:     void timerISR ( void ) ;
+"24 main.c
+[; ;main.c: 24:     void timerISR ( void ) ;
 [v _timerISR `(v ~T0 @X0 0 ef ]
 [v F9604 `(v ~T0 @X0 0 tf ]
 "158 ./mcc_generated_files/pin_manager.h
 [; ;./mcc_generated_files/pin_manager.h: 158: void IOCCF7_SetInterruptHandler(void (* InterruptHandler)(void));
 [v _IOCCF7_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F9604 ]
-"22 main.c
-[; ;main.c: 22:     void speedCalc ( void ) ;
+"25 main.c
+[; ;main.c: 25:     void speedCalc ( void ) ;
 [v _speedCalc `(v ~T0 @X0 0 ef ]
 "84 ./displayOptions.h
 [; ;./displayOptions.h: 84: void resetCursor( void );
@@ -1372,32 +1372,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27877
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h: 27877: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"15 main.c
-[; ;main.c: 15: long int volatile counter = 0 ;
+"16 main.c
+[; ;main.c: 16: long int volatile counter = 0 ;
 [v _counter `Vl ~T0 @X0 1 e ]
 [i _counter
 -> -> 0 `i `l
 ]
-"16
-[; ;main.c: 16: float volatile rpm = 0 ;
+"17
+[; ;main.c: 17: float volatile rpm = 0 ;
 [v _rpm `Vf ~T0 @X0 1 e ]
 [i _rpm
 -> -> 0 `i `f
 ]
-"17
-[; ;main.c: 17: float volatile speed = 0 ;
+"18
+[; ;main.c: 18: float volatile speed = 0 ;
 [v _speed `Vf ~T0 @X0 1 e ]
 [i _speed
 -> -> 0 `i `f
 ]
-"18
-[; ;main.c: 18: float volatile distance = 0 ;
+"19
+[; ;main.c: 19: float volatile distance = 0 ;
 [v _distance `Vf ~T0 @X0 1 e ]
 [i _distance
 -> -> 0 `i `f
 ]
-"27
-[; ;main.c: 27:     char speedDisp[] = "Speed: " ;
+"20
+[; ;main.c: 20: int volatile speedInt = 0 ;
+[v _speedInt `Vi ~T0 @X0 1 e ]
+[i _speedInt
+-> 0 `i
+]
+"21
+[; ;main.c: 21: int volatile distInt = 0 ;
+[v _distInt `Vi ~T0 @X0 1 e ]
+[i _distInt
+-> 0 `i
+]
+"30
+[; ;main.c: 30:     char speedDisp[] = "Speed: " ;
 [v _speedDisp `uc ~T0 @X0 -> 8 `i e ]
 [i _speedDisp
 :U ..
@@ -1411,8 +1423,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"28
-[; ;main.c: 28:     char distanceDisp[] = "Distance: " ;
+"31
+[; ;main.c: 31:     char distanceDisp[] = "Distance: " ;
 [v _distanceDisp `uc ~T0 @X0 -> 11 `i e ]
 [i _distanceDisp
 :U ..
@@ -1429,8 +1441,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"29
-[; ;main.c: 29:     char hrDisp[] = "Heart Rate: " ;
+"32
+[; ;main.c: 32:     char hrDisp[] = "Heart Rate: " ;
 [v _hrDisp `uc ~T0 @X0 -> 13 `i e ]
 [i _hrDisp
 :U ..
@@ -1450,128 +1462,146 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"35
-[; ;main.c: 35: void main(void)
+"38
+[; ;main.c: 38: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"36
-[; ;main.c: 36: {
+"39
+[; ;main.c: 39: {
 {
 [e :U _main ]
 [f ]
-"38
-[; ;main.c: 38:     SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
-"40
-[; ;main.c: 40:     EUSART_Write( 0x7C ) ;
-[e ( _EUSART_Write (1 -> -> 124 `i `uc ]
 "41
-[; ;main.c: 41:     EUSART_Write( 0x0D ) ;
-[e ( _EUSART_Write (1 -> -> 13 `i `uc ]
+[; ;main.c: 41:     SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
+"43
+[; ;main.c: 43:     EUSART_Write( 0x7C ) ;
+[e ( _EUSART_Write (1 -> -> 124 `i `uc ]
 "44
-[; ;main.c: 44:     TMR0_SetInterruptHandler( timerISR ) ;
+[; ;main.c: 44:     EUSART_Write( 0x0D ) ;
+[e ( _EUSART_Write (1 -> -> 13 `i `uc ]
+"47
+[; ;main.c: 47:     TMR0_SetInterruptHandler( timerISR ) ;
 [e ( _TMR0_SetInterruptHandler (1 &U _timerISR ]
-"45
-[; ;main.c: 45:     IOCCF7_SetInterruptHandler( speedCalc ) ;
-[e ( _IOCCF7_SetInterruptHandler (1 &U _speedCalc ]
 "48
-[; ;main.c: 48:     resetCursor() ;
-[e ( _resetCursor ..  ]
+[; ;main.c: 48:     IOCCF7_SetInterruptHandler( speedCalc ) ;
+[e ( _IOCCF7_SetInterruptHandler (1 &U _speedCalc ]
 "51
-[; ;main.c: 51:     setCursor(1,0) ;
-[e ( _setCursor (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"52
-[; ;main.c: 52:     writeString(speedDisp);
-[e ( _writeString (1 &U _speedDisp ]
-"53
-[; ;main.c: 53:     setCursor(2,0) ;
-[e ( _setCursor (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 51:     resetCursor() ;
+[e ( _resetCursor ..  ]
 "54
-[; ;main.c: 54:     writeString(distanceDisp);
-[e ( _writeString (1 &U _distanceDisp ]
+[; ;main.c: 54:     setCursor(1,0) ;
+[e ( _setCursor (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
 "55
-[; ;main.c: 55:     setCursor(3,0) ;
-[e ( _setCursor (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 55:     writeString(speedDisp);
+[e ( _writeString (1 &U _speedDisp ]
 "56
-[; ;main.c: 56:     writeString(hrDisp);
-[e ( _writeString (1 &U _hrDisp ]
+[; ;main.c: 56:     setCursor(2,0) ;
+[e ( _setCursor (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
 "57
-[; ;main.c: 57:     setCursor(4,0) ;
-[e ( _setCursor (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 57:     writeString(distanceDisp);
+[e ( _writeString (1 &U _distanceDisp ]
+"58
+[; ;main.c: 58:     setCursor(3,0) ;
+[e ( _setCursor (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
+"59
+[; ;main.c: 59:     writeString(hrDisp);
+[e ( _writeString (1 &U _hrDisp ]
 "60
-[; ;main.c: 60:     (INTCONbits.GIE = 1);
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"61
-[; ;main.c: 61:     (INTCONbits.PEIE = 1);
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[; ;main.c: 60:     setCursor(4,0) ;
+[e ( _setCursor (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
 "63
-[; ;main.c: 63:     while(1){
+[; ;main.c: 63:     (INTCONbits.GIE = 1);
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+"64
+[; ;main.c: 64:     (INTCONbits.PEIE = 1);
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"66
+[; ;main.c: 66:     while(1){
 [e :U 1222 ]
 {
-"64
-[; ;main.c: 64:         setCursor(1,7) ;
-[e ( _setCursor (2 , -> -> 1 `i `uc -> -> 7 `i `uc ]
-"65
-[; ;main.c: 65:         int speedInt = speed ;
-[v _speedInt `i ~T0 @X0 1 a ]
-[e = _speedInt -> _speed `i ]
-"66
-[; ;main.c: 66:         printf( "%d kmh      ", speedInt ) ;
-[e ( _printf , (. :s 1C _speedInt ]
 "68
-[; ;main.c: 68:         int distInt = distance ;
-[v _distInt `i ~T0 @X0 1 a ]
-[e = _distInt -> _distance `i ]
-"69
-[; ;main.c: 69:         setCursor(2,10) ;
-[e ( _setCursor (2 , -> -> 2 `i `uc -> -> 10 `i `uc ]
+[; ;main.c: 68:         setCursor(1,7) ;
+[e ( _setCursor (2 , -> -> 1 `i `uc -> -> 7 `i `uc ]
 "70
-[; ;main.c: 70:         printf("%d m     ", distInt ) ;
-[e ( _printf , (. :s 2C _distInt ]
+[; ;main.c: 70:         speedInt = speed ;
+[e = _speedInt -> _speed `i ]
+"72
+[; ;main.c: 72:         if( counter > 5000 ){
+[e $ ! > _counter -> -> 5000 `i `l 1224  ]
+{
 "73
-[; ;main.c: 73:     }
+[; ;main.c: 73:             printf( "0 kmh      " ) ;
+[e ( _printf :s 1C ]
+"75
+[; ;main.c: 75:         }
+}
+[e $U 1225  ]
+"76
+[; ;main.c: 76:         else{
+[e :U 1224 ]
+{
+"77
+[; ;main.c: 77:             printf( "%d kmh      ", speedInt ) ;
+[e ( _printf , (. :s 2C _speedInt ]
+"78
+[; ;main.c: 78:         }
+}
+[e :U 1225 ]
+"80
+[; ;main.c: 80:         setCursor(2,10) ;
+[e ( _setCursor (2 , -> -> 2 `i `uc -> -> 10 `i `uc ]
+"82
+[; ;main.c: 82:         distInt = distance ;
+[e = _distInt -> _distance `i ]
+"83
+[; ;main.c: 83:         printf("%d m     ", distInt ) ;
+[e ( _printf , (. :s 3C _distInt ]
+"86
+[; ;main.c: 86:     }
 }
 [e :U 1221 ]
 [e $U 1222  ]
 [e :U 1223 ]
-"75
-[; ;main.c: 75: }
+"88
+[; ;main.c: 88: }
 [e :UE 1220 ]
 }
-"77
-[; ;main.c: 77: void timerISR ( void ){
+"92
+[; ;main.c: 92: void timerISR ( void ){
 [v _timerISR `(v ~T0 @X0 1 ef ]
 {
 [e :U _timerISR ]
 [f ]
-"78
-[; ;main.c: 78:     counter++ ;
+"93
+[; ;main.c: 93:     counter++ ;
 [e ++ _counter -> -> 1 `i `Vl ]
-"79
-[; ;main.c: 79: }
-[e :UE 1224 ]
+"94
+[; ;main.c: 94: }
+[e :UE 1226 ]
 }
-"81
-[; ;main.c: 81: void speedCalc ( void ){
+"96
+[; ;main.c: 96: void speedCalc ( void ){
 [v _speedCalc `(v ~T0 @X0 1 ef ]
 {
 [e :U _speedCalc ]
 [f ]
-"83
-[; ;main.c: 83:     rpm = ( counter / 1000 ) * 60 ;
-[e = _rpm -> * / _counter -> -> 1000 `i `l -> -> 60 `i `l `f ]
-"87
-[; ;main.c: 87:     speed = 2 * rpm * (0.06) ;
+"98
+[; ;main.c: 98:     rpm = ( 1000 / counter ) * 60 ;
+[e = _rpm -> * / -> -> 1000 `i `l _counter -> -> 60 `i `l `f ]
+"102
+[; ;main.c: 102:     speed = 2 * rpm * (0.06) ;
 [e = _speed -> * -> * -> -> 2 `i `f _rpm `d .0.06 `f ]
-"90
-[; ;main.c: 90:     counter = 0 ;
+"105
+[; ;main.c: 105:     counter = 0 ;
 [e = _counter -> -> 0 `i `l ]
-"91
-[; ;main.c: 91:     distance = distance + 2 ;
+"106
+[; ;main.c: 106:     distance = distance + 2 ;
 [e = _distance + _distance -> -> 2 `i `f ]
-"95
-[; ;main.c: 95: }
-[e :UE 1225 ]
+"110
+[; ;main.c: 110: }
+[e :UE 1227 ]
 }
 [p f _printf 8388736 ]
-[a 2C 37 100 32 109 32 32 32 32 32 0 ]
-[a 1C 37 100 32 107 109 104 32 32 32 32 32 32 0 ]
+[a 3C 37 100 32 109 32 32 32 32 32 0 ]
+[a 2C 37 100 32 107 109 104 32 32 32 32 32 32 0 ]
+[a 1C 48 32 107 109 104 32 32 32 32 32 32 0 ]

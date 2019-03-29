@@ -17246,15 +17246,16 @@ void writeString( char *string );
 # 107 "./displayOptions.h"
 void setCursor( uint8_t a, uint8_t b );
 
-void clearLine ( int lineNo ) ;
 
 void writePrintf( char *string );
 # 2 "main.c" 2
-# 15 "main.c"
+# 16 "main.c"
 long int volatile counter = 0 ;
 float volatile rpm = 0 ;
 float volatile speed = 0 ;
 float volatile distance = 0 ;
+int volatile speedInt = 0 ;
+int volatile distInt = 0 ;
 
 
     void timerISR ( void ) ;
@@ -17300,12 +17301,22 @@ void main(void)
     (INTCONbits.PEIE = 1);
 
     while(1){
-        setCursor(1,7) ;
-        int speedInt = speed ;
-        printf( "%d kmh      ", speedInt ) ;
 
-        int distInt = distance ;
+        setCursor(1,7) ;
+
+        speedInt = speed ;
+
+        if( counter > 5000 ){
+            printf( "0 kmh      " ) ;
+
+        }
+        else{
+            printf( "%d kmh      ", speedInt ) ;
+        }
+
         setCursor(2,10) ;
+
+        distInt = distance ;
         printf("%d m     ", distInt ) ;
 
 
@@ -17313,13 +17324,15 @@ void main(void)
 
 }
 
+
+
 void timerISR ( void ){
     counter++ ;
 }
 
 void speedCalc ( void ){
 
-    rpm = ( counter / 1000 ) * 60 ;
+    rpm = ( 1000 / counter ) * 60 ;
 
 
 
