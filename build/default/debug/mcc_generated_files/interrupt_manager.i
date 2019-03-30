@@ -1,4 +1,4 @@
-# 1 "displayOptions.c"
+# 1 "mcc_generated_files/interrupt_manager.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,18 +6,13 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "displayOptions.c" 2
+# 1 "mcc_generated_files/interrupt_manager.c" 2
+# 49 "mcc_generated_files/interrupt_manager.c"
+# 1 "mcc_generated_files/interrupt_manager.h" 1
+# 49 "mcc_generated_files/interrupt_manager.c" 2
 
-
-
-
-
-
-
-# 1 "./displayOptions.h" 1
-# 26 "./displayOptions.h"
-# 1 "./mcc_generated_files/mcc.h" 1
-# 49 "./mcc_generated_files/mcc.h"
+# 1 "mcc_generated_files/mcc.h" 1
+# 49 "mcc_generated_files/mcc.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -16935,25 +16930,25 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 2 3
-# 49 "./mcc_generated_files/mcc.h" 2
+# 49 "mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/device_config.h" 1
-# 50 "./mcc_generated_files/mcc.h" 2
+# 1 "mcc_generated_files/device_config.h" 1
+# 50 "mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/pin_manager.h" 1
-# 110 "./mcc_generated_files/pin_manager.h"
+# 1 "mcc_generated_files/pin_manager.h" 1
+# 110 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 122 "./mcc_generated_files/pin_manager.h"
+# 122 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 135 "./mcc_generated_files/pin_manager.h"
+# 135 "mcc_generated_files/pin_manager.h"
 void IOCCF7_ISR(void);
-# 158 "./mcc_generated_files/pin_manager.h"
+# 158 "mcc_generated_files/pin_manager.h"
 void IOCCF7_SetInterruptHandler(void (* InterruptHandler)(void));
-# 182 "./mcc_generated_files/pin_manager.h"
+# 182 "mcc_generated_files/pin_manager.h"
 extern void (*IOCCF7_InterruptHandler)(void);
-# 206 "./mcc_generated_files/pin_manager.h"
+# 206 "mcc_generated_files/pin_manager.h"
 void IOCCF7_DefaultInterruptHandler(void);
-# 51 "./mcc_generated_files/mcc.h" 2
+# 51 "mcc_generated_files/mcc.h" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 1 3
 # 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 3
@@ -17038,35 +17033,33 @@ typedef int32_t int_fast32_t;
 typedef uint32_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 155 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 2 3
-# 52 "./mcc_generated_files/mcc.h" 2
+# 52 "mcc_generated_files/mcc.h" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdbool.h" 1 3
-# 53 "./mcc_generated_files/mcc.h" 2
+# 53 "mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/interrupt_manager.h" 1
-# 54 "./mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/tmr0.h" 1
-# 98 "./mcc_generated_files/tmr0.h"
+# 1 "mcc_generated_files/tmr0.h" 1
+# 98 "mcc_generated_files/tmr0.h"
 void TMR0_Initialize(void);
-# 129 "./mcc_generated_files/tmr0.h"
+# 129 "mcc_generated_files/tmr0.h"
 uint8_t TMR0_ReadTimer(void);
-# 168 "./mcc_generated_files/tmr0.h"
+# 168 "mcc_generated_files/tmr0.h"
 void TMR0_WriteTimer(uint8_t timerVal);
-# 204 "./mcc_generated_files/tmr0.h"
+# 204 "mcc_generated_files/tmr0.h"
 void TMR0_Reload(void);
-# 219 "./mcc_generated_files/tmr0.h"
+# 219 "mcc_generated_files/tmr0.h"
 void TMR0_ISR(void);
-# 238 "./mcc_generated_files/tmr0.h"
+# 238 "mcc_generated_files/tmr0.h"
  void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-# 256 "./mcc_generated_files/tmr0.h"
+# 256 "mcc_generated_files/tmr0.h"
 extern void (*TMR0_InterruptHandler)(void);
-# 274 "./mcc_generated_files/tmr0.h"
+# 274 "mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
-# 55 "./mcc_generated_files/mcc.h" 2
+# 55 "mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/eusart.h" 1
-# 57 "./mcc_generated_files/eusart.h"
+# 1 "mcc_generated_files/eusart.h" 1
+# 57 "mcc_generated_files/eusart.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdio.h" 3
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -17203,8 +17196,8 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 57 "./mcc_generated_files/eusart.h" 2
-# 76 "./mcc_generated_files/eusart.h"
+# 57 "mcc_generated_files/eusart.h" 2
+# 76 "mcc_generated_files/eusart.h"
 typedef union {
     struct {
         unsigned perr : 1;
@@ -17214,137 +17207,47 @@ typedef union {
     };
     uint8_t status;
 }eusart_status_t;
-# 112 "./mcc_generated_files/eusart.h"
+# 112 "mcc_generated_files/eusart.h"
 void EUSART_Initialize(void);
-# 160 "./mcc_generated_files/eusart.h"
+# 160 "mcc_generated_files/eusart.h"
 _Bool EUSART_is_tx_ready(void);
-# 208 "./mcc_generated_files/eusart.h"
+# 208 "mcc_generated_files/eusart.h"
 _Bool EUSART_is_rx_ready(void);
-# 255 "./mcc_generated_files/eusart.h"
+# 255 "mcc_generated_files/eusart.h"
 _Bool EUSART_is_tx_done(void);
-# 303 "./mcc_generated_files/eusart.h"
+# 303 "mcc_generated_files/eusart.h"
 eusart_status_t EUSART_get_last_status(void);
-# 323 "./mcc_generated_files/eusart.h"
+# 323 "mcc_generated_files/eusart.h"
 uint8_t EUSART_Read(void);
-# 343 "./mcc_generated_files/eusart.h"
+# 343 "mcc_generated_files/eusart.h"
 void EUSART_Write(uint8_t txData);
-# 363 "./mcc_generated_files/eusart.h"
+# 363 "mcc_generated_files/eusart.h"
 void EUSART_SetFramingErrorHandler(void (* interruptHandler)(void));
-# 381 "./mcc_generated_files/eusart.h"
+# 381 "mcc_generated_files/eusart.h"
 void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void));
-# 399 "./mcc_generated_files/eusart.h"
+# 399 "mcc_generated_files/eusart.h"
 void EUSART_SetErrorHandler(void (* interruptHandler)(void));
-# 56 "./mcc_generated_files/mcc.h" 2
-# 71 "./mcc_generated_files/mcc.h"
+# 56 "mcc_generated_files/mcc.h" 2
+# 71 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 84 "./mcc_generated_files/mcc.h"
+# 84 "mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 26 "./displayOptions.h" 2
-# 44 "./displayOptions.h"
-void backlightBrightness( int color, uint8_t offset );
-# 59 "./displayOptions.h"
-void backlightReset( void );
-# 73 "./displayOptions.h"
-void backlightOff( void );
-# 87 "./displayOptions.h"
-void resetCursor( void );
-# 98 "./displayOptions.h"
-void writeString( char *string );
-# 110 "./displayOptions.h"
-void setCursor( uint8_t a, uint8_t b );
+# 50 "mcc_generated_files/interrupt_manager.c" 2
 
 
-void writePrintf( char *string );
-# 8 "displayOptions.c" 2
+void __attribute__((picinterrupt(("")))) INTERRUPT_InterruptManager (void)
+{
 
-
-
-
-void backlightBrightness( int color, uint8_t offSet ) {
-    EUSART_Write(0x7C);
-    if( offSet <= 29 ){
-        switch (color){
-            case 1:
-            {
-                while( !EUSART_is_tx_ready() ) ;
-                EUSART_Write( 0x80 + offSet );
-                _delay((unsigned long)((104)*(16000000/4000000.0))) ;
-                break;
-            }
-            case 2:
-            {
-                while( !EUSART_is_tx_ready() ) ;
-                EUSART_Write( 0x9E + offSet );
-                _delay((unsigned long)((104)*(16000000/4000000.0))) ;
-                break;
-            }
-            case 3:
-            {
-                while( !EUSART_is_tx_ready() ) ;
-                EUSART_Write( 0xBC + offSet );
-                _delay((unsigned long)((104)*(16000000/4000000.0))) ;
-                break;
-            }
-            default:
-            {
-
-            }
-        }
+    if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
+    {
+        TMR0_ISR();
     }
-}
+    else if(INTCONbits.IOCIE == 1 && INTCONbits.IOCIF == 1)
+    {
+        PIN_MANAGER_IOC();
+    }
+    else
+    {
 
-void backlightReset(){
-    backlightBrightness(1,29);
-    backlightBrightness(2,29);
-    backlightBrightness(3,29);
-}
-
-void backlightOff(){
-    backlightBrightness(1,0);
-    backlightBrightness(2,0);
-    backlightBrightness(3,0);
-}
-
-void resetCursor(){
-    puts("|-");
-}
-
-void writeString( char *string ){
-    while( !EUSART_is_tx_ready() ) ;
-    puts( string );
-    _delay((unsigned long)((200)*(16000000/4000000.0)));
-}
-
-void writePrintf( char *string ){
-    while( !EUSART_is_tx_ready() ) ;
-    printf( string ) ;
-    _delay((unsigned long)((200)*(16000000/4000000.0))) ;
-}
-
-void setCursor( uint8_t a, uint8_t b ){
-    while( !EUSART_is_tx_ready() ) ;
-    EUSART_Write( 254 );
-    _delay((unsigned long)((200)*(16000000/4000000.0)));
-    switch ( a ){
-        case 1:
-        {
-            EUSART_Write(128 + 0 + b) ;
-            break ;
-        }
-        case 2:
-        {
-           EUSART_Write(128 + 64 + b) ;
-           break ;
-        }
-        case 3:
-        {
-            EUSART_Write(128 + 20 + b) ;
-            break ;
-        }
-        case 4:
-        {
-            EUSART_Write(128 + 84 + b) ;
-            break ;
-        }
     }
 }

@@ -11,14 +11,17 @@
 #ifndef XC_HEADER_TEMPLATE_H
 #define	XC_HEADER_TEMPLATE_H
 
-#define configMode      0x7C
+// constant defines for modifying LCD
+#define configMode      0x7C 
 #define displayContrast 0x18
+#define baud9600        0x0D
 #define redOff          0x80 
 #define redOn           0x9D
 #define greenOff        0x9E 
 #define greenOn         0xBB
 #define blueOff         0xBC 
 #define blueOn          0xD9
+
 
 #include "mcc_generated_files/mcc.h"
 

@@ -17233,29 +17233,36 @@ void OSCILLATOR_Initialize(void);
 # 1 "main.c" 2
 
 # 1 "./displayOptions.h" 1
-# 41 "./displayOptions.h"
+# 44 "./displayOptions.h"
 void backlightBrightness( int color, uint8_t offset );
-# 56 "./displayOptions.h"
+# 59 "./displayOptions.h"
 void backlightReset( void );
-# 70 "./displayOptions.h"
+# 73 "./displayOptions.h"
 void backlightOff( void );
-# 84 "./displayOptions.h"
+# 87 "./displayOptions.h"
 void resetCursor( void );
-# 95 "./displayOptions.h"
+# 98 "./displayOptions.h"
 void writeString( char *string );
-# 107 "./displayOptions.h"
+# 110 "./displayOptions.h"
 void setCursor( uint8_t a, uint8_t b );
 
 
 void writePrintf( char *string );
 # 2 "main.c" 2
-# 16 "main.c"
+
+
+
+
+
 long int volatile counter = 0 ;
+long int volatile adcCounter = 0 ;
 float volatile rpm = 0 ;
 float volatile speed = 0 ;
 float volatile distance = 0 ;
+float volatile heartRate = 0 ;
 int volatile speedInt = 0 ;
 int volatile distInt = 0 ;
+int volatile hrInt = 0 ;
 
 
     void timerISR ( void ) ;
@@ -17302,10 +17309,18 @@ void main(void)
 
     while(1){
 
+
+        if (adcCounter == 2000 ){
+
+
+
+
+        }
+
+
+
         setCursor(1,7) ;
-
         speedInt = speed ;
-
         if( counter > 5000 ){
             printf( "0 kmh      " ) ;
 
@@ -17314,20 +17329,23 @@ void main(void)
             printf( "%d kmh      ", speedInt ) ;
         }
 
-        setCursor(2,10) ;
 
+        setCursor(2,10) ;
         distInt = distance ;
         printf("%d m     ", distInt ) ;
 
+
+        setCursor(3,13) ;
+        hrInt = heartRate ;
+        printf( "%d bpm   " , hrInt ) ;
 
     }
 
 }
 
-
-
 void timerISR ( void ){
     counter++ ;
+    adcCounter++ ;
 }
 
 void speedCalc ( void ){
@@ -17335,13 +17353,9 @@ void speedCalc ( void ){
     rpm = ( 1000 / counter ) * 60 ;
 
 
-
     speed = 2 * rpm * (0.06) ;
 
 
     counter = 0 ;
     distance = distance + 2 ;
-
-
-
 }
