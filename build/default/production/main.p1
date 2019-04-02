@@ -7,24 +7,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 "238 ./mcc_generated_files/tmr0.h
 [; ;./mcc_generated_files/tmr0.h: 238:  void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
 [v _TMR0_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F9666 ]
-"19 main.c
-[; ;main.c: 19:     void timerISR ( void ) ;
+"26 main.c
+[; ;main.c: 26:     void timerISR ( void ) ;
 [v _timerISR `(v ~T0 @X0 0 ef ]
 [v F9604 `(v ~T0 @X0 0 tf ]
 "158 ./mcc_generated_files/pin_manager.h
 [; ;./mcc_generated_files/pin_manager.h: 158: void IOCCF7_SetInterruptHandler(void (* InterruptHandler)(void));
 [v _IOCCF7_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F9604 ]
-"20 main.c
-[; ;main.c: 20:     void speedCalc ( void ) ;
+"27 main.c
+[; ;main.c: 27:     void speedCalc ( void ) ;
 [v _speedCalc `(v ~T0 @X0 0 ef ]
 "87 ./displayOptions.h
 [; ;./displayOptions.h: 87: void resetCursor( void );
 [v _resetCursor `(v ~T0 @X0 0 ef ]
-"110
-[; ;./displayOptions.h: 110: void setCursor( uint8_t a, uint8_t b );
-[v _setCursor `(v ~T0 @X0 0 ef2`uc`uc ]
-"113 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c99\stdio.h
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "357 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h: 357:     struct {
 [s S31 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -40,6 +35,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "374
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h: 374: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
 [v _INTCONbits `VS30 ~T0 @X0 0 e@11 ]
+"110 ./displayOptions.h
+[; ;./displayOptions.h: 110: void setCursor( uint8_t a, uint8_t b );
+[v _setCursor `(v ~T0 @X0 0 ef2`uc`uc ]
+"113 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c99\stdio.h
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1366,68 +1366,104 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27877
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h: 27877: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"7 main.c
-[; ;main.c: 7: long int volatile counter = 0 ;
+"8 main.c
+[; ;main.c: 8: long int volatile counter = 0 ;
 [v _counter `Vl ~T0 @X0 1 e ]
 [i _counter
 -> -> 0 `i `l
 ]
-"8
-[; ;main.c: 8: long int volatile adcCounter = 0 ;
+"9
+[; ;main.c: 9: long int volatile adcCounter = 0 ;
 [v _adcCounter `Vl ~T0 @X0 1 e ]
 [i _adcCounter
 -> -> 0 `i `l
 ]
-"9
-[; ;main.c: 9: float volatile rpm = 0 ;
+"10
+[; ;main.c: 10: float volatile rpm = 0 ;
 [v _rpm `Vf ~T0 @X0 1 e ]
 [i _rpm
 -> -> 0 `i `f
 ]
-"10
-[; ;main.c: 10: float volatile speed = 0 ;
+"11
+[; ;main.c: 11: float volatile speed = 0 ;
 [v _speed `Vf ~T0 @X0 1 e ]
 [i _speed
 -> -> 0 `i `f
 ]
-"11
-[; ;main.c: 11: float volatile distance = 0 ;
+"12
+[; ;main.c: 12: float volatile distance = 0 ;
 [v _distance `Vf ~T0 @X0 1 e ]
 [i _distance
 -> -> 0 `i `f
 ]
-"12
-[; ;main.c: 12: float volatile heartRate = 0 ;
+"13
+[; ;main.c: 13: float volatile heartRate = 0 ;
 [v _heartRate `Vf ~T0 @X0 1 e ]
 [i _heartRate
 -> -> 0 `i `f
 ]
-"13
-[; ;main.c: 13: int volatile speedInt = 0 ;
+"14
+[; ;main.c: 14: int volatile speedInt = 0 ;
 [v _speedInt `Vi ~T0 @X0 1 e ]
 [i _speedInt
 -> 0 `i
 ]
-"14
-[; ;main.c: 14: int volatile distInt = 0 ;
+"15
+[; ;main.c: 15: int volatile distInt = 0 ;
 [v _distInt `Vi ~T0 @X0 1 e ]
 [i _distInt
 -> 0 `i
 ]
-"15
-[; ;main.c: 15: int volatile hrInt = 0 ;
+"16
+[; ;main.c: 16: int volatile hrInt = 0 ;
 [v _hrInt `Vi ~T0 @X0 1 e ]
 [i _hrInt
 -> 0 `i
 ]
-"16
-[; ;main.c: 16: long int volatile rpmInt = 0 ;
+"17
+[; ;main.c: 17: long int volatile rpmInt = 0 ;
 [v _rpmInt `Vl ~T0 @X0 1 e ]
 [i _rpmInt
 -> -> 0 `i `l
 ]
-"25
-[; ;main.c: 25:     const char speedDisp[] = "Speed: " ;
+"18
+[; ;main.c: 18: float volatile hallCount = 0 ;
+[v _hallCount `Vf ~T0 @X0 1 e ]
+[i _hallCount
+-> -> 0 `i `f
+]
+"19
+[; ;main.c: 19: float volatile startTime = 0 ;
+[v _startTime `Vf ~T0 @X0 1 e ]
+[i _startTime
+-> -> 0 `i `f
+]
+"20
+[; ;main.c: 20: float volatile endTime = 0 ;
+[v _endTime `Vf ~T0 @X0 1 e ]
+[i _endTime
+-> -> 0 `i `f
+]
+"21
+[; ;main.c: 21: float volatile timePassed = 0 ;
+[v _timePassed `Vf ~T0 @X0 1 e ]
+[i _timePassed
+-> -> 0 `i `f
+]
+"22
+[; ;main.c: 22: float volatile rpmVal = 0 ;
+[v _rpmVal `Vf ~T0 @X0 1 e ]
+[i _rpmVal
+-> -> 0 `i `f
+]
+"23
+[; ;main.c: 23: long int volatile rpmValInt = 0 ;
+[v _rpmValInt `Vl ~T0 @X0 1 e ]
+[i _rpmValInt
+-> -> 0 `i `l
+]
+"32
+[; ;main.c: 32:     const char speedDisp[] = "Speed: " ;
 [v _speedDisp `Cuc ~T0 @X0 -> 8 `i e ]
 [i _speedDisp
 :U ..
@@ -1441,8 +1477,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"26
-[; ;main.c: 26:     const char distanceDisp[] = "Distance: " ;
+"33
+[; ;main.c: 33:     const char distanceDisp[] = "Distance: " ;
 [v _distanceDisp `Cuc ~T0 @X0 -> 11 `i e ]
 [i _distanceDisp
 :U ..
@@ -1459,8 +1495,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"27
-[; ;main.c: 27:     const char hrDisp[] = "Heart Rate: " ;
+"34
+[; ;main.c: 34:     const char hrDisp[] = "Heart Rate: " ;
 [v _hrDisp `Cuc ~T0 @X0 -> 13 `i e ]
 [i _hrDisp
 :U ..
@@ -1480,133 +1516,120 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"33
-[; ;main.c: 33: void main(void)
+"40
+[; ;main.c: 40: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"34
-[; ;main.c: 34: {
+"41
+[; ;main.c: 41: {
 {
 [e :U _main ]
 [f ]
-"36
-[; ;main.c: 36:     SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
-"39
-[; ;main.c: 39:     TMR0_SetInterruptHandler( timerISR ) ;
-[e ( _TMR0_SetInterruptHandler (1 &U _timerISR ]
-"40
-[; ;main.c: 40:     IOCCF7_SetInterruptHandler( speedCalc ) ;
-[e ( _IOCCF7_SetInterruptHandler (1 &U _speedCalc ]
 "43
-[; ;main.c: 43:     resetCursor() ;
-[e ( _resetCursor ..  ]
+[; ;main.c: 43:     SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
 "46
-[; ;main.c: 46:     setCursor(1,0) ;
-[e ( _setCursor (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 46:     TMR0_SetInterruptHandler( timerISR ) ;
+[e ( _TMR0_SetInterruptHandler (1 &U _timerISR ]
 "47
-[; ;main.c: 47:     printf(speedDisp);
-[e ( _printf &U _speedDisp ]
-"48
-[; ;main.c: 48:     setCursor(2,0) ;
-[e ( _setCursor (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-"49
-[; ;main.c: 49:     printf(distanceDisp);
-[e ( _printf &U _distanceDisp ]
+[; ;main.c: 47:     IOCCF7_SetInterruptHandler( speedCalc ) ;
+[e ( _IOCCF7_SetInterruptHandler (1 &U _speedCalc ]
 "50
-[; ;main.c: 50:     setCursor(3,0) ;
-[e ( _setCursor (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
-"51
-[; ;main.c: 51:     printf(hrDisp);
-[e ( _printf &U _hrDisp ]
-"55
-[; ;main.c: 55:     (INTCONbits.GIE = 1);
+[; ;main.c: 50:     resetCursor() ;
+[e ( _resetCursor ..  ]
+"53
+[; ;main.c: 53:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"56
-[; ;main.c: 56:     (INTCONbits.PEIE = 1);
+"54
+[; ;main.c: 54:     (INTCONbits.PEIE = 1);
 [e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-"58
-[; ;main.c: 58:     while(1){
+"56
+[; ;main.c: 56:     while(1){
 [e :U 1223 ]
 {
-"61
-[; ;main.c: 61:         if (adcCounter == 2000 ){
-[e $ ! == _adcCounter -> -> 2000 `i `l 1225  ]
+"58
+[; ;main.c: 58:         hallCount = 1 ;
+[e = _hallCount -> -> 1 `i `f ]
+"59
+[; ;main.c: 59:         startTime = counter ;
+[e = _startTime -> _counter `f ]
+"60
+[; ;main.c: 60:         setCursor(1,0);
+[e ( _setCursor (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"63
+[; ;main.c: 63:         if ( hallCount >= 1000 ){
+[e $ ! >= _hallCount -> -> 1000 `i `f 1225  ]
 {
+"64
+[; ;main.c: 64:             endTime = counter ;
+[e = _endTime -> _counter `f ]
+"65
+[; ;main.c: 65:             counter = 0 ;
+[e = _counter -> -> 0 `i `l ]
 "66
 [; ;main.c: 66:         }
 }
 [e :U 1225 ]
+"67
+[; ;main.c: 67:         timePassed = (endTime - startTime) / 1000 ;
+[e = _timePassed / - _endTime _startTime -> -> 1000 `i `f ]
+"68
+[; ;main.c: 68:         rpmVal = ( hallCount / timePassed ) * 60 ;
+[e = _rpmVal * / _hallCount _timePassed -> -> 60 `i `f ]
+"69
+[; ;main.c: 69:         rpmValInt = rpmVal ;
+[e = _rpmValInt -> _rpmVal `l ]
 "70
-[; ;main.c: 70:         setCursor(1,7) ;
-[e ( _setCursor (2 , -> -> 1 `i `uc -> -> 7 `i `uc ]
-"71
-[; ;main.c: 71:         speedInt = speed ;
-[e = _speedInt -> _speed `i ]
-"72
-[; ;main.c: 72:         printf("%d    ", rpmInt) ;
-[e ( _printf , (. :s 1C _rpmInt ]
-"84
-[; ;main.c: 84:         setCursor(2,10) ;
-[e ( _setCursor (2 , -> -> 2 `i `uc -> -> 10 `i `uc ]
-"86
-[; ;main.c: 86:         printf("%d m ", distInt ) ;
-[e ( _printf , (. :s 2C _distInt ]
-"95
-[; ;main.c: 95:     }
+[; ;main.c: 70:         printf("%d", rpmValInt) ;
+[e ( _printf , (. :s 1C _rpmValInt ]
+"73
+[; ;main.c: 73:     }
 }
 [e :U 1222 ]
 [e $U 1223  ]
 [e :U 1224 ]
-"97
-[; ;main.c: 97: }
+"75
+[; ;main.c: 75: }
 [e :UE 1221 ]
 }
-"99
-[; ;main.c: 99: void timerISR ( void ){
+"77
+[; ;main.c: 77: void timerISR ( void ){
 [v _timerISR `(v ~T0 @X0 1 ef ]
 {
 [e :U _timerISR ]
 [f ]
-"100
-[; ;main.c: 100:     counter++ ;
+"78
+[; ;main.c: 78:     counter++ ;
 [e ++ _counter -> -> 1 `i `Vl ]
-"101
-[; ;main.c: 101:     adcCounter++ ;
+"79
+[; ;main.c: 79:     adcCounter++ ;
 [e ++ _adcCounter -> -> 1 `i `Vl ]
-"103
-[; ;main.c: 103: }
+"81
+[; ;main.c: 81: }
 [e :UE 1226 ]
 }
-"106
-[; ;main.c: 106: void speedCalc ( void ){
+"84
+[; ;main.c: 84: void speedCalc ( void ){
 [v _speedCalc `(v ~T0 @X0 1 ef ]
 {
 [e :U _speedCalc ]
 [f ]
-"109
-[; ;main.c: 109:     rpmInt = counter ;
-[e = _rpmInt _counter ]
-"113
-[; ;main.c: 113:     speed = 2 * rpmInt * (0.06) ;
-[e = _speed -> * -> * -> -> 2 `i `l _rpmInt `d .0.06 `f ]
-"116
-[; ;main.c: 116:     counter = 1 ;
-[e = _counter -> -> 1 `i `l ]
-"117
-[; ;main.c: 117:     if( adcCounter <= (2308 ) ){
+"86
+[; ;main.c: 86:     hallCount += 1 ;
+[e =+ _hallCount -> -> 1 `i `Vf ]
+"88
+[; ;main.c: 88:     if( adcCounter <= (2308 ) ){
 [e $ ! <= _adcCounter -> -> 2308 `i `l 1228  ]
 {
-"118
-[; ;main.c: 118:         distInt++ ;
+"89
+[; ;main.c: 89:         distInt++ ;
 [e ++ _distInt -> -> 1 `i `Vi ]
-"119
-[; ;main.c: 119:     }
+"90
+[; ;main.c: 90:     }
 }
 [e :U 1228 ]
-"121
-[; ;main.c: 121: }
+"91
+[; ;main.c: 91: }
 [e :UE 1227 ]
 }
-[p f _printf 9437824 ]
-[a 2C 37 100 32 109 32 0 ]
-[a 1C 37 100 32 32 32 32 0 ]
+[p f _printf 8388736 ]
+[a 1C 37 100 0 ]

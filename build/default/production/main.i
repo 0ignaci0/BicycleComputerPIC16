@@ -17289,6 +17289,7 @@ void writePrintf( char *string );
 
 
 
+
 long int volatile counter = 0 ;
 long int volatile adcCounter = 0 ;
 float volatile rpm = 0 ;
@@ -17299,6 +17300,12 @@ int volatile speedInt = 0 ;
 int volatile distInt = 0 ;
 int volatile hrInt = 0 ;
 long int volatile rpmInt = 0 ;
+float volatile hallCount = 0 ;
+float volatile startTime = 0 ;
+float volatile endTime = 0 ;
+float volatile timePassed = 0 ;
+float volatile rpmVal = 0 ;
+long int volatile rpmValInt = 0 ;
 
 
     void timerISR ( void ) ;
@@ -17328,38 +17335,26 @@ void main(void)
     resetCursor() ;
 
 
-    setCursor(1,0) ;
-    printf(speedDisp);
-    setCursor(2,0) ;
-    printf(distanceDisp);
-    setCursor(3,0) ;
-    printf(hrDisp);
-
-
-
     (INTCONbits.GIE = 1);
     (INTCONbits.PEIE = 1);
 
     while(1){
 
+        hallCount = 1 ;
+        startTime = counter ;
+        setCursor(1,0);
 
-        if (adcCounter == 2000 ){
 
-
-
-
+        if ( hallCount >= 1000 ){
+            endTime = counter ;
+            counter = 0 ;
         }
+        timePassed = (endTime - startTime) / 1000 ;
+        rpmVal = ( hallCount / timePassed ) * 60 ;
+        rpmValInt = rpmVal ;
+        printf("%d", rpmValInt) ;
 
 
-
-        setCursor(1,7) ;
-        speedInt = speed ;
-        printf("%d    ", rpmInt) ;
-# 84 "main.c"
-        setCursor(2,10) ;
-
-        printf("%d m ", distInt ) ;
-# 95 "main.c"
     }
 
 }
@@ -17373,17 +17368,9 @@ void timerISR ( void ){
 
 void speedCalc ( void ){
 
+    hallCount += 1 ;
 
-    rpmInt = counter ;
-
-
-
-    speed = 2 * rpmInt * (0.06) ;
-
-
-    counter = 1 ;
     if( adcCounter <= (2308 ) ){
         distInt++ ;
     }
-
 }

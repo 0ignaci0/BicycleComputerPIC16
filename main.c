@@ -4,6 +4,7 @@
 #define CIRCUMFERENCE 2                 // circumference of 700x23C bicycle wheel is 210 cm --> rounded to 2 meters
 
 #define oneMin 2308
+#define hallThresh 1000
 long int volatile counter    = 0 ;            // overflow counter for 1-ms timer
 long int volatile adcCounter = 0 ;
 float    volatile rpm        = 0 ;            // equal to interval between wheel rotations converted to minute scale
@@ -14,6 +15,12 @@ int      volatile speedInt   = 0 ;
 int      volatile distInt    = 0 ;
 int      volatile hrInt      = 0 ;
 long int volatile rpmInt = 0 ;
+float volatile hallCount = 0 ; 
+float volatile startTime = 0 ;
+float volatile endTime = 0 ;
+float volatile timePassed = 0 ;
+float volatile rpmVal = 0 ;
+long int volatile rpmValInt = 0 ;
 
 //~~~~~ Interrupt prototypes ~~~~~~//
     void timerISR  ( void ) ;               // 1-ms timer with "counter"
@@ -41,57 +48,28 @@ void main(void)
 
     // clear screen, set cursor to origin
     resetCursor() ;
-    
-    // initialize display    //set cursor to
-    setCursor(1,0) ;         // row 1, origin
-    printf(speedDisp);     
-    setCursor(2,0) ;         // row 2, position 0 
-    printf(distanceDisp);
-    setCursor(3,0) ;         // row 3
-    printf(hrDisp);
-    //setCursor(4,0) ;         // row 4
-    
+       
     // Enable the Global Interrupts, Enable the Peripheral Interrupts
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
     
     while(1){
         
-        // every 2ms calculate heart rate
-        if (adcCounter == 2000 ){ 
-            // get_heart_rate
-            // adcVal = ADC_Read(0) ;
-            // calcHR(adcVal) ;
-            // adcCounter = 0 ;
+        hallCount = 1 ;
+        startTime = counter ;
+        setCursor(1,0);
+
+        
+        if ( hallCount >= hallThresh ){
+            endTime = counter ;
+            counter = 0 ;
         }
-        
-        
+        timePassed = (endTime - startTime) / 1000 ;
+        rpmVal = ( hallCount / timePassed ) * 60 ;
+        rpmValInt = rpmVal ; 
+        printf("%d", rpmValInt) ;
         // print speed
-        setCursor(1,7) ;
-        speedInt = speed ;      // convert float to integer for display
-        printf("%d    ", rpmInt) ; 
-      
-        /*
-        if( counter > 5000 ){  // if no wheel rotation for 5 seconds, assume no motion, reset speed display to 0
-            printf( "0 kmh      " ) ;
-            
-        }
-        else{
-            printf( "%d kmh      ", speedInt ) ;
-        }*/
         
-        // print distance
-        setCursor(2,10) ;
-        //distInt = distance ;
-        printf("%d m ", distInt ) ;
-        
-        
-        // print heart-rate
-        //setCursor(3,12) ;
-        //hrInt = heartRate ;
-       // printf( "%d bpm " , hrInt ) ;
-        
-       
     }
  
 }
@@ -104,20 +82,12 @@ void timerISR ( void ){ // timer set to 50ms period
 // expected fan speed 1150 rpm
 // 
 void speedCalc ( void ){
-    // counter increments every 1 milli-sec, divide 1000 by counter to convert to seconds, mult. by 60 for minutes
-    //rpm      = ( 1000 / counter ) * 60 ;     
-    rpmInt = counter  ;
- 
     
-    //  up-convert to kilometer per hour: multiply by (1 km / 1000 m) * ( 60 min / 1 hr ) = 6/100 = 3/50 = 0.06
-    speed    = CIRCUMFERENCE * rpmInt * (0.06) ; // km/hr
-    
-    // reset counter, keep track of distance
-    counter  = 1 ;
+    hallCount += 1 ;
+
     if( adcCounter <= (oneMin ) ){
         distInt++ ;
     }
-    //distance = distance + CIRCUMFERENCE ; // distance in meters
 }
 
 /*
