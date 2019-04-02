@@ -3,7 +3,7 @@
 
 #define CIRCUMFERENCE 2                 // circumference of 700x23C bicycle wheel is 210 cm --> rounded to 2 meters
 
-#define oneMin 60483
+#define oneMin 120
 #define hallThresh 1000
 long int volatile counter    = 0 ;            // overflow counter for 1-ms timer
 long int volatile adcCounter = 0 ;
@@ -59,7 +59,7 @@ void main(void)
         startTime = counter ;
         setCursor(1,0);
         __delay_ms( 50 );
-        printf("%d   ", (int)( distInt * 1.8 ) ) ;
+        printf("%d   ", (int)( distInt*1.9 ) ) ;
         __delay_ms( 50 );
         // print speed
         

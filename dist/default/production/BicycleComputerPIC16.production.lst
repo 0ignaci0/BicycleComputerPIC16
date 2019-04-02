@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.05 build -831301201 
-                                                                                               Tue Apr 02 16:05:12 2019
+                                                                                               Tue Apr 02 17:01:32 2019
 
 Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1 
      1                           	processor	16F1619
@@ -3805,7 +3805,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   3791  001A  3000               	movlw	high __pbssBANK0
   3792  001B  0085               	movwf	5
   3793  001C  3007               	movlw	7
-  3794  001D  318A  22CF  3180   	fcall	clear_ram0
+  3794  001D  318A  22CE  3180   	fcall	clear_ram0
   3795                           
   3796                           ; Clear objects allocated to BANK1
   3797  0020  30A0               	movlw	low __pbssBANK1
@@ -3813,7 +3813,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   3799  0022  3000               	movlw	high __pbssBANK1
   3800  0023  0085               	movwf	5
   3801  0024  302E               	movlw	46
-  3802  0025  318A  22CF  3180   	fcall	clear_ram0
+  3802  0025  318A  22CE  3180   	fcall	clear_ram0
   3803                           
   3804                           ; Clear objects allocated to BANK2
   3805  0028  3020               	movlw	low __pbssBANK2
@@ -3821,7 +3821,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   3807  002A  3001               	movlw	high __pbssBANK2
   3808  002B  0085               	movwf	5
   3809  002C  302C               	movlw	44
-  3810  002D  318A  22CF         	fcall	clear_ram0
+  3810  002D  318A  22CE         	fcall	clear_ram0
   3811  002F                     end_of_initialization:	
   3812                           ;End of C runtime variable initialization code
   3813                           
@@ -3887,17 +3887,17 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   3873  012C                     	ds	32
   3874                           
   3875                           	psect	clrtext
-  3876  0ACF                     clear_ram0:	
+  3876  0ACE                     clear_ram0:	
   3877                           ;	Called with FSR0 containing the base address, and
   3878                           ;	WREG with the size to clear
   3879                           
-  3880  0ACF  0064               	clrwdt	;clear the watchdog before getting into this loop
-  3881  0AD0                     clrloop0:	
-  3882  0AD0  0180               	clrf	0	;clear RAM location pointed to by FSR
-  3883  0AD1  3101               	addfsr 0,1
-  3884  0AD2  0B89               	decfsz	9,f	;Have we reached the end of clearing yet?
-  3885  0AD3  2AD0               	goto	clrloop0	;have we reached the end yet?
-  3886  0AD4  3400               	retlw	0	;all done for this memory range, return
+  3880  0ACE  0064               	clrwdt	;clear the watchdog before getting into this loop
+  3881  0ACF                     clrloop0:	
+  3882  0ACF  0180               	clrf	0	;clear RAM location pointed to by FSR
+  3883  0AD0  3101               	addfsr 0,1
+  3884  0AD1  0B89               	decfsz	9,f	;Have we reached the end of clearing yet?
+  3885  0AD2  2ACF               	goto	clrloop0	;have we reached the end yet?
+  3886  0AD3  3400               	retlw	0	;all done for this memory range, return
   3887                           
   3888                           	psect	cstackBANK2
   3889  014C                     __pcstackBANK2:	
@@ -4508,26 +4508,26 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   4489                           
   4490                           ;incstack = 0
   4491                           ; Regs used in _main: [wreg-fsr1h+status,2+status,0+pclath+cstack]
-  4492  0DF8  318B  233D  318D   	fcall	_SYSTEM_Initialize
+  4492  0DF8  318B  233C  318D   	fcall	_SYSTEM_Initialize
   4493                           
   4494                           ;main.c: 46:     TMR0_SetInterruptHandler( timerISR ) ;
-  4495  0DFB  304C               	movlw	low _timerISR
+  4495  0DFB  304B               	movlw	low _timerISR
   4496  0DFC  0020               	movlb	0	; select bank0
   4497  0DFD  00A8               	movwf	TMR0_SetInterruptHandler@InterruptHandler
   4498  0DFE  300B               	movlw	high _timerISR
   4499  0DFF  00A9               	movwf	TMR0_SetInterruptHandler@InterruptHandler+1
-  4500  0E00  318B  2318  318D   	fcall	_TMR0_SetInterruptHandler
+  4500  0E00  318B  2317  318D   	fcall	_TMR0_SetInterruptHandler
   4501                           
   4502                           ;main.c: 47:     IOCCF7_SetInterruptHandler( speedCalc ) ;
-  4503  0E03  3054               	movlw	low _speedCalc
+  4503  0E03  3053               	movlw	low _speedCalc
   4504  0E04  0020               	movlb	0	; select bank0
   4505  0E05  00A8               	movwf	IOCCF7_SetInterruptHandler@InterruptHandler
   4506  0E06  300C               	movlw	high _speedCalc
   4507  0E07  00A9               	movwf	IOCCF7_SetInterruptHandler@InterruptHandler+1
-  4508  0E08  318B  230F  318D   	fcall	_IOCCF7_SetInterruptHandler
+  4508  0E08  318B  230E  318D   	fcall	_IOCCF7_SetInterruptHandler
   4509                           
   4510                           ;main.c: 50:     resetCursor() ;
-  4511  0E0B  318A  22EC  318D   	fcall	_resetCursor
+  4511  0E0B  318A  22EB  318D   	fcall	_resetCursor
   4512                           
   4513                           ;main.c: 53:     (INTCONbits.GIE = 1);
   4514  0E0E  178B               	bsf	11,7	;volatile
@@ -4590,7 +4590,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   4571  0E41  2E3E               	goto	u3977
   4572  0E42  0000               	nop
   4573                           
-  4574                           ;main.c: 62:         printf("%d   ", (int)( distInt * 1.8 ) ) ;
+  4574                           ;main.c: 62:         printf("%d   ", (int)( distInt*1.9 ) ) ;
   4575  0E43  3020               	movlw	low (STR_1| (0+32768))
   4576  0E44  0022               	movlb	2	; select bank2
   4577  0E45  00CC               	movwf	printf@fmt^(0+256)
@@ -4619,11 +4619,11 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   4600  0E5E  00BA               	movwf	___flmul@a
   4601  0E5F  303F               	movlw	63
   4602  0E60  00B9               	movwf	___flmul@b+3
-  4603  0E61  30E6               	movlw	230
+  4603  0E61  30F3               	movlw	243
   4604  0E62  00B8               	movwf	___flmul@b+2
-  4605  0E63  3066               	movlw	102
+  4605  0E63  3033               	movlw	51
   4606  0E64  00B7               	movwf	___flmul@b+1
-  4607  0E65  3066               	movlw	102
+  4607  0E65  3033               	movlw	51
   4608  0E66  00B6               	movwf	___flmul@b
   4609  0E67  3180  2033  318D   	fcall	___flmul
   4610  0E6A  0020               	movlb	0	; select bank0
@@ -4644,7 +4644,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   4625  0E7B  0850               	movf	?___fltol,w
   4626  0E7C  0022               	movlb	2	; select bank2
   4627  0E7D  00CE               	movwf	(?_printf^(0+256)+2)
-  4628  0E7E  318B  2373  318D   	fcall	_printf
+  4628  0E7E  318B  2372  318D   	fcall	_printf
   4629                           
   4630                           ;main.c: 63:         _delay((unsigned long)((50)*(500000/4000.0)));
   4631  0E81  3009               	movlw	9
@@ -4714,13 +4714,13 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   4690                           
   4691                           ;displayOptions.c: 70:         {;displayOptions.c: 71:             EUSART_Write( 254 );
   4692  0D00  30FE               	movlw	254
-  4693  0D01  318A  22E4  318C   	fcall	_EUSART_Write
+  4693  0D01  318A  22E3  318C   	fcall	_EUSART_Write
   4694                           
   4695                           ;displayOptions.c: 72:             EUSART_Write(128 + 0 + b) ;
   4696  0D04  0020               	movlb	0	; select bank0
   4697  0D05  0829               	movf	setCursor@b,w
   4698  0D06  3E80               	addlw	128
-  4699  0D07  318A  22E4         	fcall	_EUSART_Write
+  4699  0D07  318A  22E3         	fcall	_EUSART_Write
   4700                           
   4701                           ;displayOptions.c: 73:             break ;
   4702  0D09  0008               	return
@@ -4728,13 +4728,13 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   4704                           
   4705                           ;displayOptions.c: 76:         {;displayOptions.c: 77:            EUSART_Write( 254 );
   4706  0D0A  30FE               	movlw	254
-  4707  0D0B  318A  22E4  318C   	fcall	_EUSART_Write
+  4707  0D0B  318A  22E3  318C   	fcall	_EUSART_Write
   4708                           
   4709                           ;displayOptions.c: 78:            EUSART_Write(128 + 64 + b) ;
   4710  0D0E  0020               	movlb	0	; select bank0
   4711  0D0F  0829               	movf	setCursor@b,w
   4712  0D10  3EC0               	addlw	192
-  4713  0D11  318A  22E4         	fcall	_EUSART_Write
+  4713  0D11  318A  22E3         	fcall	_EUSART_Write
   4714                           
   4715                           ;displayOptions.c: 79:            break ;
   4716  0D13  0008               	return
@@ -4742,13 +4742,13 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   4718                           
   4719                           ;displayOptions.c: 82:         {;displayOptions.c: 83:             EUSART_Write( 254 );
   4720  0D14  30FE               	movlw	254
-  4721  0D15  318A  22E4  318C   	fcall	_EUSART_Write
+  4721  0D15  318A  22E3  318C   	fcall	_EUSART_Write
   4722                           
   4723                           ;displayOptions.c: 84:             EUSART_Write(128 + 20 + b) ;
   4724  0D18  0020               	movlb	0	; select bank0
   4725  0D19  0829               	movf	setCursor@b,w
   4726  0D1A  3E94               	addlw	148
-  4727  0D1B  318A  22E4         	fcall	_EUSART_Write
+  4727  0D1B  318A  22E3         	fcall	_EUSART_Write
   4728                           
   4729                           ;displayOptions.c: 85:             break ;
   4730  0D1D  0008               	return
@@ -4756,13 +4756,13 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   4732                           
   4733                           ;displayOptions.c: 88:         {;displayOptions.c: 89:             EUSART_Write( 254 );
   4734  0D1E  30FE               	movlw	254
-  4735  0D1F  318A  22E4  318C   	fcall	_EUSART_Write
+  4735  0D1F  318A  22E3  318C   	fcall	_EUSART_Write
   4736                           
   4737                           ;displayOptions.c: 90:             EUSART_Write(128 + 84 + b) ;
   4738  0D22  0020               	movlb	0	; select bank0
   4739  0D23  0829               	movf	setCursor@b,w
   4740  0D24  3ED4               	addlw	212
-  4741  0D25  318A  22E4         	fcall	_EUSART_Write
+  4741  0D25  318A  22E3         	fcall	_EUSART_Write
   4742                           
   4743                           ;displayOptions.c: 91:             break ;
   4744  0D27  0008               	return
@@ -4815,7 +4815,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   4790  0D3F                     __end_of_setCursor:	
   4791                           
   4792                           	psect	text2
-  4793  0AEC                     __ptext2:	
+  4793  0AEB                     __ptext2:	
   4794 ;; *************** function _resetCursor *****************
   4795 ;; Defined at:
   4796 ;;		line 54 in file "displayOptions.c"
@@ -4853,20 +4853,20 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   4823                           
   4824                           
   4825                           ;psect for function _resetCursor
-  4826  0AEC                     _resetCursor:	
+  4826  0AEB                     _resetCursor:	
   4827                           
   4828                           ;displayOptions.c: 55:     puts("|-");
   4829                           
   4830                           ;incstack = 0
   4831                           ; Regs used in _resetCursor: [wreg-fsr1h+status,2+status,0+pclath+cstack]
-  4832  0AEC  3026               	movlw	low (STR_2| (0+32768))
-  4833  0AED  0020               	movlb	0	; select bank0
-  4834  0AEE  00BB               	movwf	puts@s
-  4835  0AEF  3090               	movlw	high (STR_2| (0+32768))
-  4836  0AF0  00BC               	movwf	puts@s+1
-  4837  0AF1  3187  27E2         	fcall	_puts
-  4838  0AF3  0008               	return
-  4839  0AF4                     __end_of_resetCursor:	
+  4832  0AEB  3026               	movlw	low (STR_2| (0+32768))
+  4833  0AEC  0020               	movlb	0	; select bank0
+  4834  0AED  00BB               	movwf	puts@s
+  4835  0AEE  3090               	movlw	high (STR_2| (0+32768))
+  4836  0AEF  00BC               	movwf	puts@s+1
+  4837  0AF0  3187  27E2         	fcall	_puts
+  4838  0AF2  0008               	return
+  4839  0AF3                     __end_of_resetCursor:	
   4840                           
   4841                           	psect	text3
   4842  07E2                     __ptext3:	
@@ -4922,7 +4922,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   4887  07E7  083B               	movf	puts@s,w
   4888  07E8  00B2               	movwf	fputs@s
   4889  07E9  01B4               	clrf	fputs@fp
-  4890  07EA  318B  23FE  3187   	fcall	_fputs
+  4890  07EA  318B  23FD  3187   	fcall	_fputs
   4891  07ED  0020               	movlb	0	; select bank0
   4892  07EE  1BB3               	btfsc	?_fputs+1,7
   4893  07EF  0008               	return
@@ -4940,7 +4940,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   4905  07FD                     __end_of_puts:	
   4906                           
   4907                           	psect	text4
-  4908  0B73                     __ptext4:	
+  4908  0B72                     __ptext4:	
   4909 ;; *************** function _printf *****************
   4910 ;; Defined at:
   4911 ;;		line 5 in file "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\printf.c"
@@ -4982,34 +4982,34 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   4942                           
   4943                           
   4944                           ;psect for function _printf
-  4945  0B73                     _printf:	
+  4945  0B72                     _printf:	
   4946                           
   4947                           ;incstack = 0
   4948                           ; Regs used in _printf: [wreg-fsr1h+status,2+status,0+pclath+cstack]
-  4949  0B73  304E               	movlw	(low ((?_printf| (0+256)+2)))& (0+255)
-  4950  0B74  0021               	movlb	1	; select bank1
-  4951  0B75  00E9               	movwf	??_printf^(0+128)
-  4952  0B76  0869               	movf	??_printf^(0+128),w
-  4953  0B77  0022               	movlb	2	; select bank2
-  4954  0B78  00D2               	movwf	printf@ap^(0+256)
-  4955  0B79  084D               	movf	(printf@fmt+1)^(0+256),w
-  4956  0B7A  0021               	movlb	1	; select bank1
-  4957  0B7B  00E2               	movwf	(vfprintf@fmt+1)^(0+128)
-  4958  0B7C  0022               	movlb	2	; select bank2
-  4959  0B7D  084C               	movf	printf@fmt^(0+256),w
-  4960  0B7E  0021               	movlb	1	; select bank1
-  4961  0B7F  00E1               	movwf	vfprintf@fmt^(0+128)
-  4962  0B80  3052               	movlw	(low (printf@ap| (0+256)))& (0+255)
-  4963  0B81  00E9               	movwf	??_printf^(0+128)
-  4964  0B82  0869               	movf	??_printf^(0+128),w
-  4965  0B83  00E3               	movwf	vfprintf@ap^(0+128)
-  4966  0B84  3000               	movlw	0
-  4967  0B85  318C  2427         	fcall	_vfprintf
-  4968  0B87  0008               	return
-  4969  0B88                     __end_of_printf:	
+  4949  0B72  304E               	movlw	(low ((?_printf| (0+256)+2)))& (0+255)
+  4950  0B73  0021               	movlb	1	; select bank1
+  4951  0B74  00E9               	movwf	??_printf^(0+128)
+  4952  0B75  0869               	movf	??_printf^(0+128),w
+  4953  0B76  0022               	movlb	2	; select bank2
+  4954  0B77  00D2               	movwf	printf@ap^(0+256)
+  4955  0B78  084D               	movf	(printf@fmt+1)^(0+256),w
+  4956  0B79  0021               	movlb	1	; select bank1
+  4957  0B7A  00E2               	movwf	(vfprintf@fmt+1)^(0+128)
+  4958  0B7B  0022               	movlb	2	; select bank2
+  4959  0B7C  084C               	movf	printf@fmt^(0+256),w
+  4960  0B7D  0021               	movlb	1	; select bank1
+  4961  0B7E  00E1               	movwf	vfprintf@fmt^(0+128)
+  4962  0B7F  3052               	movlw	(low (printf@ap| (0+256)))& (0+255)
+  4963  0B80  00E9               	movwf	??_printf^(0+128)
+  4964  0B81  0869               	movf	??_printf^(0+128),w
+  4965  0B82  00E3               	movwf	vfprintf@ap^(0+128)
+  4966  0B83  3000               	movlw	0
+  4967  0B84  318C  2426         	fcall	_vfprintf
+  4968  0B86  0008               	return
+  4969  0B87                     __end_of_printf:	
   4970                           
   4971                           	psect	text5
-  4972  0C27                     __ptext5:	
+  4972  0C26                     __ptext5:	
   4973 ;; *************** function _vfprintf *****************
   4974 ;; Defined at:
   4975 ;;		line 1368 in file "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c"
@@ -5055,78 +5055,78 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   5010                           
   5011                           
   5012                           ;psect for function _vfprintf
-  5013  0C27                     _vfprintf:	
+  5013  0C26                     _vfprintf:	
   5014                           
   5015                           ;incstack = 0
   5016                           ; Regs used in _vfprintf: [wreg-fsr1h+status,2+status,0+pclath+cstack]
   5017                           ;vfprintf@fp stored from wreg
-  5018  0C27  0021               	movlb	1	; select bank1
-  5019  0C28  00E6               	movwf	vfprintf@fp^(0+128)
+  5018  0C26  0021               	movlb	1	; select bank1
+  5019  0C27  00E6               	movwf	vfprintf@fp^(0+128)
   5020                           
   5021                           ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c: 1368: int v
       +                          fprintf(FILE *fp, const char *fmt, va_list ap);C:\Program Files (x86)\Microchip\xc8\v2.0
       +                          5\pic\sources\c99\common\doprnt.c: 1369: {;C:\Program Files (x86)\Microchip\xc8\v2.05\pi
       +                          c\sources\c99\common\doprnt.c: 1371:     char *cfmt;;C:\Program Files (x86)\Microchip\xc
       +                          8\v2.05\pic\sources\c99\common\doprnt.c: 1373:     cfmt = (char *)fmt;
-  5022  0C29  0862               	movf	(vfprintf@fmt+1)^(0+128),w
-  5023  0C2A  00E8               	movwf	(vfprintf@cfmt+1)^(0+128)
-  5024  0C2B  0861               	movf	vfprintf@fmt^(0+128),w
-  5025  0C2C  00E7               	movwf	vfprintf@cfmt^(0+128)
+  5022  0C28  0862               	movf	(vfprintf@fmt+1)^(0+128),w
+  5023  0C29  00E8               	movwf	(vfprintf@cfmt+1)^(0+128)
+  5024  0C2A  0861               	movf	vfprintf@fmt^(0+128),w
+  5025  0C2B  00E7               	movwf	vfprintf@cfmt^(0+128)
   5026                           
   5027                           ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c: 1374:     n
       +                          out = 0;
-  5028  0C2D  01C8               	clrf	_nout^(0+128)
-  5029  0C2E  01C9               	clrf	(_nout+1)^(0+128)
-  5030  0C2F                     l3312:	
+  5028  0C2C  01C8               	clrf	_nout^(0+128)
+  5029  0C2D  01C9               	clrf	(_nout+1)^(0+128)
+  5030  0C2E                     l3312:	
   5031                           ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c: 1375:     w
       +                          hile (*cfmt) {
   5032                           
   5033                           
   5034                           ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c: 1375:     w
       +                          hile (*cfmt) {
-  5035  0C2F  0867               	movf	vfprintf@cfmt^(0+128),w
-  5036  0C30  0084               	movwf	4
-  5037  0C31  0868               	movf	(vfprintf@cfmt+1)^(0+128),w
-  5038  0C32  0085               	movwf	5
-  5039  0C33  0012               	moviw fsr0++
-  5040  0C34  1903               	btfsc	3,2
-  5041  0C35  2C4F               	goto	l3314
+  5035  0C2E  0867               	movf	vfprintf@cfmt^(0+128),w
+  5036  0C2F  0084               	movwf	4
+  5037  0C30  0868               	movf	(vfprintf@cfmt+1)^(0+128),w
+  5038  0C31  0085               	movwf	5
+  5039  0C32  0012               	moviw fsr0++
+  5040  0C33  1903               	btfsc	3,2
+  5041  0C34  2C4E               	goto	l3314
   5042                           
   5043                           ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c: 1376:      
       +                             nout += vfpfcnvrt(fp, &cfmt, ap);
-  5044  0C36  30E7               	movlw	(low (vfprintf@cfmt| 0))& (0+255)
-  5045  0C37  00E4               	movwf	??_vfprintf^(0+128)
-  5046  0C38  0864               	movf	??_vfprintf^(0+128),w
-  5047  0C39  0020               	movlb	0	; select bank0
-  5048  0C3A  00CF               	movwf	vfpfcnvrt@fmt
-  5049  0C3B  0021               	movlb	1	; select bank1
-  5050  0C3C  0863               	movf	vfprintf@ap^(0+128),w
-  5051  0C3D  00E5               	movwf	(??_vfprintf+1)^(0+128)
-  5052  0C3E  0865               	movf	(??_vfprintf+1)^(0+128),w
-  5053  0C3F  0020               	movlb	0	; select bank0
-  5054  0C40  00D0               	movwf	vfpfcnvrt@ap
-  5055  0C41  0021               	movlb	1	; select bank1
-  5056  0C42  0866               	movf	vfprintf@fp^(0+128),w
-  5057  0C43  3185  25EA  318C   	fcall	_vfpfcnvrt
-  5058  0C46  0020               	movlb	0	; select bank0
-  5059  0C47  084F               	movf	?_vfpfcnvrt,w
-  5060  0C48  0021               	movlb	1	; select bank1
-  5061  0C49  07C8               	addwf	_nout^(0+128),f
-  5062  0C4A  0020               	movlb	0	; select bank0
-  5063  0C4B  0850               	movf	?_vfpfcnvrt+1,w
-  5064  0C4C  0021               	movlb	1	; select bank1
-  5065  0C4D  3DC9               	addwfc	(_nout+1)^(0+128),f
-  5066  0C4E  2C2F               	goto	l3312
-  5067  0C4F                     l3314:	
+  5044  0C35  30E7               	movlw	(low (vfprintf@cfmt| 0))& (0+255)
+  5045  0C36  00E4               	movwf	??_vfprintf^(0+128)
+  5046  0C37  0864               	movf	??_vfprintf^(0+128),w
+  5047  0C38  0020               	movlb	0	; select bank0
+  5048  0C39  00CF               	movwf	vfpfcnvrt@fmt
+  5049  0C3A  0021               	movlb	1	; select bank1
+  5050  0C3B  0863               	movf	vfprintf@ap^(0+128),w
+  5051  0C3C  00E5               	movwf	(??_vfprintf+1)^(0+128)
+  5052  0C3D  0865               	movf	(??_vfprintf+1)^(0+128),w
+  5053  0C3E  0020               	movlb	0	; select bank0
+  5054  0C3F  00D0               	movwf	vfpfcnvrt@ap
+  5055  0C40  0021               	movlb	1	; select bank1
+  5056  0C41  0866               	movf	vfprintf@fp^(0+128),w
+  5057  0C42  3185  25EA  318C   	fcall	_vfpfcnvrt
+  5058  0C45  0020               	movlb	0	; select bank0
+  5059  0C46  084F               	movf	?_vfpfcnvrt,w
+  5060  0C47  0021               	movlb	1	; select bank1
+  5061  0C48  07C8               	addwf	_nout^(0+128),f
+  5062  0C49  0020               	movlb	0	; select bank0
+  5063  0C4A  0850               	movf	?_vfpfcnvrt+1,w
+  5064  0C4B  0021               	movlb	1	; select bank1
+  5065  0C4C  3DC9               	addwfc	(_nout+1)^(0+128),f
+  5066  0C4D  2C2E               	goto	l3312
+  5067  0C4E                     l3314:	
   5068                           
   5069                           ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c: 1378:     r
       +                          eturn nout;
-  5070  0C4F  0849               	movf	(_nout+1)^(0+128),w
-  5071  0C50  00E2               	movwf	(?_vfprintf+1)^(0+128)
-  5072  0C51  0848               	movf	_nout^(0+128),w
-  5073  0C52  00E1               	movwf	?_vfprintf^(0+128)
-  5074  0C53  0008               	return
-  5075  0C54                     __end_of_vfprintf:	
+  5070  0C4E  0849               	movf	(_nout+1)^(0+128),w
+  5071  0C4F  00E2               	movwf	(?_vfprintf+1)^(0+128)
+  5072  0C50  0848               	movf	_nout^(0+128),w
+  5073  0C51  00E1               	movwf	?_vfprintf^(0+128)
+  5074  0C52  0008               	return
+  5075  0C53                     __end_of_vfprintf:	
   5076                           
   5077                           	psect	text6
   5078  05EA                     __ptext6:	
@@ -5878,7 +5878,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   5771  0537  00BC               	movwf	abs@a+1
   5772  0538  0828               	movf	?___aomod,w
   5773  0539  00BB               	movwf	abs@a
-  5774  053A  318B  2388  3184   	fcall	_abs
+  5774  053A  318B  2387  3184   	fcall	_abs
   5775  053D  0020               	movlb	0	; select bank0
   5776  053E  083B               	movf	?_abs,w
   5777  053F  3E30               	addlw	48
@@ -6158,7 +6158,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   6033  0D48  00BE               	movwf	??_pad
   6034  0D49  083E               	movf	??_pad,w
   6035  0D4A  00B4               	movwf	fputs@fp
-  6036  0D4B  318B  23FE  318D   	fcall	_fputs
+  6036  0D4B  318B  23FD  318D   	fcall	_fputs
   6037  0D4E                     l3090:	
   6038                           
   6039                           ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c: 82:     w =
@@ -6240,14 +6240,14 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   6107  0D80  00BE               	movwf	??_pad
   6108  0D81  083E               	movf	??_pad,w
   6109  0D82  00B4               	movwf	fputs@fp
-  6110  0D83  318B  23FE  318D   	fcall	_fputs
+  6110  0D83  318B  23FD  318D   	fcall	_fputs
   6111  0D86                     l3104:	
   6112                           
   6113                           ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c: 94:     ret
       +                          urn strlen(buf) + w;
   6114  0D86  0020               	movlb	0	; select bank0
   6115  0D87  083B               	movf	pad@buf,w
-  6116  0D88  318B  23A1         	fcall	_strlen
+  6116  0D88  318B  23A0         	fcall	_strlen
   6117  0D8A  0020               	movlb	0	; select bank0
   6118  0D8B  0841               	movf	pad@w,w
   6119  0D8C  0728               	addwf	?_strlen,w
@@ -6259,7 +6259,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   6125  0D92                     __end_of_pad:	
   6126                           
   6127                           	psect	text9
-  6128  0BA1                     __ptext9:	
+  6128  0BA0                     __ptext9:	
   6129 ;; *************** function _strlen *****************
   6130 ;; Defined at:
   6131 ;;		line 12 in file "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\strlen.c"
@@ -6301,42 +6301,42 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   6162                           
   6163                           
   6164                           ;psect for function _strlen
-  6165  0BA1                     _strlen:	
+  6165  0BA0                     _strlen:	
   6166                           
   6167                           ;incstack = 0
   6168                           ; Regs used in _strlen: [wreg+fsr1l+fsr1h+status,2+status,0]
   6169                           ;strlen@s stored from wreg
-  6170  0BA1  0020               	movlb	0	; select bank0
-  6171  0BA2  00AC               	movwf	strlen@s
-  6172  0BA3  082C               	movf	strlen@s,w
-  6173  0BA4  00AA               	movwf	??_strlen
-  6174  0BA5  082A               	movf	??_strlen,w
-  6175  0BA6  00AB               	movwf	strlen@a
-  6176  0BA7                     l3080:	
-  6177  0BA7  082C               	movf	strlen@s,w
-  6178  0BA8  0086               	movwf	6
-  6179  0BA9  3001               	movlw	1	; select bank2/3
-  6180  0BAA  0087               	movwf	7
-  6181  0BAB  0801               	movf	1,w
-  6182  0BAC  1903               	btfsc	3,2
-  6183  0BAD  2BB3               	goto	l3082
-  6184  0BAE  3001               	movlw	1
-  6185  0BAF  00AA               	movwf	??_strlen
-  6186  0BB0  082A               	movf	??_strlen,w
-  6187  0BB1  07AC               	addwf	strlen@s,f
-  6188  0BB2  2BA7               	goto	l3080
-  6189  0BB3                     l3082:	
-  6190  0BB3  082B               	movf	strlen@a,w
-  6191  0BB4  022C               	subwf	strlen@s,w
-  6192  0BB5  00A8               	movwf	?_strlen
-  6193  0BB6  01A9               	clrf	?_strlen+1
-  6194  0BB7  1BA8               	btfsc	?_strlen,7
-  6195  0BB8  03A9               	decf	?_strlen+1,f
-  6196  0BB9  0008               	return
-  6197  0BBA                     __end_of_strlen:	
+  6170  0BA0  0020               	movlb	0	; select bank0
+  6171  0BA1  00AC               	movwf	strlen@s
+  6172  0BA2  082C               	movf	strlen@s,w
+  6173  0BA3  00AA               	movwf	??_strlen
+  6174  0BA4  082A               	movf	??_strlen,w
+  6175  0BA5  00AB               	movwf	strlen@a
+  6176  0BA6                     l3080:	
+  6177  0BA6  082C               	movf	strlen@s,w
+  6178  0BA7  0086               	movwf	6
+  6179  0BA8  3001               	movlw	1	; select bank2/3
+  6180  0BA9  0087               	movwf	7
+  6181  0BAA  0801               	movf	1,w
+  6182  0BAB  1903               	btfsc	3,2
+  6183  0BAC  2BB2               	goto	l3082
+  6184  0BAD  3001               	movlw	1
+  6185  0BAE  00AA               	movwf	??_strlen
+  6186  0BAF  082A               	movf	??_strlen,w
+  6187  0BB0  07AC               	addwf	strlen@s,f
+  6188  0BB1  2BA6               	goto	l3080
+  6189  0BB2                     l3082:	
+  6190  0BB2  082B               	movf	strlen@a,w
+  6191  0BB3  022C               	subwf	strlen@s,w
+  6192  0BB4  00A8               	movwf	?_strlen
+  6193  0BB5  01A9               	clrf	?_strlen+1
+  6194  0BB6  1BA8               	btfsc	?_strlen,7
+  6195  0BB7  03A9               	decf	?_strlen+1,f
+  6196  0BB8  0008               	return
+  6197  0BB9                     __end_of_strlen:	
   6198                           
   6199                           	psect	text10
-  6200  0BFE                     __ptext10:	
+  6200  0BFD                     __ptext10:	
   6201 ;; *************** function _fputs *****************
   6202 ;; Defined at:
   6203 ;;		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputs.c"
@@ -6379,52 +6379,52 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   6235                           
   6236                           
   6237                           ;psect for function _fputs
-  6238  0BFE                     _fputs:	
+  6238  0BFD                     _fputs:	
   6239                           
   6240                           ;incstack = 0
   6241                           ; Regs used in _fputs: [wreg-fsr1h+status,2+status,0+pclath+cstack]
-  6242  0BFE  0020               	movlb	0	; select bank0
-  6243  0BFF  01B9               	clrf	fputs@i
-  6244  0C00  01BA               	clrf	fputs@i+1
-  6245  0C01                     l3070:	
-  6246  0C01  0832               	movf	fputs@s,w
-  6247  0C02  0739               	addwf	fputs@i,w
-  6248  0C03  0084               	movwf	4
-  6249  0C04  0833               	movf	fputs@s+1,w
-  6250  0C05  3D3A               	addwfc	fputs@i+1,w
-  6251  0C06  0085               	movwf	5
-  6252  0C07  0800               	movf	0,w	;code access
-  6253  0C08  00B5               	movwf	??_fputs
-  6254  0C09  0835               	movf	??_fputs,w
-  6255  0C0A  00B8               	movwf	fputs@c
-  6256  0C0B  0838               	movf	fputs@c,w
-  6257  0C0C  1903               	btfsc	3,2
-  6258  0C0D  2C22               	goto	l3072
-  6259  0C0E  0838               	movf	fputs@c,w
-  6260  0C0F  00B5               	movwf	??_fputs
-  6261  0C10  01B6               	clrf	??_fputs+1
-  6262  0C11  0835               	movf	??_fputs,w
-  6263  0C12  00AA               	movwf	fputc@c
-  6264  0C13  0836               	movf	??_fputs+1,w
-  6265  0C14  00AB               	movwf	fputc@c+1
-  6266  0C15  0834               	movf	fputs@fp,w
-  6267  0C16  00B7               	movwf	??_fputs+2
-  6268  0C17  0837               	movf	??_fputs+2,w
-  6269  0C18  00AC               	movwf	fputc@fp
-  6270  0C19  318C  24BD  318B   	fcall	_fputc
-  6271  0C1C  3001               	movlw	1
-  6272  0C1D  0020               	movlb	0	; select bank0
-  6273  0C1E  07B9               	addwf	fputs@i,f
-  6274  0C1F  3000               	movlw	0
-  6275  0C20  3DBA               	addwfc	fputs@i+1,f
-  6276  0C21  2C01               	goto	l3070
-  6277  0C22                     l3072:	
-  6278  0C22  083A               	movf	fputs@i+1,w
-  6279  0C23  00B3               	movwf	?_fputs+1
-  6280  0C24  0839               	movf	fputs@i,w
-  6281  0C25  00B2               	movwf	?_fputs
-  6282  0C26  0008               	return
-  6283  0C27                     __end_of_fputs:	
+  6242  0BFD  0020               	movlb	0	; select bank0
+  6243  0BFE  01B9               	clrf	fputs@i
+  6244  0BFF  01BA               	clrf	fputs@i+1
+  6245  0C00                     l3070:	
+  6246  0C00  0832               	movf	fputs@s,w
+  6247  0C01  0739               	addwf	fputs@i,w
+  6248  0C02  0084               	movwf	4
+  6249  0C03  0833               	movf	fputs@s+1,w
+  6250  0C04  3D3A               	addwfc	fputs@i+1,w
+  6251  0C05  0085               	movwf	5
+  6252  0C06  0800               	movf	0,w	;code access
+  6253  0C07  00B5               	movwf	??_fputs
+  6254  0C08  0835               	movf	??_fputs,w
+  6255  0C09  00B8               	movwf	fputs@c
+  6256  0C0A  0838               	movf	fputs@c,w
+  6257  0C0B  1903               	btfsc	3,2
+  6258  0C0C  2C21               	goto	l3072
+  6259  0C0D  0838               	movf	fputs@c,w
+  6260  0C0E  00B5               	movwf	??_fputs
+  6261  0C0F  01B6               	clrf	??_fputs+1
+  6262  0C10  0835               	movf	??_fputs,w
+  6263  0C11  00AA               	movwf	fputc@c
+  6264  0C12  0836               	movf	??_fputs+1,w
+  6265  0C13  00AB               	movwf	fputc@c+1
+  6266  0C14  0834               	movf	fputs@fp,w
+  6267  0C15  00B7               	movwf	??_fputs+2
+  6268  0C16  0837               	movf	??_fputs+2,w
+  6269  0C17  00AC               	movwf	fputc@fp
+  6270  0C18  318C  24BD  318B   	fcall	_fputc
+  6271  0C1B  3001               	movlw	1
+  6272  0C1C  0020               	movlb	0	; select bank0
+  6273  0C1D  07B9               	addwf	fputs@i,f
+  6274  0C1E  3000               	movlw	0
+  6275  0C1F  3DBA               	addwfc	fputs@i+1,f
+  6276  0C20  2C00               	goto	l3070
+  6277  0C21                     l3072:	
+  6278  0C21  083A               	movf	fputs@i+1,w
+  6279  0C22  00B3               	movwf	?_fputs+1
+  6280  0C23  0839               	movf	fputs@i,w
+  6281  0C24  00B2               	movwf	?_fputs
+  6282  0C25  0008               	return
+  6283  0C26                     __end_of_fputs:	
   6284                           
   6285                           	psect	text11
   6286  0CBD                     __ptext11:	
@@ -6481,7 +6481,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   6332  0CC1  1D03               	btfss	3,2
   6333  0CC2  2CC8               	goto	l3054
   6334  0CC3  082A               	movf	fputc@c,w
-  6335  0CC4  318A  22C9  318C   	fcall	_putch
+  6335  0CC4  318A  22C8  318C   	fcall	_putch
   6336  0CC7  2CF4               	goto	l3060
   6337  0CC8                     l3054:	
   6338  0CC8  082C               	movf	fputc@fp,w
@@ -6543,7 +6543,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   6394  0CFD                     __end_of_fputc:	
   6395                           
   6396                           	psect	text12
-  6397  0AC9                     __ptext12:	
+  6397  0AC8                     __ptext12:	
   6398 ;; *************** function _putch *****************
   6399 ;; Defined at:
   6400 ;;		line 151 in file "mcc_generated_files/eusart.c"
@@ -6581,23 +6581,23 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   6427                           
   6428                           
   6429                           ;psect for function _putch
-  6430  0AC9                     _putch:	
+  6430  0AC8                     _putch:	
   6431                           
   6432                           ;incstack = 0
   6433                           ; Regs used in _putch: [wreg+status,2+status,0+pclath+cstack]
   6434                           ;putch@txData stored from wreg
-  6435  0AC9  0020               	movlb	0	; select bank0
-  6436  0ACA  00A9               	movwf	putch@txData
+  6435  0AC8  0020               	movlb	0	; select bank0
+  6436  0AC9  00A9               	movwf	putch@txData
   6437                           
   6438                           ;mcc_generated_files/eusart.c: 151: void putch(char txData);mcc_generated_files/eusart.c
       +                          : 152: {;mcc_generated_files/eusart.c: 153:     EUSART_Write(txData);
-  6439  0ACB  0829               	movf	putch@txData,w
-  6440  0ACC  318A  22E4         	fcall	_EUSART_Write
-  6441  0ACE  0008               	return
-  6442  0ACF                     __end_of_putch:	
+  6439  0ACA  0829               	movf	putch@txData,w
+  6440  0ACB  318A  22E3         	fcall	_EUSART_Write
+  6441  0ACD  0008               	return
+  6442  0ACE                     __end_of_putch:	
   6443                           
   6444                           	psect	text13
-  6445  0AE4                     __ptext13:	
+  6445  0AE3                     __ptext13:	
   6446 ;; *************** function _EUSART_Write *****************
   6447 ;; Defined at:
   6448 ;;		line 137 in file "mcc_generated_files/eusart.c"
@@ -6637,30 +6637,30 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   6477                           
   6478                           
   6479                           ;psect for function _EUSART_Write
-  6480  0AE4                     _EUSART_Write:	
+  6480  0AE3                     _EUSART_Write:	
   6481                           
   6482                           ;incstack = 0
   6483                           ; Regs used in _EUSART_Write: [wreg]
   6484                           ;EUSART_Write@txData stored from wreg
-  6485  0AE4  0020               	movlb	0	; select bank0
-  6486  0AE5  00A8               	movwf	EUSART_Write@txData
-  6487  0AE6                     l69:	
+  6485  0AE3  0020               	movlb	0	; select bank0
+  6486  0AE4  00A8               	movwf	EUSART_Write@txData
+  6487  0AE5                     l69:	
   6488                           ;mcc_generated_files/eusart.c: 140:     {;mcc_generated_files/eusart.c: 141:     }
   6489                           
   6490                           
   6491                           ;mcc_generated_files/eusart.c: 139:     while(0 == PIR1bits.TXIF)
-  6492  0AE6  1E10               	btfss	16,4	;volatile
-  6493  0AE7  2AE6               	goto	l69
+  6492  0AE5  1E10               	btfss	16,4	;volatile
+  6493  0AE6  2AE5               	goto	l69
   6494                           
   6495                           ;mcc_generated_files/eusart.c: 143:     TX1REG = txData;
-  6496  0AE8  0828               	movf	EUSART_Write@txData,w
-  6497  0AE9  0023               	movlb	3	; select bank3
-  6498  0AEA  009A               	movwf	26	;volatile
-  6499  0AEB  0008               	return
-  6500  0AEC                     __end_of_EUSART_Write:	
+  6496  0AE7  0828               	movf	EUSART_Write@txData,w
+  6497  0AE8  0023               	movlb	3	; select bank3
+  6498  0AE9  009A               	movwf	26	;volatile
+  6499  0AEA  0008               	return
+  6500  0AEB                     __end_of_EUSART_Write:	
   6501                           
   6502                           	psect	text14
-  6503  0B88                     __ptext14:	
+  6503  0B87                     __ptext14:	
   6504 ;; *************** function _abs *****************
   6505 ;; Defined at:
   6506 ;;		line 1 in file "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\abs.c"
@@ -6698,37 +6698,37 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   6533                           
   6534                           
   6535                           ;psect for function _abs
-  6536  0B88                     _abs:	
+  6536  0B87                     _abs:	
   6537                           
   6538                           ;incstack = 0
   6539                           ; Regs used in _abs: [wreg+status,2+status,0]
-  6540  0B88  0020               	movlb	0	; select bank0
-  6541  0B89  083C               	movf	abs@a+1,w
-  6542  0B8A  3A80               	xorlw	128
-  6543  0B8B  00BD               	movwf	??_abs
-  6544  0B8C  3080               	movlw	128
-  6545  0B8D  023D               	subwf	??_abs,w
-  6546  0B8E  1D03               	skipz
-  6547  0B8F  2B92               	goto	u3495
-  6548  0B90  3001               	movlw	1
-  6549  0B91  023B               	subwf	abs@a,w
-  6550  0B92                     u3495:	
-  6551  0B92  1803               	skipnc
-  6552  0B93  0008               	return
-  6553  0B94  0020               	movlb	0	; select bank0
-  6554  0B95  093B               	comf	abs@a,w
-  6555  0B96  00BD               	movwf	??_abs
-  6556  0B97  093C               	comf	abs@a+1,w
-  6557  0B98  00BE               	movwf	??_abs+1
-  6558  0B99  0ABD               	incf	??_abs,f
-  6559  0B9A  1903               	skipnz
-  6560  0B9B  0ABE               	incf	??_abs+1,f
-  6561  0B9C  083D               	movf	??_abs,w
-  6562  0B9D  00BB               	movwf	?_abs
-  6563  0B9E  083E               	movf	??_abs+1,w
-  6564  0B9F  00BC               	movwf	?_abs+1
-  6565  0BA0  0008               	return
-  6566  0BA1                     __end_of_abs:	
+  6540  0B87  0020               	movlb	0	; select bank0
+  6541  0B88  083C               	movf	abs@a+1,w
+  6542  0B89  3A80               	xorlw	128
+  6543  0B8A  00BD               	movwf	??_abs
+  6544  0B8B  3080               	movlw	128
+  6545  0B8C  023D               	subwf	??_abs,w
+  6546  0B8D  1D03               	skipz
+  6547  0B8E  2B91               	goto	u3495
+  6548  0B8F  3001               	movlw	1
+  6549  0B90  023B               	subwf	abs@a,w
+  6550  0B91                     u3495:	
+  6551  0B91  1803               	skipnc
+  6552  0B92  0008               	return
+  6553  0B93  0020               	movlb	0	; select bank0
+  6554  0B94  093B               	comf	abs@a,w
+  6555  0B95  00BD               	movwf	??_abs
+  6556  0B96  093C               	comf	abs@a+1,w
+  6557  0B97  00BE               	movwf	??_abs+1
+  6558  0B98  0ABD               	incf	??_abs,f
+  6559  0B99  1903               	skipnz
+  6560  0B9A  0ABE               	incf	??_abs+1,f
+  6561  0B9B  083D               	movf	??_abs,w
+  6562  0B9C  00BB               	movwf	?_abs
+  6563  0B9D  083E               	movf	??_abs+1,w
+  6564  0B9E  00BC               	movwf	?_abs+1
+  6565  0B9F  0008               	return
+  6566  0BA0                     __end_of_abs:	
   6567                           
   6568                           	psect	text15
   6569  0F21                     __ptext15:	
@@ -7832,7 +7832,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   7642  008A  083E               	movf	??___flmul,w
   7643  008B  00A8               	movwf	__Umul8_16@multiplicand
   7644  008C  083C               	movf	___flmul@a+2,w
-  7645  008D  318B  23BA  3180   	fcall	__Umul8_16
+  7645  008D  318B  23B9  3180   	fcall	__Umul8_16
   7646  0090  0020               	movlb	0	; select bank0
   7647  0091  0829               	movf	?__Umul8_16+1,w
   7648  0092  00CF               	movwf	___flmul@temp+1
@@ -7869,7 +7869,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   7679  00B1  083E               	movf	??___flmul,w
   7680  00B2  00A8               	movwf	__Umul8_16@multiplicand
   7681  00B3  083B               	movf	___flmul@a+1,w
-  7682  00B4  318B  23BA  3180   	fcall	__Umul8_16
+  7682  00B4  318B  23B9  3180   	fcall	__Umul8_16
   7683  00B7  0020               	movlb	0	; select bank0
   7684  00B8  0829               	movf	?__Umul8_16+1,w
   7685  00B9  00CF               	movwf	___flmul@temp+1
@@ -7906,7 +7906,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   7716  00D8  083E               	movf	??___flmul,w
   7717  00D9  00A8               	movwf	__Umul8_16@multiplicand
   7718  00DA  083A               	movf	___flmul@a,w
-  7719  00DB  318B  23BA  3180   	fcall	__Umul8_16
+  7719  00DB  318B  23B9  3180   	fcall	__Umul8_16
   7720  00DE  0020               	movlb	0	; select bank0
   7721  00DF  0829               	movf	?__Umul8_16+1,w
   7722  00E0  00CF               	movwf	___flmul@temp+1
@@ -7951,7 +7951,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   7761  0106  083E               	movf	??___flmul,w
   7762  0107  00A8               	movwf	__Umul8_16@multiplicand
   7763  0108  083A               	movf	___flmul@a,w
-  7764  0109  318B  23BA  3180   	fcall	__Umul8_16
+  7764  0109  318B  23B9  3180   	fcall	__Umul8_16
   7765  010C  0020               	movlb	0	; select bank0
   7766  010D  0829               	movf	?__Umul8_16+1,w
   7767  010E  00CF               	movwf	___flmul@temp+1
@@ -7969,7 +7969,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   7779  011A  083E               	movf	??___flmul,w
   7780  011B  00A8               	movwf	__Umul8_16@multiplicand
   7781  011C  083B               	movf	___flmul@a+1,w
-  7782  011D  318B  23BA  3180   	fcall	__Umul8_16
+  7782  011D  318B  23B9  3180   	fcall	__Umul8_16
   7783  0120  0020               	movlb	0	; select bank0
   7784  0121  0829               	movf	?__Umul8_16+1,w
   7785  0122  00CF               	movwf	___flmul@temp+1
@@ -7995,7 +7995,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   7805  0135  083E               	movf	??___flmul,w
   7806  0136  00A8               	movwf	__Umul8_16@multiplicand
   7807  0137  083A               	movf	___flmul@a,w
-  7808  0138  318B  23BA  3180   	fcall	__Umul8_16
+  7808  0138  318B  23B9  3180   	fcall	__Umul8_16
   7809  013B  0020               	movlb	0	; select bank0
   7810  013C  0829               	movf	?__Umul8_16+1,w
   7811  013D  00CF               	movwf	___flmul@temp+1
@@ -8013,7 +8013,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   7823  0149  083E               	movf	??___flmul,w
   7824  014A  00A8               	movwf	__Umul8_16@multiplicand
   7825  014B  083C               	movf	___flmul@a+2,w
-  7826  014C  318B  23BA  3180   	fcall	__Umul8_16
+  7826  014C  318B  23B9  3180   	fcall	__Umul8_16
   7827  014F  0020               	movlb	0	; select bank0
   7828  0150  0829               	movf	?__Umul8_16+1,w
   7829  0151  00CF               	movwf	___flmul@temp+1
@@ -8031,7 +8031,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   7841  015D  083E               	movf	??___flmul,w
   7842  015E  00A8               	movwf	__Umul8_16@multiplicand
   7843  015F  083B               	movf	___flmul@a+1,w
-  7844  0160  318B  23BA  3180   	fcall	__Umul8_16
+  7844  0160  318B  23B9  3180   	fcall	__Umul8_16
   7845  0163  0020               	movlb	0	; select bank0
   7846  0164  0829               	movf	?__Umul8_16+1,w
   7847  0165  00CF               	movwf	___flmul@temp+1
@@ -8049,7 +8049,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   7859  0171  083E               	movf	??___flmul,w
   7860  0172  00A8               	movwf	__Umul8_16@multiplicand
   7861  0173  083C               	movf	___flmul@a+2,w
-  7862  0174  318B  23BA  3180   	fcall	__Umul8_16
+  7862  0174  318B  23B9  3180   	fcall	__Umul8_16
   7863  0177  0020               	movlb	0	; select bank0
   7864  0178  0829               	movf	?__Umul8_16+1,w
   7865  0179  00CF               	movwf	___flmul@temp+1
@@ -8301,7 +8301,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8111  025F                     __end_of___flmul:	
   8112                           
   8113                           	psect	text20
-  8114  0BBA                     __ptext20:	
+  8114  0BB9                     __ptext20:	
   8115 ;; *************** function __Umul8_16 *****************
   8116 ;; Defined at:
   8117 ;;		line 4 in file "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul8_16.c"
@@ -8342,50 +8342,50 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8147                           
   8148                           
   8149                           ;psect for function __Umul8_16
-  8150  0BBA                     __Umul8_16:	
+  8150  0BB9                     __Umul8_16:	
   8151                           
   8152                           ;incstack = 0
   8153                           ; Regs used in __Umul8_16: [wreg+status,2+status,0]
   8154                           ;__Umul8_16@multiplier stored from wreg
-  8155  0BBA  0020               	movlb	0	; select bank0
-  8156  0BBB  00B0               	movwf	__Umul8_16@multiplier
-  8157  0BBC  01AC               	clrf	__Umul8_16@product
-  8158  0BBD  01AD               	clrf	__Umul8_16@product+1
-  8159  0BBE  0828               	movf	__Umul8_16@multiplicand,w
-  8160  0BBF  00AA               	movwf	??__Umul8_16
-  8161  0BC0  01AB               	clrf	??__Umul8_16+1
-  8162  0BC1  082A               	movf	??__Umul8_16,w
-  8163  0BC2  00AE               	movwf	__Umul8_16@word_mpld
-  8164  0BC3  082B               	movf	??__Umul8_16+1,w
-  8165  0BC4  00AF               	movwf	__Umul8_16@word_mpld+1
-  8166  0BC5                     l2652:	
-  8167  0BC5  1C30               	btfss	__Umul8_16@multiplier,0
-  8168  0BC6  2BCB               	goto	l1046
-  8169  0BC7  082E               	movf	__Umul8_16@word_mpld,w
-  8170  0BC8  07AC               	addwf	__Umul8_16@product,f
-  8171  0BC9  082F               	movf	__Umul8_16@word_mpld+1,w
-  8172  0BCA  3DAD               	addwfc	__Umul8_16@product+1,f
-  8173  0BCB                     l1046:	
-  8174  0BCB  3001               	movlw	1
-  8175  0BCC                     u2745:	
-  8176  0BCC  35AE               	lslf	__Umul8_16@word_mpld,f
-  8177  0BCD  0DAF               	rlf	__Umul8_16@word_mpld+1,f
-  8178  0BCE  0B89               	decfsz	9,f
-  8179  0BCF  2BCC               	goto	u2745
-  8180  0BD0  1003               	clrc
-  8181  0BD1  0CB0               	rrf	__Umul8_16@multiplier,f
-  8182  0BD2  0830               	movf	__Umul8_16@multiplier,w
-  8183  0BD3  1D03               	btfss	3,2
-  8184  0BD4  2BC5               	goto	l2652
-  8185  0BD5  082D               	movf	__Umul8_16@product+1,w
-  8186  0BD6  00A9               	movwf	?__Umul8_16+1
-  8187  0BD7  082C               	movf	__Umul8_16@product,w
-  8188  0BD8  00A8               	movwf	?__Umul8_16
-  8189  0BD9  0008               	return
-  8190  0BDA                     __end_of__Umul8_16:	
+  8155  0BB9  0020               	movlb	0	; select bank0
+  8156  0BBA  00B0               	movwf	__Umul8_16@multiplier
+  8157  0BBB  01AC               	clrf	__Umul8_16@product
+  8158  0BBC  01AD               	clrf	__Umul8_16@product+1
+  8159  0BBD  0828               	movf	__Umul8_16@multiplicand,w
+  8160  0BBE  00AA               	movwf	??__Umul8_16
+  8161  0BBF  01AB               	clrf	??__Umul8_16+1
+  8162  0BC0  082A               	movf	??__Umul8_16,w
+  8163  0BC1  00AE               	movwf	__Umul8_16@word_mpld
+  8164  0BC2  082B               	movf	??__Umul8_16+1,w
+  8165  0BC3  00AF               	movwf	__Umul8_16@word_mpld+1
+  8166  0BC4                     l2652:	
+  8167  0BC4  1C30               	btfss	__Umul8_16@multiplier,0
+  8168  0BC5  2BCA               	goto	l1046
+  8169  0BC6  082E               	movf	__Umul8_16@word_mpld,w
+  8170  0BC7  07AC               	addwf	__Umul8_16@product,f
+  8171  0BC8  082F               	movf	__Umul8_16@word_mpld+1,w
+  8172  0BC9  3DAD               	addwfc	__Umul8_16@product+1,f
+  8173  0BCA                     l1046:	
+  8174  0BCA  3001               	movlw	1
+  8175  0BCB                     u2745:	
+  8176  0BCB  35AE               	lslf	__Umul8_16@word_mpld,f
+  8177  0BCC  0DAF               	rlf	__Umul8_16@word_mpld+1,f
+  8178  0BCD  0B89               	decfsz	9,f
+  8179  0BCE  2BCB               	goto	u2745
+  8180  0BCF  1003               	clrc
+  8181  0BD0  0CB0               	rrf	__Umul8_16@multiplier,f
+  8182  0BD1  0830               	movf	__Umul8_16@multiplier,w
+  8183  0BD2  1D03               	btfss	3,2
+  8184  0BD3  2BC4               	goto	l2652
+  8185  0BD4  082D               	movf	__Umul8_16@product+1,w
+  8186  0BD5  00A9               	movwf	?__Umul8_16+1
+  8187  0BD6  082C               	movf	__Umul8_16@product,w
+  8188  0BD7  00A8               	movwf	?__Umul8_16
+  8189  0BD8  0008               	return
+  8190  0BD9                     __end_of__Umul8_16:	
   8191                           
   8192                           	psect	text21
-  8193  0B3D                     __ptext21:	
+  8193  0B3C                     __ptext21:	
   8194 ;; *************** function _SYSTEM_Initialize *****************
   8195 ;; Defined at:
   8196 ;;		line 4 in file "mcc_generated_files/mcc.c"
@@ -8427,30 +8427,30 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8227                           
   8228                           
   8229                           ;psect for function _SYSTEM_Initialize
-  8230  0B3D                     _SYSTEM_Initialize:	
+  8230  0B3C                     _SYSTEM_Initialize:	
   8231                           
   8232                           ;mcc_generated_files/mcc.c: 6:     PIN_MANAGER_Initialize();
   8233                           
   8234                           ;incstack = 0
   8235                           ; Regs used in _SYSTEM_Initialize: [wreg+status,2+status,0+pclath+cstack]
-  8236  0B3D  318C  2485  318B   	fcall	_PIN_MANAGER_Initialize
+  8236  0B3C  318C  2485  318B   	fcall	_PIN_MANAGER_Initialize
   8237                           
   8238                           ;mcc_generated_files/mcc.c: 7:     OSCILLATOR_Initialize();
-  8239  0B40  318A  22D5  318B   	fcall	_OSCILLATOR_Initialize
+  8239  0B3F  318A  22D4  318B   	fcall	_OSCILLATOR_Initialize
   8240                           
   8241                           ;mcc_generated_files/mcc.c: 8:     ADC_Initialize();
-  8242  0B43  318A  22DC  318B   	fcall	_ADC_Initialize
+  8242  0B42  318A  22DB  318B   	fcall	_ADC_Initialize
   8243                           
   8244                           ;mcc_generated_files/mcc.c: 9:     TMR0_Initialize();
-  8245  0B46  318B  235E  318B   	fcall	_TMR0_Initialize
+  8245  0B45  318B  235D  318B   	fcall	_TMR0_Initialize
   8246                           
   8247                           ;mcc_generated_files/mcc.c: 10:     EUSART_Initialize();
-  8248  0B49  318B  23DA         	fcall	_EUSART_Initialize
-  8249  0B4B  0008               	return
-  8250  0B4C                     __end_of_SYSTEM_Initialize:	
+  8248  0B48  318B  23D9         	fcall	_EUSART_Initialize
+  8249  0B4A  0008               	return
+  8250  0B4B                     __end_of_SYSTEM_Initialize:	
   8251                           
   8252                           	psect	text22
-  8253  0B5E                     __ptext22:	
+  8253  0B5D                     __ptext22:	
   8254 ;; *************** function _TMR0_Initialize *****************
   8255 ;; Defined at:
   8256 ;;		line 18 in file "mcc_generated_files/tmr0.c"
@@ -8488,48 +8488,48 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8283                           
   8284                           
   8285                           ;psect for function _TMR0_Initialize
-  8286  0B5E                     _TMR0_Initialize:	
+  8286  0B5D                     _TMR0_Initialize:	
   8287                           
-  8288                           ;mcc_generated_files/tmr0.c: 23:     OPTION_REG = (uint8_t)((OPTION_REG & 0xC0) | (0xD1 
+  8288                           ;mcc_generated_files/tmr0.c: 23:     OPTION_REG = (uint8_t)((OPTION_REG & 0xC0) | (0xD7 
       +                          & 0x3F));
   8289                           
   8290                           ;incstack = 0
   8291                           ; Regs used in _TMR0_Initialize: [wreg+status,2+status,0+pclath+cstack]
-  8292  0B5E  0021               	movlb	1	; select bank1
-  8293  0B5F  0815               	movf	21,w	;volatile
-  8294  0B60  39C0               	andlw	192
-  8295  0B61  3811               	iorlw	17
-  8296  0B62  0095               	movwf	21	;volatile
+  8292  0B5D  0021               	movlb	1	; select bank1
+  8293  0B5E  0815               	movf	21,w	;volatile
+  8294  0B5F  39C0               	andlw	192
+  8295  0B60  3817               	iorlw	23
+  8296  0B61  0095               	movwf	21	;volatile
   8297                           
-  8298                           ;mcc_generated_files/tmr0.c: 26:     TMR0 = 0xE1;
-  8299  0B63  30E1               	movlw	225
-  8300  0B64  0020               	movlb	0	; select bank0
-  8301  0B65  0095               	movwf	21	;volatile
+  8298                           ;mcc_generated_files/tmr0.c: 26:     TMR0 = 0x0C;
+  8299  0B62  300C               	movlw	12
+  8300  0B63  0020               	movlb	0	; select bank0
+  8301  0B64  0095               	movwf	21	;volatile
   8302                           
-  8303                           ;mcc_generated_files/tmr0.c: 29:     timer0ReloadVal= 225;
-  8304  0B66  30E1               	movlw	225
-  8305  0B67  00AA               	movwf	??_TMR0_Initialize
-  8306  0B68  082A               	movf	??_TMR0_Initialize,w
-  8307  0B69  00E7               	movwf	_timer0ReloadVal	;volatile
+  8303                           ;mcc_generated_files/tmr0.c: 29:     timer0ReloadVal= 12;
+  8304  0B65  300C               	movlw	12
+  8305  0B66  00AA               	movwf	??_TMR0_Initialize
+  8306  0B67  082A               	movf	??_TMR0_Initialize,w
+  8307  0B68  00E7               	movwf	_timer0ReloadVal	;volatile
   8308                           
   8309                           ;mcc_generated_files/tmr0.c: 32:     INTCONbits.TMR0IF = 0;
-  8310  0B6A  110B               	bcf	11,2	;volatile
+  8310  0B69  110B               	bcf	11,2	;volatile
   8311                           
   8312                           ;mcc_generated_files/tmr0.c: 35:     INTCONbits.TMR0IE = 1;
-  8313  0B6B  168B               	bsf	11,5	;volatile
+  8313  0B6A  168B               	bsf	11,5	;volatile
   8314                           
   8315                           ;mcc_generated_files/tmr0.c: 38:     TMR0_SetInterruptHandler(TMR0_DefaultInterruptHandl
       +                          er);
-  8316  0B6C  30FD               	movlw	low _TMR0_DefaultInterruptHandler
-  8317  0B6D  00A8               	movwf	TMR0_SetInterruptHandler@InterruptHandler
-  8318  0B6E  3007               	movlw	high _TMR0_DefaultInterruptHandler
-  8319  0B6F  00A9               	movwf	TMR0_SetInterruptHandler@InterruptHandler+1
-  8320  0B70  318B  2318         	fcall	_TMR0_SetInterruptHandler
-  8321  0B72  0008               	return
-  8322  0B73                     __end_of_TMR0_Initialize:	
+  8316  0B6B  30FD               	movlw	low _TMR0_DefaultInterruptHandler
+  8317  0B6C  00A8               	movwf	TMR0_SetInterruptHandler@InterruptHandler
+  8318  0B6D  3007               	movlw	high _TMR0_DefaultInterruptHandler
+  8319  0B6E  00A9               	movwf	TMR0_SetInterruptHandler@InterruptHandler+1
+  8320  0B6F  318B  2317         	fcall	_TMR0_SetInterruptHandler
+  8321  0B71  0008               	return
+  8322  0B72                     __end_of_TMR0_Initialize:	
   8323                           
   8324                           	psect	text23
-  8325  0B18                     __ptext23:	
+  8325  0B17                     __ptext23:	
   8326 ;; *************** function _TMR0_SetInterruptHandler *****************
   8327 ;; Defined at:
   8328 ;;		line 79 in file "mcc_generated_files/tmr0.c"
@@ -8569,22 +8569,22 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8357                           
   8358                           
   8359                           ;psect for function _TMR0_SetInterruptHandler
-  8360  0B18                     _TMR0_SetInterruptHandler:	
+  8360  0B17                     _TMR0_SetInterruptHandler:	
   8361                           
   8362                           ;mcc_generated_files/tmr0.c: 80:     TMR0_InterruptHandler = InterruptHandler;
   8363                           
   8364                           ;incstack = 0
   8365                           ; Regs used in _TMR0_SetInterruptHandler: [wreg]
-  8366  0B18  0020               	movlb	0	; select bank0
-  8367  0B19  0829               	movf	TMR0_SetInterruptHandler@InterruptHandler+1,w
-  8368  0B1A  0021               	movlb	1	; select bank1
-  8369  0B1B  00EB               	movwf	(_TMR0_InterruptHandler+1)^(0+128)
-  8370  0B1C  0020               	movlb	0	; select bank0
-  8371  0B1D  0828               	movf	TMR0_SetInterruptHandler@InterruptHandler,w
-  8372  0B1E  0021               	movlb	1	; select bank1
-  8373  0B1F  00EA               	movwf	_TMR0_InterruptHandler^(0+128)
-  8374  0B20  0008               	return
-  8375  0B21                     __end_of_TMR0_SetInterruptHandler:	
+  8366  0B17  0020               	movlb	0	; select bank0
+  8367  0B18  0829               	movf	TMR0_SetInterruptHandler@InterruptHandler+1,w
+  8368  0B19  0021               	movlb	1	; select bank1
+  8369  0B1A  00EB               	movwf	(_TMR0_InterruptHandler+1)^(0+128)
+  8370  0B1B  0020               	movlb	0	; select bank0
+  8371  0B1C  0828               	movf	TMR0_SetInterruptHandler@InterruptHandler,w
+  8372  0B1D  0021               	movlb	1	; select bank1
+  8373  0B1E  00EA               	movwf	_TMR0_InterruptHandler^(0+128)
+  8374  0B1F  0008               	return
+  8375  0B20                     __end_of_TMR0_SetInterruptHandler:	
   8376                           
   8377                           	psect	text24
   8378  0C85                     __ptext24:	
@@ -8729,7 +8729,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8511  0CB3  00A8               	movwf	IOCCF7_SetInterruptHandler@InterruptHandler
   8512  0CB4  3007               	movlw	high _IOCCF7_DefaultInterruptHandler
   8513  0CB5  00A9               	movwf	IOCCF7_SetInterruptHandler@InterruptHandler+1
-  8514  0CB6  318B  230F         	fcall	_IOCCF7_SetInterruptHandler
+  8514  0CB6  318B  230E         	fcall	_IOCCF7_SetInterruptHandler
   8515                           
   8516                           ;mcc_generated_files/pin_manager.c: 73:     INTCONbits.IOCIE = 1;
   8517  0CB8  158B               	bsf	11,3	;volatile
@@ -8742,7 +8742,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8524  0CBD                     __end_of_PIN_MANAGER_Initialize:	
   8525                           
   8526                           	psect	text25
-  8527  0B0F                     __ptext25:	
+  8527  0B0E                     __ptext25:	
   8528 ;; *************** function _IOCCF7_SetInterruptHandler *****************
   8529 ;; Defined at:
   8530 ;;		line 106 in file "mcc_generated_files/pin_manager.c"
@@ -8782,25 +8782,25 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8559                           
   8560                           
   8561                           ;psect for function _IOCCF7_SetInterruptHandler
-  8562  0B0F                     _IOCCF7_SetInterruptHandler:	
+  8562  0B0E                     _IOCCF7_SetInterruptHandler:	
   8563                           
   8564                           ;mcc_generated_files/pin_manager.c: 107:     IOCCF7_InterruptHandler = InterruptHandler;
   8565                           
   8566                           ;incstack = 0
   8567                           ; Regs used in _IOCCF7_SetInterruptHandler: [wreg]
-  8568  0B0F  0020               	movlb	0	; select bank0
-  8569  0B10  0829               	movf	IOCCF7_SetInterruptHandler@InterruptHandler+1,w
-  8570  0B11  0021               	movlb	1	; select bank1
-  8571  0B12  00ED               	movwf	(_IOCCF7_InterruptHandler+1)^(0+128)
-  8572  0B13  0020               	movlb	0	; select bank0
-  8573  0B14  0828               	movf	IOCCF7_SetInterruptHandler@InterruptHandler,w
-  8574  0B15  0021               	movlb	1	; select bank1
-  8575  0B16  00EC               	movwf	_IOCCF7_InterruptHandler^(0+128)
-  8576  0B17  0008               	return
-  8577  0B18                     __end_of_IOCCF7_SetInterruptHandler:	
+  8568  0B0E  0020               	movlb	0	; select bank0
+  8569  0B0F  0829               	movf	IOCCF7_SetInterruptHandler@InterruptHandler+1,w
+  8570  0B10  0021               	movlb	1	; select bank1
+  8571  0B11  00ED               	movwf	(_IOCCF7_InterruptHandler+1)^(0+128)
+  8572  0B12  0020               	movlb	0	; select bank0
+  8573  0B13  0828               	movf	IOCCF7_SetInterruptHandler@InterruptHandler,w
+  8574  0B14  0021               	movlb	1	; select bank1
+  8575  0B15  00EC               	movwf	_IOCCF7_InterruptHandler^(0+128)
+  8576  0B16  0008               	return
+  8577  0B17                     __end_of_IOCCF7_SetInterruptHandler:	
   8578                           
   8579                           	psect	text26
-  8580  0AD5                     __ptext26:	
+  8580  0AD4                     __ptext26:	
   8581 ;; *************** function _OSCILLATOR_Initialize *****************
   8582 ;; Defined at:
   8583 ;;		line 13 in file "mcc_generated_files/mcc.c"
@@ -8838,27 +8838,27 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8610                           
   8611                           
   8612                           ;psect for function _OSCILLATOR_Initialize
-  8613  0AD5                     _OSCILLATOR_Initialize:	
+  8613  0AD4                     _OSCILLATOR_Initialize:	
   8614                           
   8615                           ;mcc_generated_files/mcc.c: 16:     OSCCON = 0x3A;
   8616                           
   8617                           ;incstack = 0
   8618                           ; Regs used in _OSCILLATOR_Initialize: [wreg+status,2]
-  8619  0AD5  303A               	movlw	58
-  8620  0AD6  0021               	movlb	1	; select bank1
-  8621  0AD7  0099               	movwf	25	;volatile
+  8619  0AD4  303A               	movlw	58
+  8620  0AD5  0021               	movlb	1	; select bank1
+  8621  0AD6  0099               	movwf	25	;volatile
   8622                           
   8623                           ;mcc_generated_files/mcc.c: 18:     OSCTUNE = 0x00;
-  8624  0AD8  0198               	clrf	24	;volatile
+  8624  0AD7  0198               	clrf	24	;volatile
   8625                           
   8626                           ;mcc_generated_files/mcc.c: 20:     BORCON = 0x00;
-  8627  0AD9  0022               	movlb	2	; select bank2
-  8628  0ADA  0196               	clrf	22	;volatile
-  8629  0ADB  0008               	return
-  8630  0ADC                     __end_of_OSCILLATOR_Initialize:	
+  8627  0AD8  0022               	movlb	2	; select bank2
+  8628  0AD9  0196               	clrf	22	;volatile
+  8629  0ADA  0008               	return
+  8630  0ADB                     __end_of_OSCILLATOR_Initialize:	
   8631                           
   8632                           	psect	text27
-  8633  0BDA                     __ptext27:	
+  8633  0BD9                     __ptext27:	
   8634 ;; *************** function _EUSART_Initialize *****************
   8635 ;; Defined at:
   8636 ;;		line 65 in file "mcc_generated_files/eusart.c"
@@ -8898,66 +8898,66 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8665                           
   8666                           
   8667                           ;psect for function _EUSART_Initialize
-  8668  0BDA                     _EUSART_Initialize:	
+  8668  0BD9                     _EUSART_Initialize:	
   8669                           
   8670                           ;mcc_generated_files/eusart.c: 70:     BAUD1CON = 0x08;
   8671                           
   8672                           ;incstack = 0
   8673                           ; Regs used in _EUSART_Initialize: [wreg+status,2+status,0+pclath+cstack]
-  8674  0BDA  3008               	movlw	8
-  8675  0BDB  0023               	movlb	3	; select bank3
-  8676  0BDC  009F               	movwf	31	;volatile
+  8674  0BD9  3008               	movlw	8
+  8675  0BDA  0023               	movlb	3	; select bank3
+  8676  0BDB  009F               	movwf	31	;volatile
   8677                           
   8678                           ;mcc_generated_files/eusart.c: 73:     RC1STA = 0x80;
-  8679  0BDD  3080               	movlw	128
-  8680  0BDE  009D               	movwf	29	;volatile
+  8679  0BDC  3080               	movlw	128
+  8680  0BDD  009D               	movwf	29	;volatile
   8681                           
   8682                           ;mcc_generated_files/eusart.c: 76:     TX1STA = 0x24;
-  8683  0BDF  3024               	movlw	36
-  8684  0BE0  009E               	movwf	30	;volatile
+  8683  0BDE  3024               	movlw	36
+  8684  0BDF  009E               	movwf	30	;volatile
   8685                           
   8686                           ;mcc_generated_files/eusart.c: 79:     SPBRGL = 0x0C;
-  8687  0BE1  300C               	movlw	12
-  8688  0BE2  009B               	movwf	27	;volatile
+  8687  0BE0  300C               	movlw	12
+  8688  0BE1  009B               	movwf	27	;volatile
   8689                           
   8690                           ;mcc_generated_files/eusart.c: 82:     SPBRGH = 0x00;
-  8691  0BE3  019C               	clrf	28	;volatile
+  8691  0BE2  019C               	clrf	28	;volatile
   8692                           
   8693                           ;mcc_generated_files/eusart.c: 85:     EUSART_SetFramingErrorHandler(EUSART_DefaultFrami
       +                          ngErrorHandler);
-  8694  0BE4  3000               	movlw	0
-  8695  0BE5  0020               	movlb	0	; select bank0
-  8696  0BE6  00A8               	movwf	EUSART_SetFramingErrorHandler@interruptHandler
-  8697  0BE7  3000               	movlw	0
-  8698  0BE8  00A9               	movwf	EUSART_SetFramingErrorHandler@interruptHandler+1
-  8699  0BE9  318A  22FD  318B   	fcall	_EUSART_SetFramingErrorHandler
+  8694  0BE3  3000               	movlw	0
+  8695  0BE4  0020               	movlb	0	; select bank0
+  8696  0BE5  00A8               	movwf	EUSART_SetFramingErrorHandler@interruptHandler
+  8697  0BE6  3000               	movlw	0
+  8698  0BE7  00A9               	movwf	EUSART_SetFramingErrorHandler@interruptHandler+1
+  8699  0BE8  318A  22FC  318B   	fcall	_EUSART_SetFramingErrorHandler
   8700                           
   8701                           ;mcc_generated_files/eusart.c: 86:     EUSART_SetOverrunErrorHandler(EUSART_DefaultOverr
       +                          unErrorHandler);
-  8702  0BEC  3000               	movlw	0
-  8703  0BED  0020               	movlb	0	; select bank0
-  8704  0BEE  00A8               	movwf	EUSART_SetOverrunErrorHandler@interruptHandler
-  8705  0BEF  3000               	movlw	0
-  8706  0BF0  00A9               	movwf	EUSART_SetOverrunErrorHandler@interruptHandler+1
-  8707  0BF1  318B  2306  318B   	fcall	_EUSART_SetOverrunErrorHandler
+  8702  0BEB  3000               	movlw	0
+  8703  0BEC  0020               	movlb	0	; select bank0
+  8704  0BED  00A8               	movwf	EUSART_SetOverrunErrorHandler@interruptHandler
+  8705  0BEE  3000               	movlw	0
+  8706  0BEF  00A9               	movwf	EUSART_SetOverrunErrorHandler@interruptHandler+1
+  8707  0BF0  318B  2305  318B   	fcall	_EUSART_SetOverrunErrorHandler
   8708                           
   8709                           ;mcc_generated_files/eusart.c: 87:     EUSART_SetErrorHandler(EUSART_DefaultErrorHandler
       +                          );
-  8710  0BF4  3000               	movlw	0
-  8711  0BF5  0020               	movlb	0	; select bank0
-  8712  0BF6  00A8               	movwf	EUSART_SetErrorHandler@interruptHandler
-  8713  0BF7  3000               	movlw	0
-  8714  0BF8  00A9               	movwf	EUSART_SetErrorHandler@interruptHandler+1
-  8715  0BF9  318A  22F4         	fcall	_EUSART_SetErrorHandler
+  8710  0BF3  3000               	movlw	0
+  8711  0BF4  0020               	movlb	0	; select bank0
+  8712  0BF5  00A8               	movwf	EUSART_SetErrorHandler@interruptHandler
+  8713  0BF6  3000               	movlw	0
+  8714  0BF7  00A9               	movwf	EUSART_SetErrorHandler@interruptHandler+1
+  8715  0BF8  318A  22F3         	fcall	_EUSART_SetErrorHandler
   8716                           
   8717                           ;mcc_generated_files/eusart.c: 89:     eusartRxLastError.status = 0;
-  8718  0BFB  0020               	movlb	0	; select bank0
-  8719  0BFC  01E6               	clrf	_eusartRxLastError	;volatile
-  8720  0BFD  0008               	return
-  8721  0BFE                     __end_of_EUSART_Initialize:	
+  8718  0BFA  0020               	movlb	0	; select bank0
+  8719  0BFB  01E6               	clrf	_eusartRxLastError	;volatile
+  8720  0BFC  0008               	return
+  8721  0BFD                     __end_of_EUSART_Initialize:	
   8722                           
   8723                           	psect	text28
-  8724  0B06                     __ptext28:	
+  8724  0B05                     __ptext28:	
   8725 ;; *************** function _EUSART_SetOverrunErrorHandler *****************
   8726 ;; Defined at:
   8727 ;;		line 175 in file "mcc_generated_files/eusart.c"
@@ -8996,25 +8996,25 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8755                           
   8756                           
   8757                           ;psect for function _EUSART_SetOverrunErrorHandler
-  8758  0B06                     _EUSART_SetOverrunErrorHandler:	
+  8758  0B05                     _EUSART_SetOverrunErrorHandler:	
   8759                           
   8760                           ;mcc_generated_files/eusart.c: 176:     EUSART_OverrunErrorHandler = interruptHandler;
   8761                           
   8762                           ;incstack = 0
   8763                           ; Regs used in _EUSART_SetOverrunErrorHandler: [wreg]
-  8764  0B06  0020               	movlb	0	; select bank0
-  8765  0B07  0829               	movf	EUSART_SetOverrunErrorHandler@interruptHandler+1,w
-  8766  0B08  0022               	movlb	2	; select bank2
-  8767  0B09  00D7               	movwf	(_EUSART_OverrunErrorHandler+1)^(0+256)
-  8768  0B0A  0020               	movlb	0	; select bank0
-  8769  0B0B  0828               	movf	EUSART_SetOverrunErrorHandler@interruptHandler,w
-  8770  0B0C  0022               	movlb	2	; select bank2
-  8771  0B0D  00D6               	movwf	_EUSART_OverrunErrorHandler^(0+256)
-  8772  0B0E  0008               	return
-  8773  0B0F                     __end_of_EUSART_SetOverrunErrorHandler:	
+  8764  0B05  0020               	movlb	0	; select bank0
+  8765  0B06  0829               	movf	EUSART_SetOverrunErrorHandler@interruptHandler+1,w
+  8766  0B07  0022               	movlb	2	; select bank2
+  8767  0B08  00D7               	movwf	(_EUSART_OverrunErrorHandler+1)^(0+256)
+  8768  0B09  0020               	movlb	0	; select bank0
+  8769  0B0A  0828               	movf	EUSART_SetOverrunErrorHandler@interruptHandler,w
+  8770  0B0B  0022               	movlb	2	; select bank2
+  8771  0B0C  00D6               	movwf	_EUSART_OverrunErrorHandler^(0+256)
+  8772  0B0D  0008               	return
+  8773  0B0E                     __end_of_EUSART_SetOverrunErrorHandler:	
   8774                           
   8775                           	psect	text29
-  8776  0AFD                     __ptext29:	
+  8776  0AFC                     __ptext29:	
   8777 ;; *************** function _EUSART_SetFramingErrorHandler *****************
   8778 ;; Defined at:
   8779 ;;		line 171 in file "mcc_generated_files/eusart.c"
@@ -9053,25 +9053,25 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8807                           
   8808                           
   8809                           ;psect for function _EUSART_SetFramingErrorHandler
-  8810  0AFD                     _EUSART_SetFramingErrorHandler:	
+  8810  0AFC                     _EUSART_SetFramingErrorHandler:	
   8811                           
   8812                           ;mcc_generated_files/eusart.c: 172:     EUSART_FramingErrorHandler = interruptHandler;
   8813                           
   8814                           ;incstack = 0
   8815                           ; Regs used in _EUSART_SetFramingErrorHandler: [wreg]
-  8816  0AFD  0020               	movlb	0	; select bank0
-  8817  0AFE  0829               	movf	EUSART_SetFramingErrorHandler@interruptHandler+1,w
-  8818  0AFF  0021               	movlb	1	; select bank1
-  8819  0B00  00EF               	movwf	(_EUSART_FramingErrorHandler+1)^(0+128)
-  8820  0B01  0020               	movlb	0	; select bank0
-  8821  0B02  0828               	movf	EUSART_SetFramingErrorHandler@interruptHandler,w
-  8822  0B03  0021               	movlb	1	; select bank1
-  8823  0B04  00EE               	movwf	_EUSART_FramingErrorHandler^(0+128)
-  8824  0B05  0008               	return
-  8825  0B06                     __end_of_EUSART_SetFramingErrorHandler:	
+  8816  0AFC  0020               	movlb	0	; select bank0
+  8817  0AFD  0829               	movf	EUSART_SetFramingErrorHandler@interruptHandler+1,w
+  8818  0AFE  0021               	movlb	1	; select bank1
+  8819  0AFF  00EF               	movwf	(_EUSART_FramingErrorHandler+1)^(0+128)
+  8820  0B00  0020               	movlb	0	; select bank0
+  8821  0B01  0828               	movf	EUSART_SetFramingErrorHandler@interruptHandler,w
+  8822  0B02  0021               	movlb	1	; select bank1
+  8823  0B03  00EE               	movwf	_EUSART_FramingErrorHandler^(0+128)
+  8824  0B04  0008               	return
+  8825  0B05                     __end_of_EUSART_SetFramingErrorHandler:	
   8826                           
   8827                           	psect	text30
-  8828  0AF4                     __ptext30:	
+  8828  0AF3                     __ptext30:	
   8829 ;; *************** function _EUSART_SetErrorHandler *****************
   8830 ;; Defined at:
   8831 ;;		line 179 in file "mcc_generated_files/eusart.c"
@@ -9110,25 +9110,25 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8859                           
   8860                           
   8861                           ;psect for function _EUSART_SetErrorHandler
-  8862  0AF4                     _EUSART_SetErrorHandler:	
+  8862  0AF3                     _EUSART_SetErrorHandler:	
   8863                           
   8864                           ;mcc_generated_files/eusart.c: 180:     EUSART_ErrorHandler = interruptHandler;
   8865                           
   8866                           ;incstack = 0
   8867                           ; Regs used in _EUSART_SetErrorHandler: [wreg]
-  8868  0AF4  0020               	movlb	0	; select bank0
-  8869  0AF5  0829               	movf	EUSART_SetErrorHandler@interruptHandler+1,w
-  8870  0AF6  0022               	movlb	2	; select bank2
-  8871  0AF7  00D5               	movwf	(_EUSART_ErrorHandler+1)^(0+256)
-  8872  0AF8  0020               	movlb	0	; select bank0
-  8873  0AF9  0828               	movf	EUSART_SetErrorHandler@interruptHandler,w
-  8874  0AFA  0022               	movlb	2	; select bank2
-  8875  0AFB  00D4               	movwf	_EUSART_ErrorHandler^(0+256)
-  8876  0AFC  0008               	return
-  8877  0AFD                     __end_of_EUSART_SetErrorHandler:	
+  8868  0AF3  0020               	movlb	0	; select bank0
+  8869  0AF4  0829               	movf	EUSART_SetErrorHandler@interruptHandler+1,w
+  8870  0AF5  0022               	movlb	2	; select bank2
+  8871  0AF6  00D5               	movwf	(_EUSART_ErrorHandler+1)^(0+256)
+  8872  0AF7  0020               	movlb	0	; select bank0
+  8873  0AF8  0828               	movf	EUSART_SetErrorHandler@interruptHandler,w
+  8874  0AF9  0022               	movlb	2	; select bank2
+  8875  0AFA  00D4               	movwf	_EUSART_ErrorHandler^(0+256)
+  8876  0AFB  0008               	return
+  8877  0AFC                     __end_of_EUSART_SetErrorHandler:	
   8878                           
   8879                           	psect	text31
-  8880  0ADC                     __ptext31:	
+  8880  0ADB                     __ptext31:	
   8881 ;; *************** function _ADC_Initialize *****************
   8882 ;; Defined at:
   8883 ;;		line 65 in file "mcc_generated_files/adc.c"
@@ -9166,29 +9166,29 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8910                           
   8911                           
   8912                           ;psect for function _ADC_Initialize
-  8913  0ADC                     _ADC_Initialize:	
+  8913  0ADB                     _ADC_Initialize:	
   8914                           
   8915                           ;mcc_generated_files/adc.c: 70:     ADCON0 = 0x01;
   8916                           
   8917                           ;incstack = 0
   8918                           ; Regs used in _ADC_Initialize: [wreg+status,2]
-  8919  0ADC  3001               	movlw	1
-  8920  0ADD  0021               	movlb	1	; select bank1
-  8921  0ADE  009D               	movwf	29	;volatile
+  8919  0ADB  3001               	movlw	1
+  8920  0ADC  0021               	movlb	1	; select bank1
+  8921  0ADD  009D               	movwf	29	;volatile
   8922                           
   8923                           ;mcc_generated_files/adc.c: 73:     ADCON1 = 0x00;
-  8924  0ADF  019E               	clrf	30	;volatile
+  8924  0ADE  019E               	clrf	30	;volatile
   8925                           
   8926                           ;mcc_generated_files/adc.c: 76:     ADCON2 = 0x00;
-  8927  0AE0  019F               	clrf	31	;volatile
+  8927  0ADF  019F               	clrf	31	;volatile
   8928                           
   8929                           ;mcc_generated_files/adc.c: 79:     ADRESL = 0x00;
-  8930  0AE1  019B               	clrf	27	;volatile
+  8930  0AE0  019B               	clrf	27	;volatile
   8931                           
   8932                           ;mcc_generated_files/adc.c: 82:     ADRESH = 0x00;
-  8933  0AE2  019C               	clrf	28	;volatile
-  8934  0AE3  0008               	return
-  8935  0AE4                     __end_of_ADC_Initialize:	
+  8933  0AE1  019C               	clrf	28	;volatile
+  8934  0AE2  0008               	return
+  8935  0AE3                     __end_of_ADC_Initialize:	
   8936                           
   8937                           	psect	intentry
   8938  0004                     __pintentry:	
@@ -9244,7 +9244,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8982                           
   8983                           ;mcc_generated_files/interrupt_manager.c: 8:     {;mcc_generated_files/interrupt_manager
       +                          .c: 9:         TMR0_ISR();
-  8984  0009  318B  232E  3180   	fcall	_TMR0_ISR
+  8984  0009  318B  232D  3180   	fcall	_TMR0_ISR
   8985                           
   8986                           ;mcc_generated_files/interrupt_manager.c: 10:     }
   8987  000C  2812               	goto	i1l246
@@ -9258,7 +9258,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   8994                           
   8995                           ;mcc_generated_files/interrupt_manager.c: 12:     {;mcc_generated_files/interrupt_manage
       +                          r.c: 13:         PIN_MANAGER_IOC();
-  8996  0010  318A  22C3         	fcall	_PIN_MANAGER_IOC
+  8996  0010  318A  22C2         	fcall	_PIN_MANAGER_IOC
   8997  0012                     i1l246:	
   8998                           ;mcc_generated_files/interrupt_manager.c: 14:     }
   8999                           
@@ -9267,7 +9267,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   9002  0014                     __end_of_INTERRUPT_InterruptManager:	
   9003                           
   9004                           	psect	text33
-  9005  0B2E                     __ptext33:	
+  9005  0B2D                     __ptext33:	
   9006 ;; *************** function _TMR0_ISR *****************
   9007 ;; Defined at:
   9008 ;;		line 62 in file "mcc_generated_files/tmr0.c"
@@ -9307,35 +9307,35 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   9037                           
   9038                           
   9039                           ;psect for function _TMR0_ISR
-  9040  0B2E                     _TMR0_ISR:	
+  9040  0B2D                     _TMR0_ISR:	
   9041                           
   9042                           ;mcc_generated_files/tmr0.c: 66:     INTCONbits.TMR0IF = 0;
   9043                           
   9044                           ;incstack = 0
   9045                           ; Regs used in _TMR0_ISR: [wreg+status,2+status,0+pclath+cstack]
-  9046  0B2E  110B               	bcf	11,2	;volatile
+  9046  0B2D  110B               	bcf	11,2	;volatile
   9047                           
   9048                           ;mcc_generated_files/tmr0.c: 68:     TMR0 = timer0ReloadVal;
-  9049  0B2F  0020               	movlb	0	; select bank0
-  9050  0B30  0867               	movf	_timer0ReloadVal,w	;volatile
-  9051  0B31  0095               	movwf	21	;volatile
+  9049  0B2E  0020               	movlb	0	; select bank0
+  9050  0B2F  0867               	movf	_timer0ReloadVal,w	;volatile
+  9051  0B30  0095               	movwf	21	;volatile
   9052                           
   9053                           ;mcc_generated_files/tmr0.c: 70:     if(TMR0_InterruptHandler)
-  9054  0B32  0021               	movlb	1	; select bank1
-  9055  0B33  086A               	movf	_TMR0_InterruptHandler^(0+128),w
-  9056  0B34  046B               	iorwf	(_TMR0_InterruptHandler+1)^(0+128),w
-  9057  0B35  1903               	btfsc	3,2
-  9058  0B36  0008               	return
+  9054  0B31  0021               	movlb	1	; select bank1
+  9055  0B32  086A               	movf	_TMR0_InterruptHandler^(0+128),w
+  9056  0B33  046B               	iorwf	(_TMR0_InterruptHandler+1)^(0+128),w
+  9057  0B34  1903               	btfsc	3,2
+  9058  0B35  0008               	return
   9059                           
   9060                           ;mcc_generated_files/tmr0.c: 71:     {;mcc_generated_files/tmr0.c: 72:         TMR0_Inte
       +                          rruptHandler();
-  9061  0B37  086B               	movf	(_TMR0_InterruptHandler+1)^(0+128),w
-  9062  0B38  008A               	movwf	10
-  9063  0B39  086A               	movf	_TMR0_InterruptHandler^(0+128),w
-  9064  0B3A  000A               	callw
-  9065  0B3B  318B               	pagesel	$
-  9066  0B3C  0008               	return
-  9067  0B3D                     __end_of_TMR0_ISR:	
+  9061  0B36  086B               	movf	(_TMR0_InterruptHandler+1)^(0+128),w
+  9062  0B37  008A               	movwf	10
+  9063  0B38  086A               	movf	_TMR0_InterruptHandler^(0+128),w
+  9064  0B39  000A               	callw
+  9065  0B3A  318B               	pagesel	$
+  9066  0B3B  0008               	return
+  9067  0B3C                     __end_of_TMR0_ISR:	
   9068                           
   9069                           	psect	text34
   9070  07FD                     __ptext34:	
@@ -9384,7 +9384,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   9108  07FE                     __end_of_TMR0_DefaultInterruptHandler:	
   9109                           
   9110                           	psect	text35
-  9111  0B4C                     __ptext35:	
+  9111  0B4B                     __ptext35:	
   9112 ;; *************** function _timerISR *****************
   9113 ;; Defined at:
   9114 ;;		line 70 in file "main.c"
@@ -9422,36 +9422,36 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   9141                           
   9142                           
   9143                           ;psect for function _timerISR
-  9144  0B4C                     _timerISR:	
+  9144  0B4B                     _timerISR:	
   9145                           
   9146                           ;main.c: 71:     counter++ ;
   9147                           
   9148                           ;incstack = 0
   9149                           ; Regs used in _timerISR: [wreg]
-  9150  0B4C  3001               	movlw	1
-  9151  0B4D  0021               	movlb	1	; select bank1
-  9152  0B4E  07C4               	addwf	_counter^(0+128),f	;volatile
-  9153  0B4F  3000               	movlw	0
-  9154  0B50  3DC5               	addwfc	(_counter+1)^(0+128),f	;volatile
-  9155  0B51  3000               	movlw	0
-  9156  0B52  3DC6               	addwfc	(_counter+2)^(0+128),f	;volatile
-  9157  0B53  3000               	movlw	0
-  9158  0B54  3DC7               	addwfc	(_counter+3)^(0+128),f	;volatile
+  9150  0B4B  3001               	movlw	1
+  9151  0B4C  0021               	movlb	1	; select bank1
+  9152  0B4D  07C4               	addwf	_counter^(0+128),f	;volatile
+  9153  0B4E  3000               	movlw	0
+  9154  0B4F  3DC5               	addwfc	(_counter+1)^(0+128),f	;volatile
+  9155  0B50  3000               	movlw	0
+  9156  0B51  3DC6               	addwfc	(_counter+2)^(0+128),f	;volatile
+  9157  0B52  3000               	movlw	0
+  9158  0B53  3DC7               	addwfc	(_counter+3)^(0+128),f	;volatile
   9159                           
   9160                           ;main.c: 72:     adcCounter++ ;
-  9161  0B55  3001               	movlw	1
-  9162  0B56  07C0               	addwf	_adcCounter^(0+128),f	;volatile
-  9163  0B57  3000               	movlw	0
-  9164  0B58  3DC1               	addwfc	(_adcCounter+1)^(0+128),f	;volatile
-  9165  0B59  3000               	movlw	0
-  9166  0B5A  3DC2               	addwfc	(_adcCounter+2)^(0+128),f	;volatile
-  9167  0B5B  3000               	movlw	0
-  9168  0B5C  3DC3               	addwfc	(_adcCounter+3)^(0+128),f	;volatile
-  9169  0B5D  0008               	return
-  9170  0B5E                     __end_of_timerISR:	
+  9161  0B54  3001               	movlw	1
+  9162  0B55  07C0               	addwf	_adcCounter^(0+128),f	;volatile
+  9163  0B56  3000               	movlw	0
+  9164  0B57  3DC1               	addwfc	(_adcCounter+1)^(0+128),f	;volatile
+  9165  0B58  3000               	movlw	0
+  9166  0B59  3DC2               	addwfc	(_adcCounter+2)^(0+128),f	;volatile
+  9167  0B5A  3000               	movlw	0
+  9168  0B5B  3DC3               	addwfc	(_adcCounter+3)^(0+128),f	;volatile
+  9169  0B5C  0008               	return
+  9170  0B5D                     __end_of_timerISR:	
   9171                           
   9172                           	psect	text36
-  9173  0AC3                     __ptext36:	
+  9173  0AC2                     __ptext36:	
   9174 ;; *************** function _PIN_MANAGER_IOC *****************
   9175 ;; Defined at:
   9176 ;;		line 79 in file "mcc_generated_files/pin_manager.c"
@@ -9489,24 +9489,24 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   9203                           
   9204                           
   9205                           ;psect for function _PIN_MANAGER_IOC
-  9206  0AC3                     _PIN_MANAGER_IOC:	
+  9206  0AC2                     _PIN_MANAGER_IOC:	
   9207                           
   9208                           ;mcc_generated_files/pin_manager.c: 82:     if(IOCCFbits.IOCCF7 == 1)
   9209                           
   9210                           ;incstack = 0
   9211                           ; Regs used in _PIN_MANAGER_IOC: [wreg+status,2+status,0+pclath+cstack]
-  9212  0AC3  0027               	movlb	7	; select bank7
-  9213  0AC4  1F99               	btfss	25,7	;volatile
-  9214  0AC5  0008               	return
+  9212  0AC2  0027               	movlb	7	; select bank7
+  9213  0AC3  1F99               	btfss	25,7	;volatile
+  9214  0AC4  0008               	return
   9215                           
   9216                           ;mcc_generated_files/pin_manager.c: 83:     {;mcc_generated_files/pin_manager.c: 84:    
       +                               IOCCF7_ISR();
-  9217  0AC6  318B  2321         	fcall	_IOCCF7_ISR
-  9218  0AC8  0008               	return
-  9219  0AC9                     __end_of_PIN_MANAGER_IOC:	
+  9217  0AC5  318B  2320         	fcall	_IOCCF7_ISR
+  9218  0AC7  0008               	return
+  9219  0AC8                     __end_of_PIN_MANAGER_IOC:	
   9220                           
   9221                           	psect	text37
-  9222  0B21                     __ptext37:	
+  9222  0B20                     __ptext37:	
   9223 ;; *************** function _IOCCF7_ISR *****************
   9224 ;; Defined at:
   9225 ;;		line 91 in file "mcc_generated_files/pin_manager.c"
@@ -9546,32 +9546,32 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   9254                           
   9255                           
   9256                           ;psect for function _IOCCF7_ISR
-  9257  0B21                     _IOCCF7_ISR:	
+  9257  0B20                     _IOCCF7_ISR:	
   9258                           
   9259                           ;mcc_generated_files/pin_manager.c: 96:     if(IOCCF7_InterruptHandler)
   9260                           
   9261                           ;incstack = 0
   9262                           ; Regs used in _IOCCF7_ISR: [wreg+status,2+status,0+pclath+cstack]
-  9263  0B21  0021               	movlb	1	; select bank1
-  9264  0B22  086C               	movf	_IOCCF7_InterruptHandler^(0+128),w
-  9265  0B23  046D               	iorwf	(_IOCCF7_InterruptHandler+1)^(0+128),w
-  9266  0B24  1903               	btfsc	3,2
-  9267  0B25  2B2B               	goto	i1l2620
+  9263  0B20  0021               	movlb	1	; select bank1
+  9264  0B21  086C               	movf	_IOCCF7_InterruptHandler^(0+128),w
+  9265  0B22  046D               	iorwf	(_IOCCF7_InterruptHandler+1)^(0+128),w
+  9266  0B23  1903               	btfsc	3,2
+  9267  0B24  2B2A               	goto	i1l2620
   9268                           
   9269                           ;mcc_generated_files/pin_manager.c: 97:     {;mcc_generated_files/pin_manager.c: 98:    
       +                               IOCCF7_InterruptHandler();
-  9270  0B26  086D               	movf	(_IOCCF7_InterruptHandler+1)^(0+128),w
-  9271  0B27  008A               	movwf	10
-  9272  0B28  086C               	movf	_IOCCF7_InterruptHandler^(0+128),w
-  9273  0B29  000A               	callw
-  9274  0B2A  318B               	pagesel	$
-  9275  0B2B                     i1l2620:	
+  9270  0B25  086D               	movf	(_IOCCF7_InterruptHandler+1)^(0+128),w
+  9271  0B26  008A               	movwf	10
+  9272  0B27  086C               	movf	_IOCCF7_InterruptHandler^(0+128),w
+  9273  0B28  000A               	callw
+  9274  0B29  318B               	pagesel	$
+  9275  0B2A                     i1l2620:	
   9276                           
   9277                           ;mcc_generated_files/pin_manager.c: 100:     IOCCFbits.IOCCF7 = 0;
-  9278  0B2B  0027               	movlb	7	; select bank7
-  9279  0B2C  1399               	bcf	25,7	;volatile
-  9280  0B2D  0008               	return
-  9281  0B2E                     __end_of_IOCCF7_ISR:	
+  9278  0B2A  0027               	movlb	7	; select bank7
+  9279  0B2B  1399               	bcf	25,7	;volatile
+  9280  0B2C  0008               	return
+  9281  0B2D                     __end_of_IOCCF7_ISR:	
   9282                           
   9283                           	psect	text38
   9284  07FE                     __ptext38:	
@@ -9620,7 +9620,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   9322  07FF                     __end_of_IOCCF7_DefaultInterruptHandler:	
   9323                           
   9324                           	psect	text39
-  9325  0C54                     __ptext39:	
+  9325  0C53                     __ptext39:	
   9326 ;; *************** function _speedCalc *****************
   9327 ;; Defined at:
   9328 ;;		line 77 in file "main.c"
@@ -9659,644 +9659,645 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   9356                           
   9357                           
   9358                           ;psect for function _speedCalc
-  9359  0C54                     _speedCalc:	
+  9359  0C53                     _speedCalc:	
   9360                           
-  9361                           ;main.c: 81:     if( adcCounter <= ( 60483 ) ){
+  9361                           ;main.c: 81:     if( adcCounter <= ( 120 ) ){
   9362                           
   9363                           ;incstack = 0
   9364                           ; Regs used in _speedCalc: [wreg+status,2+status,0+pclath+cstack]
-  9365  0C54  0021               	movlb	1	; select bank1
-  9366  0C55  1BC3               	btfsc	(_adcCounter+3)^(0+128),7	;volatile
-  9367  0C56  2C63               	goto	i1l2476
-  9368  0C57  0843               	movf	(_adcCounter+3)^(0+128),w	;volatile
-  9369  0C58  1D03               	btfss	3,2
-  9370  0C59  0008               	return
-  9371  0C5A  0842               	movf	(_adcCounter+2)^(0+128),w	;volatile
-  9372  0C5B  1D03               	btfss	3,2
-  9373  0C5C  0008               	return
-  9374  0C5D  3044               	movlw	68
-  9375  0C5E  0240               	subwf	_adcCounter^(0+128),w	;volatile
-  9376  0C5F  30EC               	movlw	236
-  9377  0C60  3B41               	subwfb	(_adcCounter+1)^(0+128),w	;volatile
-  9378  0C61  1803               	btfsc	3,0
-  9379  0C62  0008               	return
-  9380  0C63                     i1l2476:	
-  9381                           
-  9382                           ;main.c: 82:         distInt++;
-  9383  0C63  3001               	movlw	1
-  9384  0C64  0020               	movlb	0	; select bank0
-  9385  0C65  07E4               	addwf	_distInt,f	;volatile
-  9386  0C66  3000               	movlw	0
-  9387  0C67  3DE5               	addwfc	_distInt+1,f	;volatile
-  9388                           
-  9389                           ;main.c: 83:      hallCount += 1 ;
-  9390  0C68  303F               	movlw	63
-  9391  0C69  00F3               	movwf	___fladd@b+3
-  9392  0C6A  3080               	movlw	128
-  9393  0C6B  00F2               	movwf	___fladd@b+2
-  9394  0C6C  3000               	movlw	0
-  9395  0C6D  00F1               	movwf	___fladd@b+1
-  9396  0C6E  3000               	movlw	0
-  9397  0C6F  00F0               	movwf	___fladd@b
-  9398  0C70  0021               	movlb	1	; select bank1
-  9399  0C71  082B               	movf	(_hallCount+3)^(0+128),w	;volatile
-  9400  0C72  00F7               	movwf	___fladd@a+3
-  9401  0C73  082A               	movf	(_hallCount+2)^(0+128),w	;volatile
-  9402  0C74  00F6               	movwf	___fladd@a+2
-  9403  0C75  0829               	movf	(_hallCount+1)^(0+128),w	;volatile
-  9404  0C76  00F5               	movwf	___fladd@a+1
-  9405  0C77  0828               	movf	_hallCount^(0+128),w	;volatile
-  9406  0C78  00F4               	movwf	___fladd@a
-  9407  0C79  3182  225F         	fcall	___fladd
-  9408  0C7B  0873               	movf	?___fladd+3,w
-  9409  0C7C  0021               	movlb	1	; select bank1
-  9410  0C7D  00AB               	movwf	(_hallCount+3)^(0+128)	;volatile
-  9411  0C7E  0872               	movf	?___fladd+2,w
-  9412  0C7F  00AA               	movwf	(_hallCount+2)^(0+128)	;volatile
-  9413  0C80  0871               	movf	?___fladd+1,w
-  9414  0C81  00A9               	movwf	(_hallCount+1)^(0+128)	;volatile
-  9415  0C82  0870               	movf	?___fladd,w
-  9416  0C83  00A8               	movwf	_hallCount^(0+128)	;volatile
-  9417  0C84  0008               	return
-  9418  0C85                     __end_of_speedCalc:	
-  9419                           
-  9420                           	psect	text40
-  9421  025F                     __ptext40:	
-  9422 ;; *************** function ___fladd *****************
-  9423 ;; Defined at:
-  9424 ;;		line 10 in file "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcadd.c"
-  9425 ;; Parameters:    Size  Location     Type
-  9426 ;;  b               4    0[COMMON] void 
-  9427 ;;  a               4    4[COMMON] void 
-  9428 ;; Auto vars:     Size  Location     Type
-  9429 ;;  grs             1   11[COMMON] unsigned char 
-  9430 ;;  bexp            1   10[COMMON] unsigned char 
-  9431 ;;  aexp            1    9[COMMON] unsigned char 
-  9432 ;;  signs           1    8[COMMON] unsigned char 
-  9433 ;; Return value:  Size  Location     Type
-  9434 ;;                  4    0[COMMON] unsigned char 
-  9435 ;; Registers used:
-  9436 ;;		wreg, status,2, status,0
-  9437 ;; Tracked objects:
-  9438 ;;		On entry : 0/0
-  9439 ;;		On exit  : 0/0
-  9440 ;;		Unchanged: 0/0
-  9441 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+  9365  0C53  0021               	movlb	1	; select bank1
+  9366  0C54  1BC3               	btfsc	(_adcCounter+3)^(0+128),7	;volatile
+  9367  0C55  2C63               	goto	i1l2476
+  9368  0C56  0843               	movf	(_adcCounter+3)^(0+128),w	;volatile
+  9369  0C57  1D03               	btfss	3,2
+  9370  0C58  0008               	return
+  9371  0C59  0842               	movf	(_adcCounter+2)^(0+128),w	;volatile
+  9372  0C5A  1D03               	btfss	3,2
+  9373  0C5B  0008               	return
+  9374  0C5C  0841               	movf	(_adcCounter+1)^(0+128),w	;volatile
+  9375  0C5D  1D03               	btfss	3,2
+  9376  0C5E  0008               	return
+  9377  0C5F  3079               	movlw	121
+  9378  0C60  0240               	subwf	_adcCounter^(0+128),w	;volatile
+  9379  0C61  1803               	btfsc	3,0
+  9380  0C62  0008               	return
+  9381  0C63                     i1l2476:	
+  9382                           
+  9383                           ;main.c: 82:         distInt++;
+  9384  0C63  3001               	movlw	1
+  9385  0C64  0020               	movlb	0	; select bank0
+  9386  0C65  07E4               	addwf	_distInt,f	;volatile
+  9387  0C66  3000               	movlw	0
+  9388  0C67  3DE5               	addwfc	_distInt+1,f	;volatile
+  9389                           
+  9390                           ;main.c: 83:      hallCount += 1 ;
+  9391  0C68  303F               	movlw	63
+  9392  0C69  00F3               	movwf	___fladd@b+3
+  9393  0C6A  3080               	movlw	128
+  9394  0C6B  00F2               	movwf	___fladd@b+2
+  9395  0C6C  3000               	movlw	0
+  9396  0C6D  00F1               	movwf	___fladd@b+1
+  9397  0C6E  3000               	movlw	0
+  9398  0C6F  00F0               	movwf	___fladd@b
+  9399  0C70  0021               	movlb	1	; select bank1
+  9400  0C71  082B               	movf	(_hallCount+3)^(0+128),w	;volatile
+  9401  0C72  00F7               	movwf	___fladd@a+3
+  9402  0C73  082A               	movf	(_hallCount+2)^(0+128),w	;volatile
+  9403  0C74  00F6               	movwf	___fladd@a+2
+  9404  0C75  0829               	movf	(_hallCount+1)^(0+128),w	;volatile
+  9405  0C76  00F5               	movwf	___fladd@a+1
+  9406  0C77  0828               	movf	_hallCount^(0+128),w	;volatile
+  9407  0C78  00F4               	movwf	___fladd@a
+  9408  0C79  3182  225F         	fcall	___fladd
+  9409  0C7B  0873               	movf	?___fladd+3,w
+  9410  0C7C  0021               	movlb	1	; select bank1
+  9411  0C7D  00AB               	movwf	(_hallCount+3)^(0+128)	;volatile
+  9412  0C7E  0872               	movf	?___fladd+2,w
+  9413  0C7F  00AA               	movwf	(_hallCount+2)^(0+128)	;volatile
+  9414  0C80  0871               	movf	?___fladd+1,w
+  9415  0C81  00A9               	movwf	(_hallCount+1)^(0+128)	;volatile
+  9416  0C82  0870               	movf	?___fladd,w
+  9417  0C83  00A8               	movwf	_hallCount^(0+128)	;volatile
+  9418  0C84  0008               	return
+  9419  0C85                     __end_of_speedCalc:	
+  9420                           
+  9421                           	psect	text40
+  9422  025F                     __ptext40:	
+  9423 ;; *************** function ___fladd *****************
+  9424 ;; Defined at:
+  9425 ;;		line 10 in file "C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcadd.c"
+  9426 ;; Parameters:    Size  Location     Type
+  9427 ;;  b               4    0[COMMON] void 
+  9428 ;;  a               4    4[COMMON] void 
+  9429 ;; Auto vars:     Size  Location     Type
+  9430 ;;  grs             1   11[COMMON] unsigned char 
+  9431 ;;  bexp            1   10[COMMON] unsigned char 
+  9432 ;;  aexp            1    9[COMMON] unsigned char 
+  9433 ;;  signs           1    8[COMMON] unsigned char 
+  9434 ;; Return value:  Size  Location     Type
+  9435 ;;                  4    0[COMMON] unsigned char 
+  9436 ;; Registers used:
+  9437 ;;		wreg, status,2, status,0
+  9438 ;; Tracked objects:
+  9439 ;;		On entry : 0/0
+  9440 ;;		On exit  : 0/0
+  9441 ;;		Unchanged: 0/0
+  9442 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12
-  9442 ;;      Params:         8       0       0       0       0       0       0       0       0       0       0       0       
+  9443 ;;      Params:         8       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  9443 ;;      Locals:         4       0       0       0       0       0       0       0       0       0       0       0       
+  9444 ;;      Locals:         4       0       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  9444 ;;      Temps:          0       8       0       0       0       0       0       0       0       0       0       0       
+  9445 ;;      Temps:          0       8       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  9445 ;;      Totals:        12       8       0       0       0       0       0       0       0       0       0       0       
+  9446 ;;      Totals:        12       8       0       0       0       0       0       0       0       0       0       0       
       +0       0
-  9446 ;;Total ram usage:       20 bytes
-  9447 ;; Hardware stack levels used:    1
-  9448 ;; This function calls:
-  9449 ;;		Nothing
-  9450 ;; This function is called by:
-  9451 ;;		_speedCalc
-  9452 ;; This function uses a non-reentrant model
-  9453 ;;
-  9454                           
+  9447 ;;Total ram usage:       20 bytes
+  9448 ;; Hardware stack levels used:    1
+  9449 ;; This function calls:
+  9450 ;;		Nothing
+  9451 ;; This function is called by:
+  9452 ;;		_speedCalc
+  9453 ;; This function uses a non-reentrant model
+  9454 ;;
   9455                           
-  9456                           ;psect for function ___fladd
-  9457  025F                     ___fladd:	
-  9458                           
-  9459                           ;incstack = 0
-  9460                           ; Regs used in ___fladd: [wreg+status,2+status,0]
-  9461  025F  0873               	movf	___fladd@b+3,w
-  9462  0260  3980               	andlw	128
-  9463  0261  0020               	movlb	0	; select bank0
-  9464  0262  00A0               	movwf	??___fladd
-  9465  0263  0820               	movf	??___fladd,w
-  9466  0264  00F8               	movwf	___fladd@signs
-  9467  0265  3573               	lslf	___fladd@b+3,w
-  9468  0266  00A0               	movwf	??___fladd
-  9469  0267  0820               	movf	??___fladd,w
-  9470  0268  00FA               	movwf	___fladd@bexp
-  9471  0269  1BF2               	btfsc	___fladd@b+2,7
-  9472  026A  147A               	bsf	___fladd@bexp,0
-  9473  026B  087A               	movf	___fladd@bexp,w
-  9474  026C  1903               	btfsc	3,2
-  9475  026D  2A7C               	goto	i1l2288
-  9476  026E  0A7A               	incf	___fladd@bexp,w
-  9477  026F  1D03               	btfss	3,2
-  9478  0270  2A79               	goto	i1l2284
-  9479  0271  3000               	movlw	0
-  9480  0272  00F3               	movwf	___fladd@b+3
-  9481  0273  3000               	movlw	0
-  9482  0274  00F2               	movwf	___fladd@b+2
-  9483  0275  3000               	movlw	0
-  9484  0276  00F1               	movwf	___fladd@b+1
-  9485  0277  3000               	movlw	0
-  9486  0278  00F0               	movwf	___fladd@b
-  9487  0279                     i1l2284:	
-  9488  0279  17F2               	bsf	___fladd@b+2,7
-  9489  027A  01F3               	clrf	___fladd@b+3
-  9490  027B  2A84               	goto	i1l2290
-  9491  027C                     i1l2288:	
-  9492  027C  3000               	movlw	0
-  9493  027D  00F3               	movwf	___fladd@b+3
-  9494  027E  3000               	movlw	0
-  9495  027F  00F2               	movwf	___fladd@b+2
-  9496  0280  3000               	movlw	0
-  9497  0281  00F1               	movwf	___fladd@b+1
-  9498  0282  3000               	movlw	0
-  9499  0283  00F0               	movwf	___fladd@b
-  9500  0284                     i1l2290:	
-  9501  0284  0877               	movf	___fladd@a+3,w
-  9502  0285  3980               	andlw	128
-  9503  0286  00A0               	movwf	??___fladd
-  9504  0287  0820               	movf	??___fladd,w
-  9505  0288  00F9               	movwf	___fladd@aexp
-  9506  0289  0879               	movf	___fladd@aexp,w
-  9507  028A  0678               	xorwf	___fladd@signs,w
-  9508  028B  1D03               	btfss	3,2
-  9509  028C  1778               	bsf	___fladd@signs,6
-  9510  028D  3577               	lslf	___fladd@a+3,w
-  9511  028E  00A0               	movwf	??___fladd
-  9512  028F  0820               	movf	??___fladd,w
-  9513  0290  00F9               	movwf	___fladd@aexp
-  9514  0291  1BF6               	btfsc	___fladd@a+2,7
-  9515  0292  1479               	bsf	___fladd@aexp,0
-  9516  0293  0879               	movf	___fladd@aexp,w
-  9517  0294  1903               	btfsc	3,2
-  9518  0295  2AA4               	goto	i1l2312
-  9519  0296  0A79               	incf	___fladd@aexp,w
-  9520  0297  1D03               	btfss	3,2
-  9521  0298  2AA1               	goto	i1l2308
-  9522  0299  3000               	movlw	0
-  9523  029A  00F7               	movwf	___fladd@a+3
-  9524  029B  3000               	movlw	0
-  9525  029C  00F6               	movwf	___fladd@a+2
-  9526  029D  3000               	movlw	0
-  9527  029E  00F5               	movwf	___fladd@a+1
-  9528  029F  3000               	movlw	0
-  9529  02A0  00F4               	movwf	___fladd@a
-  9530  02A1                     i1l2308:	
-  9531  02A1  17F6               	bsf	___fladd@a+2,7
-  9532  02A2  01F7               	clrf	___fladd@a+3
-  9533  02A3  2AAC               	goto	i1l844
-  9534  02A4                     i1l2312:	
-  9535  02A4  3000               	movlw	0
-  9536  02A5  00F7               	movwf	___fladd@a+3
-  9537  02A6  3000               	movlw	0
-  9538  02A7  00F6               	movwf	___fladd@a+2
-  9539  02A8  3000               	movlw	0
-  9540  02A9  00F5               	movwf	___fladd@a+1
-  9541  02AA  3000               	movlw	0
-  9542  02AB  00F4               	movwf	___fladd@a
-  9543  02AC                     i1l844:	
-  9544  02AC  087A               	movf	___fladd@bexp,w
-  9545  02AD  0279               	subwf	___fladd@aexp,w
-  9546  02AE  1803               	skipnc
-  9547  02AF  2AF2               	goto	i1l2348
-  9548  02B0  1F78               	btfss	___fladd@signs,6
-  9549  02B1  2AB6               	goto	i1l2318
-  9550  02B2  3080               	movlw	128
-  9551  02B3  00A0               	movwf	??___fladd
-  9552  02B4  0820               	movf	??___fladd,w
-  9553  02B5  06F8               	xorwf	___fladd@signs,f
-  9554  02B6                     i1l2318:	
-  9555  02B6  087A               	movf	___fladd@bexp,w
-  9556  02B7  00A0               	movwf	??___fladd
-  9557  02B8  0820               	movf	??___fladd,w
-  9558  02B9  00FB               	movwf	___fladd@grs
-  9559  02BA  0879               	movf	___fladd@aexp,w
-  9560  02BB  00A0               	movwf	??___fladd
-  9561  02BC  0820               	movf	??___fladd,w
-  9562  02BD  00FA               	movwf	___fladd@bexp
-  9563  02BE  087B               	movf	___fladd@grs,w
-  9564  02BF  00A0               	movwf	??___fladd
-  9565  02C0  0820               	movf	??___fladd,w
-  9566  02C1  00F9               	movwf	___fladd@aexp
-  9567  02C2  0870               	movf	___fladd@b,w
-  9568  02C3  00A0               	movwf	??___fladd
-  9569  02C4  0820               	movf	??___fladd,w
-  9570  02C5  00FB               	movwf	___fladd@grs
-  9571  02C6  0874               	movf	___fladd@a,w
-  9572  02C7  00A0               	movwf	??___fladd
-  9573  02C8  0820               	movf	??___fladd,w
-  9574  02C9  00F0               	movwf	___fladd@b
-  9575  02CA  087B               	movf	___fladd@grs,w
-  9576  02CB  00A0               	movwf	??___fladd
-  9577  02CC  0820               	movf	??___fladd,w
-  9578  02CD  00F4               	movwf	___fladd@a
-  9579  02CE  0871               	movf	___fladd@b+1,w
-  9580  02CF  00A0               	movwf	??___fladd
-  9581  02D0  0820               	movf	??___fladd,w
-  9582  02D1  00FB               	movwf	___fladd@grs
-  9583  02D2  0875               	movf	___fladd@a+1,w
-  9584  02D3  00A0               	movwf	??___fladd
-  9585  02D4  0820               	movf	??___fladd,w
-  9586  02D5  00F1               	movwf	___fladd@b+1
-  9587  02D6  087B               	movf	___fladd@grs,w
-  9588  02D7  00A0               	movwf	??___fladd
-  9589  02D8  0820               	movf	??___fladd,w
-  9590  02D9  00F5               	movwf	___fladd@a+1
-  9591  02DA  0872               	movf	___fladd@b+2,w
-  9592  02DB  00A0               	movwf	??___fladd
-  9593  02DC  0820               	movf	??___fladd,w
-  9594  02DD  00FB               	movwf	___fladd@grs
-  9595  02DE  0876               	movf	___fladd@a+2,w
-  9596  02DF  00A0               	movwf	??___fladd
-  9597  02E0  0820               	movf	??___fladd,w
-  9598  02E1  00F2               	movwf	___fladd@b+2
-  9599  02E2  087B               	movf	___fladd@grs,w
-  9600  02E3  00A0               	movwf	??___fladd
-  9601  02E4  0820               	movf	??___fladd,w
-  9602  02E5  00F6               	movwf	___fladd@a+2
-  9603  02E6  0873               	movf	___fladd@b+3,w
-  9604  02E7  00A0               	movwf	??___fladd
-  9605  02E8  0820               	movf	??___fladd,w
-  9606  02E9  00FB               	movwf	___fladd@grs
-  9607  02EA  0877               	movf	___fladd@a+3,w
-  9608  02EB  00A0               	movwf	??___fladd
-  9609  02EC  0820               	movf	??___fladd,w
-  9610  02ED  00F3               	movwf	___fladd@b+3
-  9611  02EE  087B               	movf	___fladd@grs,w
-  9612  02EF  00A0               	movwf	??___fladd
-  9613  02F0  0820               	movf	??___fladd,w
-  9614  02F1  00F7               	movwf	___fladd@a+3
-  9615  02F2                     i1l2348:	
-  9616  02F2  01FB               	clrf	___fladd@grs
-  9617  02F3  0879               	movf	___fladd@aexp,w
-  9618  02F4  00A0               	movwf	??___fladd
-  9619  02F5  01A1               	clrf	??___fladd+1
-  9620  02F6  0821               	movf	??___fladd+1,w
-  9621  02F7  00A3               	movwf	??___fladd+3
-  9622  02F8  087A               	movf	___fladd@bexp,w
-  9623  02F9  0220               	subwf	??___fladd,w
-  9624  02FA  00A2               	movwf	??___fladd+2
-  9625  02FB  1C03               	skipc
-  9626  02FC  03A3               	decf	??___fladd+3,f
-  9627  02FD  0823               	movf	??___fladd+3,w
-  9628  02FE  3A80               	xorlw	128
-  9629  02FF  00A4               	movwf	??___fladd+4
-  9630  0300  3080               	movlw	128
-  9631  0301  0224               	subwf	??___fladd+4,w
-  9632  0302  1D03               	skipz
-  9633  0303  2B06               	goto	u229_25
-  9634  0304  301A               	movlw	26
-  9635  0305  0222               	subwf	??___fladd+2,w
-  9636  0306                     u229_25:	
-  9637  0306  1C03               	skipc
-  9638  0307  2B3C               	goto	i1l2366
-  9639  0308  0873               	movf	___fladd@b+3,w
-  9640  0309  0472               	iorwf	___fladd@b+2,w
-  9641  030A  0471               	iorwf	___fladd@b+1,w
-  9642  030B  0470               	iorwf	___fladd@b,w
-  9643  030C  1903               	btfsc	3,2
-  9644  030D  2B10               	goto	u230_20
-  9645  030E  3001               	movlw	1
-  9646  030F  2B11               	goto	u231_20
-  9647  0310                     u230_20:	
-  9648  0310  3000               	movlw	0
-  9649  0311                     u231_20:	
-  9650  0311  0020               	movlb	0	; select bank0
-  9651  0312  00A0               	movwf	??___fladd
-  9652  0313  0820               	movf	??___fladd,w
-  9653  0314  00FB               	movwf	___fladd@grs
-  9654  0315  3000               	movlw	0
-  9655  0316  00F3               	movwf	___fladd@b+3
-  9656  0317  3000               	movlw	0
-  9657  0318  00F2               	movwf	___fladd@b+2
-  9658  0319  3000               	movlw	0
-  9659  031A  00F1               	movwf	___fladd@b+1
-  9660  031B  3000               	movlw	0
-  9661  031C  00F0               	movwf	___fladd@b
-  9662  031D  0879               	movf	___fladd@aexp,w
-  9663  031E  00A0               	movwf	??___fladd
-  9664  031F  0820               	movf	??___fladd,w
-  9665  0320  00FA               	movwf	___fladd@bexp
-  9666  0321  2B40               	goto	i1l848
-  9667  0322                     i1l850:	
-  9668  0322  1C7B               	btfss	___fladd@grs,0
-  9669  0323  2B2B               	goto	i1l2356
-  9670  0324  367B               	lsrf	___fladd@grs,w
-  9671  0325  3801               	iorlw	1
-  9672  0326  0020               	movlb	0	; select bank0
-  9673  0327  00A0               	movwf	??___fladd
-  9674  0328  0820               	movf	??___fladd,w
-  9675  0329  00FB               	movwf	___fladd@grs
-  9676  032A  2B2D               	goto	i1l2358
-  9677  032B                     i1l2356:	
-  9678  032B  1003               	clrc
-  9679  032C  0CFB               	rrf	___fladd@grs,f
-  9680  032D                     i1l2358:	
-  9681  032D  1870               	btfsc	___fladd@b,0
-  9682  032E  17FB               	bsf	___fladd@grs,7
-  9683  032F  3001               	movlw	1
-  9684  0330  0020               	movlb	0	; select bank0
-  9685  0331  00A0               	movwf	??___fladd
-  9686  0332                     u234_25:	
-  9687  0332  37F3               	asrf	___fladd@b+3,f
-  9688  0333  0CF2               	rrf	___fladd@b+2,f
-  9689  0334  0CF1               	rrf	___fladd@b+1,f
-  9690  0335  0CF0               	rrf	___fladd@b,f
-  9691  0336  0BA0               	decfsz	??___fladd& (0+127),f
-  9692  0337  2B32               	goto	u234_25
-  9693  0338  3001               	movlw	1
-  9694  0339  00A0               	movwf	??___fladd
-  9695  033A  0820               	movf	??___fladd,w
-  9696  033B  07FA               	addwf	___fladd@bexp,f
-  9697  033C                     i1l2366:	
-  9698  033C  0879               	movf	___fladd@aexp,w
-  9699  033D  027A               	subwf	___fladd@bexp,w
-  9700  033E  1C03               	skipc
-  9701  033F  2B22               	goto	i1l850
-  9702  0340                     i1l848:	
-  9703  0340  1B78               	btfsc	___fladd@signs,6
-  9704  0341  2B73               	goto	i1l2392
-  9705  0342  087A               	movf	___fladd@bexp,w
-  9706  0343  1D03               	btfss	3,2
-  9707  0344  2B4E               	goto	i1l2374
-  9708  0345  3000               	movlw	0
-  9709  0346  00F3               	movwf	?___fladd+3
-  9710  0347  3000               	movlw	0
-  9711  0348  00F2               	movwf	?___fladd+2
-  9712  0349  3000               	movlw	0
-  9713  034A  00F1               	movwf	?___fladd+1
-  9714  034B  3000               	movlw	0
-  9715  034C  00F0               	movwf	?___fladd
-  9716  034D  0008               	return
-  9717  034E                     i1l2374:	
-  9718  034E  0874               	movf	___fladd@a,w
-  9719  034F  07F0               	addwf	___fladd@b,f
-  9720  0350  0875               	movf	___fladd@a+1,w
-  9721  0351  3DF1               	addwfc	___fladd@b+1,f
-  9722  0352  0876               	movf	___fladd@a+2,w
-  9723  0353  3DF2               	addwfc	___fladd@b+2,f
-  9724  0354  0877               	movf	___fladd@a+3,w
-  9725  0355  3DF3               	addwfc	___fladd@b+3,f
-  9726  0356  1C73               	btfss	___fladd@b+3,0
-  9727  0357  2BEE               	goto	i1l2426
-  9728  0358  1C7B               	btfss	___fladd@grs,0
-  9729  0359  2B61               	goto	i1l2382
-  9730  035A  367B               	lsrf	___fladd@grs,w
-  9731  035B  3801               	iorlw	1
-  9732  035C  0020               	movlb	0	; select bank0
-  9733  035D  00A0               	movwf	??___fladd
-  9734  035E  0820               	movf	??___fladd,w
-  9735  035F  00FB               	movwf	___fladd@grs
-  9736  0360  2B63               	goto	i1l2384
-  9737  0361                     i1l2382:	
-  9738  0361  1003               	clrc
-  9739  0362  0CFB               	rrf	___fladd@grs,f
-  9740  0363                     i1l2384:	
-  9741  0363  1870               	btfsc	___fladd@b,0
-  9742  0364  17FB               	bsf	___fladd@grs,7
-  9743  0365  3001               	movlw	1
-  9744  0366  0020               	movlb	0	; select bank0
-  9745  0367  00A0               	movwf	??___fladd
-  9746  0368                     u241_25:	
-  9747  0368  37F3               	asrf	___fladd@b+3,f
-  9748  0369  0CF2               	rrf	___fladd@b+2,f
-  9749  036A  0CF1               	rrf	___fladd@b+1,f
-  9750  036B  0CF0               	rrf	___fladd@b,f
-  9751  036C  0BA0               	decfsz	??___fladd& (0+127),f
-  9752  036D  2B68               	goto	u241_25
-  9753  036E  3001               	movlw	1
-  9754  036F  00A0               	movwf	??___fladd
-  9755  0370  0820               	movf	??___fladd,w
-  9756  0371  07FA               	addwf	___fladd@bexp,f
-  9757  0372  2BEE               	goto	i1l2426
-  9758  0373                     i1l2392:	
-  9759  0373  0873               	movf	___fladd@b+3,w
-  9760  0374  3A80               	xorlw	128
-  9761  0375  0020               	movlb	0	; select bank0
-  9762  0376  00A0               	movwf	??___fladd
-  9763  0377  0877               	movf	___fladd@a+3,w
-  9764  0378  3A80               	xorlw	128
-  9765  0379  0220               	subwf	??___fladd,w
-  9766  037A  1D03               	skipz
-  9767  037B  2B86               	goto	u242_23
-  9768  037C  0876               	movf	___fladd@a+2,w
-  9769  037D  0272               	subwf	___fladd@b+2,w
-  9770  037E  1D03               	skipz
-  9771  037F  2B86               	goto	u242_23
-  9772  0380  0875               	movf	___fladd@a+1,w
-  9773  0381  0271               	subwf	___fladd@b+1,w
-  9774  0382  1D03               	skipz
-  9775  0383  2B86               	goto	u242_23
-  9776  0384  0874               	movf	___fladd@a,w
-  9777  0385  0270               	subwf	___fladd@b,w
-  9778  0386                     u242_23:	
-  9779  0386  1803               	skipnc
-  9780  0387  2BBE               	goto	i1l2402
-  9781  0388  30FF               	movlw	255
-  9782  0389  00A0               	movwf	??___fladd
-  9783  038A  30FF               	movlw	255
-  9784  038B  00A1               	movwf	??___fladd+1
-  9785  038C  30FF               	movlw	255
-  9786  038D  00A2               	movwf	??___fladd+2
-  9787  038E  30FF               	movlw	255
-  9788  038F  00A3               	movwf	??___fladd+3
-  9789  0390  0870               	movf	___fladd@b,w
-  9790  0391  0274               	subwf	___fladd@a,w
-  9791  0392  00A4               	movwf	??___fladd+4
-  9792  0393  0871               	movf	___fladd@b+1,w
-  9793  0394  3B75               	subwfb	___fladd@a+1,w
-  9794  0395  00A5               	movwf	??___fladd+5
-  9795  0396  0872               	movf	___fladd@b+2,w
-  9796  0397  3B76               	subwfb	___fladd@a+2,w
-  9797  0398  00A6               	movwf	??___fladd+6
-  9798  0399  0873               	movf	___fladd@b+3,w
-  9799  039A  3B77               	subwfb	___fladd@a+3,w
-  9800  039B  00A7               	movwf	??___fladd+7
-  9801  039C  0824               	movf	??___fladd+4,w
-  9802  039D  07A0               	addwf	??___fladd,f
-  9803  039E  0825               	movf	??___fladd+5,w
-  9804  039F  3DA1               	addwfc	??___fladd+1,f
-  9805  03A0  0826               	movf	??___fladd+6,w
-  9806  03A1  3DA2               	addwfc	??___fladd+2,f
-  9807  03A2  0827               	movf	??___fladd+7,w
-  9808  03A3  3DA3               	addwfc	??___fladd+3,f
-  9809  03A4  0823               	movf	??___fladd+3,w
-  9810  03A5  00F3               	movwf	___fladd@b+3
-  9811  03A6  0822               	movf	??___fladd+2,w
-  9812  03A7  00F2               	movwf	___fladd@b+2
-  9813  03A8  0821               	movf	??___fladd+1,w
-  9814  03A9  00F1               	movwf	___fladd@b+1
-  9815  03AA  0820               	movf	??___fladd,w
-  9816  03AB  00F0               	movwf	___fladd@b
-  9817  03AC  3080               	movlw	128
-  9818  03AD  00A0               	movwf	??___fladd
-  9819  03AE  0820               	movf	??___fladd,w
-  9820  03AF  06F8               	xorwf	___fladd@signs,f
-  9821  03B0  09FB               	comf	___fladd@grs,f
-  9822  03B1  0AFB               	incf	___fladd@grs,f
-  9823  03B2  087B               	movf	___fladd@grs,w
-  9824  03B3  1D03               	btfss	3,2
-  9825  03B4  2BC6               	goto	i1l865
-  9826  03B5  3001               	movlw	1
-  9827  03B6  07F0               	addwf	___fladd@b,f
-  9828  03B7  3000               	movlw	0
-  9829  03B8  3DF1               	addwfc	___fladd@b+1,f
-  9830  03B9  3000               	movlw	0
-  9831  03BA  3DF2               	addwfc	___fladd@b+2,f
-  9832  03BB  3000               	movlw	0
-  9833  03BC  3DF3               	addwfc	___fladd@b+3,f
-  9834  03BD  2BC6               	goto	i1l865
-  9835  03BE                     i1l2402:	
-  9836  03BE  0874               	movf	___fladd@a,w
-  9837  03BF  02F0               	subwf	___fladd@b,f
-  9838  03C0  0875               	movf	___fladd@a+1,w
-  9839  03C1  3BF1               	subwfb	___fladd@b+1,f
-  9840  03C2  0876               	movf	___fladd@a+2,w
-  9841  03C3  3BF2               	subwfb	___fladd@b+2,f
-  9842  03C4  0877               	movf	___fladd@a+3,w
-  9843  03C5  3BF3               	subwfb	___fladd@b+3,f
-  9844  03C6                     i1l865:	
-  9845  03C6  0873               	movf	___fladd@b+3,w
-  9846  03C7  0472               	iorwf	___fladd@b+2,w
-  9847  03C8  0471               	iorwf	___fladd@b+1,w
-  9848  03C9  0470               	iorwf	___fladd@b,w
-  9849  03CA  1D03               	skipz
-  9850  03CB  2BEC               	goto	i1l2424
-  9851  03CC  087B               	movf	___fladd@grs,w
-  9852  03CD  1D03               	btfss	3,2
-  9853  03CE  2BEC               	goto	i1l2424
-  9854  03CF  3000               	movlw	0
-  9855  03D0  00F3               	movwf	?___fladd+3
-  9856  03D1  3000               	movlw	0
-  9857  03D2  00F2               	movwf	?___fladd+2
-  9858  03D3  3000               	movlw	0
-  9859  03D4  00F1               	movwf	?___fladd+1
-  9860  03D5  3000               	movlw	0
-  9861  03D6  00F0               	movwf	?___fladd
-  9862  03D7  0008               	return
-  9863  03D8                     i1l2410:	
-  9864  03D8  3001               	movlw	1
-  9865  03D9                     u246_25:	
-  9866  03D9  35F0               	lslf	___fladd@b,f
-  9867  03DA  0DF1               	rlf	___fladd@b+1,f
-  9868  03DB  0DF2               	rlf	___fladd@b+2,f
-  9869  03DC  0DF3               	rlf	___fladd@b+3,f
-  9870  03DD  0B89               	decfsz	9,f
-  9871  03DE  2BD9               	goto	u246_25
-  9872  03DF  1BFB               	btfsc	___fladd@grs,7
-  9873  03E0  1470               	bsf	___fladd@b,0
-  9874  03E1  1C7B               	btfss	___fladd@grs,0
-  9875  03E2  2BE5               	goto	i1l2418
-  9876  03E3  1403               	setc
-  9877  03E4  2BE6               	goto	L2
-  9878  03E5                     i1l2418:	
-  9879  03E5  1003               	clrc
-  9880  03E6                     L2:	
-  9881  03E6  0DFB               	rlf	___fladd@grs,f
-  9882  03E7  087A               	movf	___fladd@bexp,w
-  9883  03E8  1903               	btfsc	3,2
-  9884  03E9  2BEC               	goto	i1l2424
-  9885  03EA  3001               	movlw	1
-  9886  03EB  02FA               	subwf	___fladd@bexp,f
-  9887  03EC                     i1l2424:	
-  9888  03EC  1FF2               	btfss	___fladd@b+2,7
-  9889  03ED  2BD8               	goto	i1l2410
-  9890  03EE                     i1l2426:	
-  9891  03EE  01F9               	clrf	___fladd@aexp
-  9892  03EF  1FFB               	btfss	___fladd@grs,7
-  9893  03F0  2BF9               	goto	i1l2436
-  9894  03F1  087B               	movf	___fladd@grs,w
-  9895  03F2  397F               	andlw	127
-  9896  03F3  1903               	btfsc	3,2
-  9897  03F4  1870               	btfsc	___fladd@b,0
-  9898  03F5  2BF7               	goto	i1l2432
-  9899  03F6  2BF9               	goto	i1l2436
-  9900  03F7                     i1l2432:	
-  9901  03F7  01F9               	clrf	___fladd@aexp
-  9902  03F8  0AF9               	incf	___fladd@aexp,f
-  9903  03F9                     i1l2436:	
-  9904  03F9  0879               	movf	___fladd@aexp,w
-  9905  03FA  1903               	btfsc	3,2
-  9906  03FB  2C26               	goto	i1l878
-  9907  03FC  3001               	movlw	1
-  9908  03FD  07F0               	addwf	___fladd@b,f
-  9909  03FE  3000               	movlw	0
-  9910  03FF  3DF1               	addwfc	___fladd@b+1,f
-  9911  0400  3000               	movlw	0
-  9912  0401  3DF2               	addwfc	___fladd@b+2,f
-  9913  0402  3000               	movlw	0
-  9914  0403  3DF3               	addwfc	___fladd@b+3,f
-  9915  0404  1C73               	btfss	___fladd@b+3,0
-  9916  0405  2C26               	goto	i1l878
-  9917  0406  0870               	movf	___fladd@b,w
-  9918  0407  0020               	movlb	0	; select bank0
-  9919  0408  00A0               	movwf	??___fladd
-  9920  0409  0871               	movf	___fladd@b+1,w
-  9921  040A  00A1               	movwf	??___fladd+1
-  9922  040B  0872               	movf	___fladd@b+2,w
-  9923  040C  00A2               	movwf	??___fladd+2
-  9924  040D  0873               	movf	___fladd@b+3,w
-  9925  040E  00A3               	movwf	??___fladd+3
-  9926  040F  3001               	movlw	1
-  9927  0410  00A4               	movwf	??___fladd+4
-  9928  0411                     u256_25:	
-  9929  0411  37A3               	asrf	??___fladd+3,f
-  9930  0412  0CA2               	rrf	??___fladd+2,f
-  9931  0413  0CA1               	rrf	??___fladd+1,f
-  9932  0414  0CA0               	rrf	??___fladd,f
-  9933  0415  0BA4               	decfsz	??___fladd+4,f
-  9934  0416  2C11               	goto	u256_25
-  9935  0417  0823               	movf	??___fladd+3,w
-  9936  0418  00F3               	movwf	___fladd@b+3
-  9937  0419  0822               	movf	??___fladd+2,w
-  9938  041A  00F2               	movwf	___fladd@b+2
-  9939  041B  0821               	movf	??___fladd+1,w
-  9940  041C  00F1               	movwf	___fladd@b+1
-  9941  041D  0820               	movf	??___fladd,w
-  9942  041E  00F0               	movwf	___fladd@b
-  9943  041F  0A7A               	incf	___fladd@bexp,w
-  9944  0420  1903               	btfsc	3,2
-  9945  0421  2C26               	goto	i1l878
-  9946  0422  3001               	movlw	1
-  9947  0423  00A0               	movwf	??___fladd
-  9948  0424  0820               	movf	??___fladd,w
-  9949  0425  07FA               	addwf	___fladd@bexp,f
-  9950  0426                     i1l878:	
-  9951  0426  0A7A               	incf	___fladd@bexp,w
-  9952  0427  1D03               	btfss	3,2
-  9953  0428  087A               	movf	___fladd@bexp,w
-  9954  0429  1D03               	btfss	3,2
-  9955  042A  2C36               	goto	i1l2454
-  9956  042B  3000               	movlw	0
-  9957  042C  00F3               	movwf	___fladd@b+3
-  9958  042D  3000               	movlw	0
-  9959  042E  00F2               	movwf	___fladd@b+2
-  9960  042F  3000               	movlw	0
-  9961  0430  00F1               	movwf	___fladd@b+1
-  9962  0431  3000               	movlw	0
-  9963  0432  00F0               	movwf	___fladd@b
-  9964  0433  087A               	movf	___fladd@bexp,w
-  9965  0434  1903               	btfsc	3,2
-  9966  0435  01F8               	clrf	___fladd@signs
-  9967  0436                     i1l2454:	
-  9968  0436  1C7A               	btfss	___fladd@bexp,0
-  9969  0437  2C3A               	goto	i1l2458
-  9970  0438  17F2               	bsf	___fladd@b+2,7
-  9971  0439  2C3F               	goto	i1l886
-  9972  043A                     i1l2458:	
-  9973  043A  307F               	movlw	127
-  9974  043B  0020               	movlb	0	; select bank0
-  9975  043C  00A0               	movwf	??___fladd
-  9976  043D  0820               	movf	??___fladd,w
-  9977  043E  05F2               	andwf	___fladd@b+2,f
-  9978  043F                     i1l886:	
-  9979  043F  367A               	lsrf	___fladd@bexp,w
-  9980  0440  0020               	movlb	0	; select bank0
-  9981  0441  00A0               	movwf	??___fladd
-  9982  0442  0820               	movf	??___fladd,w
-  9983  0443  00F3               	movwf	___fladd@b+3
-  9984  0444  1FF8               	btfss	___fladd@signs,7
-  9985  0445  0008               	return
-  9986  0446  17F3               	bsf	___fladd@b+3,7
-  9987  0447  0008               	return
-  9988  0448                     __end_of___fladd:	
-  9989  007E                     btemp	set	126	;btemp
-  9990  007E                     int$flags	set	126
-  9991  007E                     wtemp0	set	126
+  9456                           
+  9457                           ;psect for function ___fladd
+  9458  025F                     ___fladd:	
+  9459                           
+  9460                           ;incstack = 0
+  9461                           ; Regs used in ___fladd: [wreg+status,2+status,0]
+  9462  025F  0873               	movf	___fladd@b+3,w
+  9463  0260  3980               	andlw	128
+  9464  0261  0020               	movlb	0	; select bank0
+  9465  0262  00A0               	movwf	??___fladd
+  9466  0263  0820               	movf	??___fladd,w
+  9467  0264  00F8               	movwf	___fladd@signs
+  9468  0265  3573               	lslf	___fladd@b+3,w
+  9469  0266  00A0               	movwf	??___fladd
+  9470  0267  0820               	movf	??___fladd,w
+  9471  0268  00FA               	movwf	___fladd@bexp
+  9472  0269  1BF2               	btfsc	___fladd@b+2,7
+  9473  026A  147A               	bsf	___fladd@bexp,0
+  9474  026B  087A               	movf	___fladd@bexp,w
+  9475  026C  1903               	btfsc	3,2
+  9476  026D  2A7C               	goto	i1l2288
+  9477  026E  0A7A               	incf	___fladd@bexp,w
+  9478  026F  1D03               	btfss	3,2
+  9479  0270  2A79               	goto	i1l2284
+  9480  0271  3000               	movlw	0
+  9481  0272  00F3               	movwf	___fladd@b+3
+  9482  0273  3000               	movlw	0
+  9483  0274  00F2               	movwf	___fladd@b+2
+  9484  0275  3000               	movlw	0
+  9485  0276  00F1               	movwf	___fladd@b+1
+  9486  0277  3000               	movlw	0
+  9487  0278  00F0               	movwf	___fladd@b
+  9488  0279                     i1l2284:	
+  9489  0279  17F2               	bsf	___fladd@b+2,7
+  9490  027A  01F3               	clrf	___fladd@b+3
+  9491  027B  2A84               	goto	i1l2290
+  9492  027C                     i1l2288:	
+  9493  027C  3000               	movlw	0
+  9494  027D  00F3               	movwf	___fladd@b+3
+  9495  027E  3000               	movlw	0
+  9496  027F  00F2               	movwf	___fladd@b+2
+  9497  0280  3000               	movlw	0
+  9498  0281  00F1               	movwf	___fladd@b+1
+  9499  0282  3000               	movlw	0
+  9500  0283  00F0               	movwf	___fladd@b
+  9501  0284                     i1l2290:	
+  9502  0284  0877               	movf	___fladd@a+3,w
+  9503  0285  3980               	andlw	128
+  9504  0286  00A0               	movwf	??___fladd
+  9505  0287  0820               	movf	??___fladd,w
+  9506  0288  00F9               	movwf	___fladd@aexp
+  9507  0289  0879               	movf	___fladd@aexp,w
+  9508  028A  0678               	xorwf	___fladd@signs,w
+  9509  028B  1D03               	btfss	3,2
+  9510  028C  1778               	bsf	___fladd@signs,6
+  9511  028D  3577               	lslf	___fladd@a+3,w
+  9512  028E  00A0               	movwf	??___fladd
+  9513  028F  0820               	movf	??___fladd,w
+  9514  0290  00F9               	movwf	___fladd@aexp
+  9515  0291  1BF6               	btfsc	___fladd@a+2,7
+  9516  0292  1479               	bsf	___fladd@aexp,0
+  9517  0293  0879               	movf	___fladd@aexp,w
+  9518  0294  1903               	btfsc	3,2
+  9519  0295  2AA4               	goto	i1l2312
+  9520  0296  0A79               	incf	___fladd@aexp,w
+  9521  0297  1D03               	btfss	3,2
+  9522  0298  2AA1               	goto	i1l2308
+  9523  0299  3000               	movlw	0
+  9524  029A  00F7               	movwf	___fladd@a+3
+  9525  029B  3000               	movlw	0
+  9526  029C  00F6               	movwf	___fladd@a+2
+  9527  029D  3000               	movlw	0
+  9528  029E  00F5               	movwf	___fladd@a+1
+  9529  029F  3000               	movlw	0
+  9530  02A0  00F4               	movwf	___fladd@a
+  9531  02A1                     i1l2308:	
+  9532  02A1  17F6               	bsf	___fladd@a+2,7
+  9533  02A2  01F7               	clrf	___fladd@a+3
+  9534  02A3  2AAC               	goto	i1l844
+  9535  02A4                     i1l2312:	
+  9536  02A4  3000               	movlw	0
+  9537  02A5  00F7               	movwf	___fladd@a+3
+  9538  02A6  3000               	movlw	0
+  9539  02A7  00F6               	movwf	___fladd@a+2
+  9540  02A8  3000               	movlw	0
+  9541  02A9  00F5               	movwf	___fladd@a+1
+  9542  02AA  3000               	movlw	0
+  9543  02AB  00F4               	movwf	___fladd@a
+  9544  02AC                     i1l844:	
+  9545  02AC  087A               	movf	___fladd@bexp,w
+  9546  02AD  0279               	subwf	___fladd@aexp,w
+  9547  02AE  1803               	skipnc
+  9548  02AF  2AF2               	goto	i1l2348
+  9549  02B0  1F78               	btfss	___fladd@signs,6
+  9550  02B1  2AB6               	goto	i1l2318
+  9551  02B2  3080               	movlw	128
+  9552  02B3  00A0               	movwf	??___fladd
+  9553  02B4  0820               	movf	??___fladd,w
+  9554  02B5  06F8               	xorwf	___fladd@signs,f
+  9555  02B6                     i1l2318:	
+  9556  02B6  087A               	movf	___fladd@bexp,w
+  9557  02B7  00A0               	movwf	??___fladd
+  9558  02B8  0820               	movf	??___fladd,w
+  9559  02B9  00FB               	movwf	___fladd@grs
+  9560  02BA  0879               	movf	___fladd@aexp,w
+  9561  02BB  00A0               	movwf	??___fladd
+  9562  02BC  0820               	movf	??___fladd,w
+  9563  02BD  00FA               	movwf	___fladd@bexp
+  9564  02BE  087B               	movf	___fladd@grs,w
+  9565  02BF  00A0               	movwf	??___fladd
+  9566  02C0  0820               	movf	??___fladd,w
+  9567  02C1  00F9               	movwf	___fladd@aexp
+  9568  02C2  0870               	movf	___fladd@b,w
+  9569  02C3  00A0               	movwf	??___fladd
+  9570  02C4  0820               	movf	??___fladd,w
+  9571  02C5  00FB               	movwf	___fladd@grs
+  9572  02C6  0874               	movf	___fladd@a,w
+  9573  02C7  00A0               	movwf	??___fladd
+  9574  02C8  0820               	movf	??___fladd,w
+  9575  02C9  00F0               	movwf	___fladd@b
+  9576  02CA  087B               	movf	___fladd@grs,w
+  9577  02CB  00A0               	movwf	??___fladd
+  9578  02CC  0820               	movf	??___fladd,w
+  9579  02CD  00F4               	movwf	___fladd@a
+  9580  02CE  0871               	movf	___fladd@b+1,w
+  9581  02CF  00A0               	movwf	??___fladd
+  9582  02D0  0820               	movf	??___fladd,w
+  9583  02D1  00FB               	movwf	___fladd@grs
+  9584  02D2  0875               	movf	___fladd@a+1,w
+  9585  02D3  00A0               	movwf	??___fladd
+  9586  02D4  0820               	movf	??___fladd,w
+  9587  02D5  00F1               	movwf	___fladd@b+1
+  9588  02D6  087B               	movf	___fladd@grs,w
+  9589  02D7  00A0               	movwf	??___fladd
+  9590  02D8  0820               	movf	??___fladd,w
+  9591  02D9  00F5               	movwf	___fladd@a+1
+  9592  02DA  0872               	movf	___fladd@b+2,w
+  9593  02DB  00A0               	movwf	??___fladd
+  9594  02DC  0820               	movf	??___fladd,w
+  9595  02DD  00FB               	movwf	___fladd@grs
+  9596  02DE  0876               	movf	___fladd@a+2,w
+  9597  02DF  00A0               	movwf	??___fladd
+  9598  02E0  0820               	movf	??___fladd,w
+  9599  02E1  00F2               	movwf	___fladd@b+2
+  9600  02E2  087B               	movf	___fladd@grs,w
+  9601  02E3  00A0               	movwf	??___fladd
+  9602  02E4  0820               	movf	??___fladd,w
+  9603  02E5  00F6               	movwf	___fladd@a+2
+  9604  02E6  0873               	movf	___fladd@b+3,w
+  9605  02E7  00A0               	movwf	??___fladd
+  9606  02E8  0820               	movf	??___fladd,w
+  9607  02E9  00FB               	movwf	___fladd@grs
+  9608  02EA  0877               	movf	___fladd@a+3,w
+  9609  02EB  00A0               	movwf	??___fladd
+  9610  02EC  0820               	movf	??___fladd,w
+  9611  02ED  00F3               	movwf	___fladd@b+3
+  9612  02EE  087B               	movf	___fladd@grs,w
+  9613  02EF  00A0               	movwf	??___fladd
+  9614  02F0  0820               	movf	??___fladd,w
+  9615  02F1  00F7               	movwf	___fladd@a+3
+  9616  02F2                     i1l2348:	
+  9617  02F2  01FB               	clrf	___fladd@grs
+  9618  02F3  0879               	movf	___fladd@aexp,w
+  9619  02F4  00A0               	movwf	??___fladd
+  9620  02F5  01A1               	clrf	??___fladd+1
+  9621  02F6  0821               	movf	??___fladd+1,w
+  9622  02F7  00A3               	movwf	??___fladd+3
+  9623  02F8  087A               	movf	___fladd@bexp,w
+  9624  02F9  0220               	subwf	??___fladd,w
+  9625  02FA  00A2               	movwf	??___fladd+2
+  9626  02FB  1C03               	skipc
+  9627  02FC  03A3               	decf	??___fladd+3,f
+  9628  02FD  0823               	movf	??___fladd+3,w
+  9629  02FE  3A80               	xorlw	128
+  9630  02FF  00A4               	movwf	??___fladd+4
+  9631  0300  3080               	movlw	128
+  9632  0301  0224               	subwf	??___fladd+4,w
+  9633  0302  1D03               	skipz
+  9634  0303  2B06               	goto	u229_25
+  9635  0304  301A               	movlw	26
+  9636  0305  0222               	subwf	??___fladd+2,w
+  9637  0306                     u229_25:	
+  9638  0306  1C03               	skipc
+  9639  0307  2B3C               	goto	i1l2366
+  9640  0308  0873               	movf	___fladd@b+3,w
+  9641  0309  0472               	iorwf	___fladd@b+2,w
+  9642  030A  0471               	iorwf	___fladd@b+1,w
+  9643  030B  0470               	iorwf	___fladd@b,w
+  9644  030C  1903               	btfsc	3,2
+  9645  030D  2B10               	goto	u230_20
+  9646  030E  3001               	movlw	1
+  9647  030F  2B11               	goto	u231_20
+  9648  0310                     u230_20:	
+  9649  0310  3000               	movlw	0
+  9650  0311                     u231_20:	
+  9651  0311  0020               	movlb	0	; select bank0
+  9652  0312  00A0               	movwf	??___fladd
+  9653  0313  0820               	movf	??___fladd,w
+  9654  0314  00FB               	movwf	___fladd@grs
+  9655  0315  3000               	movlw	0
+  9656  0316  00F3               	movwf	___fladd@b+3
+  9657  0317  3000               	movlw	0
+  9658  0318  00F2               	movwf	___fladd@b+2
+  9659  0319  3000               	movlw	0
+  9660  031A  00F1               	movwf	___fladd@b+1
+  9661  031B  3000               	movlw	0
+  9662  031C  00F0               	movwf	___fladd@b
+  9663  031D  0879               	movf	___fladd@aexp,w
+  9664  031E  00A0               	movwf	??___fladd
+  9665  031F  0820               	movf	??___fladd,w
+  9666  0320  00FA               	movwf	___fladd@bexp
+  9667  0321  2B40               	goto	i1l848
+  9668  0322                     i1l850:	
+  9669  0322  1C7B               	btfss	___fladd@grs,0
+  9670  0323  2B2B               	goto	i1l2356
+  9671  0324  367B               	lsrf	___fladd@grs,w
+  9672  0325  3801               	iorlw	1
+  9673  0326  0020               	movlb	0	; select bank0
+  9674  0327  00A0               	movwf	??___fladd
+  9675  0328  0820               	movf	??___fladd,w
+  9676  0329  00FB               	movwf	___fladd@grs
+  9677  032A  2B2D               	goto	i1l2358
+  9678  032B                     i1l2356:	
+  9679  032B  1003               	clrc
+  9680  032C  0CFB               	rrf	___fladd@grs,f
+  9681  032D                     i1l2358:	
+  9682  032D  1870               	btfsc	___fladd@b,0
+  9683  032E  17FB               	bsf	___fladd@grs,7
+  9684  032F  3001               	movlw	1
+  9685  0330  0020               	movlb	0	; select bank0
+  9686  0331  00A0               	movwf	??___fladd
+  9687  0332                     u234_25:	
+  9688  0332  37F3               	asrf	___fladd@b+3,f
+  9689  0333  0CF2               	rrf	___fladd@b+2,f
+  9690  0334  0CF1               	rrf	___fladd@b+1,f
+  9691  0335  0CF0               	rrf	___fladd@b,f
+  9692  0336  0BA0               	decfsz	??___fladd& (0+127),f
+  9693  0337  2B32               	goto	u234_25
+  9694  0338  3001               	movlw	1
+  9695  0339  00A0               	movwf	??___fladd
+  9696  033A  0820               	movf	??___fladd,w
+  9697  033B  07FA               	addwf	___fladd@bexp,f
+  9698  033C                     i1l2366:	
+  9699  033C  0879               	movf	___fladd@aexp,w
+  9700  033D  027A               	subwf	___fladd@bexp,w
+  9701  033E  1C03               	skipc
+  9702  033F  2B22               	goto	i1l850
+  9703  0340                     i1l848:	
+  9704  0340  1B78               	btfsc	___fladd@signs,6
+  9705  0341  2B73               	goto	i1l2392
+  9706  0342  087A               	movf	___fladd@bexp,w
+  9707  0343  1D03               	btfss	3,2
+  9708  0344  2B4E               	goto	i1l2374
+  9709  0345  3000               	movlw	0
+  9710  0346  00F3               	movwf	?___fladd+3
+  9711  0347  3000               	movlw	0
+  9712  0348  00F2               	movwf	?___fladd+2
+  9713  0349  3000               	movlw	0
+  9714  034A  00F1               	movwf	?___fladd+1
+  9715  034B  3000               	movlw	0
+  9716  034C  00F0               	movwf	?___fladd
+  9717  034D  0008               	return
+  9718  034E                     i1l2374:	
+  9719  034E  0874               	movf	___fladd@a,w
+  9720  034F  07F0               	addwf	___fladd@b,f
+  9721  0350  0875               	movf	___fladd@a+1,w
+  9722  0351  3DF1               	addwfc	___fladd@b+1,f
+  9723  0352  0876               	movf	___fladd@a+2,w
+  9724  0353  3DF2               	addwfc	___fladd@b+2,f
+  9725  0354  0877               	movf	___fladd@a+3,w
+  9726  0355  3DF3               	addwfc	___fladd@b+3,f
+  9727  0356  1C73               	btfss	___fladd@b+3,0
+  9728  0357  2BEE               	goto	i1l2426
+  9729  0358  1C7B               	btfss	___fladd@grs,0
+  9730  0359  2B61               	goto	i1l2382
+  9731  035A  367B               	lsrf	___fladd@grs,w
+  9732  035B  3801               	iorlw	1
+  9733  035C  0020               	movlb	0	; select bank0
+  9734  035D  00A0               	movwf	??___fladd
+  9735  035E  0820               	movf	??___fladd,w
+  9736  035F  00FB               	movwf	___fladd@grs
+  9737  0360  2B63               	goto	i1l2384
+  9738  0361                     i1l2382:	
+  9739  0361  1003               	clrc
+  9740  0362  0CFB               	rrf	___fladd@grs,f
+  9741  0363                     i1l2384:	
+  9742  0363  1870               	btfsc	___fladd@b,0
+  9743  0364  17FB               	bsf	___fladd@grs,7
+  9744  0365  3001               	movlw	1
+  9745  0366  0020               	movlb	0	; select bank0
+  9746  0367  00A0               	movwf	??___fladd
+  9747  0368                     u241_25:	
+  9748  0368  37F3               	asrf	___fladd@b+3,f
+  9749  0369  0CF2               	rrf	___fladd@b+2,f
+  9750  036A  0CF1               	rrf	___fladd@b+1,f
+  9751  036B  0CF0               	rrf	___fladd@b,f
+  9752  036C  0BA0               	decfsz	??___fladd& (0+127),f
+  9753  036D  2B68               	goto	u241_25
+  9754  036E  3001               	movlw	1
+  9755  036F  00A0               	movwf	??___fladd
+  9756  0370  0820               	movf	??___fladd,w
+  9757  0371  07FA               	addwf	___fladd@bexp,f
+  9758  0372  2BEE               	goto	i1l2426
+  9759  0373                     i1l2392:	
+  9760  0373  0873               	movf	___fladd@b+3,w
+  9761  0374  3A80               	xorlw	128
+  9762  0375  0020               	movlb	0	; select bank0
+  9763  0376  00A0               	movwf	??___fladd
+  9764  0377  0877               	movf	___fladd@a+3,w
+  9765  0378  3A80               	xorlw	128
+  9766  0379  0220               	subwf	??___fladd,w
+  9767  037A  1D03               	skipz
+  9768  037B  2B86               	goto	u242_23
+  9769  037C  0876               	movf	___fladd@a+2,w
+  9770  037D  0272               	subwf	___fladd@b+2,w
+  9771  037E  1D03               	skipz
+  9772  037F  2B86               	goto	u242_23
+  9773  0380  0875               	movf	___fladd@a+1,w
+  9774  0381  0271               	subwf	___fladd@b+1,w
+  9775  0382  1D03               	skipz
+  9776  0383  2B86               	goto	u242_23
+  9777  0384  0874               	movf	___fladd@a,w
+  9778  0385  0270               	subwf	___fladd@b,w
+  9779  0386                     u242_23:	
+  9780  0386  1803               	skipnc
+  9781  0387  2BBE               	goto	i1l2402
+  9782  0388  30FF               	movlw	255
+  9783  0389  00A0               	movwf	??___fladd
+  9784  038A  30FF               	movlw	255
+  9785  038B  00A1               	movwf	??___fladd+1
+  9786  038C  30FF               	movlw	255
+  9787  038D  00A2               	movwf	??___fladd+2
+  9788  038E  30FF               	movlw	255
+  9789  038F  00A3               	movwf	??___fladd+3
+  9790  0390  0870               	movf	___fladd@b,w
+  9791  0391  0274               	subwf	___fladd@a,w
+  9792  0392  00A4               	movwf	??___fladd+4
+  9793  0393  0871               	movf	___fladd@b+1,w
+  9794  0394  3B75               	subwfb	___fladd@a+1,w
+  9795  0395  00A5               	movwf	??___fladd+5
+  9796  0396  0872               	movf	___fladd@b+2,w
+  9797  0397  3B76               	subwfb	___fladd@a+2,w
+  9798  0398  00A6               	movwf	??___fladd+6
+  9799  0399  0873               	movf	___fladd@b+3,w
+  9800  039A  3B77               	subwfb	___fladd@a+3,w
+  9801  039B  00A7               	movwf	??___fladd+7
+  9802  039C  0824               	movf	??___fladd+4,w
+  9803  039D  07A0               	addwf	??___fladd,f
+  9804  039E  0825               	movf	??___fladd+5,w
+  9805  039F  3DA1               	addwfc	??___fladd+1,f
+  9806  03A0  0826               	movf	??___fladd+6,w
+  9807  03A1  3DA2               	addwfc	??___fladd+2,f
+  9808  03A2  0827               	movf	??___fladd+7,w
+  9809  03A3  3DA3               	addwfc	??___fladd+3,f
+  9810  03A4  0823               	movf	??___fladd+3,w
+  9811  03A5  00F3               	movwf	___fladd@b+3
+  9812  03A6  0822               	movf	??___fladd+2,w
+  9813  03A7  00F2               	movwf	___fladd@b+2
+  9814  03A8  0821               	movf	??___fladd+1,w
+  9815  03A9  00F1               	movwf	___fladd@b+1
+  9816  03AA  0820               	movf	??___fladd,w
+  9817  03AB  00F0               	movwf	___fladd@b
+  9818  03AC  3080               	movlw	128
+  9819  03AD  00A0               	movwf	??___fladd
+  9820  03AE  0820               	movf	??___fladd,w
+  9821  03AF  06F8               	xorwf	___fladd@signs,f
+  9822  03B0  09FB               	comf	___fladd@grs,f
+  9823  03B1  0AFB               	incf	___fladd@grs,f
+  9824  03B2  087B               	movf	___fladd@grs,w
+  9825  03B3  1D03               	btfss	3,2
+  9826  03B4  2BC6               	goto	i1l865
+  9827  03B5  3001               	movlw	1
+  9828  03B6  07F0               	addwf	___fladd@b,f
+  9829  03B7  3000               	movlw	0
+  9830  03B8  3DF1               	addwfc	___fladd@b+1,f
+  9831  03B9  3000               	movlw	0
+  9832  03BA  3DF2               	addwfc	___fladd@b+2,f
+  9833  03BB  3000               	movlw	0
+  9834  03BC  3DF3               	addwfc	___fladd@b+3,f
+  9835  03BD  2BC6               	goto	i1l865
+  9836  03BE                     i1l2402:	
+  9837  03BE  0874               	movf	___fladd@a,w
+  9838  03BF  02F0               	subwf	___fladd@b,f
+  9839  03C0  0875               	movf	___fladd@a+1,w
+  9840  03C1  3BF1               	subwfb	___fladd@b+1,f
+  9841  03C2  0876               	movf	___fladd@a+2,w
+  9842  03C3  3BF2               	subwfb	___fladd@b+2,f
+  9843  03C4  0877               	movf	___fladd@a+3,w
+  9844  03C5  3BF3               	subwfb	___fladd@b+3,f
+  9845  03C6                     i1l865:	
+  9846  03C6  0873               	movf	___fladd@b+3,w
+  9847  03C7  0472               	iorwf	___fladd@b+2,w
+  9848  03C8  0471               	iorwf	___fladd@b+1,w
+  9849  03C9  0470               	iorwf	___fladd@b,w
+  9850  03CA  1D03               	skipz
+  9851  03CB  2BEC               	goto	i1l2424
+  9852  03CC  087B               	movf	___fladd@grs,w
+  9853  03CD  1D03               	btfss	3,2
+  9854  03CE  2BEC               	goto	i1l2424
+  9855  03CF  3000               	movlw	0
+  9856  03D0  00F3               	movwf	?___fladd+3
+  9857  03D1  3000               	movlw	0
+  9858  03D2  00F2               	movwf	?___fladd+2
+  9859  03D3  3000               	movlw	0
+  9860  03D4  00F1               	movwf	?___fladd+1
+  9861  03D5  3000               	movlw	0
+  9862  03D6  00F0               	movwf	?___fladd
+  9863  03D7  0008               	return
+  9864  03D8                     i1l2410:	
+  9865  03D8  3001               	movlw	1
+  9866  03D9                     u246_25:	
+  9867  03D9  35F0               	lslf	___fladd@b,f
+  9868  03DA  0DF1               	rlf	___fladd@b+1,f
+  9869  03DB  0DF2               	rlf	___fladd@b+2,f
+  9870  03DC  0DF3               	rlf	___fladd@b+3,f
+  9871  03DD  0B89               	decfsz	9,f
+  9872  03DE  2BD9               	goto	u246_25
+  9873  03DF  1BFB               	btfsc	___fladd@grs,7
+  9874  03E0  1470               	bsf	___fladd@b,0
+  9875  03E1  1C7B               	btfss	___fladd@grs,0
+  9876  03E2  2BE5               	goto	i1l2418
+  9877  03E3  1403               	setc
+  9878  03E4  2BE6               	goto	L2
+  9879  03E5                     i1l2418:	
+  9880  03E5  1003               	clrc
+  9881  03E6                     L2:	
+  9882  03E6  0DFB               	rlf	___fladd@grs,f
+  9883  03E7  087A               	movf	___fladd@bexp,w
+  9884  03E8  1903               	btfsc	3,2
+  9885  03E9  2BEC               	goto	i1l2424
+  9886  03EA  3001               	movlw	1
+  9887  03EB  02FA               	subwf	___fladd@bexp,f
+  9888  03EC                     i1l2424:	
+  9889  03EC  1FF2               	btfss	___fladd@b+2,7
+  9890  03ED  2BD8               	goto	i1l2410
+  9891  03EE                     i1l2426:	
+  9892  03EE  01F9               	clrf	___fladd@aexp
+  9893  03EF  1FFB               	btfss	___fladd@grs,7
+  9894  03F0  2BF9               	goto	i1l2436
+  9895  03F1  087B               	movf	___fladd@grs,w
+  9896  03F2  397F               	andlw	127
+  9897  03F3  1903               	btfsc	3,2
+  9898  03F4  1870               	btfsc	___fladd@b,0
+  9899  03F5  2BF7               	goto	i1l2432
+  9900  03F6  2BF9               	goto	i1l2436
+  9901  03F7                     i1l2432:	
+  9902  03F7  01F9               	clrf	___fladd@aexp
+  9903  03F8  0AF9               	incf	___fladd@aexp,f
+  9904  03F9                     i1l2436:	
+  9905  03F9  0879               	movf	___fladd@aexp,w
+  9906  03FA  1903               	btfsc	3,2
+  9907  03FB  2C26               	goto	i1l878
+  9908  03FC  3001               	movlw	1
+  9909  03FD  07F0               	addwf	___fladd@b,f
+  9910  03FE  3000               	movlw	0
+  9911  03FF  3DF1               	addwfc	___fladd@b+1,f
+  9912  0400  3000               	movlw	0
+  9913  0401  3DF2               	addwfc	___fladd@b+2,f
+  9914  0402  3000               	movlw	0
+  9915  0403  3DF3               	addwfc	___fladd@b+3,f
+  9916  0404  1C73               	btfss	___fladd@b+3,0
+  9917  0405  2C26               	goto	i1l878
+  9918  0406  0870               	movf	___fladd@b,w
+  9919  0407  0020               	movlb	0	; select bank0
+  9920  0408  00A0               	movwf	??___fladd
+  9921  0409  0871               	movf	___fladd@b+1,w
+  9922  040A  00A1               	movwf	??___fladd+1
+  9923  040B  0872               	movf	___fladd@b+2,w
+  9924  040C  00A2               	movwf	??___fladd+2
+  9925  040D  0873               	movf	___fladd@b+3,w
+  9926  040E  00A3               	movwf	??___fladd+3
+  9927  040F  3001               	movlw	1
+  9928  0410  00A4               	movwf	??___fladd+4
+  9929  0411                     u256_25:	
+  9930  0411  37A3               	asrf	??___fladd+3,f
+  9931  0412  0CA2               	rrf	??___fladd+2,f
+  9932  0413  0CA1               	rrf	??___fladd+1,f
+  9933  0414  0CA0               	rrf	??___fladd,f
+  9934  0415  0BA4               	decfsz	??___fladd+4,f
+  9935  0416  2C11               	goto	u256_25
+  9936  0417  0823               	movf	??___fladd+3,w
+  9937  0418  00F3               	movwf	___fladd@b+3
+  9938  0419  0822               	movf	??___fladd+2,w
+  9939  041A  00F2               	movwf	___fladd@b+2
+  9940  041B  0821               	movf	??___fladd+1,w
+  9941  041C  00F1               	movwf	___fladd@b+1
+  9942  041D  0820               	movf	??___fladd,w
+  9943  041E  00F0               	movwf	___fladd@b
+  9944  041F  0A7A               	incf	___fladd@bexp,w
+  9945  0420  1903               	btfsc	3,2
+  9946  0421  2C26               	goto	i1l878
+  9947  0422  3001               	movlw	1
+  9948  0423  00A0               	movwf	??___fladd
+  9949  0424  0820               	movf	??___fladd,w
+  9950  0425  07FA               	addwf	___fladd@bexp,f
+  9951  0426                     i1l878:	
+  9952  0426  0A7A               	incf	___fladd@bexp,w
+  9953  0427  1D03               	btfss	3,2
+  9954  0428  087A               	movf	___fladd@bexp,w
+  9955  0429  1D03               	btfss	3,2
+  9956  042A  2C36               	goto	i1l2454
+  9957  042B  3000               	movlw	0
+  9958  042C  00F3               	movwf	___fladd@b+3
+  9959  042D  3000               	movlw	0
+  9960  042E  00F2               	movwf	___fladd@b+2
+  9961  042F  3000               	movlw	0
+  9962  0430  00F1               	movwf	___fladd@b+1
+  9963  0431  3000               	movlw	0
+  9964  0432  00F0               	movwf	___fladd@b
+  9965  0433  087A               	movf	___fladd@bexp,w
+  9966  0434  1903               	btfsc	3,2
+  9967  0435  01F8               	clrf	___fladd@signs
+  9968  0436                     i1l2454:	
+  9969  0436  1C7A               	btfss	___fladd@bexp,0
+  9970  0437  2C3A               	goto	i1l2458
+  9971  0438  17F2               	bsf	___fladd@b+2,7
+  9972  0439  2C3F               	goto	i1l886
+  9973  043A                     i1l2458:	
+  9974  043A  307F               	movlw	127
+  9975  043B  0020               	movlb	0	; select bank0
+  9976  043C  00A0               	movwf	??___fladd
+  9977  043D  0820               	movf	??___fladd,w
+  9978  043E  05F2               	andwf	___fladd@b+2,f
+  9979  043F                     i1l886:	
+  9980  043F  367A               	lsrf	___fladd@bexp,w
+  9981  0440  0020               	movlb	0	; select bank0
+  9982  0441  00A0               	movwf	??___fladd
+  9983  0442  0820               	movf	??___fladd,w
+  9984  0443  00F3               	movwf	___fladd@b+3
+  9985  0444  1FF8               	btfss	___fladd@signs,7
+  9986  0445  0008               	return
+  9987  0446  17F3               	bsf	___fladd@b+3,7
+  9988  0447  0008               	return
+  9989  0448                     __end_of___fladd:	
+  9990  007E                     btemp	set	126	;btemp
+  9991  007E                     int$flags	set	126
+  9992  007E                     wtemp0	set	126
 
 
 Data Sizes:
@@ -10912,9 +10913,9 @@ SFR31                0      0       0      32        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.05 build -831301201 
-Symbol Table                                                                                   Tue Apr 02 16:05:12 2019
+Symbol Table                                                                                   Tue Apr 02 17:01:32 2019
 
-                                  __CFG_CP$OFF 0000                                             l69 0AE6  
+                                  __CFG_CP$OFF 0000                                             l69 0AE5  
                               _timer0ReloadVal 0067                            __Umul8_16@word_mpld 002E  
                                           l501 04A2                                            l510 05A0  
                                           l502 04A9                                            l506 04C2  
@@ -10924,7 +10925,7 @@ Symbol Table                                                                    
                                           l496 0D78                                            l952 0252  
                                           l991 0EF3                                            l992 0EFD  
                                           l984 0EDF                                            l978 0EA9  
-                                          _abs 0B88                                            _pad 0D3F  
+                                          _abs 0B87                                            _pad 0D3F  
                                           _rpm 00BC                 ?_EUSART_SetFramingErrorHandler 0028  
                                  __CFG_BORV$LO 0000                                            wreg 0009  
                                  __CFG_IESO$ON 0000                                   ___flmul@aexp 0048  
@@ -10933,21 +10934,21 @@ Symbol Table                                                                    
                                  ___flmul@sign 0043                                   ___flmul@temp 004E  
                                  ___flmul@prod 004A                                   __CFG_LVP$OFF 0000  
                                  __CFG_ZCD$OFF 0000                                   ___fltol@exp1 005A  
-                                         ?_abs 003B                                           l1046 0BCB  
+                                         ?_abs 003B                                           l1046 0BCA  
                                          l3100 0D5A                                           l3104 0D86  
                                          l3122 073F                                           l3202 0503  
                                          l3124 0744                                           l3060 0CF4  
                                          l3212 04DA                                           l3220 05AE  
                                          l3134 075B                                           l3118 0717  
-                                         l3054 0CC8                                           l3070 0C01  
+                                         l3054 0CC8                                           l3070 0C00  
                                          l3230 05C1                                           l3144 07A3  
                                          l3136 076A                                           l3160 0F75  
-                                         l3072 0C22                                           l3080 0BA7  
-                                         l3224 05B6                                           l3312 0C2F  
+                                         l3072 0C21                                           l3080 0BA6  
+                                         l3224 05B6                                           l3312 0C2E  
                                          l3146 07AF                                           l3170 0F91  
-                                         l3058 0CEB                                           l3082 0BB3  
+                                         l3058 0CEB                                           l3082 0BB2  
                                          l3090 0D4E                                           l3234 05D1  
-                                         l3250 062B                                           l3314 0C4F  
+                                         l3250 062B                                           l3314 0C4E  
                                          l3322 0D00                                           l3156 0F4D  
                                          l3324 0D0A                                           l3332 0D28  
                                          l3174 0FC1                                           l3094 0D56  
@@ -10956,7 +10957,7 @@ Symbol Table                                                                    
                                          l3176 0FCD                                           l3192 04BA  
                                          l3280 06BF                                           l3328 0D1E  
                                          l3266 0694                                           l3258 0667  
-                                         l3370 0E10                                           l2652 0BC5  
+                                         l3370 0E10                                           l2652 0BC4  
                                          l2812 0070                                           l3276 06B9  
                                          l2902 0228                                           l2814 0072  
                                          l2750 0DA5                                           l3198 04CD  
@@ -10983,10 +10984,10 @@ Symbol Table                                                                    
                                          u3245 0ED9                                           u3175 0232  
                                          u3265 0EEB                                           u3425 0CE9  
                                          u3540 074C                                           u3710 0475  
-                                         u3720 0476                                           u2745 0BCC  
+                                         u3720 0476                                           u2745 0BCB  
                                          u2905 0DE0                                           u3475 0D64  
                                          u2845 0DAE                                           u3575 0790  
-                                         u3495 0B92                                           u3815 04F0  
+                                         u3495 0B91                                           u3815 04F0  
                                          u3825 04FE                                           u2875 0DCB  
                                          u3675 0FAF                                           u3765 04B2  
                                          u3795 05AC                                           u3977 0E3E  
@@ -11004,9 +11005,9 @@ Symbol Table                                                                    
                                          btemp 007E                                           _puts 07E2  
                                 __CFG_BOREN$ON 0000                                           start 0014  
                                 __CFG_MCLRE$ON 0000                                          ??_abs 003D  
-                                        ??_pad 003E                        __end_of_TMR0_Initialize 0B73  
+                                        ??_pad 003E                        __end_of_TMR0_Initialize 0B72  
                ??_TMR0_DefaultInterruptHandler 0070                                  ?_EUSART_Write 0070  
-               __size_of_OSCILLATOR_Initialize 0007                  __end_of_OSCILLATOR_Initialize 0ADC  
+               __size_of_OSCILLATOR_Initialize 0007                  __end_of_OSCILLATOR_Initialize 0ADB  
                           __size_of_IOCCF7_ISR 000D                                  ___fltol@sign1 0059  
                               __end_of___aodiv 07E2                                __end_of___fladd 0448  
                                         ?_main 0070                                          ?_dtoa 0044  
@@ -11020,11 +11021,11 @@ Symbol Table                                                                    
                                         _SLRC7 1877                                          _TRISA 008C  
                                         _TRISB 008D                                          _TRISC 008E  
             __size_of_TMR0_SetInterruptHandler 0009                      ?_TMR0_SetInterruptHandler 0028  
-                             __end_of_TMR0_ISR 0B3D                        __end_of_PIN_MANAGER_IOC 0AC9  
+                             __end_of_TMR0_ISR 0B3C                        __end_of_PIN_MANAGER_IOC 0AC8  
                                         _hrInt 00CC                                          _flags 0062  
-                                        _fputc 0CBD                                          _fputs 0BFE  
+                                        _fputc 0CBD                                          _fputs 0BFD  
                                         _speed 00B8                                          pad@fp 0043  
-                                        _width 00CA                                          _putch 0AC9  
+                                        _width 00CA                                          _putch 0AC8  
                                         dtoa@d 0044                                          dtoa@i 00DF  
                                         dtoa@n 00D7                                          dtoa@p 00D1  
                                         dtoa@s 00D5                                          dtoa@w 00D3  
@@ -11053,7 +11054,7 @@ Symbol Table                                                                    
                                        i1l2426 03EE                                         i1l2290 0284  
                                        i1l2436 03F9                                         i1l2356 032B  
                                        i1l2348 02F2                                         i1l2284 0279  
-                                       i1l2620 0B2B                                         i1l2454 0436  
+                                       i1l2620 0B2A                                         i1l2454 0436  
                                        i1l2382 0361                                         i1l2374 034E  
                                        i1l2358 032D                                         i1l2366 033C  
                                        i1l2384 0363                                         i1l2392 0373  
@@ -11073,80 +11074,80 @@ Symbol Table                                                                    
                                     ??___flmul 003E                                      ??___fltol 0054  
                                        _hrDisp 1000                               ?_TMR0_Initialize 0070  
                                        _rpmInt 00AC                                         _rpmVal 0124  
-                                       _printf 0B73                                         pad@buf 003B  
-                                       dtoa@fp 00D0                                         _strlen 0BA1  
+                                       _printf 0B72                                         pad@buf 003B  
+                                       dtoa@fp 00D0                                         _strlen 0BA0  
           __size_of_IOCCF7_SetInterruptHandler 0009                                         fputc@c 002A  
                                        fputs@c 0038                                         fputs@i 0039  
                                        fputs@s 0032                             __size_of__Umul8_16 0020  
-                             __end_of_timerISR 0B5E                               __end_of_vfprintf 0C54  
+                             __end_of_timerISR 0B5D                               __end_of_vfprintf 0C53  
      TMR0_SetInterruptHandler@InterruptHandler 0028     IOCCF7_SetInterruptHandler@InterruptHandler 0028  
                              ?_PIN_MANAGER_IOC 0070                                   ??_IOCCF7_ISR 007C  
                                  ___xxtofl@arg 0032                           __end_of_distanceDisp 1018  
-                                 ___xxtofl@exp 0031                              _SYSTEM_Initialize 0B3D  
+                                 ___xxtofl@exp 0031                              _SYSTEM_Initialize 0B3C  
                                  ___xxtofl@val 0028                        __end_of__initialization 002F  
                                    _adcCounter 00C0                             ?_SYSTEM_Initialize 0070  
                                    ___fltol@f1 0050                                 __pcstackCOMMON 0070  
                           ??_SYSTEM_Initialize 002B                                      ?_TMR0_ISR 0070  
-                                __end_of_fputc 0CFD                                  __end_of_fputs 0C27  
-                                __end_of_putch 0ACF                             __end_of_IOCCF7_ISR 0B2E  
+                                __end_of_fputc 0CFD                                  __end_of_fputs 0C26  
+                                __end_of_putch 0ACE                             __end_of_IOCCF7_ISR 0B2D  
                                _OPTION_REGbits 0095                ??_EUSART_SetOverrunErrorHandler 002A  
-                                      ??_fputc 002D                      __end_of_SYSTEM_Initialize 0B4C  
+                                      ??_fputc 002D                      __end_of_SYSTEM_Initialize 0B4B  
                                       ??_fputs 0035                                        ??_putch 0029  
                                    __pbssBANK0 0060                                     __pbssBANK1 00A0  
-                                   __pbssBANK2 0120                           __end_of_EUSART_Write 0AEC  
-                            __end_of__Umul8_16 0BDA                                     __pmaintext 0DF8  
-             __end_of_TMR0_SetInterruptHandler 0B21                                     ??_TMR0_ISR 0070  
+                                   __pbssBANK2 0120                           __end_of_EUSART_Write 0AEB  
+                            __end_of__Umul8_16 0BD9                                     __pmaintext 0DF8  
+             __end_of_TMR0_SetInterruptHandler 0B20                                     ??_TMR0_ISR 0070  
                               __CFG_PPS1WAY$ON 0000                             __size_of_setCursor 0042  
                                    __pintentry 0004                                        ?_printf 014C  
                       __size_of_ADC_Initialize 0008                                        ?_strlen 0028  
-                           __size_of_speedCalc 0031                                __CFG_WDTCCS$SWC 0000  
+                           __size_of_speedCalc 0032                                __CFG_WDTCCS$SWC 0000  
                                       _INLVLC7 1C77                                      ?___xxtofl 0028  
                            __size_of_vfpfcnvrt 0101                                        _OSCTUNE 0098  
                                       _SLRCONA 030C                                        _SLRCONB 030D  
-                                      _SLRCONC 030E             __end_of_IOCCF7_SetInterruptHandler 0B18  
-                   _IOCCF7_SetInterruptHandler 0B0F                       ??_EUSART_SetErrorHandler 002A  
+                                      _SLRCONC 030E             __end_of_IOCCF7_SetInterruptHandler 0B17  
+                   _IOCCF7_SetInterruptHandler 0B0E                       ??_EUSART_SetErrorHandler 002A  
                          __size_of_resetCursor 0008                                      ?_timerISR 0070  
                                       ___aodiv 06EB                                        ___fladd 025F  
                                       ___aomod 0F21                                        ___flmul 0033  
                                       ___fltol 0D92                                      ?_vfprintf 00E1  
                                       _endTime 00A0                                        __ptext1 0CFD  
-                                      __ptext2 0AEC                                        __ptext3 07E2  
-                                      __ptext4 0B73                                        __ptext5 0C27  
+                                      __ptext2 0AEB                                        __ptext3 07E2  
+                                      __ptext4 0B72                                        __ptext5 0C26  
                                       __ptext6 05EA                                        __ptext7 0448  
-                                      __ptext8 0D3F                                        __ptext9 0BA1  
+                                      __ptext8 0D3F                                        __ptext9 0BA0  
                                       _distInt 0064                                __size_of_printf 0015  
                               __size_of_strlen 0019                                        _counter 00C4  
-                        _OSCILLATOR_Initialize 0AD5                                   __size_of_abs 0019  
+                        _OSCILLATOR_Initialize 0AD4                                   __size_of_abs 0019  
                                  __size_of_pad 0053                                     ??___xxtofl 002C  
                      ??_PIN_MANAGER_Initialize 002A                                      _IOCCFbits 0399  
                                     _IOCCNbits 0398                                      _IOCCPbits 0397  
-                   __size_of_SYSTEM_Initialize 000F                                        clrloop0 0AD0  
+                   __size_of_SYSTEM_Initialize 000F                                        clrloop0 0ACF  
                          end_of_initialization 002F                              __end_of_setCursor 0D3F  
-        __end_of_EUSART_SetOverrunErrorHandler 0B0F         __size_of_EUSART_SetOverrunErrorHandler 0009  
-                _EUSART_SetOverrunErrorHandler 0B06                                        fputc@fp 002C  
+        __end_of_EUSART_SetOverrunErrorHandler 0B0E         __size_of_EUSART_SetOverrunErrorHandler 0009  
+                _EUSART_SetOverrunErrorHandler 0B05                                        fputc@fp 002C  
                                       fputs@fp 0034                              __end_of_speedCalc 0C85  
-                            __end_of_speedDisp 1020                              _EUSART_Initialize 0BDA  
+                            __end_of_speedDisp 1020                              _EUSART_Initialize 0BD9  
                            ?_EUSART_Initialize 0070                              __end_of_vfpfcnvrt 06EB  
                                    ??_timerISR 0070                                     _timePassed 0128  
                                    ??_vfprintf 00E4                                        strlen@a 002B  
                                       strlen@s 002C                            ??_EUSART_Initialize 002A  
-                                 _distanceDisp 100D                       _TMR0_SetInterruptHandler 0B18  
+                                 _distanceDisp 100D                       _TMR0_SetInterruptHandler 0B17  
                                   ___fladd@grs 007B                               __CFG_FOSC$INTOSC 0000  
                                 ___xxtofl@sign 0030                          __size_of_EUSART_Write 0008  
               __size_of_EUSART_SetErrorHandler 0009                                    ___flmul@grs 0044  
-                    __end_of_EUSART_Initialize 0BFE                     _EUSART_DefaultErrorHandler 0000  
+                    __end_of_EUSART_Initialize 0BFD                     _EUSART_DefaultErrorHandler 0000  
                                   vfpfcnvrt@ap 0050                                    vfpfcnvrt@fp 005F  
                                   vfpfcnvrt@ll 0056                                    vfpfcnvrt@vp 005E  
-                               __end_of_hrDisp 100D                                   _EUSART_Write 0AE4  
-                            __size_of_TMR0_ISR 000F                                 _ADC_Initialize 0ADC  
-                       ?_OSCILLATOR_Initialize 0070                                 __end_of_printf 0B88  
-                               __end_of_strlen 0BBA                            start_initialization 0016  
+                               __end_of_hrDisp 100D                                   _EUSART_Write 0AE3  
+                            __size_of_TMR0_ISR 000F                                 _ADC_Initialize 0ADB  
+                       ?_OSCILLATOR_Initialize 0070                                 __end_of_printf 0B87  
+                               __end_of_strlen 0BB9                            start_initialization 0016  
                      __size_of_TMR0_Initialize 0015                __size_of_PIN_MANAGER_Initialize 0038  
-                                  __end_of_abs 0BA1                                    __end_of_pad 0D92  
+                                  __end_of_abs 0BA0                                    __end_of_pad 0D92  
                                   putch@txData 0029                       __size_of_PIN_MANAGER_IOC 0006  
                ?_EUSART_SetOverrunErrorHandler 0028                                    vfprintf@fmt 00E1  
-                   _EUSART_FramingErrorHandler 00EE                         _EUSART_SetErrorHandler 0AF4  
-                       __end_of_ADC_Initialize 0AE4                                      __Umul8_16 0BBA  
+                   _EUSART_FramingErrorHandler 00EE                         _EUSART_SetErrorHandler 0AF3  
+                       __end_of_ADC_Initialize 0AE3                                      __Umul8_16 0BB9  
                                      ??_printf 00E9                                       ??_strlen 002A  
                                     ___fladd@a 0074                                      ___fladd@b 0070  
                                     ___flmul@a 003A                                      ___flmul@b 0036  
@@ -11168,18 +11169,18 @@ Symbol Table                                                                    
                                __size_of_fputc 0040                                 __size_of_fputs 0029  
                                __size_of_putch 0006                              ??_TMR0_Initialize 002A  
                                 ??_resetCursor 0040         EUSART_SetErrorHandler@interruptHandler 0028  
-                                    _setCursor 0CFD                                      clear_ram0 0ACF  
+                                    _setCursor 0CFD                                      clear_ram0 0ACE  
                             _eusartRxLastError 0066            __size_of_INTERRUPT_InterruptManager 0010  
                    ??_TMR0_SetInterruptHandler 002A                                       _PIR1bits 0010  
               ??_EUSART_SetFramingErrorHandler 002A                                      _puts$1103 003F  
-                                    _rpmValInt 0120                                      _speedCalc 0C54  
+                                    _rpmValInt 0120                                      _speedCalc 0C53  
                                     _speedDisp 1018               ??_IOCCF7_DefaultInterruptHandler 0070  
               ?_IOCCF7_DefaultInterruptHandler 0070                           __CFG_WDTCPS$WDTCPS1F 0000  
-                                     _TMR0_ISR 0B2E              _EUSART_DefaultOverrunErrorHandler 0000  
+                                     _TMR0_ISR 0B2D              _EUSART_DefaultOverrunErrorHandler 0000  
                             ??_PIN_MANAGER_IOC 007C                                      _vfpfcnvrt 05EA  
                                    _ADCON0bits 009D                                      _startTime 00A4  
                                    ?_setCursor 0029                                     vfprintf@ap 00E3  
-                                   vfprintf@fp 00E6                            __end_of_resetCursor 0AF4  
+                                   vfprintf@fp 00E6                            __end_of_resetCursor 0AF3  
                                    ?_speedCalc 0070                        ??_OSCILLATOR_Initialize 0028  
                                   ??__Umul8_16 002A                            _EUSART_ErrorHandler 0154  
                              __size_of___aodiv 00F7                               __size_of___fladd 01E9  
@@ -11187,35 +11188,35 @@ Symbol Table                                                                    
                              __size_of___fltol 0066                                     ?_vfpfcnvrt 004F  
                               ___aodiv@divisor 0028                                ___aodiv@counter 0039  
                                      ___xxtofl 0E8B                                       _dtoa$757 00CE  
-                                     __ptext10 0BFE                                       __ptext11 0CBD  
-                                     __ptext20 0BBA                                       __ptext12 0AC9  
-                                     __ptext21 0B3D                                       __ptext13 0AE4  
-                                     __ptext30 0AF4                                       __ptext22 0B5E  
-                                     __ptext14 0B88                                       __ptext31 0ADC  
-                                     __ptext23 0B18                                       __ptext15 0F21  
+                                     __ptext10 0BFD                                       __ptext11 0CBD  
+                                     __ptext20 0BB9                                       __ptext12 0AC8  
+                                     __ptext21 0B3C                                       __ptext13 0AE3  
+                                     __ptext30 0AF3                                       __ptext22 0B5D  
+                                     __ptext14 0B87                                       __ptext31 0ADB  
+                                     __ptext23 0B17                                       __ptext15 0F21  
                                      __ptext40 025F                                       __ptext24 0C85  
-                                     __ptext16 06EB                                       __ptext33 0B2E  
-                                     __ptext25 0B0F                                       __ptext17 0E8B  
-                                     __ptext34 07FD                                       __ptext26 0AD5  
-                                     __ptext18 0D92                                       __ptext35 0B4C  
-                                     __ptext27 0BDA                                       __ptext19 0033  
-                                     __ptext36 0AC3                                       __ptext28 0B06  
-                                     __ptext37 0B21                                       __ptext29 0AFD  
-                                     __ptext38 07FE                                       __ptext39 0C54  
-                                     _distance 00B4                                     _IOCCF7_ISR 0B21  
+                                     __ptext16 06EB                                       __ptext33 0B2D  
+                                     __ptext25 0B0E                                       __ptext17 0E8B  
+                                     __ptext34 07FD                                       __ptext26 0AD4  
+                                     __ptext18 0D92                                       __ptext35 0B4B  
+                                     __ptext27 0BD9                                       __ptext19 0033  
+                                     __ptext36 0AC2                                       __ptext28 0B05  
+                                     __ptext37 0B20                                       __ptext29 0AFC  
+                                     __ptext38 07FE                                       __ptext39 0C53  
+                                     _distance 00B4                                     _IOCCF7_ISR 0B20  
                                 __size_of_main 0093                                  __size_of_dtoa 01A2  
                                 __size_of_puts 001B           __end_of_TMR0_DefaultInterruptHandler 07FE  
         __size_of_TMR0_DefaultInterruptHandler 0001                   _TMR0_DefaultInterruptHandler 07FD  
                          __CFG_WDTCWS$WDTCWSSW 0000                        ?_EUSART_SetErrorHandler 0028  
                                    _RC1STAbits 019D  EUSART_SetOverrunErrorHandler@interruptHandler 0028  
-                                     _timerISR 0B4C                                       _speedInt 007C  
-                                     int$flags 007E                                       _vfprintf 0C27  
+                                     _timerISR 0B4B                                       _speedInt 007C  
+                                     int$flags 007E                                       _vfprintf 0C26  
            __end_of_INTERRUPT_InterruptManager 0014                     _INTERRUPT_InterruptManager 0004  
-                                    printf@fmt 014C          __end_of_EUSART_SetFramingErrorHandler 0B06  
-       __size_of_EUSART_SetFramingErrorHandler 0009                  _EUSART_SetFramingErrorHandler 0AFD  
+                                    printf@fmt 014C          __end_of_EUSART_SetFramingErrorHandler 0B05  
+       __size_of_EUSART_SetFramingErrorHandler 0009                  _EUSART_SetFramingErrorHandler 0AFC  
                              ___aomod@dividend 0030                                     _INTCONbits 000B  
                                      intlevel1 0000                        ?_PIN_MANAGER_Initialize 0070  
-                                  _resetCursor 0AEC                 __end_of_EUSART_SetErrorHandler 0AFD  
+                                  _resetCursor 0AEB                 __end_of_EUSART_SetErrorHandler 0AFC  
                                   ??_setCursor 002A                              __CFG_CLKOUTEN$OFF 0000  
                              ??_ADC_Initialize 0028                  ?_TMR0_DefaultInterruptHandler 0070  
                                   ??_speedCalc 007C                                       printf@ap 0152  
@@ -11225,10 +11226,10 @@ EUSART_SetFramingErrorHandler@interruptHandler 0028                             
                                 __pstringtext3 1018                                  __pstringtext4 1020  
                                 __pstringtext5 1026                                  __pstringtext6 0000  
                        __Umul8_16@multiplicand 0028                                     _OPTION_REG 0095  
-                              _TMR0_Initialize 0B5E                                     _TX1STAbits 019E  
+                              _TMR0_Initialize 0B5D                                     _TX1STAbits 019E  
                                 ___fladd@signs 0078                             EUSART_Write@txData 0028  
                                  ___aodiv@sign 003A                 __end_of_PIN_MANAGER_Initialize 0CBD  
                                   ?_IOCCF7_ISR 0070                                   ___fladd@aexp 0079  
-                                 ___fladd@bexp 007A                                _PIN_MANAGER_IOC 0AC3  
+                                 ___fladd@bexp 007A                                _PIN_MANAGER_IOC 0AC2  
                          __Umul8_16@multiplier 0030                                   ___aomod@sign 003A  
                       _IOCCF7_InterruptHandler 00EC                              __Umul8_16@product 002C  

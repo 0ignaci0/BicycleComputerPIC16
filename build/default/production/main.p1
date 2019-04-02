@@ -1560,8 +1560,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 61:         _delay((unsigned long)((50)*(500000/4000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
 "62
-[; ;main.c: 62:         printf("%d   ", (int)( distInt * 1.8 ) ) ;
-[e ( _printf , (. :s 1C -> * -> _distInt `d .1.8 `i ]
+[; ;main.c: 62:         printf("%d   ", (int)( distInt*1.9 ) ) ;
+[e ( _printf , (. :s 1C -> * -> _distInt `d .1.9 `i ]
 "63
 [; ;main.c: 63:         _delay((unsigned long)((50)*(500000/4000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
@@ -1598,8 +1598,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _speedCalc ]
 [f ]
 "81
-[; ;main.c: 81:     if( adcCounter <= ( 60483 ) ){
-[e $ ! <= _adcCounter -> 60483 `l 1227  ]
+[; ;main.c: 81:     if( adcCounter <= ( 120 ) ){
+[e $ ! <= _adcCounter -> -> 120 `i `l 1227  ]
 {
 "82
 [; ;main.c: 82:         distInt++;

@@ -17344,7 +17344,7 @@ void main(void)
         startTime = counter ;
         setCursor(1,0);
         _delay((unsigned long)((50)*(500000/4000.0)));
-        printf("%d   ", (int)( distInt * 1.8 ) ) ;
+        printf("%d   ", (int)( distInt*1.9 ) ) ;
         _delay((unsigned long)((50)*(500000/4000.0)));
 
 
@@ -17363,7 +17363,7 @@ void speedCalc ( void ){
 
 
 
-    if( adcCounter <= ( 60483 ) ){
+    if( adcCounter <= ( 120 ) ){
         distInt++;
      hallCount += 1 ;
       ;

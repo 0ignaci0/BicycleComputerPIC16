@@ -1,6 +1,6 @@
 ___aodiv@counter 39 0 BANK0 1
 setCursor@b 29 0 BANK0 1
-_EUSART_SetFramingErrorHandler AFD 0 CODE 0
+_EUSART_SetFramingErrorHandler AFC 0 CODE 0
 __CFG_WRT$OFF 0 0 ABS 0
 __size_of__Umul8_16 0 0 ABS 0
 __S0 800A 0 ABS 0
@@ -12,7 +12,7 @@ __Lintentry 4 0 CODE 0
 __CFG_BOREN$ON 0 0 ABS 0
 __pintentry 4 0 CODE 0
 _pad D3F 0 CODE 0
-_abs B88 0 CODE 0
+_abs B87 0 CODE 0
 __size_of_PIN_MANAGER_IOC 0 0 ABS 0
 _rpm BC 0 BANK1 1
 _TMR0_DefaultInterruptHandler 7FD 0 CODE 0
@@ -46,7 +46,7 @@ ___fltol@f1 50 0 BANK0 1
 _SLRC7 1877 0 ABS 0
 printf@ap 152 0 BANK2 1
 _distance B4 0 BANK1 1
-_EUSART_Write AE4 0 CODE 0
+_EUSART_Write AE3 0 CODE 0
 _TRISA 8C 0 ABS 0
 _TRISB 8D 0 ABS 0
 _TRISC 8E 0 ABS 0
@@ -66,11 +66,11 @@ dtoa@i DF 0 BANK1 1
 _IOCCF7_InterruptHandler EC 0 BANK1 1
 dtoa@n D7 0 BANK1 1
 dtoa@p D1 0 BANK1 1
-_speedCalc C54 0 CODE 0
+_speedCalc C53 0 CODE 0
 dtoa@s D5 0 BANK1 1
 __Hbigram 0 0 ABS 0
 __Lbigram 0 0 ABS 0
-__end_of_TMR0_SetInterruptHandler B21 0 CODE 0
+__end_of_TMR0_SetInterruptHandler B20 0 CODE 0
 _EUSART_OverrunErrorHandler 156 0 BANK2 1
 dtoa@w D3 0 BANK1 1
 _speed B8 0 BANK1 1
@@ -79,20 +79,20 @@ puts@s 3B 0 BANK0 1
 ?_dtoa 44 0 BANK0 1
 __Hram 0 0 ABS 0
 __Lram 0 0 ABS 0
-_putch AC9 0 CODE 0
+_putch AC8 0 CODE 0
 _fputc CBD 0 CODE 0
 _width CA 0 BANK1 1
 _hrInt CC 0 BANK1 1
 _flags 62 0 BANK0 1
 __CFG_STVREN$ON 0 0 ABS 0
 __size_of_setCursor 0 0 ABS 0
-_vfprintf C27 0 CODE 0
+_vfprintf C26 0 CODE 0
 _speedInt 7C 0 COMMON 1
-_fputs BFE 0 CODE 0
+_fputs BFD 0 CODE 0
 int$flags 7E 0 ABS 0
 ___xxtofl E8B 0 CODE 0
 __CFG_WDTCPS$WDTCPS1F 0 0 ABS 0
-__end_of_abs BA1 0 CODE 0
+__end_of_abs BA0 0 CODE 0
 __Hfunctab 0 0 ENTRY 0
 __Lfunctab 0 0 ENTRY 0
 _ADCON0 9D 0 ABS 0
@@ -102,7 +102,7 @@ _ADCON2 9F 0 ABS 0
 __end_of_vfpfcnvrt 6EB 0 CODE 0
 ?___fltol 50 0 BANK0 1
 _OPTION_REG 95 0 ABS 0
-__end_of_putch ACF 0 CODE 0
+__end_of_putch ACE 0 CODE 0
 __Hcommon 0 0 ABS 0
 __Lcommon 0 0 ABS 0
 __Heeprom_data 0 0 EEDATA 3
@@ -122,8 +122,8 @@ _TX1REG 19A 0 ABS 0
 _RC1STA 19D 0 ABS 0
 _ODCONC 28E 0 ABS 0
 _TX1STA 19E 0 ABS 0
-__end_of_strlen BBA 0 CODE 0
-__end_of_ADC_Initialize AE4 0 CODE 0
+__end_of_strlen BB9 0 CODE 0
+__end_of_ADC_Initialize AE3 0 CODE 0
 _SPBRGH 19C 0 ABS 0
 _ADRESH 9C 0 ABS 0
 _SPBRGL 19B 0 ABS 0
@@ -154,7 +154,7 @@ __Hsfr7 0 0 ABS 0
 __Lsfr7 0 0 ABS 0
 __Hsfr8 0 0 ABS 0
 __Lsfr8 0 0 ABS 0
-__end_of_EUSART_Write AEC 0 CODE 0
+__end_of_EUSART_Write AEB 0 CODE 0
 __Hsfr9 0 0 ABS 0
 __Lsfr9 0 0 ABS 0
 _heartRate B0 0 BANK1 1
@@ -178,9 +178,9 @@ EUSART_SetFramingErrorHandler@interruptHandler 28 0 BANK0 1
 __HcstackBANK0 0 0 ABS 0
 __LcstackBANK0 0 0 ABS 0
 ___aomod@sign 3A 0 BANK0 1
-_printf B73 0 CODE 0
+_printf B72 0 CODE 0
 __pcstackBANK0 20 0 BANK0 1
-_strlen BA1 0 CODE 0
+_strlen BA0 0 CODE 0
 _rpmInt AC 0 BANK1 1
 __Hstringtext2 0 0 ABS 0
 __Lstringtext2 0 0 ABS 0
@@ -198,7 +198,7 @@ _rpmValInt 120 0 BANK2 1
 ___flmul@sign 43 0 BANK0 1
 __size_of_pad 0 0 ABS 0
 end_of_initialization 2F 0 CODE 0
-__Umul8_16 BBA 0 CODE 0
+__Umul8_16 BB9 0 CODE 0
 __CFG_WDTCWS$WDTCWSSW 0 0 ABS 0
 ___aodiv@sign 3A 0 BANK0 1
 __size_of_abs 0 0 ABS 0
@@ -220,7 +220,7 @@ __Hsfr30 0 0 ABS 0
 __Hsfr11 0 0 ABS 0
 __Lsfr30 0 0 ABS 0
 __Lsfr11 0 0 ABS 0
-_EUSART_SetOverrunErrorHandler B06 0 CODE 0
+_EUSART_SetOverrunErrorHandler B05 0 CODE 0
 __Hsfr21 0 0 ABS 0
 __HnvBANK1 0 0 ABS 0
 __Lsfr21 0 0 ABS 0
@@ -253,7 +253,7 @@ __Hsfr16 0 0 ABS 0
 __Lsfr16 0 0 ABS 0
 __Hsfr26 0 0 ABS 0
 __Lsfr26 0 0 ABS 0
-__end_of_fputs C27 0 CODE 0
+__end_of_fputs C26 0 CODE 0
 __size_of_putch 0 0 ABS 0
 _EUSART_FramingErrorHandler EE 0 BANK1 1
 __pnvBANK2 154 0 BANK2 1
@@ -279,11 +279,11 @@ _SLRCONA 30C 0 ABS 0
 ___fladd@grs 7B 0 COMMON 1
 _SLRCONB 30D 0 ABS 0
 _SLRCONC 30E 0 ABS 0
-_SYSTEM_Initialize B3D 0 CODE 0
+_SYSTEM_Initialize B3C 0 CODE 0
 __size_of_EUSART_SetFramingErrorHandler 0 0 ABS 0
 __size_of_strlen 0 0 ABS 0
 _OSCTUNE 98 0 ABS 0
-_EUSART_Initialize BDA 0 CODE 0
+_EUSART_Initialize BD9 0 CODE 0
 __Hbank0 0 0 ABS 0
 __Lbank0 0 0 ABS 0
 __Hbank1 0 0 ABS 0
@@ -291,7 +291,7 @@ __Lbank1 0 0 ABS 0
 __Hbank2 0 0 ABS 0
 __Lbank2 0 0 ABS 0
 _timePassed 128 0 BANK2 1
-_TMR0_SetInterruptHandler B18 0 CODE 0
+_TMR0_SetInterruptHandler B17 0 CODE 0
 _hallCount A8 0 BANK1 1
 __Hbank3 0 0 ABS 0
 __Lbank3 0 0 ABS 0
@@ -315,17 +315,17 @@ __Lbank9 0 0 ABS 0
 __Umul8_16@multiplicand 28 0 BANK0 1
 ___flmul@grs 44 0 BANK0 1
 __ptext1 CFD 0 CODE 0
-__ptext2 AEC 0 CODE 0
+__ptext2 AEB 0 CODE 0
 __ptext3 7E2 0 CODE 0
-__ptext4 B73 0 CODE 0
-__ptext5 C27 0 CODE 0
+__ptext4 B72 0 CODE 0
+__ptext5 C26 0 CODE 0
 __ptext6 5EA 0 CODE 0
 __ptext7 448 0 CODE 0
-__end_of_EUSART_Initialize BFE 0 CODE 0
+__end_of_EUSART_Initialize BFD 0 CODE 0
 __HcstackBANK1 0 0 ABS 0
 __LcstackBANK1 0 0 ABS 0
 __ptext8 D3F 0 CODE 0
-__ptext9 BA1 0 CODE 0
+__ptext9 BA0 0 CODE 0
 __pcstackBANK1 CE 0 BANK1 1
 _vfpfcnvrt 5EA 0 CODE 0
 __Hclrtext 0 0 ABS 0
@@ -335,7 +335,7 @@ __Lstringtext3 0 0 ABS 0
 __end_of_IOCCF7_DefaultInterruptHandler 7FF 0 CODE 0
 __pstringtext3 1018 0 STRCODE 0
 _TMR0_InterruptHandler EA 0 BANK1 1
-_IOCCF7_ISR B21 0 CODE 0
+_IOCCF7_ISR B20 0 CODE 0
 __size_of_TMR0_ISR 0 0 ABS 0
 __size_of_printf 0 0 ABS 0
 __size_of_IOCCF7_SetInterruptHandler 0 0 ABS 0
@@ -345,12 +345,12 @@ __end_of__initialization 2F 0 CODE 0
 __size_of___xxtofl 0 0 ABS 0
 __size_of_dtoa 0 0 ABS 0
 _eusartRxLastError 66 0 BANK0 1
-__end_of_IOCCF7_ISR B2E 0 CODE 0
-_PIN_MANAGER_IOC AC3 0 CODE 0
+__end_of_IOCCF7_ISR B2D 0 CODE 0
+_PIN_MANAGER_IOC AC2 0 CODE 0
 __size_of_TMR0_DefaultInterruptHandler 0 0 ABS 0
 ___fladd 25F 0 CODE 0
 strlen@s 2C 0 BANK0 1
-_TMR0_Initialize B5E 0 CODE 0
+_TMR0_Initialize B5D 0 CODE 0
 _endTime A0 0 BANK1 1
 fputc@fp 2C 0 BANK0 1
 __Hidloc 0 0 IDLOC 0
@@ -372,7 +372,7 @@ __Lspace_1 0 0 ABS 0
 ?_strlen 28 0 BANK0 1
 EUSART_Write@txData 28 0 BANK0 1
 _distInt 64 0 BANK0 1
-__end_of_EUSART_SetFramingErrorHandler B06 0 CODE 0
+__end_of_EUSART_SetFramingErrorHandler B05 0 CODE 0
 _IOCCF7_DefaultInterruptHandler 7FE 0 CODE 0
 ___fltol D92 0 CODE 0
 __Hspace_2 0 0 ABS 0
@@ -395,7 +395,7 @@ __size_of_IOCCF7_DefaultInterruptHandler 0 0 ABS 0
 __CFG_BORV$LO 0 0 ABS 0
 __size_of_TMR0_Initialize 0 0 ABS 0
 _PIN_MANAGER_Initialize C85 0 CODE 0
-__end_of_resetCursor AF4 0 CODE 0
+__end_of_resetCursor AF3 0 CODE 0
 ___fltol@exp1 5A 0 BANK0 1
 __HcstackBANK2 0 0 ABS 0
 __LcstackBANK2 0 0 ABS 0
@@ -404,7 +404,7 @@ __Hstringtext4 0 0 ABS 0
 __Lstringtext4 0 0 ABS 0
 ?__Umul8_16 28 0 BANK0 1
 __pstringtext4 1020 0 STRCODE 0
-clear_ram0 ACF 0 CODE 0
+clear_ram0 ACE 0 CODE 0
 __end_of_pad D92 0 CODE 0
 __size_of_SYSTEM_Initialize 0 0 ABS 0
 __end_of_puts 7FD 0 CODE 0
@@ -421,15 +421,15 @@ __Hbank30 0 0 BANK30 1
 __Hbank11 0 0 ABS 0
 __Lbank30 0 0 BANK30 1
 __Lbank11 0 0 ABS 0
-__end_of_PIN_MANAGER_IOC AC9 0 CODE 0
+__end_of_PIN_MANAGER_IOC AC8 0 CODE 0
 __Hbank21 0 0 BANK21 1
 __Lbank21 0 0 BANK21 1
-__end_of_OSCILLATOR_Initialize ADC 0 CODE 0
+__end_of_OSCILLATOR_Initialize ADB 0 CODE 0
 __Hbank31 0 0 BANK31 1
 __Hbank12 0 0 ABS 0
 __Lbank31 0 0 BANK31 1
 __Lbank12 0 0 ABS 0
-__end_of_SYSTEM_Initialize B4C 0 CODE 0
+__end_of_SYSTEM_Initialize B4B 0 CODE 0
 __Hbank22 0 0 BANK22 1
 __Lbank22 0 0 BANK22 1
 __end_of___fladd 448 0 CODE 0
@@ -440,7 +440,7 @@ __HbssBANK1 0 0 ABS 0
 __LbssBANK1 0 0 ABS 0
 __Hbank23 0 0 BANK23 1
 __Lbank23 0 0 BANK23 1
-_resetCursor AEC 0 CODE 0
+_resetCursor AEB 0 CODE 0
 __size_of_EUSART_SetOverrunErrorHandler 0 0 ABS 0
 ___xxtofl@arg 32 0 BANK0 1
 __Hbank14 0 0 BANK14 1
@@ -448,41 +448,41 @@ __pbssBANK1 A0 0 BANK1 1
 __Lbank14 0 0 BANK14 1
 __Hbank24 0 0 BANK24 1
 __Lbank24 0 0 BANK24 1
-__ptext10 BFE 0 CODE 0
+__ptext10 BFD 0 CODE 0
 __Hbank15 0 0 BANK15 1
 __Lbank15 0 0 BANK15 1
-__ptext20 BBA 0 CODE 0
+__ptext20 BB9 0 CODE 0
 __Hbank25 0 0 BANK25 1
 __Lbank25 0 0 BANK25 1
 __ptext11 CBD 0 CODE 0
-__ptext30 AF4 0 CODE 0
+__ptext30 AF3 0 CODE 0
 __Hbank16 0 0 BANK16 1
 __Lbank16 0 0 BANK16 1
-__ptext21 B3D 0 CODE 0
+__ptext21 B3C 0 CODE 0
 __ptext40 25F 0 CODE 0
 __Hbank26 0 0 BANK26 1
 __Lbank26 0 0 BANK26 1
-__ptext12 AC9 0 CODE 0
-__ptext31 ADC 0 CODE 0
+__ptext12 AC8 0 CODE 0
+__ptext31 ADB 0 CODE 0
 __Hbank17 0 0 BANK17 1
 __Lbank17 0 0 BANK17 1
 __HbssBANK2 0 0 ABS 0
-__ptext22 B5E 0 CODE 0
+__ptext22 B5D 0 CODE 0
 __LbssBANK2 0 0 ABS 0
 __Hbank27 0 0 BANK27 1
 __Lbank27 0 0 BANK27 1
 __CFG_PLLEN$OFF 0 0 ABS 0
-__ptext13 AE4 0 CODE 0
+__ptext13 AE3 0 CODE 0
 __Hbank18 0 0 BANK18 1
 __pbssBANK2 120 0 BANK2 1
 __Lbank18 0 0 BANK18 1
 _ADCON0bits 9D 0 ABS 0
-__ptext23 B18 0 CODE 0
+__ptext23 B17 0 CODE 0
 __Hbank28 0 0 BANK28 1
 __Lbank28 0 0 BANK28 1
-__ptext14 B88 0 CODE 0
-__ptext33 B2E 0 CODE 0
-__end_of_EUSART_SetErrorHandler AFD 0 CODE 0
+__ptext14 B87 0 CODE 0
+__ptext33 B2D 0 CODE 0
+__end_of_EUSART_SetErrorHandler AFC 0 CODE 0
 __Hbank19 0 0 BANK19 1
 __Lbank19 0 0 BANK19 1
 __size_of_fputs 0 0 ABS 0
@@ -491,35 +491,35 @@ __Hbank29 0 0 BANK29 1
 __Lbank29 0 0 BANK29 1
 __ptext15 F21 0 CODE 0
 __ptext34 7FD 0 CODE 0
-__ptext25 B0F 0 CODE 0
+__ptext25 B0E 0 CODE 0
 __end_of_speedCalc C85 0 CODE 0
 __size_of_EUSART_SetErrorHandler 0 0 ABS 0
 __ptext16 6EB 0 CODE 0
-__ptext35 B4C 0 CODE 0
-__ptext26 AD5 0 CODE 0
+__ptext35 B4B 0 CODE 0
+__ptext26 AD4 0 CODE 0
 __size_of_EUSART_Write 0 0 ABS 0
-__end_of_EUSART_SetOverrunErrorHandler B0F 0 CODE 0
+__end_of_EUSART_SetOverrunErrorHandler B0E 0 CODE 0
 ___aomod@divisor 28 0 BANK0 1
-__end_of_printf B88 0 CODE 0
+__end_of_printf B87 0 CODE 0
 __ptext17 E8B 0 CODE 0
-__ptext36 AC3 0 CODE 0
-__ptext27 BDA 0 CODE 0
+__ptext36 AC2 0 CODE 0
+__ptext27 BD9 0 CODE 0
 __ptext18 D92 0 CODE 0
-__ptext37 B21 0 CODE 0
+__ptext37 B20 0 CODE 0
 _RC1STAbits 19D 0 ABS 0
 ___fltol@sign1 59 0 BANK0 1
 _TX1STAbits 19E 0 ABS 0
 __CFG_PWRTE$OFF 0 0 ABS 0
-__ptext28 B06 0 CODE 0
+__ptext28 B05 0 CODE 0
 __HbssCOMMON 0 0 ABS 0
 __LbssCOMMON 0 0 ABS 0
 _adcCounter C0 0 BANK1 1
 __ptext19 33 0 CODE 0
 __ptext38 7FE 0 CODE 0
 __pbssCOMMON 7C 0 COMMON 1
-__ptext29 AFD 0 CODE 0
+__ptext29 AFC 0 CODE 0
 __end_of_dtoa 5EA 0 CODE 0
-__ptext39 C54 0 CODE 0
+__ptext39 C53 0 CODE 0
 _timer0ReloadVal 67 0 BANK0 1
 _INTCONbits B 0 ABS 0
 __Umul8_16@word_mpld 2E 0 BANK0 1
@@ -527,13 +527,13 @@ __CFG_PPS1WAY$ON 0 0 ABS 0
 __Hend_init 16 0 CODE 0
 __Lend_init 14 0 CODE 0
 EUSART_SetOverrunErrorHandler@interruptHandler 28 0 BANK0 1
-__end_of_timerISR B5E 0 CODE 0
+__end_of_timerISR B5D 0 CODE 0
 ___aodiv@divisor 28 0 BANK0 1
-_ADC_Initialize ADC 0 CODE 0
+_ADC_Initialize ADB 0 CODE 0
 vfpfcnvrt@fmt 4F 0 BANK0 1
-_EUSART_SetErrorHandler AF4 0 CODE 0
+_EUSART_SetErrorHandler AF3 0 CODE 0
 __size_of___fladd 0 0 ABS 0
-_OSCILLATOR_Initialize AD5 0 CODE 0
+_OSCILLATOR_Initialize AD4 0 CODE 0
 __size_of_INTERRUPT_InterruptManager 0 0 ABS 0
 __Hreset_vec 2 0 CODE 0
 __Lreset_vec 0 0 CODE 0
@@ -544,9 +544,9 @@ ___xxtofl@exp 31 0 BANK0 1
 __Lstringtext5 0 0 ABS 0
 __pstringtext5 1026 0 STRCODE 0
 vfpfcnvrt@ap 50 0 BANK0 1
-_IOCCF7_SetInterruptHandler B0F 0 CODE 0
+_IOCCF7_SetInterruptHandler B0E 0 CODE 0
 intlevel0 0 0 ENTRY 0
-__end_of_TMR0_ISR B3D 0 CODE 0
+__end_of_TMR0_ISR B3C 0 CODE 0
 __CFG_WDTE$OFF 0 0 ABS 0
 intlevel1 0 0 ENTRY 0
 vfprintf@cfmt E7 0 BANK1 1
@@ -554,25 +554,25 @@ ___xxtofl@val 28 0 BANK0 1
 intlevel2 0 0 ENTRY 0
 _EUSART_DefaultFramingErrorHandler 0 0 ABS 0
 intlevel3 0 0 ENTRY 0
-__end_of_vfprintf C54 0 CODE 0
+__end_of_vfprintf C53 0 CODE 0
 intlevel4 0 0 ENTRY 0
 __CFG_LPBOR$OFF 0 0 ABS 0
 intlevel5 0 0 ENTRY 0
-__end_of__Umul8_16 BDA 0 CODE 0
-_TMR0_ISR B2E 0 CODE 0
+__end_of__Umul8_16 BD9 0 CODE 0
+_TMR0_ISR B2D 0 CODE 0
 vfpfcnvrt@ll 56 0 BANK0 1
 __size_of___fltol 0 0 ABS 0
 ___fladd@aexp 79 0 COMMON 1
 __HcstackCOMMON 0 0 ABS 0
 __LcstackCOMMON 0 0 ABS 0
-__end_of_IOCCF7_SetInterruptHandler B18 0 CODE 0
+__end_of_IOCCF7_SetInterruptHandler B17 0 CODE 0
 __pcstackCOMMON 70 0 COMMON 1
 __CFG_ZCD$OFF 0 0 ABS 0
 __end_of_hrDisp 100D 0 STRCODE 0
 ___fladd@bexp 7A 0 COMMON 1
 start_initialization 16 0 CODE 0
 ___aodiv@quotient 3B 0 BANK0 1
-_timerISR B4C 0 CODE 0
+_timerISR B4B 0 CODE 0
 TMR0_SetInterruptHandler@InterruptHandler 28 0 BANK0 1
 __end_of___xxtofl F21 0 CODE 0
 __Hmaintext 0 0 ABS 0
@@ -599,7 +599,7 @@ ___flmul@a 3A 0 BANK0 1
 __CFG_FCMEN$ON 0 0 ABS 0
 __Hstringtext6 0 0 ABS 0
 __Lstringtext6 0 0 ABS 0
-__end_of_TMR0_Initialize B73 0 CODE 0
+__end_of_TMR0_Initialize B72 0 CODE 0
 __pstringtext6 0 0 STRCODE 0
 setCursor@a 2C 0 BANK0 1
 ___flmul@b 36 0 BANK0 1
@@ -624,35 +624,35 @@ text8 1A7E 1B23 CODE 1A7E 0
 text1 19FA 1A7D CODE 19FA 0
 text11 197A 19F9 CODE 197A 0
 text24 190A 1979 CODE 190A 0
-text39 18A8 1909 CODE 18A8 0
-text5 184E 18A7 CODE 184E 0
-text10 17FC 184D CODE 17FC 0
-text27 17B4 17FB CODE 17B4 0
-text20 1774 17B3 CODE 1774 0
-text9 1742 1773 CODE 1742 0
-text14 1710 1741 CODE 1710 0
-text4 16E6 170F CODE 16E6 0
-text22 16BC 16E5 CODE 16BC 0
-text35 1698 16BB CODE 1698 0
-text21 167A 1697 CODE 167A 0
-text33 165C 1679 CODE 165C 0
+text39 18A6 1909 CODE 18A6 0
+text5 184C 18A5 CODE 184C 0
+text10 17FA 184B CODE 17FA 0
+text27 17B2 17F9 CODE 17B2 0
+text20 1772 17B1 CODE 1772 0
+text9 1740 1771 CODE 1740 0
+text14 170E 173F CODE 170E 0
+text4 16E4 170D CODE 16E4 0
+text22 16BA 16E3 CODE 16BA 0
+text35 1696 16B9 CODE 1696 0
+text21 1678 1695 CODE 1678 0
+text33 165A 1677 CODE 165A 0
 stringtext1 2000 2051 STRCODE 2000 0
-text37 1642 165B CODE 1642 0
-text23 1630 1641 CODE 1630 0
-text25 161E 162F CODE 161E 0
-text28 160C 161D CODE 160C 0
-text29 15FA 160B CODE 15FA 0
-text30 15E8 15F9 CODE 15E8 0
-text2 15D8 15E7 CODE 15D8 0
-text13 15C8 15D7 CODE 15C8 0
-text31 15B8 15C7 CODE 15B8 0
-text26 15AA 15B7 CODE 15AA 0
-clrtext 159E 15A9 CODE 159E 0
-text12 1592 159D CODE 1592 0
-text36 1586 1591 CODE 1586 0
+text37 1640 1659 CODE 1640 0
+text23 162E 163F CODE 162E 0
+text25 161C 162D CODE 161C 0
+text28 160A 161B CODE 160A 0
+text29 15F8 1609 CODE 15F8 0
+text30 15E6 15F7 CODE 15E6 0
+text2 15D6 15E5 CODE 15D6 0
+text13 15C6 15D5 CODE 15C6 0
+text31 15B6 15C5 CODE 15B6 0
+text26 15A8 15B5 CODE 15A8 0
+clrtext 159C 15A7 CODE 159C 0
+text12 1590 159B CODE 1590 0
+text36 1584 158F CODE 1584 0
 %locals
 dist/default/production\BicycleComputerPIC16.production.o
-C:\Users\igna\AppData\Local\Temp\sp9g.
+C:\Users\igna\AppData\Local\Temp\s8ak.
 7497 16 0 CODE 0
 7500 16 0 CODE 0
 7596 16 0 CODE 0
@@ -679,14 +679,14 @@ C:\Users\igna\AppData\Local\Temp\sp9g.
 7632 2F 0 CODE 0
 7633 30 0 CODE 0
 7634 31 0 CODE 0
-7585 ACF 0 CODE 0
-7586 ACF 0 CODE 0
-7587 AD0 0 CODE 0
-7588 AD0 0 CODE 0
-7589 AD1 0 CODE 0
-7590 AD2 0 CODE 0
-7591 AD3 0 CODE 0
-7592 AD4 0 CODE 0
+7585 ACE 0 CODE 0
+7586 ACE 0 CODE 0
+7587 ACF 0 CODE 0
+7588 ACF 0 CODE 0
+7589 AD0 0 CODE 0
+7590 AD1 0 CODE 0
+7591 AD2 0 CODE 0
+7592 AD3 0 CODE 0
 main.c
 40 DF8 0 CODE 0
 43 DF8 0 CODE 0
@@ -717,27 +717,27 @@ displayOptions.c
 91 D27 0 CODE 0
 93 D28 0 CODE 0
 94 D3E 0 CODE 0
-54 AEC 0 CODE 0
-55 AEC 0 CODE 0
-56 AF3 0 CODE 0
+54 AEB 0 CODE 0
+55 AEB 0 CODE 0
+56 AF2 0 CODE 0
 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\puts.c
 3 7E2 0 CODE 0
 7 7E2 0 CODE 0
 10 7FC 0 CODE 0
 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\printf.c
-5 B73 0 CODE 0
-9 B73 0 CODE 0
-10 B79 0 CODE 0
-13 B87 0 CODE 0
+5 B72 0 CODE 0
+9 B72 0 CODE 0
+10 B78 0 CODE 0
+13 B86 0 CODE 0
 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c
-1368 C27 0 CODE 0
-1373 C29 0 CODE 0
-1374 C2D 0 CODE 0
-1375 C2F 0 CODE 0
-1376 C36 0 CODE 0
-1375 C4E 0 CODE 0
-1378 C4F 0 CODE 0
-1382 C53 0 CODE 0
+1368 C26 0 CODE 0
+1373 C28 0 CODE 0
+1374 C2C 0 CODE 0
+1375 C2E 0 CODE 0
+1376 C35 0 CODE 0
+1375 C4D 0 CODE 0
+1378 C4E 0 CODE 0
+1382 C52 0 CODE 0
 670 5EA 0 CODE 0
 680 5EC 0 CODE 0
 681 5FB 0 CODE 0
@@ -802,22 +802,22 @@ C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c
 94 D86 0 CODE 0
 95 D91 0 CODE 0
 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\strlen.c
-12 BA1 0 CODE 0
-14 BA3 0 CODE 0
-16 BA7 0 CODE 0
-17 BAE 0 CODE 0
-16 BB2 0 CODE 0
-25 BB3 0 CODE 0
-26 BB9 0 CODE 0
+12 BA0 0 CODE 0
+14 BA2 0 CODE 0
+16 BA6 0 CODE 0
+17 BAD 0 CODE 0
+16 BB1 0 CODE 0
+25 BB2 0 CODE 0
+26 BB8 0 CODE 0
 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputs.c
-8 BFE 0 CODE 0
-13 BFE 0 CODE 0
-14 C01 0 CODE 0
-15 C0E 0 CODE 0
-16 C1C 0 CODE 0
-14 C21 0 CODE 0
-18 C22 0 CODE 0
-19 C26 0 CODE 0
+8 BFD 0 CODE 0
+13 BFD 0 CODE 0
+14 C00 0 CODE 0
+15 C0D 0 CODE 0
+16 C1B 0 CODE 0
+14 C20 0 CODE 0
+18 C21 0 CODE 0
+19 C25 0 CODE 0
 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputc.c
 8 CBD 0 CODE 0
 12 CBD 0 CODE 0
@@ -828,17 +828,17 @@ C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputc.c
 20 CF4 0 CODE 0
 21 CFC 0 CODE 0
 mcc_generated_files/eusart.c
-151 AC9 0 CODE 0
-153 ACB 0 CODE 0
-154 ACE 0 CODE 0
-137 AE4 0 CODE 0
-141 AE6 0 CODE 0
-139 AE6 0 CODE 0
-143 AE8 0 CODE 0
-144 AEB 0 CODE 0
+151 AC8 0 CODE 0
+153 ACA 0 CODE 0
+154 ACD 0 CODE 0
+137 AE3 0 CODE 0
+141 AE5 0 CODE 0
+139 AE5 0 CODE 0
+143 AE7 0 CODE 0
+144 AEA 0 CODE 0
 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\abs.c
-1 B88 0 CODE 0
-3 B88 0 CODE 0
+1 B87 0 CODE 0
+3 B87 0 CODE 0
 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\aomod.c
 7 F21 0 CODE 0
 14 F21 0 CODE 0
@@ -1022,37 +1022,37 @@ C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcmul.c
 203 256 0 CODE 0
 205 25E 0 CODE 0
 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul8_16.c
-4 BBA 0 CODE 0
-5 BBC 0 CODE 0
-6 BBE 0 CODE 0
-51 BC5 0 CODE 0
-52 BC7 0 CODE 0
-53 BCB 0 CODE 0
-54 BCB 0 CODE 0
-55 BD0 0 CODE 0
-56 BD2 0 CODE 0
-59 BD5 0 CODE 0
-60 BD9 0 CODE 0
+4 BB9 0 CODE 0
+5 BBB 0 CODE 0
+6 BBD 0 CODE 0
+51 BC4 0 CODE 0
+52 BC6 0 CODE 0
+53 BCA 0 CODE 0
+54 BCA 0 CODE 0
+55 BCF 0 CODE 0
+56 BD1 0 CODE 0
+59 BD4 0 CODE 0
+60 BD8 0 CODE 0
 mcc_generated_files/mcc.c
-4 B3D 0 CODE 0
-6 B3D 0 CODE 0
-7 B40 0 CODE 0
-8 B43 0 CODE 0
-9 B46 0 CODE 0
-10 B49 0 CODE 0
-11 B4B 0 CODE 0
+4 B3C 0 CODE 0
+6 B3C 0 CODE 0
+7 B3F 0 CODE 0
+8 B42 0 CODE 0
+9 B45 0 CODE 0
+10 B48 0 CODE 0
+11 B4A 0 CODE 0
 mcc_generated_files/tmr0.c
-18 B5E 0 CODE 0
-23 B5E 0 CODE 0
-26 B63 0 CODE 0
-29 B66 0 CODE 0
-32 B6A 0 CODE 0
-35 B6B 0 CODE 0
-38 B6C 0 CODE 0
-39 B72 0 CODE 0
-79 B18 0 CODE 0
-80 B18 0 CODE 0
-81 B20 0 CODE 0
+18 B5D 0 CODE 0
+23 B5D 0 CODE 0
+26 B62 0 CODE 0
+29 B65 0 CODE 0
+32 B69 0 CODE 0
+35 B6A 0 CODE 0
+38 B6B 0 CODE 0
+39 B71 0 CODE 0
+79 B17 0 CODE 0
+80 B17 0 CODE 0
+81 B1F 0 CODE 0
 mcc_generated_files/pin_manager.c
 6 C85 0 CODE 0
 11 C85 0 CODE 0
@@ -1083,44 +1083,44 @@ mcc_generated_files/pin_manager.c
 73 CB8 0 CODE 0
 76 CB9 0 CODE 0
 77 CBC 0 CODE 0
-106 B0F 0 CODE 0
-107 B0F 0 CODE 0
-108 B17 0 CODE 0
+106 B0E 0 CODE 0
+107 B0E 0 CODE 0
+108 B16 0 CODE 0
 mcc_generated_files/mcc.c
-13 AD5 0 CODE 0
-16 AD5 0 CODE 0
-18 AD8 0 CODE 0
-20 AD9 0 CODE 0
-21 ADB 0 CODE 0
+13 AD4 0 CODE 0
+16 AD4 0 CODE 0
+18 AD7 0 CODE 0
+20 AD8 0 CODE 0
+21 ADA 0 CODE 0
 mcc_generated_files/eusart.c
-65 BDA 0 CODE 0
-70 BDA 0 CODE 0
-73 BDD 0 CODE 0
-76 BDF 0 CODE 0
-79 BE1 0 CODE 0
-82 BE3 0 CODE 0
-85 BE4 0 CODE 0
-86 BEC 0 CODE 0
-87 BF4 0 CODE 0
-89 BFB 0 CODE 0
-91 BFD 0 CODE 0
-175 B06 0 CODE 0
-176 B06 0 CODE 0
-177 B0E 0 CODE 0
-171 AFD 0 CODE 0
-172 AFD 0 CODE 0
-173 B05 0 CODE 0
-179 AF4 0 CODE 0
-180 AF4 0 CODE 0
-181 AFC 0 CODE 0
+65 BD9 0 CODE 0
+70 BD9 0 CODE 0
+73 BDC 0 CODE 0
+76 BDE 0 CODE 0
+79 BE0 0 CODE 0
+82 BE2 0 CODE 0
+85 BE3 0 CODE 0
+86 BEB 0 CODE 0
+87 BF3 0 CODE 0
+89 BFA 0 CODE 0
+91 BFC 0 CODE 0
+175 B05 0 CODE 0
+176 B05 0 CODE 0
+177 B0D 0 CODE 0
+171 AFC 0 CODE 0
+172 AFC 0 CODE 0
+173 B04 0 CODE 0
+179 AF3 0 CODE 0
+180 AF3 0 CODE 0
+181 AFB 0 CODE 0
 mcc_generated_files/adc.c
-65 ADC 0 CODE 0
-70 ADC 0 CODE 0
-73 ADF 0 CODE 0
-76 AE0 0 CODE 0
-79 AE1 0 CODE 0
-82 AE2 0 CODE 0
-84 AE3 0 CODE 0
+65 ADB 0 CODE 0
+70 ADB 0 CODE 0
+73 ADE 0 CODE 0
+76 ADF 0 CODE 0
+79 AE0 0 CODE 0
+82 AE1 0 CODE 0
+84 AE2 0 CODE 0
 mcc_generated_files/interrupt_manager.c
 4 4 0 CODE 0
 7 6 0 CODE 0
@@ -1130,34 +1130,34 @@ mcc_generated_files/interrupt_manager.c
 13 10 0 CODE 0
 19 12 0 CODE 0
 mcc_generated_files/tmr0.c
-62 B2E 0 CODE 0
-66 B2E 0 CODE 0
-68 B2F 0 CODE 0
-70 B32 0 CODE 0
-72 B37 0 CODE 0
-76 B3C 0 CODE 0
+62 B2D 0 CODE 0
+66 B2D 0 CODE 0
+68 B2E 0 CODE 0
+70 B31 0 CODE 0
+72 B36 0 CODE 0
+76 B3B 0 CODE 0
 83 7FD 0 CODE 0
 86 7FD 0 CODE 0
 main.c
-70 B4C 0 CODE 0
-71 B4C 0 CODE 0
-72 B55 0 CODE 0
-74 B5D 0 CODE 0
+70 B4B 0 CODE 0
+71 B4B 0 CODE 0
+72 B54 0 CODE 0
+74 B5C 0 CODE 0
 mcc_generated_files/pin_manager.c
-79 AC3 0 CODE 0
-82 AC3 0 CODE 0
-84 AC6 0 CODE 0
-86 AC8 0 CODE 0
-91 B21 0 CODE 0
-96 B21 0 CODE 0
-98 B26 0 CODE 0
-100 B2B 0 CODE 0
-101 B2D 0 CODE 0
+79 AC2 0 CODE 0
+82 AC2 0 CODE 0
+84 AC5 0 CODE 0
+86 AC7 0 CODE 0
+91 B20 0 CODE 0
+96 B20 0 CODE 0
+98 B25 0 CODE 0
+100 B2A 0 CODE 0
+101 B2C 0 CODE 0
 113 7FE 0 CODE 0
 116 7FE 0 CODE 0
 main.c
-77 C54 0 CODE 0
-81 C54 0 CODE 0
+77 C53 0 CODE 0
+81 C53 0 CODE 0
 82 C63 0 CODE 0
 83 C68 0 CODE 0
 86 C84 0 CODE 0
