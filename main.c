@@ -3,7 +3,7 @@
 
 #define CIRCUMFERENCE 2                 // circumference of 700x23C bicycle wheel is 210 cm --> rounded to 2 meters
 
-
+#define oneMin 2308
 long int volatile counter    = 0 ;            // overflow counter for 1-ms timer
 long int volatile adcCounter = 0 ;
 float    volatile rpm        = 0 ;            // equal to interval between wheel rotations converted to minute scale
@@ -13,6 +13,7 @@ float    volatile heartRate  = 0 ;
 int      volatile speedInt   = 0 ;
 int      volatile distInt    = 0 ;
 int      volatile hrInt      = 0 ;
+long int volatile rpmInt = 0 ;
 
 //~~~~~ Interrupt prototypes ~~~~~~//
     void timerISR  ( void ) ;               // 1-ms timer with "counter"
@@ -21,9 +22,9 @@ int      volatile hrInt      = 0 ;
 
 
 //~~~~~ LCD strings ~~~~~~//
-    char speedDisp[]     = "Speed: " ;      
-    char distanceDisp[]  = "Distance: " ;   
-    char hrDisp[]        = "Heart Rate: " ; 
+    const char speedDisp[]     = "Speed: " ;      
+    const char distanceDisp[]  = "Distance: " ;   
+    const char hrDisp[]        = "Heart Rate: " ; 
 //~~~~~~~~~~~~~~~~~~~~~~~~//
 
 /*
@@ -33,10 +34,7 @@ void main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
-    
-    EUSART_Write( configMode ) ;
-    EUSART_Write( 0x0D ) ; 
-    
+       
     // set timer and interrupt-on-change handlers
     TMR0_SetInterruptHandler( timerISR ) ;
     IOCCF7_SetInterruptHandler( speedCalc ) ;
@@ -46,12 +44,12 @@ void main(void)
     
     // initialize display    //set cursor to
     setCursor(1,0) ;         // row 1, origin
-    writeString(speedDisp);     
+    printf(speedDisp);     
     setCursor(2,0) ;         // row 2, position 0 
-    writeString(distanceDisp);
+    printf(distanceDisp);
     setCursor(3,0) ;         // row 3
-    writeString(hrDisp);
-    setCursor(4,0) ;         // row 4
+    printf(hrDisp);
+    //setCursor(4,0) ;         // row 4
     
     // Enable the Global Interrupts, Enable the Peripheral Interrupts
     INTERRUPT_GlobalInterruptEnable();
@@ -71,43 +69,55 @@ void main(void)
         // print speed
         setCursor(1,7) ;
         speedInt = speed ;      // convert float to integer for display
+        printf("%d    ", rpmInt) ; 
+      
+        /*
         if( counter > 5000 ){  // if no wheel rotation for 5 seconds, assume no motion, reset speed display to 0
             printf( "0 kmh      " ) ;
             
         }
         else{
             printf( "%d kmh      ", speedInt ) ;
-        }
+        }*/
         
         // print distance
         setCursor(2,10) ;
-        distInt = distance ;
-        printf("%d m     ", distInt ) ;
+        //distInt = distance ;
+        printf("%d m ", distInt ) ;
+        
         
         // print heart-rate
-        setCursor(3,13) ;
-        hrInt = heartRate ;
-        printf( "%d bpm   " , hrInt ) ;
-
+        //setCursor(3,12) ;
+        //hrInt = heartRate ;
+       // printf( "%d bpm " , hrInt ) ;
+        
+       
     }
  
 }
 
-void timerISR ( void ){ // timer set to 1ms period, count contains number of milliseconds between wheel rotations
+void timerISR ( void ){ // timer set to 50ms period
     counter++ ;
     adcCounter++ ; // counter for triggering ADC routine to collect heart rate sensor data.
+    
 }
-
+// expected fan speed 1150 rpm
+// 
 void speedCalc ( void ){
     // counter increments every 1 milli-sec, divide 1000 by counter to convert to seconds, mult. by 60 for minutes
-    rpm      = ( 1000 / counter ) * 60 ;            
+    //rpm      = ( 1000 / counter ) * 60 ;     
+    rpmInt = counter  ;
+ 
     
     //  up-convert to kilometer per hour: multiply by (1 km / 1000 m) * ( 60 min / 1 hr ) = 6/100 = 3/50 = 0.06
-    speed    = CIRCUMFERENCE * rpm * (0.06) ; // km/hr
+    speed    = CIRCUMFERENCE * rpmInt * (0.06) ; // km/hr
     
     // reset counter, keep track of distance
-    counter  = 0 ;
-    distance = distance + CIRCUMFERENCE ; // distance in meters
+    counter  = 1 ;
+    if( adcCounter <= (oneMin ) ){
+        distInt++ ;
+    }
+    //distance = distance + CIRCUMFERENCE ; // distance in meters
 }
 
 /*

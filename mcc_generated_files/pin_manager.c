@@ -31,8 +31,9 @@ void PIN_MANAGER_Initialize(void)
     */
     WPUB = 0x00;
     WPUA = 0x00;
-    WPUC = 0x00;
-    OPTION_REGbits.nWPUEN = 1;
+    //set weal pull up for port c 7
+    WPUC = 0x80;
+    OPTION_REGbits.nWPUEN = 0;
 
     /**
     ODx registers
@@ -59,7 +60,11 @@ void PIN_MANAGER_Initialize(void)
     //interrupt on change for group IOCCP - positive
     IOCCPbits.IOCCP7 = 1;
 
-
+    // set slew rate to max for port c 7
+    SLRC7 = 0;
+    
+    // set TTL for PORTC7
+    INLVLC7 = 1 ;
 
     // register default IOC callback functions at runtime; use these methods to register a custom function
     IOCCF7_SetInterruptHandler(IOCCF7_DefaultInterruptHandler);

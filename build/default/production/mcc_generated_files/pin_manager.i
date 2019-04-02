@@ -16973,8 +16973,9 @@ void PIN_MANAGER_Initialize(void)
 
     WPUB = 0x00;
     WPUA = 0x00;
-    WPUC = 0x00;
-    OPTION_REGbits.nWPUEN = 1;
+
+    WPUC = 0x80;
+    OPTION_REGbits.nWPUEN = 0;
 
 
 
@@ -17002,6 +17003,10 @@ void PIN_MANAGER_Initialize(void)
     IOCCPbits.IOCCP7 = 1;
 
 
+    SLRC7 = 0;
+
+
+    INLVLC7 = 1 ;
 
 
     IOCCF7_SetInterruptHandler(IOCCF7_DefaultInterruptHandler);

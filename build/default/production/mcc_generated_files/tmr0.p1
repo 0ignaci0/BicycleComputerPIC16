@@ -1372,14 +1372,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _TMR0_Initialize ]
 [f ]
 "23
-[; ;mcc_generated_files/tmr0.c: 23:     OPTION_REG = (uint8_t)((OPTION_REG & 0xC0) | (0xD4 & 0x3F));
-[e = _OPTION_REG -> | & -> _OPTION_REG `i -> 192 `i & -> 212 `i -> 63 `i `uc ]
+[; ;mcc_generated_files/tmr0.c: 23:     OPTION_REG = (uint8_t)((OPTION_REG & 0xC0) | (0xD7 & 0x3F));
+[e = _OPTION_REG -> | & -> _OPTION_REG `i -> 192 `i & -> 215 `i -> 63 `i `uc ]
 "26
-[; ;mcc_generated_files/tmr0.c: 26:     TMR0 = 0x83;
-[e = _TMR0 -> -> 131 `i `uc ]
+[; ;mcc_generated_files/tmr0.c: 26:     TMR0 = 0xF3;
+[e = _TMR0 -> -> 243 `i `uc ]
 "29
-[; ;mcc_generated_files/tmr0.c: 29:     timer0ReloadVal= 131;
-[e = _timer0ReloadVal -> -> 131 `i `uc ]
+[; ;mcc_generated_files/tmr0.c: 29:     timer0ReloadVal= 243;
+[e = _timer0ReloadVal -> -> 243 `i `uc ]
 "32
 [; ;mcc_generated_files/tmr0.c: 32:     INTCONbits.TMR0IF = 0;
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
