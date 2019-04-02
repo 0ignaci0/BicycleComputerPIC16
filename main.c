@@ -3,7 +3,7 @@
 
 #define CIRCUMFERENCE 2                 // circumference of 700x23C bicycle wheel is 210 cm --> rounded to 2 meters
 
-#define oneMin 2308
+#define oneMin 60483
 #define hallThresh 1000
 long int volatile counter    = 0 ;            // overflow counter for 1-ms timer
 long int volatile adcCounter = 0 ;
@@ -55,19 +55,12 @@ void main(void)
     
     while(1){
         
-        hallCount = 1 ;
+        //hallCount = 1 ;
         startTime = counter ;
         setCursor(1,0);
-
-        
-        if ( hallCount >= hallThresh ){
-            endTime = counter ;
-            counter = 0 ;
-        }
-        timePassed = (endTime - startTime) / 1000 ;
-        rpmVal = ( hallCount / timePassed ) * 60 ;
-        rpmValInt = rpmVal ; 
-        printf("%d", rpmValInt) ;
+        __delay_ms( 50 );
+        printf("%d   ", (int)( distInt * 1.8 ) ) ;
+        __delay_ms( 50 );
         // print speed
         
     }
@@ -82,11 +75,13 @@ void timerISR ( void ){ // timer set to 50ms period
 // expected fan speed 1150 rpm
 // 
 void speedCalc ( void ){
-    
-    hallCount += 1 ;
+         
 
-    if( adcCounter <= (oneMin ) ){
-        distInt++ ;
+
+    if( adcCounter <= ( oneMin ) ){
+        distInt++;
+     hallCount += 1 ;
+      ;
     }
 }
 

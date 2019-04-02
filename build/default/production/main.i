@@ -17340,19 +17340,12 @@ void main(void)
 
     while(1){
 
-        hallCount = 1 ;
+
         startTime = counter ;
         setCursor(1,0);
-
-
-        if ( hallCount >= 1000 ){
-            endTime = counter ;
-            counter = 0 ;
-        }
-        timePassed = (endTime - startTime) / 1000 ;
-        rpmVal = ( hallCount / timePassed ) * 60 ;
-        rpmValInt = rpmVal ;
-        printf("%d", rpmValInt) ;
+        _delay((unsigned long)((50)*(500000/4000.0)));
+        printf("%d   ", (int)( distInt * 1.8 ) ) ;
+        _delay((unsigned long)((50)*(500000/4000.0)));
 
 
     }
@@ -17368,9 +17361,11 @@ void timerISR ( void ){
 
 void speedCalc ( void ){
 
-    hallCount += 1 ;
 
-    if( adcCounter <= (2308 ) ){
-        distInt++ ;
+
+    if( adcCounter <= ( 60483 ) ){
+        distInt++;
+     hallCount += 1 ;
+      ;
     }
 }

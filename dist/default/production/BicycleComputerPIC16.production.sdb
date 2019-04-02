@@ -23,8 +23,6 @@ channel_FVR 31
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 "1368
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
-"4 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\flge.c
-[v ___flge __flge `(b  1 e 0 0 ]
 "43 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputc.c
@@ -37,11 +35,6 @@ channel_FVR 31
 [v _puts puts `(i  1 e 2 0 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
-[v i1___fladd __fladd `(d  1 e 4 0 ]
-"242
-[v ___flsub __flsub `(d  1 e 4 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcdiv.c
-[v ___fldiv __fldiv `(d  1 e 4 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 "12 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\strlen.c
@@ -58,9 +51,9 @@ channel_FVR 31
 [v _setCursor setCursor `(v  1 e 1 0 ]
 "40 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _main main `(v  1 e 1 0 ]
-"77
+"70
 [v _timerISR timerISR `(v  1 e 1 0 ]
-"84
+"77
 [v _speedCalc speedCalc `(v  1 e 1 0 ]
 "65 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/adc.c
 [v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
@@ -176,12 +169,12 @@ channel_FVR 31
 [v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
 "2431
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @157 ]
-[s S623 . 1 `uc 1 ADON 1 0 :1:0 
+[s S629 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :5:2 
 ]
 "2456
-[s S627 . 1 `uc 1 . 1 0 :1:0 
+[s S633 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADGO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -189,11 +182,11 @@ channel_FVR 31
 `uc 1 CHS3 1 0 :1:5 
 `uc 1 CHS4 1 0 :1:6 
 ]
-[s S635 . 1 `uc 1 . 1 0 :1:0 
+[s S641 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
-[u S638 . 1 `S623 1 . 1 0 `S627 1 . 1 0 `S635 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES638  1 e 1 @157 ]
+[u S644 . 1 `S629 1 . 1 0 `S633 1 . 1 0 `S641 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES644  1 e 1 @157 ]
 "2511
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @158 ]
 "2577
@@ -373,7 +366,7 @@ channel_FVR 31
 "40 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"75
+"68
 } 0
 "67 C:\Users\igna\BicycleComputerPIC16\displayOptions.c
 [v _setCursor setCursor `(v  1 e 1 0 ]
@@ -399,7 +392,7 @@ channel_FVR 31
 [v _printf printf `(i  1 e 2 0 ]
 {
 "8
-[v printf@ap ap `[1]*.5v  1 a 1 8 ]
+[v printf@ap ap `[1]*.5v  1 a 1 6 ]
 "5
 [v printf@fmt fmt `*.25DCuc  1 p 2 0 ]
 "13
@@ -407,42 +400,42 @@ channel_FVR 31
 "1368 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
 {
-[s S708 _IO_FILE 0 ]
-[v vfprintf@fp fp `*.1S708  1 a 1 wreg ]
+[s S710 _IO_FILE 0 ]
+[v vfprintf@fp fp `*.1S710  1 a 1 wreg ]
 "1371
 [v vfprintf@cfmt cfmt `*.25uc  1 a 2 25 ]
 "1368
-[v vfprintf@fp fp `*.1S708  1 a 1 wreg ]
+[v vfprintf@fp fp `*.1S710  1 a 1 wreg ]
 [v vfprintf@fmt fmt `*.25DCuc  1 p 2 19 ]
 [v vfprintf@ap ap `*.5*.5v  1 p 1 21 ]
 "1373
 "1368
-[v vfprintf@fp fp `*.1S708  1 a 1 24 ]
+[v vfprintf@fp fp `*.1S710  1 a 1 24 ]
 "1382
 } 0
 "670
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 {
-[s S708 _IO_FILE 0 ]
-[v vfpfcnvrt@fp fp `*.1S708  1 a 1 wreg ]
+[s S710 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.1S710  1 a 1 wreg ]
 "674
 [v vfpfcnvrt@ll ll `o  1 a 8 54 ]
 "677
 [v vfpfcnvrt@vp vp `*.5v  1 a 1 62 ]
 "670
-[v vfpfcnvrt@fp fp `*.1S708  1 a 1 wreg ]
+[v vfpfcnvrt@fp fp `*.1S710  1 a 1 wreg ]
 [v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 47 ]
 [v vfpfcnvrt@ap ap `*.5*.5v  1 p 1 48 ]
 "680
 "670
-[v vfpfcnvrt@fp fp `*.1S708  1 a 1 63 ]
+[v vfpfcnvrt@fp fp `*.1S710  1 a 1 63 ]
 "1365
 } 0
 "274
 [v _dtoa dtoa `(i  1 s 2 dtoa ]
 {
-[s S708 _IO_FILE 0 ]
-[v dtoa@fp fp `*.1S708  1 a 1 wreg ]
+[s S710 _IO_FILE 0 ]
+[v dtoa@fp fp `*.1S710  1 a 1 wreg ]
 "277
 [v dtoa@n n `o  1 a 8 9 ]
 "276
@@ -451,28 +444,28 @@ channel_FVR 31
 [v dtoa@w w `i  1 a 2 5 ]
 [v dtoa@p p `i  1 a 2 3 ]
 "274
-[v dtoa@fp fp `*.1S708  1 a 1 wreg ]
+[v dtoa@fp fp `*.1S710  1 a 1 wreg ]
 [v dtoa@d d `o  1 p 8 36 ]
 "280
 "274
-[v dtoa@fp fp `*.1S708  1 a 1 2 ]
+[v dtoa@fp fp `*.1S710  1 a 1 2 ]
 "315
 } 0
 "72
 [v _pad pad `(i  1 s 2 pad ]
 {
-[s S708 _IO_FILE 0 ]
-[v pad@fp fp `*.1S708  1 a 1 wreg ]
+[s S710 _IO_FILE 0 ]
+[v pad@fp fp `*.1S710  1 a 1 wreg ]
 "74
 [v pad@w w `i  1 a 2 33 ]
 [v pad@i i `i  1 a 2 31 ]
 "72
-[v pad@fp fp `*.1S708  1 a 1 wreg ]
+[v pad@fp fp `*.1S710  1 a 1 wreg ]
 [v pad@buf buf `*.5uc  1 p 1 27 ]
 [v pad@p p `i  1 p 2 28 ]
 "77
 "72
-[v pad@fp fp `*.1S708  1 a 1 35 ]
+[v pad@fp fp `*.1S710  1 a 1 35 ]
 "95
 } 0
 "12 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\strlen.c
@@ -496,16 +489,16 @@ channel_FVR 31
 [v fputs@c c `uc  1 a 1 24 ]
 "8
 [v fputs@s s `*.26DCuc  1 p 2 18 ]
-[s S1055 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputs@fp fp `*.1S1055  1 p 1 20 ]
+[s S1057 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputs@fp fp `*.1S1057  1 p 1 20 ]
 "19
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 10 ]
-[s S1055 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputc@fp fp `*.1S1055  1 p 1 12 ]
+[s S1057 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputc@fp fp `*.1S1057  1 p 1 12 ]
 "21
 } 0
 "151 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/eusart.c
@@ -574,58 +567,35 @@ channel_FVR 31
 [v ___fltol __fltol `(l  1 e 4 0 ]
 {
 "45
-[v ___fltol@exp1 exp1 `uc  1 a 1 18 ]
-[v ___fltol@sign1 sign1 `uc  1 a 1 17 ]
+[v ___fltol@exp1 exp1 `uc  1 a 1 58 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 57 ]
 "43
-[v ___fltol@f1 f1 `d  1 p 4 8 ]
+[v ___fltol@f1 f1 `d  1 p 4 48 ]
 "70
-} 0
-"242 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcadd.c
-[v ___flsub __flsub `(d  1 e 4 0 ]
-{
-[v ___flsub@a a `d  1 p 4 28 ]
-[v ___flsub@b b `d  1 p 4 32 ]
-"250
-} 0
-"10
-[v ___fladd __fladd `(d  1 e 4 0 ]
-{
-"17
-[v ___fladd@grs grs `uc  1 a 1 27 ]
-"15
-[v ___fladd@bexp bexp `uc  1 a 1 26 ]
-"16
-[v ___fladd@aexp aexp `uc  1 a 1 25 ]
-"13
-[v ___fladd@signs signs `uc  1 a 1 24 ]
-"10
-[v ___fladd@b b `d  1 p 4 8 ]
-[v ___fladd@a a `d  1 p 4 12 ]
-"237
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S911 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S913 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S916 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S919 . 4 `l 1 i 4 0 `d 1 f 4 0 `S911 1 fAsBytes 4 0 `S916 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S919  1 a 4 20 ]
+[s S918 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S921 . 4 `l 1 i 4 0 `d 1 f 4 0 `S913 1 fAsBytes 4 0 `S918 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S921  1 a 4 42 ]
 "12
-[v ___flmul@grs grs `ul  1 a 4 15 ]
-[s S988 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[v ___flmul@grs grs `ul  1 a 4 36 ]
+[s S990 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S991 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S988 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S991  1 a 2 24 ]
+[u S993 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S990 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S993  1 a 2 46 ]
 "10
-[v ___flmul@bexp bexp `uc  1 a 1 19 ]
+[v ___flmul@bexp bexp `uc  1 a 1 41 ]
 "11
-[v ___flmul@aexp aexp `uc  1 a 1 14 ]
+[v ___flmul@aexp aexp `uc  1 a 1 40 ]
 "9
-[v ___flmul@sign sign `uc  1 a 1 13 ]
+[v ___flmul@sign sign `uc  1 a 1 35 ]
 "8
-[v ___flmul@b b `d  1 p 4 0 ]
-[v ___flmul@a a `d  1 p 4 4 ]
+[v ___flmul@b b `d  1 p 4 22 ]
+[v ___flmul@a a `d  1 p 4 26 ]
 "205
 } 0
 "4 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul8_16.c
@@ -641,33 +611,6 @@ channel_FVR 31
 [v __Umul8_16@multiplicand multiplicand `uc  1 p 1 8 ]
 [v __Umul8_16@multiplier multiplier `uc  1 a 1 16 ]
 "60
-} 0
-"4 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\flge.c
-[v ___flge __flge `(b  1 e 0 0 ]
-{
-[v ___flge@ff1 ff1 `d  1 p 4 8 ]
-[v ___flge@ff2 ff2 `d  1 p 4 12 ]
-"19
-} 0
-"8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcdiv.c
-[v ___fldiv __fldiv `(d  1 e 4 0 ]
-{
-"21
-[v ___fldiv@grs grs `ul  1 a 4 56 ]
-"22
-[v ___fldiv@rem rem `ul  1 a 4 49 ]
-"20
-[v ___fldiv@new_exp new_exp `i  1 a 2 54 ]
-"19
-[v ___fldiv@aexp aexp `uc  1 a 1 61 ]
-"18
-[v ___fldiv@bexp bexp `uc  1 a 1 60 ]
-"16
-[v ___fldiv@sign sign `uc  1 a 1 53 ]
-"8
-[v ___fldiv@a a `d  1 p 4 36 ]
-[v ___fldiv@b b `d  1 p 4 40 ]
-"185
 } 0
 "4 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -744,10 +687,10 @@ channel_FVR 31
 {
 "86
 } 0
-"77 C:\Users\igna\BicycleComputerPIC16\main.c
+"70 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _timerISR timerISR `(v  1 e 1 0 ]
 {
-"81
+"74
 } 0
 "79 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_IOC PIN_MANAGER_IOC `(v  1 e 1 0 ]
@@ -764,19 +707,24 @@ channel_FVR 31
 {
 "116
 } 0
-"84 C:\Users\igna\BicycleComputerPIC16\main.c
+"77 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _speedCalc speedCalc `(v  1 e 1 0 ]
 {
-"91
+"86
 } 0
 "10 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcadd.c
-[v i1___fladd __fladd `(d  1 e 4 0 ]
+[v ___fladd __fladd `(d  1 e 4 0 ]
 {
-[v i1___fladd@grs __fladd `uc  1 a 1 11 ]
-[v i1___fladd@bexp __fladd `uc  1 a 1 10 ]
-[v i1___fladd@aexp __fladd `uc  1 a 1 9 ]
-[v i1___fladd@signs __fladd `uc  1 a 1 8 ]
-[v i1___fladd@b b `d  1 p 4 0 ]
-[v i1___fladd@a a `d  1 p 4 4 ]
+"17
+[v ___fladd@grs grs `uc  1 a 1 11 ]
+"15
+[v ___fladd@bexp bexp `uc  1 a 1 10 ]
+"16
+[v ___fladd@aexp aexp `uc  1 a 1 9 ]
+"13
+[v ___fladd@signs signs `uc  1 a 1 8 ]
+"10
+[v ___fladd@b b `d  1 p 4 0 ]
+[v ___fladd@a a `d  1 p 4 4 ]
 "237
 } 0

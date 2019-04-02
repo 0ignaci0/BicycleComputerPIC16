@@ -38,6 +38,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "110 ./displayOptions.h
 [; ;./displayOptions.h: 110: void setCursor( uint8_t a, uint8_t b );
 [v _setCursor `(v ~T0 @X0 0 ef2`uc`uc ]
+[v F9589 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic.h
+[v __delay `JF9589 ~T0 @X0 0 e ]
+[p i __delay ]
 "113 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c99\stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h
@@ -1546,90 +1550,70 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 56:     while(1){
 [e :U 1223 ]
 {
-"58
-[; ;main.c: 58:         hallCount = 1 ;
-[e = _hallCount -> -> 1 `i `f ]
 "59
 [; ;main.c: 59:         startTime = counter ;
 [e = _startTime -> _counter `f ]
 "60
 [; ;main.c: 60:         setCursor(1,0);
 [e ( _setCursor (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"61
+[; ;main.c: 61:         _delay((unsigned long)((50)*(500000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
+"62
+[; ;main.c: 62:         printf("%d   ", (int)( distInt * 1.8 ) ) ;
+[e ( _printf , (. :s 1C -> * -> _distInt `d .1.8 `i ]
 "63
-[; ;main.c: 63:         if ( hallCount >= 1000 ){
-[e $ ! >= _hallCount -> -> 1000 `i `f 1225  ]
-{
-"64
-[; ;main.c: 64:             endTime = counter ;
-[e = _endTime -> _counter `f ]
-"65
-[; ;main.c: 65:             counter = 0 ;
-[e = _counter -> -> 0 `i `l ]
+[; ;main.c: 63:         _delay((unsigned long)((50)*(500000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 500000 `l `d .4000.0 `ul ]
 "66
-[; ;main.c: 66:         }
-}
-[e :U 1225 ]
-"67
-[; ;main.c: 67:         timePassed = (endTime - startTime) / 1000 ;
-[e = _timePassed / - _endTime _startTime -> -> 1000 `i `f ]
-"68
-[; ;main.c: 68:         rpmVal = ( hallCount / timePassed ) * 60 ;
-[e = _rpmVal * / _hallCount _timePassed -> -> 60 `i `f ]
-"69
-[; ;main.c: 69:         rpmValInt = rpmVal ;
-[e = _rpmValInt -> _rpmVal `l ]
-"70
-[; ;main.c: 70:         printf("%d", rpmValInt) ;
-[e ( _printf , (. :s 1C _rpmValInt ]
-"73
-[; ;main.c: 73:     }
+[; ;main.c: 66:     }
 }
 [e :U 1222 ]
 [e $U 1223  ]
 [e :U 1224 ]
-"75
-[; ;main.c: 75: }
+"68
+[; ;main.c: 68: }
 [e :UE 1221 ]
 }
-"77
-[; ;main.c: 77: void timerISR ( void ){
+"70
+[; ;main.c: 70: void timerISR ( void ){
 [v _timerISR `(v ~T0 @X0 1 ef ]
 {
 [e :U _timerISR ]
 [f ]
-"78
-[; ;main.c: 78:     counter++ ;
+"71
+[; ;main.c: 71:     counter++ ;
 [e ++ _counter -> -> 1 `i `Vl ]
-"79
-[; ;main.c: 79:     adcCounter++ ;
+"72
+[; ;main.c: 72:     adcCounter++ ;
 [e ++ _adcCounter -> -> 1 `i `Vl ]
-"81
-[; ;main.c: 81: }
-[e :UE 1226 ]
+"74
+[; ;main.c: 74: }
+[e :UE 1225 ]
 }
-"84
-[; ;main.c: 84: void speedCalc ( void ){
+"77
+[; ;main.c: 77: void speedCalc ( void ){
 [v _speedCalc `(v ~T0 @X0 1 ef ]
 {
 [e :U _speedCalc ]
 [f ]
-"86
-[; ;main.c: 86:     hallCount += 1 ;
-[e =+ _hallCount -> -> 1 `i `Vf ]
-"88
-[; ;main.c: 88:     if( adcCounter <= (2308 ) ){
-[e $ ! <= _adcCounter -> -> 2308 `i `l 1228  ]
+"81
+[; ;main.c: 81:     if( adcCounter <= ( 60483 ) ){
+[e $ ! <= _adcCounter -> 60483 `l 1227  ]
 {
-"89
-[; ;main.c: 89:         distInt++ ;
+"82
+[; ;main.c: 82:         distInt++;
 [e ++ _distInt -> -> 1 `i `Vi ]
-"90
-[; ;main.c: 90:     }
+"83
+[; ;main.c: 83:      hallCount += 1 ;
+[e =+ _hallCount -> -> 1 `i `Vf ]
+"85
+[; ;main.c: 85:     }
 }
-[e :U 1228 ]
-"91
-[; ;main.c: 91: }
-[e :UE 1227 ]
+[e :U 1227 ]
+"86
+[; ;main.c: 86: }
+[e :UE 1226 ]
 }
 [p f _printf 8388736 ]
-[a 1C 37 100 0 ]
+[a 1C 37 100 32 32 32 0 ]
