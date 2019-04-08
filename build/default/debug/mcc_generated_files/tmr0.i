@@ -7,7 +7,10 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "mcc_generated_files/tmr0.c" 2
-# 51 "mcc_generated_files/tmr0.c"
+
+
+
+
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -16925,7 +16928,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 2 3
-# 51 "mcc_generated_files/tmr0.c" 2
+# 5 "mcc_generated_files/tmr0.c" 2
 
 # 1 "mcc_generated_files/tmr0.h" 1
 # 54 "mcc_generated_files/tmr0.h"
@@ -17032,7 +17035,7 @@ void TMR0_ISR(void);
 extern void (*TMR0_InterruptHandler)(void);
 # 274 "mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
-# 52 "mcc_generated_files/tmr0.c" 2
+# 6 "mcc_generated_files/tmr0.c" 2
 
 
 
@@ -17050,13 +17053,13 @@ void TMR0_Initialize(void)
 
 
 
-    OPTION_REG = (uint8_t)((OPTION_REG & 0xC0) | (0xD7 & 0x3F));
+    OPTION_REG = (uint8_t)((OPTION_REG & 0xC0) | (0xD4 & 0x3F));
 
 
-    TMR0 = 0x0C;
+    TMR0 = 0x83;
 
 
-    timer0ReloadVal= 12;
+    timer0ReloadVal= 131;
 
 
     INTCONbits.TMR0IF = 0;

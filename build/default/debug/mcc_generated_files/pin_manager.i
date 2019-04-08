@@ -7,7 +7,6 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "mcc_generated_files/pin_manager.c" 2
-# 49 "mcc_generated_files/pin_manager.c"
 # 1 "mcc_generated_files/pin_manager.h" 1
 # 54 "mcc_generated_files/pin_manager.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 1 3
@@ -16940,10 +16939,7 @@ void IOCCF7_SetInterruptHandler(void (* InterruptHandler)(void));
 extern void (*IOCCF7_InterruptHandler)(void);
 # 206 "mcc_generated_files/pin_manager.h"
 void IOCCF7_DefaultInterruptHandler(void);
-# 49 "mcc_generated_files/pin_manager.c" 2
-
-
-
+# 1 "mcc_generated_files/pin_manager.c" 2
 
 
 void (*IOCCF7_InterruptHandler)(void);

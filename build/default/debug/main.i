@@ -7,8 +7,6 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-
-
 # 1 "./mcc_generated_files/mcc.h" 1
 # 49 "./mcc_generated_files/mcc.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 1 3
@@ -17232,33 +17230,46 @@ void EUSART_SetErrorHandler(void (* interruptHandler)(void));
 void SYSTEM_Initialize(void);
 # 84 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 3 "main.c" 2
+# 1 "main.c" 2
 
 # 1 "./displayOptions.h" 1
-# 41 "./displayOptions.h"
+# 44 "./displayOptions.h"
 void backlightBrightness( int color, uint8_t offset );
-# 56 "./displayOptions.h"
-void backlightReset();
-# 70 "./displayOptions.h"
-void backlightOff();
-# 84 "./displayOptions.h"
-void resetCursor();
-# 95 "./displayOptions.h"
-void writeString();
-# 107 "./displayOptions.h"
+# 59 "./displayOptions.h"
+void backlightReset( void );
+# 73 "./displayOptions.h"
+void backlightOff( void );
+# 87 "./displayOptions.h"
+void resetCursor( void );
+# 98 "./displayOptions.h"
+void writeString( char *string );
+# 110 "./displayOptions.h"
 void setCursor( uint8_t a, uint8_t b );
 
-void writePrintf( char *string );
-# 4 "main.c" 2
-# 17 "main.c"
-int rpm = 0 ;
-int second = 0 ;
-int counter = 0 ;
-int distance = 0 ;
-int speed = 0 ;
 
-void timerISR ( void ) ;
-void speedCalc ( void ) ;
+void writePrintf( char *string );
+# 2 "main.c" 2
+
+
+
+
+
+long int volatile counter = 0 ;
+long int volatile adcCounter = 0 ;
+float volatile rpm = 0 ;
+float volatile speed = 0 ;
+float volatile distance = 0 ;
+float volatile heartRate = 0 ;
+int volatile speedInt = 0 ;
+int volatile distHi = 0 ;
+int volatile distLo = 0 ;
+int volatile speedLo = 0 ;
+int volatile hrInt = 0 ;
+
+
+    void timerISR ( void ) ;
+    void speedCalc ( void ) ;
+
 
 
 
@@ -17275,46 +17286,88 @@ void main(void)
 
     SYSTEM_Initialize();
 
+
     TMR0_SetInterruptHandler( timerISR ) ;
     IOCCF7_SetInterruptHandler( speedCalc ) ;
 
 
+    _delay((unsigned long)((1000)*(16000000/4000.0))) ;
     resetCursor() ;
 
-    setCursor(1,0) ;
-    writeString(speedDisp);
-    setCursor(2,0) ;
-    writeString(distanceDisp);
-    setCursor(3,0) ;
-    writeString(hrDisp);
-    setCursor(4,0) ;
+
+
+
 
     (INTCONbits.GIE = 1);
     (INTCONbits.PEIE = 1);
+
     while(1){
-        setCursor(1,10) ;
-        printf( "%d", speed ) ;
-        setCursor(2,11) ;
-        printf( "%d", distance ) ;
+        setCursor(1,0) ;
+        writeString(speedDisp);
+        setCursor(2,0) ;
+        writeString(distanceDisp);
+        setCursor(3,0) ;
+        writeString(hrDisp);
+        setCursor(4,0) ;
 
 
-    };
-}
+        if (adcCounter == 2000 ){
 
-void timerISR ( void ){
-    counter++ ;
-    if ( counter % 2 == 0 ){
-        second++ ;
+
+
+
+        }
+
+
+
+        setCursor(1,7) ;
+        if( counter <= 15000 ){
+            speedLo = (int)speed % 1 ;
+            if( speed >= 10 ){
+                printf( "%d kph     ", (int)speed ) ;
+            }
+            else{
+
+                printf( "%d.%d kph   " , (int)speed , speedLo ) ;
+                }
+            }
+        else{
+            printf( "0 kph        " ) ;
+        }
+
+
+        setCursor(2,10) ;
+        if( distance > 1000 ){
+            distLo = (int)distance % 1000 ;
+            distHi = distance / 1000 ;
+            printf( "%d.%d km" , distHi, distLo );
+        }
+        else{
+            printf( "%d m     " , (int)distance ) ;
+        }
+
+
+        setCursor(3,13) ;
+        hrInt = heartRate ;
+        printf( "%d bpm   " , hrInt ) ;
+
     }
 
 }
 
+void timerISR ( void ){
+    counter++ ;
+    adcCounter++ ;
+}
+
 void speedCalc ( void ){
 
-    rpm = second * 60 ;
+    rpm = ( ( 1000 / counter ) * 60 ) ;
 
-    speed = 2.096 * rpm * 0.06 ;
+
+    speed = 2 * rpm * (0.06) ;
+
+
     counter = 0 ;
-    second = 0 ;
-    distance = distance + 2.096 ;
+    distance = distance + 2 ;
 }

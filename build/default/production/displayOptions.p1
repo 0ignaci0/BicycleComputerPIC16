@@ -1,19 +1,17 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"343 ./mcc_generated_files/eusart.h
-[; ;./mcc_generated_files/eusart.h: 343: void EUSART_Write(uint8_t txData);
-[v _EUSART_Write `(v ~T0 @X0 0 ef1`uc ]
-"160
+"160 ./mcc_generated_files/eusart.h
 [; ;./mcc_generated_files/eusart.h: 160: _Bool EUSART_is_tx_ready(void);
 [v _EUSART_is_tx_ready `(a ~T0 @X0 0 ef ]
+"102 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c99\stdio.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c99\stdio.h: 102: int puts(const char *);
+[v _puts `(i ~T0 @X0 0 ef1`*Cuc ]
 [v F9589 `(v ~T0 @X0 1 tf1`ul ]
 "92 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic.h
 [v __delay `JF9589 ~T0 @X0 0 e ]
 [p i __delay ]
-"102 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c99\stdio.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c99\stdio.h: 102: int puts(const char *);
-[v _puts `(i ~T0 @X0 0 ef1`*Cuc ]
-"113
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+"343 ./mcc_generated_files/eusart.h
+[; ;./mcc_generated_files/eusart.h: 343: void EUSART_Write(uint8_t txData);
+[v _EUSART_Write `(v ~T0 @X0 0 ef1`uc ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1340,325 +1338,300 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27877
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h: 27877: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"12 displayOptions.c
-[; ;displayOptions.c: 12: void backlightBrightness( int color, uint8_t offSet ) {
-[v _backlightBrightness `(v ~T0 @X0 1 ef2`i`uc ]
-{
-[e :U _backlightBrightness ]
-[v _color `i ~T0 @X0 1 r1 ]
-[v _offSet `uc ~T0 @X0 1 r2 ]
-[f ]
-"13
-[; ;displayOptions.c: 13:     EUSART_Write(0x7C);
-[e ( _EUSART_Write (1 -> -> 124 `i `uc ]
-"14
-[; ;displayOptions.c: 14:     if( offSet <= 29 ){
-[e $ ! <= -> _offSet `i -> 29 `i 1221  ]
-{
-"15
-[; ;displayOptions.c: 15:         switch (color){
-[e $U 1223  ]
-{
-"16
-[; ;displayOptions.c: 16:             case 1:
-[e :U 1224 ]
-"17
-[; ;displayOptions.c: 17:             {
-{
-"18
-[; ;displayOptions.c: 18:                 while( !EUSART_is_tx_ready() ) ;
-[e $U 1225  ]
-[e :U 1226 ]
-[e :U 1225 ]
-[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1226  ]
-[e :U 1227 ]
-"19
-[; ;displayOptions.c: 19:                 EUSART_Write( 0x80 + offSet );
-[e ( _EUSART_Write (1 -> + -> 128 `i -> _offSet `i `uc ]
-"20
-[; ;displayOptions.c: 20:                 _delay((unsigned long)((104)*(16000000/4000000.0))) ;
-[e ( __delay (1 -> * -> -> 104 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"21
-[; ;displayOptions.c: 21:                 break;
-[e $U 1222  ]
-"22
-[; ;displayOptions.c: 22:             }
-}
-"23
-[; ;displayOptions.c: 23:             case 2:
-[e :U 1228 ]
-"24
-[; ;displayOptions.c: 24:             {
-{
-"25
-[; ;displayOptions.c: 25:                 while( !EUSART_is_tx_ready() ) ;
-[e $U 1229  ]
-[e :U 1230 ]
-[e :U 1229 ]
-[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1230  ]
-[e :U 1231 ]
-"26
-[; ;displayOptions.c: 26:                 EUSART_Write( 0x9E + offSet );
-[e ( _EUSART_Write (1 -> + -> 158 `i -> _offSet `i `uc ]
-"27
-[; ;displayOptions.c: 27:                 _delay((unsigned long)((104)*(16000000/4000000.0))) ;
-[e ( __delay (1 -> * -> -> 104 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"28
-[; ;displayOptions.c: 28:                 break;
-[e $U 1222  ]
-"29
-[; ;displayOptions.c: 29:             }
-}
-"30
-[; ;displayOptions.c: 30:             case 3:
-[e :U 1232 ]
-"31
-[; ;displayOptions.c: 31:             {
-{
-"32
-[; ;displayOptions.c: 32:                 while( !EUSART_is_tx_ready() ) ;
-[e $U 1233  ]
-[e :U 1234 ]
-[e :U 1233 ]
-[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1234  ]
-[e :U 1235 ]
-"33
-[; ;displayOptions.c: 33:                 EUSART_Write( 0xBC + offSet );
-[e ( _EUSART_Write (1 -> + -> 188 `i -> _offSet `i `uc ]
-"34
-[; ;displayOptions.c: 34:                 _delay((unsigned long)((104)*(16000000/4000000.0))) ;
-[e ( __delay (1 -> * -> -> 104 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"35
-[; ;displayOptions.c: 35:                 break;
-[e $U 1222  ]
-"36
-[; ;displayOptions.c: 36:             }
-}
-"37
-[; ;displayOptions.c: 37:             default:
-[e :U 1236 ]
-"38
-[; ;displayOptions.c: 38:             {
-{
-"40
-[; ;displayOptions.c: 40:             }
-}
-"41
-[; ;displayOptions.c: 41:         }
-}
-[e $U 1222  ]
-[e :U 1223 ]
-[e [\ _color , $ -> 1 `i 1224
- , $ -> 2 `i 1228
- , $ -> 3 `i 1232
- 1236 ]
-[e :U 1222 ]
-"42
-[; ;displayOptions.c: 42:     }
-}
-[e :U 1221 ]
-"43
-[; ;displayOptions.c: 43: }
-[e :UE 1220 ]
-}
-"45
-[; ;displayOptions.c: 45: void backlightReset(){
-[v _backlightReset `(v ~T0 @X0 1 ef ]
-{
-[e :U _backlightReset ]
-[f ]
-"46
-[; ;displayOptions.c: 46:     backlightBrightness(1,29);
-[e ( _backlightBrightness (2 , -> 1 `i -> -> 29 `i `uc ]
-"47
-[; ;displayOptions.c: 47:     backlightBrightness(2,29);
-[e ( _backlightBrightness (2 , -> 2 `i -> -> 29 `i `uc ]
-"48
-[; ;displayOptions.c: 48:     backlightBrightness(3,29);
-[e ( _backlightBrightness (2 , -> 3 `i -> -> 29 `i `uc ]
-"49
-[; ;displayOptions.c: 49: }
-[e :UE 1237 ]
-}
-"51
-[; ;displayOptions.c: 51: void backlightOff(){
-[v _backlightOff `(v ~T0 @X0 1 ef ]
-{
-[e :U _backlightOff ]
-[f ]
-"52
-[; ;displayOptions.c: 52:     backlightBrightness(1,0);
-[e ( _backlightBrightness (2 , -> 1 `i -> -> 0 `i `uc ]
-"53
-[; ;displayOptions.c: 53:     backlightBrightness(2,0);
-[e ( _backlightBrightness (2 , -> 2 `i -> -> 0 `i `uc ]
-"54
-[; ;displayOptions.c: 54:     backlightBrightness(3,0);
-[e ( _backlightBrightness (2 , -> 3 `i -> -> 0 `i `uc ]
-"55
-[; ;displayOptions.c: 55: }
-[e :UE 1238 ]
-}
-"57
-[; ;displayOptions.c: 57: void resetCursor(){
-[v _resetCursor `(v ~T0 @X0 1 ef ]
-{
-[e :U _resetCursor ]
-[f ]
-"58
-[; ;displayOptions.c: 58:     puts("|-");
-[e ( _puts (1 :s 1C ]
-"59
-[; ;displayOptions.c: 59: }
-[e :UE 1239 ]
-}
-"61
-[; ;displayOptions.c: 61: void writeString( char *string ){
+"11 displayOptions.c
+[; ;displayOptions.c: 11: void writeString( char *string ){
 [v _writeString `(v ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _writeString ]
 [v _string `*uc ~T0 @X0 1 r1 ]
 [f ]
-"62
-[; ;displayOptions.c: 62:     while( !EUSART_is_tx_ready() ) ;
-[e $U 1241  ]
-[e :U 1242 ]
-[e :U 1241 ]
-[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1242  ]
-[e :U 1243 ]
-"63
-[; ;displayOptions.c: 63:     puts( string );
+"12
+[; ;displayOptions.c: 12:     while( !EUSART_is_tx_ready() ) ;
+[e $U 1221  ]
+[e :U 1222 ]
+[e :U 1221 ]
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1222  ]
+[e :U 1223 ]
+"13
+[; ;displayOptions.c: 13:     puts( string );
 [e ( _puts (1 -> _string `*Cuc ]
-"64
-[; ;displayOptions.c: 64:     _delay((unsigned long)((200)*(16000000/4000000.0)));
+"14
+[; ;displayOptions.c: 14:     _delay((unsigned long)((200)*(16000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"65
-[; ;displayOptions.c: 65: }
-[e :UE 1240 ]
+"15
+[; ;displayOptions.c: 15: }
+[e :UE 1220 ]
 }
-"67
-[; ;displayOptions.c: 67: void writePrintf( char *string ){
-[v _writePrintf `(v ~T0 @X0 1 ef1`*uc ]
-{
-[e :U _writePrintf ]
-[v _string `*uc ~T0 @X0 1 r1 ]
-[f ]
-"68
-[; ;displayOptions.c: 68:     while( !EUSART_is_tx_ready() ) ;
-[e $U 1245  ]
-[e :U 1246 ]
-[e :U 1245 ]
-[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1246  ]
-[e :U 1247 ]
-"69
-[; ;displayOptions.c: 69:     printf( string ) ;
-[e ( _printf -> _string `*Cuc ]
-"70
-[; ;displayOptions.c: 70:     _delay((unsigned long)((200)*(16000000/4000000.0))) ;
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"71
-[; ;displayOptions.c: 71: }
-[e :UE 1244 ]
-}
-"73
-[; ;displayOptions.c: 73: void setCursor( uint8_t a, uint8_t b ){
+"17
+[; ;displayOptions.c: 17: void setCursor( uint8_t a, uint8_t b ){
 [v _setCursor `(v ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _setCursor ]
 [v _a `uc ~T0 @X0 1 r1 ]
 [v _b `uc ~T0 @X0 1 r2 ]
 [f ]
-"74
-[; ;displayOptions.c: 74:     while( !EUSART_is_tx_ready() ) ;
-[e $U 1249  ]
-[e :U 1250 ]
-[e :U 1249 ]
-[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1250  ]
-[e :U 1251 ]
-"75
-[; ;displayOptions.c: 75:     EUSART_Write( 254 );
+"18
+[; ;displayOptions.c: 18:     while( !EUSART_is_tx_ready() ) ;
+[e $U 1225  ]
+[e :U 1226 ]
+[e :U 1225 ]
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1226  ]
+[e :U 1227 ]
+"19
+[; ;displayOptions.c: 19:     EUSART_Write( 254 );
 [e ( _EUSART_Write (1 -> -> 254 `i `uc ]
-"76
-[; ;displayOptions.c: 76:     _delay((unsigned long)((200)*(16000000/4000000.0)));
+"20
+[; ;displayOptions.c: 20:     _delay((unsigned long)((200)*(16000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"77
-[; ;displayOptions.c: 77:     switch ( a ){
-[e $U 1253  ]
+"21
+[; ;displayOptions.c: 21:     switch ( a ){
+[e $U 1229  ]
 {
-"78
-[; ;displayOptions.c: 78:         case 1:
-[e :U 1254 ]
-"79
-[; ;displayOptions.c: 79:         {
+"22
+[; ;displayOptions.c: 22:         case 1:
+[e :U 1230 ]
+"23
+[; ;displayOptions.c: 23:         {
 {
-"80
-[; ;displayOptions.c: 80:             EUSART_Write(128 + 0 + b) ;
+"24
+[; ;displayOptions.c: 24:             EUSART_Write(128 + 0 + b) ;
 [e ( _EUSART_Write (1 -> + + -> 128 `i -> 0 `i -> _b `i `uc ]
-"81
-[; ;displayOptions.c: 81:             break ;
-[e $U 1252  ]
-"82
-[; ;displayOptions.c: 82:         }
+"25
+[; ;displayOptions.c: 25:             break ;
+[e $U 1228  ]
+"26
+[; ;displayOptions.c: 26:         }
 }
-"83
-[; ;displayOptions.c: 83:         case 2:
-[e :U 1255 ]
-"84
-[; ;displayOptions.c: 84:         {
+"27
+[; ;displayOptions.c: 27:         case 2:
+[e :U 1231 ]
+"28
+[; ;displayOptions.c: 28:         {
 {
-"85
-[; ;displayOptions.c: 85:            EUSART_Write(128 + 64 + b) ;
+"29
+[; ;displayOptions.c: 29:            EUSART_Write(128 + 64 + b) ;
 [e ( _EUSART_Write (1 -> + + -> 128 `i -> 64 `i -> _b `i `uc ]
-"86
-[; ;displayOptions.c: 86:            break ;
-[e $U 1252  ]
-"87
-[; ;displayOptions.c: 87:         }
+"30
+[; ;displayOptions.c: 30:            break ;
+[e $U 1228  ]
+"31
+[; ;displayOptions.c: 31:         }
 }
-"88
-[; ;displayOptions.c: 88:         case 3:
-[e :U 1256 ]
-"89
-[; ;displayOptions.c: 89:         {
+"32
+[; ;displayOptions.c: 32:         case 3:
+[e :U 1232 ]
+"33
+[; ;displayOptions.c: 33:         {
 {
-"90
-[; ;displayOptions.c: 90:             EUSART_Write(128 + 20 + b) ;
+"34
+[; ;displayOptions.c: 34:             EUSART_Write(128 + 20 + b) ;
 [e ( _EUSART_Write (1 -> + + -> 128 `i -> 20 `i -> _b `i `uc ]
-"91
-[; ;displayOptions.c: 91:             break ;
-[e $U 1252  ]
-"92
-[; ;displayOptions.c: 92:         }
+"35
+[; ;displayOptions.c: 35:             break ;
+[e $U 1228  ]
+"36
+[; ;displayOptions.c: 36:         }
 }
-"93
-[; ;displayOptions.c: 93:         case 4:
-[e :U 1257 ]
-"94
-[; ;displayOptions.c: 94:         {
+"37
+[; ;displayOptions.c: 37:         case 4:
+[e :U 1233 ]
+"38
+[; ;displayOptions.c: 38:         {
 {
-"95
-[; ;displayOptions.c: 95:             EUSART_Write(128 + 84 + b) ;
+"39
+[; ;displayOptions.c: 39:             EUSART_Write(128 + 84 + b) ;
 [e ( _EUSART_Write (1 -> + + -> 128 `i -> 84 `i -> _b `i `uc ]
-"96
-[; ;displayOptions.c: 96:             break ;
-[e $U 1252  ]
-"97
-[; ;displayOptions.c: 97:         }
+"40
+[; ;displayOptions.c: 40:             break ;
+[e $U 1228  ]
+"41
+[; ;displayOptions.c: 41:         }
 }
-"98
-[; ;displayOptions.c: 98:     }
+"42
+[; ;displayOptions.c: 42:     }
 }
-[e $U 1252  ]
-[e :U 1253 ]
-[e [\ -> _a `i , $ -> 1 `i 1254
- , $ -> 2 `i 1255
- , $ -> 3 `i 1256
- , $ -> 4 `i 1257
- 1252 ]
-[e :U 1252 ]
-"99
-[; ;displayOptions.c: 99: }
-[e :UE 1248 ]
+[e $U 1228  ]
+[e :U 1229 ]
+[e [\ -> _a `i , $ -> 1 `i 1230
+ , $ -> 2 `i 1231
+ , $ -> 3 `i 1232
+ , $ -> 4 `i 1233
+ 1228 ]
+[e :U 1228 ]
+"43
+[; ;displayOptions.c: 43: }
+[e :UE 1224 ]
 }
-[p f _printf 9437696 ]
+"45
+[; ;displayOptions.c: 45: void backlightBrightness( int color, uint8_t offSet ) {
+[v _backlightBrightness `(v ~T0 @X0 1 ef2`i`uc ]
+{
+[e :U _backlightBrightness ]
+[v _color `i ~T0 @X0 1 r1 ]
+[v _offSet `uc ~T0 @X0 1 r2 ]
+[f ]
+"46
+[; ;displayOptions.c: 46:     EUSART_Write(0x7C);
+[e ( _EUSART_Write (1 -> -> 124 `i `uc ]
+"47
+[; ;displayOptions.c: 47:     if( offSet <= 29 ){
+[e $ ! <= -> _offSet `i -> 29 `i 1235  ]
+{
+"48
+[; ;displayOptions.c: 48:         switch (color){
+[e $U 1237  ]
+{
+"49
+[; ;displayOptions.c: 49:             case 1:
+[e :U 1238 ]
+"50
+[; ;displayOptions.c: 50:             {
+{
+"51
+[; ;displayOptions.c: 51:                 while( !EUSART_is_tx_ready() ) ;
+[e $U 1239  ]
+[e :U 1240 ]
+[e :U 1239 ]
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1240  ]
+[e :U 1241 ]
+"52
+[; ;displayOptions.c: 52:                 EUSART_Write( 0x80 + offSet );
+[e ( _EUSART_Write (1 -> + -> 128 `i -> _offSet `i `uc ]
+"53
+[; ;displayOptions.c: 53:                 _delay((unsigned long)((104)*(16000000/4000000.0))) ;
+[e ( __delay (1 -> * -> -> 104 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+"54
+[; ;displayOptions.c: 54:                 break;
+[e $U 1236  ]
+"55
+[; ;displayOptions.c: 55:             }
+}
+"56
+[; ;displayOptions.c: 56:             case 2:
+[e :U 1242 ]
+"57
+[; ;displayOptions.c: 57:             {
+{
+"58
+[; ;displayOptions.c: 58:                 while( !EUSART_is_tx_ready() ) ;
+[e $U 1243  ]
+[e :U 1244 ]
+[e :U 1243 ]
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1244  ]
+[e :U 1245 ]
+"59
+[; ;displayOptions.c: 59:                 EUSART_Write( 0x9E + offSet );
+[e ( _EUSART_Write (1 -> + -> 158 `i -> _offSet `i `uc ]
+"60
+[; ;displayOptions.c: 60:                 _delay((unsigned long)((104)*(16000000/4000000.0))) ;
+[e ( __delay (1 -> * -> -> 104 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+"61
+[; ;displayOptions.c: 61:                 break;
+[e $U 1236  ]
+"62
+[; ;displayOptions.c: 62:             }
+}
+"63
+[; ;displayOptions.c: 63:             case 3:
+[e :U 1246 ]
+"64
+[; ;displayOptions.c: 64:             {
+{
+"65
+[; ;displayOptions.c: 65:                 while( !EUSART_is_tx_ready() ) ;
+[e $U 1247  ]
+[e :U 1248 ]
+[e :U 1247 ]
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1248  ]
+[e :U 1249 ]
+"66
+[; ;displayOptions.c: 66:                 EUSART_Write( 0xBC + offSet );
+[e ( _EUSART_Write (1 -> + -> 188 `i -> _offSet `i `uc ]
+"67
+[; ;displayOptions.c: 67:                 _delay((unsigned long)((104)*(16000000/4000000.0))) ;
+[e ( __delay (1 -> * -> -> 104 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+"68
+[; ;displayOptions.c: 68:                 break;
+[e $U 1236  ]
+"69
+[; ;displayOptions.c: 69:             }
+}
+"70
+[; ;displayOptions.c: 70:             default:
+[e :U 1250 ]
+"71
+[; ;displayOptions.c: 71:             {
+{
+"73
+[; ;displayOptions.c: 73:             }
+}
+"74
+[; ;displayOptions.c: 74:         }
+}
+[e $U 1236  ]
+[e :U 1237 ]
+[e [\ _color , $ -> 1 `i 1238
+ , $ -> 2 `i 1242
+ , $ -> 3 `i 1246
+ 1250 ]
+[e :U 1236 ]
+"75
+[; ;displayOptions.c: 75:     }
+}
+[e :U 1235 ]
+"76
+[; ;displayOptions.c: 76: }
+[e :UE 1234 ]
+}
+"78
+[; ;displayOptions.c: 78: void backlightReset(){
+[v _backlightReset `(v ~T0 @X0 1 ef ]
+{
+[e :U _backlightReset ]
+[f ]
+"79
+[; ;displayOptions.c: 79:     backlightBrightness(1,29);
+[e ( _backlightBrightness (2 , -> 1 `i -> -> 29 `i `uc ]
+"80
+[; ;displayOptions.c: 80:     backlightBrightness(2,29);
+[e ( _backlightBrightness (2 , -> 2 `i -> -> 29 `i `uc ]
+"81
+[; ;displayOptions.c: 81:     backlightBrightness(3,29);
+[e ( _backlightBrightness (2 , -> 3 `i -> -> 29 `i `uc ]
+"82
+[; ;displayOptions.c: 82: }
+[e :UE 1251 ]
+}
+"84
+[; ;displayOptions.c: 84: void backlightOff(){
+[v _backlightOff `(v ~T0 @X0 1 ef ]
+{
+[e :U _backlightOff ]
+[f ]
+"85
+[; ;displayOptions.c: 85:     backlightBrightness(1,0);
+[e ( _backlightBrightness (2 , -> 1 `i -> -> 0 `i `uc ]
+"86
+[; ;displayOptions.c: 86:     backlightBrightness(2,0);
+[e ( _backlightBrightness (2 , -> 2 `i -> -> 0 `i `uc ]
+"87
+[; ;displayOptions.c: 87:     backlightBrightness(3,0);
+[e ( _backlightBrightness (2 , -> 3 `i -> -> 0 `i `uc ]
+"88
+[; ;displayOptions.c: 88: }
+[e :UE 1252 ]
+}
+"91
+[; ;displayOptions.c: 91: void resetCursor(){
+[v _resetCursor `(v ~T0 @X0 1 ef ]
+{
+[e :U _resetCursor ]
+[f ]
+"92
+[; ;displayOptions.c: 92:     puts("|-");
+[e ( _puts (1 :s 1C ]
+"93
+[; ;displayOptions.c: 93: }
+[e :UE 1253 ]
+}
 [a 1C 124 45 0 ]

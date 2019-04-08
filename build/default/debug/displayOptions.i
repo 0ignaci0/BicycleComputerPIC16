@@ -15,7 +15,7 @@
 
 
 # 1 "./displayOptions.h" 1
-# 23 "./displayOptions.h"
+# 26 "./displayOptions.h"
 # 1 "./mcc_generated_files/mcc.h" 1
 # 49 "./mcc_generated_files/mcc.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 1 3
@@ -17239,22 +17239,24 @@ void EUSART_SetErrorHandler(void (* interruptHandler)(void));
 void SYSTEM_Initialize(void);
 # 84 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 23 "./displayOptions.h" 2
-# 41 "./displayOptions.h"
+# 26 "./displayOptions.h" 2
+# 44 "./displayOptions.h"
 void backlightBrightness( int color, uint8_t offset );
-# 56 "./displayOptions.h"
-void backlightReset();
-# 70 "./displayOptions.h"
-void backlightOff();
-# 84 "./displayOptions.h"
-void resetCursor();
-# 95 "./displayOptions.h"
-void writeString();
-# 107 "./displayOptions.h"
+# 59 "./displayOptions.h"
+void backlightReset( void );
+# 73 "./displayOptions.h"
+void backlightOff( void );
+# 87 "./displayOptions.h"
+void resetCursor( void );
+# 98 "./displayOptions.h"
+void writeString( char *string );
+# 110 "./displayOptions.h"
 void setCursor( uint8_t a, uint8_t b );
+
 
 void writePrintf( char *string );
 # 8 "displayOptions.c" 2
+
 
 
 
@@ -17266,21 +17268,21 @@ void backlightBrightness( int color, uint8_t offSet ) {
             {
                 while( !EUSART_is_tx_ready() ) ;
                 EUSART_Write( 0x80 + offSet );
-                _delay((unsigned long)((104)*(500000/4000000.0))) ;
+                _delay((unsigned long)((104)*(16000000/4000000.0))) ;
                 break;
             }
             case 2:
             {
                 while( !EUSART_is_tx_ready() ) ;
                 EUSART_Write( 0x9E + offSet );
-                _delay((unsigned long)((104)*(500000/4000000.0))) ;
+                _delay((unsigned long)((104)*(16000000/4000000.0))) ;
                 break;
             }
             case 3:
             {
                 while( !EUSART_is_tx_ready() ) ;
                 EUSART_Write( 0xBC + offSet );
-                _delay((unsigned long)((104)*(500000/4000000.0))) ;
+                _delay((unsigned long)((104)*(16000000/4000000.0))) ;
                 break;
             }
             default:
@@ -17310,19 +17312,19 @@ void resetCursor(){
 void writeString( char *string ){
     while( !EUSART_is_tx_ready() ) ;
     puts( string );
-    _delay((unsigned long)((200)*(500000/4000000.0)));
+    _delay((unsigned long)((200)*(16000000/4000000.0)));
 }
 
 void writePrintf( char *string ){
     while( !EUSART_is_tx_ready() ) ;
     printf( string ) ;
-    _delay((unsigned long)((200)*(500000/4000000.0))) ;
+    _delay((unsigned long)((200)*(16000000/4000000.0))) ;
 }
 
 void setCursor( uint8_t a, uint8_t b ){
     while( !EUSART_is_tx_ready() ) ;
     EUSART_Write( 254 );
-    _delay((unsigned long)((200)*(500000/4000000.0)));
+    _delay((unsigned long)((200)*(16000000/4000000.0)));
     switch ( a ){
         case 1:
         {

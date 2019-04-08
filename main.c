@@ -1,18 +1,22 @@
 #include "mcc_generated_files/mcc.h"    // MPLAB Configurator; contains initialization routines
 #include "displayOptions.h"             // functions for modifying LCD parameters and writing to display
-
+#include <math.h>
 #define CIRCUMFERENCE 2                 // circumference of 700x23C bicycle wheel is 210 cm --> rounded to 2 meters
 
 
-long int volatile counter    = 0 ;            // overflow counter for 1-ms timer
-long int volatile adcCounter = 0 ;
+float    volatile counter    = 0 ;            // overflow counter for 1-ms timer
 float    volatile rpm        = 0 ;            // equal to interval between wheel rotations converted to minute scale
-float    volatile speed      = 0 ;            
-float    volatile distance   = 0 ;
+float    volatile speed      = 0 ; 
+int      volatile distance   = 0 ;
 float    volatile heartRate  = 0 ;
-int      volatile speedInt   = 0 ;
-int      volatile distInt    = 0 ;
+
+int      volatile distHi     = 0 ;
+int      volatile distLo     = 0 ;
+int      volatile speedLo    = 0 ;
+int      volatile speedHi    = 0 ;
+
 int      volatile hrInt      = 0 ;
+long int volatile adcCounter = 0 ;
 
 //~~~~~ Interrupt prototypes ~~~~~~//
     void timerISR  ( void ) ;               // 1-ms timer with "counter"
@@ -33,31 +37,29 @@ void main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
-    
-    EUSART_Write( configMode ) ;
-    EUSART_Write( 0x0D ) ; 
-    
+
     // set timer and interrupt-on-change handlers
     TMR0_SetInterruptHandler( timerISR ) ;
     IOCCF7_SetInterruptHandler( speedCalc ) ;
 
-    // clear screen, set cursor to origin
+    // wait for LCD to boot up before sending any commands or data
+    __delay_ms(1000) ;
+    // clear screen, set cursor to origin    
     resetCursor() ;
-    
-    // initialize display    //set cursor to
-    setCursor(1,0) ;         // row 1, origin
-    writeString(speedDisp);     
-    setCursor(2,0) ;         // row 2, position 0 
-    writeString(distanceDisp);
-    setCursor(3,0) ;         // row 3
-    writeString(hrDisp);
-    setCursor(4,0) ;         // row 4
-    
     // Enable the Global Interrupts, Enable the Peripheral Interrupts
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
     
     while(1){
+        
+        //refresh data labels on display
+        setCursor(1,0) ;         
+        writeString(speedDisp);     
+        setCursor(2,0) ;         
+        writeString(distanceDisp);
+        setCursor(3,0) ;         
+        writeString(hrDisp);
+        setCursor(4,0) ;                
         
         // every 2ms calculate heart rate
         if (adcCounter == 2000 ){ 
@@ -67,47 +69,52 @@ void main(void)
             // adcCounter = 0 ;
         }
         
-        
         // print speed
         setCursor(1,7) ;
-        speedInt = speed ;      // convert float to integer for display
-        if( counter > 5000 ){  // if no wheel rotation for 5 seconds, assume no motion, reset speed display to 0
-            printf( "0 kmh      " ) ;
-            
-        }
-        else{
-            printf( "%d kmh      ", speedInt ) ;
+        if( counter <= 15000 ) {  // minimum speed displayed is 1/2 kph, upper counter limit is 15000    
+            printf( "%d.%d kph     ", speedHi, speedLo ) ;
+        }   
+        else { // if counter increments to 15000 or larger, 15 seconds have passed with no wheel rotation, assume zero speed.
+            printf( "0 kph        " ) ;  
         }
         
         // print distance
         setCursor(2,10) ;
-        distInt = distance ;
-        printf("%d m     ", distInt ) ;
+        printf( "%d.%d km" , distHi, distLo );
         
         // print heart-rate
         setCursor(3,13) ;
         hrInt = heartRate ;
         printf( "%d bpm   " , hrInt ) ;
-
     }
  
 }
 
 void timerISR ( void ){ // timer set to 1ms period, count contains number of milliseconds between wheel rotations
+    
     counter++ ;
     adcCounter++ ; // counter for triggering ADC routine to collect heart rate sensor data.
+
 }
 
 void speedCalc ( void ){
-    // counter increments every 1 milli-sec, divide 1000 by counter to convert to seconds, mult. by 60 for minutes
-    rpm      = ( 1000 / counter ) * 60 ;            
     
-    //  up-convert to kilometer per hour: multiply by (1 km / 1000 m) * ( 60 min / 1 hr ) = 6/100 = 3/50 = 0.06
+    // counter increments every 1 milli-sec, divide 1000 by counter for scaling to RPM
+    rpm      = ( ( 1000 / counter ) * 60 )  ;            
+    // up-convert to kilometer per hour: multiply by (1 km / 1000 m) * ( 60 min / 1 hr ) = 6/100 = 3/50 = 0.06
     speed    = CIRCUMFERENCE * rpm * (0.06) ; // km/hr
+    
+    // convert float to integer, save decimation for display
+    speedHi = speed ;
+    speedLo = ( (int)(speed*10.0) % 10 ) ; // preserve fractional speed to the tens place
     
     // reset counter, keep track of distance
     counter  = 0 ;
     distance = distance + CIRCUMFERENCE ; // distance in meters
+    // convert distance to decimated kilometers for display
+    distLo = distance % 1000 ;
+    distHi = distance / 1000 ; 
+
 }
 
 /*

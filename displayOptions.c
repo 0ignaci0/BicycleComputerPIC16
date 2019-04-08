@@ -8,6 +8,39 @@
 #include "displayOptions.h"
 #include "mcc_generated_files/mcc.h"
 
+void writeString( char *string ){
+    while( !EUSART_is_tx_ready() ) ;
+    puts( string );
+    __delay_us(200);
+}
+
+void setCursor( uint8_t a, uint8_t b  ){
+    while( !EUSART_is_tx_ready() ) ;
+    EUSART_Write( 254 );
+    __delay_us(200);
+    switch ( a ){
+        case 1: // row 1
+        {
+            EUSART_Write(128 + 0 + b) ;
+            break ;
+        }
+        case 2: // row 2
+        {
+           EUSART_Write(128 + 64 + b) ;
+           break ;
+        }
+        case 3: // row 3
+        {
+            EUSART_Write(128 + 20 + b) ; 
+            break ;
+        }
+        case 4: // row 4
+        {
+            EUSART_Write(128 + 84 + b) ; 
+            break ;
+        }
+    }
+}
 
 void backlightBrightness( int color, uint8_t offSet ) {
     EUSART_Write(configMode);
@@ -54,48 +87,9 @@ void backlightOff(){
     backlightBrightness(3,0);
 }
 
+
 void resetCursor(){
     puts("|-");
-}
-
-void writeString( char *string ){
-    while( !EUSART_is_tx_ready() ) ;
-    puts( string );
-    __delay_us(200);
-}
-
-void writePrintf( char *string ){
-    while( !EUSART_is_tx_ready() ) ;
-    printf( string ) ;
-    __delay_us(200) ;
-}
-
-void setCursor( uint8_t a, uint8_t b  ){
-    while( !EUSART_is_tx_ready() ) ;
-    EUSART_Write( 254 );
-    __delay_us(200);
-    switch ( a ){
-        case 1: // row 1
-        {
-            EUSART_Write(128 + 0 + b) ;
-            break ;
-        }
-        case 2: // row 2
-        {
-           EUSART_Write(128 + 64 + b) ;
-           break ;
-        }
-        case 3: // row 3
-        {
-            EUSART_Write(128 + 20 + b) ; 
-            break ;
-        }
-        case 4: // row 4
-        {
-            EUSART_Write(128 + 84 + b) ; 
-            break ;
-        }
-    }
 }
 /*
  * 
