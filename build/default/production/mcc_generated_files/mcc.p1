@@ -1,10 +1,13 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"110 mcc_generated_files/pin_manager.h
-[; ;mcc_generated_files/pin_manager.h: 110: void PIN_MANAGER_Initialize (void);
+"130 mcc_generated_files/pin_manager.h
+[; ;mcc_generated_files/pin_manager.h: 130: void PIN_MANAGER_Initialize (void);
 [v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
-"84 mcc_generated_files/mcc.h
-[; ;mcc_generated_files/mcc.h: 84: void OSCILLATOR_Initialize(void);
+"85 mcc_generated_files/mcc.h
+[; ;mcc_generated_files/mcc.h: 85: void OSCILLATOR_Initialize(void);
 [v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
+"136 mcc_generated_files/adc.h
+[; ;mcc_generated_files/adc.h: 136: void ADC_Initialize(void);
+[v _ADC_Initialize `(v ~T0 @X0 0 ef ]
 "98 mcc_generated_files/tmr0.h
 [; ;mcc_generated_files/tmr0.h: 98: void TMR0_Initialize(void);
 [v _TMR0_Initialize `(v ~T0 @X0 0 ef ]
@@ -1361,33 +1364,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;mcc_generated_files/mcc.c: 7:     OSCILLATOR_Initialize();
 [e ( _OSCILLATOR_Initialize ..  ]
 "8
-[; ;mcc_generated_files/mcc.c: 8:     TMR0_Initialize();
-[e ( _TMR0_Initialize ..  ]
+[; ;mcc_generated_files/mcc.c: 8:     ADC_Initialize();
+[e ( _ADC_Initialize ..  ]
 "9
-[; ;mcc_generated_files/mcc.c: 9:     EUSART_Initialize();
-[e ( _EUSART_Initialize ..  ]
+[; ;mcc_generated_files/mcc.c: 9:     TMR0_Initialize();
+[e ( _TMR0_Initialize ..  ]
 "10
-[; ;mcc_generated_files/mcc.c: 10: }
-[e :UE 1220 ]
+[; ;mcc_generated_files/mcc.c: 10:     EUSART_Initialize();
+[e ( _EUSART_Initialize ..  ]
+"11
+[; ;mcc_generated_files/mcc.c: 11: }
+[e :UE 1221 ]
 }
-"12
-[; ;mcc_generated_files/mcc.c: 12: void OSCILLATOR_Initialize(void)
-[v _OSCILLATOR_Initialize `(v ~T0 @X0 1 ef ]
 "13
-[; ;mcc_generated_files/mcc.c: 13: {
+[; ;mcc_generated_files/mcc.c: 13: void OSCILLATOR_Initialize(void)
+[v _OSCILLATOR_Initialize `(v ~T0 @X0 1 ef ]
+"14
+[; ;mcc_generated_files/mcc.c: 14: {
 {
 [e :U _OSCILLATOR_Initialize ]
 [f ]
-"15
-[; ;mcc_generated_files/mcc.c: 15:     OSCCON = 0x7A;
+"16
+[; ;mcc_generated_files/mcc.c: 16:     OSCCON = 0x7A;
 [e = _OSCCON -> -> 122 `i `uc ]
-"17
-[; ;mcc_generated_files/mcc.c: 17:     OSCTUNE = 0x00;
+"18
+[; ;mcc_generated_files/mcc.c: 18:     OSCTUNE = 0x00;
 [e = _OSCTUNE -> -> 0 `i `uc ]
-"19
-[; ;mcc_generated_files/mcc.c: 19:     BORCON = 0x00;
-[e = _BORCON -> -> 0 `i `uc ]
 "20
-[; ;mcc_generated_files/mcc.c: 20: }
-[e :UE 1221 ]
+[; ;mcc_generated_files/mcc.c: 20:     BORCON = 0x00;
+[e = _BORCON -> -> 0 `i `uc ]
+"21
+[; ;mcc_generated_files/mcc.c: 21: }
+[e :UE 1222 ]
 }

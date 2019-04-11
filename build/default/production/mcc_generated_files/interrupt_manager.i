@@ -16935,17 +16935,17 @@ extern __bank0 __bit __timeout;
 # 50 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/pin_manager.h" 1
-# 110 "mcc_generated_files/pin_manager.h"
+# 130 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 122 "mcc_generated_files/pin_manager.h"
+# 142 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 135 "mcc_generated_files/pin_manager.h"
+# 155 "mcc_generated_files/pin_manager.h"
 void IOCCF7_ISR(void);
-# 158 "mcc_generated_files/pin_manager.h"
+# 178 "mcc_generated_files/pin_manager.h"
 void IOCCF7_SetInterruptHandler(void (* InterruptHandler)(void));
-# 182 "mcc_generated_files/pin_manager.h"
+# 202 "mcc_generated_files/pin_manager.h"
 extern void (*IOCCF7_InterruptHandler)(void);
-# 206 "mcc_generated_files/pin_manager.h"
+# 226 "mcc_generated_files/pin_manager.h"
 void IOCCF7_DefaultInterruptHandler(void);
 # 51 "mcc_generated_files/mcc.h" 2
 
@@ -17038,6 +17038,42 @@ typedef uint32_t uint_fast32_t;
 # 53 "mcc_generated_files/mcc.h" 2
 
 
+# 1 "mcc_generated_files/adc.h" 1
+# 72 "mcc_generated_files/adc.h"
+typedef uint16_t adc_result_t;
+
+
+
+
+typedef struct
+{
+    adc_result_t adcResult1;
+    adc_result_t adcResult2;
+} adc_sync_double_result_t;
+# 95 "mcc_generated_files/adc.h"
+typedef enum
+{
+    channel_AN4 = 0x4,
+    channel_Temp = 0x1D,
+    channel_DAC = 0x1E,
+    channel_FVR = 0x1F
+} adc_channel_t;
+# 136 "mcc_generated_files/adc.h"
+void ADC_Initialize(void);
+# 166 "mcc_generated_files/adc.h"
+void ADC_SelectChannel(adc_channel_t channel);
+# 193 "mcc_generated_files/adc.h"
+void ADC_StartConversion();
+# 225 "mcc_generated_files/adc.h"
+_Bool ADC_IsConversionDone();
+# 258 "mcc_generated_files/adc.h"
+adc_result_t ADC_GetConversionResult(void);
+# 288 "mcc_generated_files/adc.h"
+adc_result_t ADC_GetConversion(adc_channel_t channel);
+# 316 "mcc_generated_files/adc.h"
+void ADC_TemperatureAcquisitionDelay(void);
+# 55 "mcc_generated_files/mcc.h" 2
+
 # 1 "mcc_generated_files/tmr0.h" 1
 # 98 "mcc_generated_files/tmr0.h"
 void TMR0_Initialize(void);
@@ -17055,7 +17091,7 @@ void TMR0_ISR(void);
 extern void (*TMR0_InterruptHandler)(void);
 # 274 "mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
-# 55 "mcc_generated_files/mcc.h" 2
+# 56 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/eusart.h" 1
 # 57 "mcc_generated_files/eusart.h"
@@ -17226,10 +17262,10 @@ void EUSART_SetFramingErrorHandler(void (* interruptHandler)(void));
 void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void));
 # 399 "mcc_generated_files/eusart.h"
 void EUSART_SetErrorHandler(void (* interruptHandler)(void));
-# 56 "mcc_generated_files/mcc.h" 2
-# 71 "mcc_generated_files/mcc.h"
+# 57 "mcc_generated_files/mcc.h" 2
+# 72 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 84 "mcc_generated_files/mcc.h"
+# 85 "mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
 # 2 "mcc_generated_files/interrupt_manager.c" 2
 

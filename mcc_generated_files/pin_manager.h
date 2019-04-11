@@ -77,6 +77,26 @@
 #define RB7_SetAnalogMode()         do { ANSELBbits.ANSB7 = 1; } while(0)
 #define RB7_SetDigitalMode()        do { ANSELBbits.ANSB7 = 0; } while(0)
 
+// get/set channel_AN4 aliases
+#define channel_AN4_TRIS                 TRISCbits.TRISC0
+#define channel_AN4_LAT                  LATCbits.LATC0
+#define channel_AN4_PORT                 PORTCbits.RC0
+#define channel_AN4_WPU                  WPUCbits.WPUC0
+#define channel_AN4_OD                   ODCONCbits.ODC0
+#define channel_AN4_ANS                  ANSELCbits.ANSC0
+#define channel_AN4_SetHigh()            do { LATCbits.LATC0 = 1; } while(0)
+#define channel_AN4_SetLow()             do { LATCbits.LATC0 = 0; } while(0)
+#define channel_AN4_Toggle()             do { LATCbits.LATC0 = ~LATCbits.LATC0; } while(0)
+#define channel_AN4_GetValue()           PORTCbits.RC0
+#define channel_AN4_SetDigitalInput()    do { TRISCbits.TRISC0 = 1; } while(0)
+#define channel_AN4_SetDigitalOutput()   do { TRISCbits.TRISC0 = 0; } while(0)
+#define channel_AN4_SetPullup()          do { WPUCbits.WPUC0 = 1; } while(0)
+#define channel_AN4_ResetPullup()        do { WPUCbits.WPUC0 = 0; } while(0)
+#define channel_AN4_SetPushPull()        do { ODCONCbits.ODC0 = 0; } while(0)
+#define channel_AN4_SetOpenDrain()       do { ODCONCbits.ODC0 = 1; } while(0)
+#define channel_AN4_SetAnalogMode()      do { ANSELCbits.ANSC0 = 1; } while(0)
+#define channel_AN4_SetDigitalMode()     do { ANSELCbits.ANSC0 = 0; } while(0)
+
 // get/set IO_RC7 aliases
 #define IO_RC7_TRIS                 TRISCbits.TRISC7
 #define IO_RC7_LAT                  LATCbits.LATC7

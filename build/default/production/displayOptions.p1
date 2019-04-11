@@ -1347,11 +1347,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "12
 [; ;displayOptions.c: 12:     while( !EUSART_is_tx_ready() ) ;
-[e $U 1221  ]
-[e :U 1222 ]
-[e :U 1221 ]
-[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1222  ]
+[e $U 1222  ]
 [e :U 1223 ]
+[e :U 1222 ]
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1223  ]
+[e :U 1224 ]
 "13
 [; ;displayOptions.c: 13:     puts( string );
 [e ( _puts (1 -> _string `*Cuc ]
@@ -1360,7 +1360,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 "15
 [; ;displayOptions.c: 15: }
-[e :UE 1220 ]
+[e :UE 1221 ]
 }
 "17
 [; ;displayOptions.c: 17: void setCursor( uint8_t a, uint8_t b ){
@@ -1372,11 +1372,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "18
 [; ;displayOptions.c: 18:     while( !EUSART_is_tx_ready() ) ;
-[e $U 1225  ]
-[e :U 1226 ]
-[e :U 1225 ]
-[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1226  ]
+[e $U 1226  ]
 [e :U 1227 ]
+[e :U 1226 ]
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1227  ]
+[e :U 1228 ]
 "19
 [; ;displayOptions.c: 19:     EUSART_Write( 254 );
 [e ( _EUSART_Write (1 -> -> 254 `i `uc ]
@@ -1385,11 +1385,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 "21
 [; ;displayOptions.c: 21:     switch ( a ){
-[e $U 1229  ]
+[e $U 1230  ]
 {
 "22
 [; ;displayOptions.c: 22:         case 1:
-[e :U 1230 ]
+[e :U 1231 ]
 "23
 [; ;displayOptions.c: 23:         {
 {
@@ -1398,13 +1398,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _EUSART_Write (1 -> + + -> 128 `i -> 0 `i -> _b `i `uc ]
 "25
 [; ;displayOptions.c: 25:             break ;
-[e $U 1228  ]
+[e $U 1229  ]
 "26
 [; ;displayOptions.c: 26:         }
 }
 "27
 [; ;displayOptions.c: 27:         case 2:
-[e :U 1231 ]
+[e :U 1232 ]
 "28
 [; ;displayOptions.c: 28:         {
 {
@@ -1413,13 +1413,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _EUSART_Write (1 -> + + -> 128 `i -> 64 `i -> _b `i `uc ]
 "30
 [; ;displayOptions.c: 30:            break ;
-[e $U 1228  ]
+[e $U 1229  ]
 "31
 [; ;displayOptions.c: 31:         }
 }
 "32
 [; ;displayOptions.c: 32:         case 3:
-[e :U 1232 ]
+[e :U 1233 ]
 "33
 [; ;displayOptions.c: 33:         {
 {
@@ -1428,13 +1428,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _EUSART_Write (1 -> + + -> 128 `i -> 20 `i -> _b `i `uc ]
 "35
 [; ;displayOptions.c: 35:             break ;
-[e $U 1228  ]
+[e $U 1229  ]
 "36
 [; ;displayOptions.c: 36:         }
 }
 "37
 [; ;displayOptions.c: 37:         case 4:
-[e :U 1233 ]
+[e :U 1234 ]
 "38
 [; ;displayOptions.c: 38:         {
 {
@@ -1443,24 +1443,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _EUSART_Write (1 -> + + -> 128 `i -> 84 `i -> _b `i `uc ]
 "40
 [; ;displayOptions.c: 40:             break ;
-[e $U 1228  ]
+[e $U 1229  ]
 "41
 [; ;displayOptions.c: 41:         }
 }
 "42
 [; ;displayOptions.c: 42:     }
 }
-[e $U 1228  ]
+[e $U 1229  ]
+[e :U 1230 ]
+[e [\ -> _a `i , $ -> 1 `i 1231
+ , $ -> 2 `i 1232
+ , $ -> 3 `i 1233
+ , $ -> 4 `i 1234
+ 1229 ]
 [e :U 1229 ]
-[e [\ -> _a `i , $ -> 1 `i 1230
- , $ -> 2 `i 1231
- , $ -> 3 `i 1232
- , $ -> 4 `i 1233
- 1228 ]
-[e :U 1228 ]
 "43
 [; ;displayOptions.c: 43: }
-[e :UE 1224 ]
+[e :UE 1225 ]
 }
 "45
 [; ;displayOptions.c: 45: void backlightBrightness( int color, uint8_t offSet ) {
@@ -1475,25 +1475,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _EUSART_Write (1 -> -> 124 `i `uc ]
 "47
 [; ;displayOptions.c: 47:     if( offSet <= 29 ){
-[e $ ! <= -> _offSet `i -> 29 `i 1235  ]
+[e $ ! <= -> _offSet `i -> 29 `i 1236  ]
 {
 "48
 [; ;displayOptions.c: 48:         switch (color){
-[e $U 1237  ]
+[e $U 1238  ]
 {
 "49
 [; ;displayOptions.c: 49:             case 1:
-[e :U 1238 ]
+[e :U 1239 ]
 "50
 [; ;displayOptions.c: 50:             {
 {
 "51
 [; ;displayOptions.c: 51:                 while( !EUSART_is_tx_ready() ) ;
-[e $U 1239  ]
-[e :U 1240 ]
-[e :U 1239 ]
-[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1240  ]
+[e $U 1240  ]
 [e :U 1241 ]
+[e :U 1240 ]
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1241  ]
+[e :U 1242 ]
 "52
 [; ;displayOptions.c: 52:                 EUSART_Write( 0x80 + offSet );
 [e ( _EUSART_Write (1 -> + -> 128 `i -> _offSet `i `uc ]
@@ -1502,23 +1502,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( __delay (1 -> * -> -> 104 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 "54
 [; ;displayOptions.c: 54:                 break;
-[e $U 1236  ]
+[e $U 1237  ]
 "55
 [; ;displayOptions.c: 55:             }
 }
 "56
 [; ;displayOptions.c: 56:             case 2:
-[e :U 1242 ]
+[e :U 1243 ]
 "57
 [; ;displayOptions.c: 57:             {
 {
 "58
 [; ;displayOptions.c: 58:                 while( !EUSART_is_tx_ready() ) ;
-[e $U 1243  ]
-[e :U 1244 ]
-[e :U 1243 ]
-[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1244  ]
+[e $U 1244  ]
 [e :U 1245 ]
+[e :U 1244 ]
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1245  ]
+[e :U 1246 ]
 "59
 [; ;displayOptions.c: 59:                 EUSART_Write( 0x9E + offSet );
 [e ( _EUSART_Write (1 -> + -> 158 `i -> _offSet `i `uc ]
@@ -1527,23 +1527,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( __delay (1 -> * -> -> 104 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 "61
 [; ;displayOptions.c: 61:                 break;
-[e $U 1236  ]
+[e $U 1237  ]
 "62
 [; ;displayOptions.c: 62:             }
 }
 "63
 [; ;displayOptions.c: 63:             case 3:
-[e :U 1246 ]
+[e :U 1247 ]
 "64
 [; ;displayOptions.c: 64:             {
 {
 "65
 [; ;displayOptions.c: 65:                 while( !EUSART_is_tx_ready() ) ;
-[e $U 1247  ]
-[e :U 1248 ]
-[e :U 1247 ]
-[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1248  ]
+[e $U 1248  ]
 [e :U 1249 ]
+[e :U 1248 ]
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1249  ]
+[e :U 1250 ]
 "66
 [; ;displayOptions.c: 66:                 EUSART_Write( 0xBC + offSet );
 [e ( _EUSART_Write (1 -> + -> 188 `i -> _offSet `i `uc ]
@@ -1552,13 +1552,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( __delay (1 -> * -> -> 104 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 "68
 [; ;displayOptions.c: 68:                 break;
-[e $U 1236  ]
+[e $U 1237  ]
 "69
 [; ;displayOptions.c: 69:             }
 }
 "70
 [; ;displayOptions.c: 70:             default:
-[e :U 1250 ]
+[e :U 1251 ]
 "71
 [; ;displayOptions.c: 71:             {
 {
@@ -1568,20 +1568,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "74
 [; ;displayOptions.c: 74:         }
 }
-[e $U 1236  ]
+[e $U 1237  ]
+[e :U 1238 ]
+[e [\ _color , $ -> 1 `i 1239
+ , $ -> 2 `i 1243
+ , $ -> 3 `i 1247
+ 1251 ]
 [e :U 1237 ]
-[e [\ _color , $ -> 1 `i 1238
- , $ -> 2 `i 1242
- , $ -> 3 `i 1246
- 1250 ]
-[e :U 1236 ]
 "75
 [; ;displayOptions.c: 75:     }
 }
-[e :U 1235 ]
+[e :U 1236 ]
 "76
 [; ;displayOptions.c: 76: }
-[e :UE 1234 ]
+[e :UE 1235 ]
 }
 "78
 [; ;displayOptions.c: 78: void backlightReset(){
@@ -1600,7 +1600,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _backlightBrightness (2 , -> 3 `i -> -> 29 `i `uc ]
 "82
 [; ;displayOptions.c: 82: }
-[e :UE 1251 ]
+[e :UE 1252 ]
 }
 "84
 [; ;displayOptions.c: 84: void backlightOff(){
@@ -1619,7 +1619,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _backlightBrightness (2 , -> 3 `i -> -> 0 `i `uc ]
 "88
 [; ;displayOptions.c: 88: }
-[e :UE 1252 ]
+[e :UE 1253 ]
 }
 "91
 [; ;displayOptions.c: 91: void resetCursor(){
@@ -1632,6 +1632,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _puts (1 :s 1C ]
 "93
 [; ;displayOptions.c: 93: }
-[e :UE 1253 ]
+[e :UE 1254 ]
 }
 [a 1C 124 45 0 ]

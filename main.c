@@ -1,6 +1,5 @@
 #include "mcc_generated_files/mcc.h"    // MPLAB Configurator; contains initialization routines
 #include "displayOptions.h"             // functions for modifying LCD parameters and writing to display
-#include <math.h>
 #define CIRCUMFERENCE 2                 // circumference of 700x23C bicycle wheel is 210 cm --> rounded to 2 meters
 
 
@@ -18,9 +17,26 @@ int      volatile speedHi    = 0 ;
 int      volatile hrInt      = 0 ;
 long int volatile adcCounter = 0 ;
 
+int      volatile adcVal     = 0 ;
+int      volatile rate[10];                    // array to hold last ten IBI values
+int      volatile P          = 512 ;                      // used to find peak in pulse wave, seeded
+int      volatile T          = 512 ;                      // used to find trough in pulse wave, seeded
+int      volatile thresh     = 530 ;             // used to find instant moment of heart beat, seeded
+int      volatile amp        = 0;                      // used to hold amplitude of pulse waveform, seeded
+int      volatile BPM;                              // int that holds raw Analog in 0. updated every 2mS
+int      volatile Signal;                                   // holds the incoming raw data
+int      volatile IBI        = 600;                     // int that holds the time interval between beats! Must be seeded!
+unsigned long int   volatile sampleCounter     = 0;       // used to determine pulse timing
+unsigned long int   volatile lastBeatTime      = 0;        // used to find IBI
+bool     volatile firstBeat     = true;                     // used to seed rate array so we startup with reasonable BPM
+bool     volatile secondBeat    = false;               // used to seed rate array so we startup with reasonable BPM
+bool     volatile  Pulse        = false;            // "True" when User's live heartbeat is detected. "False" when not a "live beat".
+bool     volatile QS            = false;            // becomes true when finds a beat.
+
 //~~~~~ Interrupt prototypes ~~~~~~//
     void timerISR  ( void ) ;               // 1-ms timer with "counter"
     void speedCalc ( void ) ;               // Interrupt-on-change routine for hall-effect sensor
+    void heartBeatCalc ( int adcVal );    
 //~~~~~~~~~~~~~~~~~~~~~~~~//
 
 
@@ -62,11 +78,12 @@ void main(void)
         setCursor(4,0) ;                
         
         // every 2ms calculate heart rate
-        if (adcCounter == 2000 ){ 
+        if (adcCounter == 2){ 
             // get_heart_rate
-            // adcVal = ADC_Read(0) ;
-            // calcHR(adcVal) ;
-            // adcCounter = 0 ;
+            ADC_StartConversion();
+            adcVal = ADC_GetConversionResult() ;
+            heartBeatCalc(adcVal) ;
+            adcCounter = 0 ;
         }
         
         // print speed
@@ -84,8 +101,7 @@ void main(void)
         
         // print heart-rate
         setCursor(3,13) ;
-        hrInt = heartRate ;
-        printf( "%d bpm   " , hrInt ) ;
+        printf( "%d bpm   " , BPM ) ;
     }
  
 }
@@ -117,13 +133,8 @@ void speedCalc ( void ){
 
 }
 
-/*
- * 
- * code below is from the tutorial.
- * 
-  void calcHR(int adcVal){
- *      signal = adcVal ;
-
+void heartBeatCalc ( int adcVal ){
+    Signal = adcVal ;
     sampleCounter += 2; // keep track of the time in mS with this variable
     int N = sampleCounter - lastBeatTime; // monitor the time since the last beat to avoid noise
 
@@ -133,8 +144,7 @@ void speedCalc ( void ){
             T = Signal; // keep track of lowest point in pulse wave
         }
     }
-
-    if (Signal > thresh && Signal > P) { // thresh condition helps avoid noise
+        if (Signal > thresh && Signal > P) { // thresh condition helps avoid noise
         P = Signal; // P is the peak
     } // keep track of highest point in pulse wave
 
@@ -161,7 +171,6 @@ void speedCalc ( void ){
                 return; // IBI value is unreliable so discard it
             }
 
-
             // keep a running total of the last 10 IBI values
             uint16_t runningTotal = 0; // clear the runningTotal variable
             int i;
@@ -173,12 +182,12 @@ void speedCalc ( void ){
             rate[9] = IBI; // add the latest IBI to the rate array
             runningTotal += rate[9]; // add the latest IBI to runningTotal
             runningTotal /= 10; // average the last 10 IBI values
-            heartRate = 60000 / runningTotal; // how many beats can fit into a minute? that's BPM!
+            BPM = 60000 / runningTotal; // how many beats can fit into a minute? that's BPM!
             QS = true; // set Quantified Self flag
             // QS FLAG IS NOT CLEARED INSIDE THIS ISR
         }
     }
-if (Signal < thresh && Pulse == true) { // when the values are going down, the beat is over
+    if (Signal < thresh && Pulse == true) { // when the values are going down, the beat is over
         Pulse = false; // reset the Pulse flag so we can do it again
         amp = P - T; // get amplitude of the pulse wave
         thresh = amp / 2 + T; // set thresh at 50% of the amplitude
@@ -196,10 +205,6 @@ if (Signal < thresh && Pulse == true) { // when the values are going down, the b
     }
 
 }
- *}
- 
- 
- */
 
 
 /**

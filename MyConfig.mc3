@@ -1,12 +1,12 @@
 <config configVersion="1.1" device="PIC16F1619" coreVersion="4.65">
    <usedClasses class="java.util.HashMap">
       <entry>
-         <string>TMR0</string>
-         <string>class com.microchip.mcc.mcu8.modules.tmr0.TMR0</string>
-      </entry>
-      <entry>
          <string>ADC</string>
          <string>class com.microchip.mcc.mcu8.modules.adc.ADC</string>
+      </entry>
+      <entry>
+         <string>TMR0</string>
+         <string>class com.microchip.mcc.mcu8.modules.tmr0.TMR0</string>
       </entry>
       <entry>
          <string>System Module</string>
@@ -2520,7 +2520,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="Custom Name RC0"/>
-         <value/>
+         <value>channel_AN4</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="Custom Name RC1"/>
@@ -3108,7 +3108,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="ADC" name="AN4"/>
-         <value>disabled</value>
+         <value>enabled</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="ANSELC" settingAlias="ANSC2" alias="digital"/>
@@ -4770,7 +4770,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\mcc.h</file>
-         <hash>5848dea220d256c6af16804349a03b63efeb7d4960d4500f93c158788a1511a3</hash>
+         <hash>ce0c6204337e43f8f0b7eb93993c81ae96bc4fc47e018d9886da56bfce1e80c3</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\device_config.h</file>
@@ -4790,7 +4790,11 @@
       </entry>
       <entry>
          <file>mcc_generated_files\pin_manager.h</file>
-         <hash>cc4e7b0189bdc32695bffc2053d5722a5a0278403e2ad333681f914ddcdf9bb8</hash>
+         <hash>abe1a13f31c8b88c3ea7767bffe9f0fdc1359411f4c0d2fc9be9d1d0db2b0b33</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\adc.h</file>
+         <hash>8cd703a86f2c05dcca8a24167790e99b3ac0841ab01af14e499695da624e8955</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\eusart.c</file>
@@ -4809,12 +4813,16 @@
          <hash>539135db405b91016d0767ed18267febf475eba660c5853687ba1311d0b1d863</hash>
       </entry>
       <entry>
+         <file>mcc_generated_files\adc.c</file>
+         <hash>e3aca29d57a5fdb81f357ece6edfdd3ba140c441aec9edf9b876db7994a440eb</hash>
+      </entry>
+      <entry>
          <file>mcc_generated_files\interrupt_manager.c</file>
          <hash>8ac3137e696f4482f7716cf5c16d015703f3fe44810ea10d1479244fcebfaa6f</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\mcc.c</file>
-         <hash>688d540e8af38ce55d8d904264dd64cd606b4642929d3fb859f533d6276f822f</hash>
+         <hash>a70e00e3fcb037f6ae9ab760351c2465c53f04e4bf6a7d105e92c965a85deebe</hash>
       </entry>
    </generatedFileHashHistoryMap>
 </config>
