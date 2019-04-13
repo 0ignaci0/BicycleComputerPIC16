@@ -17037,9 +17037,36 @@ typedef uint32_t uint_fast32_t;
 # 1 "./mcc_generated_files/interrupt_manager.h" 1
 # 54 "./mcc_generated_files/mcc.h" 2
 
+# 1 "./mcc_generated_files/tmr1.h" 1
+# 100 "./mcc_generated_files/tmr1.h"
+void TMR1_Initialize(void);
+# 129 "./mcc_generated_files/tmr1.h"
+void TMR1_StartTimer(void);
+# 161 "./mcc_generated_files/tmr1.h"
+void TMR1_StopTimer(void);
+# 196 "./mcc_generated_files/tmr1.h"
+uint16_t TMR1_ReadTimer(void);
+# 235 "./mcc_generated_files/tmr1.h"
+void TMR1_WriteTimer(uint16_t timerVal);
+# 271 "./mcc_generated_files/tmr1.h"
+void TMR1_Reload(void);
+# 310 "./mcc_generated_files/tmr1.h"
+void TMR1_StartSinglePulseAcquisition(void);
+# 349 "./mcc_generated_files/tmr1.h"
+uint8_t TMR1_CheckGateValueStatus(void);
+# 367 "./mcc_generated_files/tmr1.h"
+void TMR1_ISR(void);
+# 385 "./mcc_generated_files/tmr1.h"
+ void TMR1_SetInterruptHandler(void (* InterruptHandler)(void));
+# 403 "./mcc_generated_files/tmr1.h"
+extern void (*TMR1_InterruptHandler)(void);
+# 421 "./mcc_generated_files/tmr1.h"
+void TMR1_DefaultInterruptHandler(void);
+# 55 "./mcc_generated_files/mcc.h" 2
+
 # 1 "./mcc_generated_files/adc.h" 1
-# 72 "./mcc_generated_files/adc.h"
-typedef uint16_t adc_result_t;
+# 26 "./mcc_generated_files/adc.h"
+typedef int adc_result_t;
 
 
 
@@ -17049,7 +17076,7 @@ typedef struct
     adc_result_t adcResult1;
     adc_result_t adcResult2;
 } adc_sync_double_result_t;
-# 95 "./mcc_generated_files/adc.h"
+# 49 "./mcc_generated_files/adc.h"
 typedef enum
 {
     channel_AN4 = 0x4,
@@ -17057,21 +17084,21 @@ typedef enum
     channel_DAC = 0x1E,
     channel_FVR = 0x1F
 } adc_channel_t;
-# 136 "./mcc_generated_files/adc.h"
+# 90 "./mcc_generated_files/adc.h"
 void ADC_Initialize(void);
-# 166 "./mcc_generated_files/adc.h"
+# 120 "./mcc_generated_files/adc.h"
 void ADC_SelectChannel(adc_channel_t channel);
-# 193 "./mcc_generated_files/adc.h"
+# 147 "./mcc_generated_files/adc.h"
 void ADC_StartConversion();
-# 225 "./mcc_generated_files/adc.h"
+# 179 "./mcc_generated_files/adc.h"
 _Bool ADC_IsConversionDone();
-# 258 "./mcc_generated_files/adc.h"
+# 212 "./mcc_generated_files/adc.h"
 adc_result_t ADC_GetConversionResult(void);
-# 288 "./mcc_generated_files/adc.h"
+# 242 "./mcc_generated_files/adc.h"
 adc_result_t ADC_GetConversion(adc_channel_t channel);
-# 316 "./mcc_generated_files/adc.h"
+# 270 "./mcc_generated_files/adc.h"
 void ADC_TemperatureAcquisitionDelay(void);
-# 55 "./mcc_generated_files/mcc.h" 2
+# 56 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/tmr0.h" 1
 # 98 "./mcc_generated_files/tmr0.h"
@@ -17090,7 +17117,7 @@ void TMR0_ISR(void);
 extern void (*TMR0_InterruptHandler)(void);
 # 274 "./mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
-# 56 "./mcc_generated_files/mcc.h" 2
+# 57 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/eusart.h" 1
 # 57 "./mcc_generated_files/eusart.h"
@@ -17261,10 +17288,10 @@ void EUSART_SetFramingErrorHandler(void (* interruptHandler)(void));
 void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void));
 # 399 "./mcc_generated_files/eusart.h"
 void EUSART_SetErrorHandler(void (* interruptHandler)(void));
-# 57 "./mcc_generated_files/mcc.h" 2
-# 72 "./mcc_generated_files/mcc.h"
+# 58 "./mcc_generated_files/mcc.h" 2
+# 73 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 85 "./mcc_generated_files/mcc.h"
+# 86 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
 # 1 "main.c" 2
 
@@ -17289,6 +17316,8 @@ void writePrintf( char *string );
 
 
 
+
+
 float volatile counter = 0 ;
 float volatile rpm = 0 ;
 float volatile speed = 0 ;
@@ -17303,26 +17332,24 @@ int volatile speedHi = 0 ;
 int volatile hrInt = 0 ;
 long int volatile adcCounter = 0 ;
 
-int volatile adcVal = 0 ;
 int volatile rate[10];
-int volatile P = 512 ;
-int volatile T = 512 ;
-int volatile thresh = 530 ;
-int volatile amp = 0;
+adc_result_t volatile P = 512 ;
+adc_result_t volatile T = 512 ;
+int volatile thresh = 512 ;
+int volatile amp = 100;
 int volatile BPM;
-int volatile Signal;
+adc_result_t volatile Signal;
 int volatile IBI = 600;
 unsigned long int volatile sampleCounter = 0;
 unsigned long int volatile lastBeatTime = 0;
 _Bool volatile firstBeat = 1;
 _Bool volatile secondBeat = 0;
 _Bool volatile Pulse = 0;
-_Bool volatile QS = 0;
 
 
     void timerISR ( void ) ;
     void speedCalc ( void ) ;
-    void heartBeatCalc ( int adcVal );
+    void heartRateISR ( void ) ;
 
 
 
@@ -17340,17 +17367,18 @@ void main(void)
 
     SYSTEM_Initialize();
 
-
     TMR0_SetInterruptHandler( timerISR ) ;
+    TMR1_SetInterruptHandler( heartRateISR ) ;
     IOCCF7_SetInterruptHandler( speedCalc ) ;
 
 
-    _delay((unsigned long)((1000)*(16000000/4000.0))) ;
+    _delay((unsigned long)((2000)*(16000000/4000.0))) ;
 
     resetCursor() ;
 
     (INTCONbits.GIE = 1);
     (INTCONbits.PEIE = 1);
+    TMR1_StartTimer ;
 
     while(1){
 
@@ -17362,15 +17390,6 @@ void main(void)
         setCursor(3,0) ;
         writeString(hrDisp);
         setCursor(4,0) ;
-
-
-        if (adcCounter == 2){
-
-            ADC_StartConversion();
-            adcVal = ADC_GetConversionResult() ;
-            heartBeatCalc(adcVal) ;
-            adcCounter = 0 ;
-        }
 
 
         setCursor(1,7) ;
@@ -17395,8 +17414,6 @@ void main(void)
 void timerISR ( void ){
 
     counter++ ;
-    adcCounter++ ;
-
 }
 
 void speedCalc ( void ){
@@ -17419,30 +17436,31 @@ void speedCalc ( void ){
 
 }
 
-void heartBeatCalc ( int adcVal ){
-    Signal = adcVal ;
+void heartRateISR ( void ){
+
+    Signal = ADC_GetConversion( channel_AN4 ) ;
     sampleCounter += 2;
     int N = sampleCounter - lastBeatTime;
 
 
-    if (Signal < thresh && N > (IBI / 5)*3) {
-        if (Signal < T) {
+    if ( Signal < thresh && N > ( IBI / 5 ) * 3 ) {
+        if ( Signal < T ) {
             T = Signal;
         }
     }
-        if (Signal > thresh && Signal > P) {
+        if ( Signal > thresh && Signal > P ) {
         P = Signal;
     }
 
 
 
-    if (N > 250) {
-        if ((Signal > thresh) && (Pulse == 0) && (N > (IBI / 5)*3)) {
+    if ( N > 250 ) {
+        if ( ( Signal > thresh ) && ( Pulse == 0 ) && ( N > ( IBI / 5 ) * 3 ) ) {
             Pulse = 1;
             IBI = sampleCounter - lastBeatTime;
             lastBeatTime = sampleCounter;
 
-            if (secondBeat) {
+            if ( secondBeat ) {
                 secondBeat = 0;
                 int i;
                 for (i = 0; i <= 9; i++) {
@@ -17450,15 +17468,14 @@ void heartBeatCalc ( int adcVal ){
                 }
             }
 
-            if (firstBeat) {
+            if ( firstBeat ) {
                 firstBeat = 0;
                 secondBeat = 1;
-
                 return;
             }
 
 
-            uint16_t runningTotal = 0;
+            int runningTotal = 0;
             int i;
             for (i = 0; i <= 8; i++) {
                 rate[i] = rate[i + 1];
@@ -17469,10 +17486,10 @@ void heartBeatCalc ( int adcVal ){
             runningTotal += rate[9];
             runningTotal /= 10;
             BPM = 60000 / runningTotal;
-            QS = 1;
-
         }
     }
+
+
     if (Signal < thresh && Pulse == 1) {
         Pulse = 0;
         amp = P - T;
@@ -17481,13 +17498,13 @@ void heartBeatCalc ( int adcVal ){
         T = thresh;
     }
 
+
     if (N > 2500) {
-        thresh = 530;
-        P = 512;
-        T = 512;
+        thresh = 512 ;
+        P = 512 ;
+        T = 512 ;
         lastBeatTime = sampleCounter;
         firstBeat = 1;
         secondBeat = 0;
     }
-
 }

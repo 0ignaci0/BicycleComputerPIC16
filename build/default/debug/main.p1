@@ -1,21 +1,21 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"71 ./mcc_generated_files/mcc.h
-[; ;./mcc_generated_files/mcc.h: 71: void SYSTEM_Initialize(void);
+"72 ./mcc_generated_files/mcc.h
+[; ;./mcc_generated_files/mcc.h: 72: void SYSTEM_Initialize(void);
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
-[v F9647 `(v ~T0 @X0 0 tf ]
+[v F9667 `(v ~T0 @X0 0 tf ]
 "238 ./mcc_generated_files/tmr0.h
 [; ;./mcc_generated_files/tmr0.h: 238:  void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-[v _TMR0_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F9647 ]
-"20 main.c
-[; ;main.c: 20:     void timerISR ( void ) ;
+[v _TMR0_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F9667 ]
+"37 main.c
+[; ;main.c: 37:     void timerISR ( void ) ;
 [v _timerISR `(v ~T0 @X0 0 ef ]
 [v F9604 `(v ~T0 @X0 0 tf ]
-"158 ./mcc_generated_files/pin_manager.h
-[; ;./mcc_generated_files/pin_manager.h: 158: void IOCCF7_SetInterruptHandler(void (* InterruptHandler)(void));
+"178 ./mcc_generated_files/pin_manager.h
+[; ;./mcc_generated_files/pin_manager.h: 178: void IOCCF7_SetInterruptHandler(void (* InterruptHandler)(void));
 [v _IOCCF7_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F9604 ]
-"21 main.c
-[; ;main.c: 21:     void speedCalc ( void ) ;
+"38 main.c
+[; ;main.c: 38:     void speedCalc ( void ) ;
 [v _speedCalc `(v ~T0 @X0 0 ef ]
 [v F9589 `(v ~T0 @X0 1 tf1`ul ]
 "92 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic.h
@@ -45,6 +45,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "98
 [; ;./displayOptions.h: 98: void writeString( char *string );
 [v _writeString `(v ~T0 @X0 0 ef1`*uc ]
+"84 main.c
+[; ;main.c: 84:             adcVal = ADC_GetConversion( 0x04 ) ;
+[c E9645 4 29 30 31 .. ]
+[n E9645 . channel_AN4 channel_Temp channel_DAC channel_FVR  ]
+"242 ./mcc_generated_files/adc.h
+[; ;./mcc_generated_files/adc.h: 242: adc_result_t ADC_GetConversion(adc_channel_t channel);
+[v _ADC_GetConversion `(us ~T0 @X0 0 ef1`E9645 ]
+"40 main.c
+[; ;main.c: 40:     void heartBeatCalc ( adc_result_t adcVal );
+[v _heartBeatCalc `(v ~T0 @X0 0 ef1`us ]
 "113 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c99\stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h
@@ -1373,64 +1383,58 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27877
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h: 27877: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"7 main.c
-[; ;main.c: 7: long int volatile counter = 0 ;
-[v _counter `Vl ~T0 @X0 1 e ]
+"6 main.c
+[; ;main.c: 6: float volatile counter = 0 ;
+[v _counter `Vf ~T0 @X0 1 e ]
 [i _counter
--> -> 0 `i `l
+-> -> 0 `i `f
 ]
-"8
-[; ;main.c: 8: long int volatile adcCounter = 0 ;
-[v _adcCounter `Vl ~T0 @X0 1 e ]
-[i _adcCounter
--> -> 0 `i `l
-]
-"9
-[; ;main.c: 9: float volatile rpm = 0 ;
+"7
+[; ;main.c: 7: float volatile rpm = 0 ;
 [v _rpm `Vf ~T0 @X0 1 e ]
 [i _rpm
 -> -> 0 `i `f
 ]
-"10
-[; ;main.c: 10: float volatile speed = 0 ;
+"8
+[; ;main.c: 8: float volatile speed = 0 ;
 [v _speed `Vf ~T0 @X0 1 e ]
 [i _speed
 -> -> 0 `i `f
 ]
-"11
-[; ;main.c: 11: float volatile distance = 0 ;
-[v _distance `Vf ~T0 @X0 1 e ]
+"9
+[; ;main.c: 9: int volatile distance = 0 ;
+[v _distance `Vi ~T0 @X0 1 e ]
 [i _distance
--> -> 0 `i `f
+-> 0 `i
 ]
-"12
-[; ;main.c: 12: float volatile heartRate = 0 ;
+"10
+[; ;main.c: 10: float volatile heartRate = 0 ;
 [v _heartRate `Vf ~T0 @X0 1 e ]
 [i _heartRate
 -> -> 0 `i `f
 ]
-"13
-[; ;main.c: 13: int volatile speedInt = 0 ;
-[v _speedInt `Vi ~T0 @X0 1 e ]
-[i _speedInt
--> 0 `i
-]
-"14
-[; ;main.c: 14: int volatile distHi = 0 ;
+"12
+[; ;main.c: 12: int volatile distHi = 0 ;
 [v _distHi `Vi ~T0 @X0 1 e ]
 [i _distHi
 -> 0 `i
 ]
-"15
-[; ;main.c: 15: int volatile distLo = 0 ;
+"13
+[; ;main.c: 13: int volatile distLo = 0 ;
 [v _distLo `Vi ~T0 @X0 1 e ]
 [i _distLo
 -> 0 `i
 ]
-"16
-[; ;main.c: 16: int volatile speedLo = 0 ;
+"14
+[; ;main.c: 14: int volatile speedLo = 0 ;
 [v _speedLo `Vi ~T0 @X0 1 e ]
 [i _speedLo
+-> 0 `i
+]
+"15
+[; ;main.c: 15: int volatile speedHi = 0 ;
+[v _speedHi `Vi ~T0 @X0 1 e ]
+[i _speedHi
 -> 0 `i
 ]
 "17
@@ -1439,8 +1443,95 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _hrInt
 -> 0 `i
 ]
+"18
+[; ;main.c: 18: long int volatile adcCounter = 0 ;
+[v _adcCounter `Vl ~T0 @X0 1 e ]
+[i _adcCounter
+-> -> 0 `i `l
+]
+"20
+[; ;main.c: 20: adc_result_t volatile adcVal = 0 ;
+[v _adcVal `Vus ~T0 @X0 1 e ]
+[i _adcVal
+-> -> 0 `i `us
+]
+"21
+[; ;main.c: 21: int volatile rate[10];
+[v _rate `Vi ~T0 @X0 -> 10 `i e ]
+"22
+[; ;main.c: 22: adc_result_t volatile P = 512 ;
+[v _P `Vus ~T0 @X0 1 e ]
+[i _P
+-> -> 512 `i `us
+]
+"23
+[; ;main.c: 23: adc_result_t volatile T = 512 ;
+[v _T `Vus ~T0 @X0 1 e ]
+[i _T
+-> -> 512 `i `us
+]
+"24
+[; ;main.c: 24: int volatile thresh = 530 ;
+[v _thresh `Vi ~T0 @X0 1 e ]
+[i _thresh
+-> 530 `i
+]
+"25
+[; ;main.c: 25: int volatile amp = 0;
+[v _amp `Vi ~T0 @X0 1 e ]
+[i _amp
+-> 0 `i
+]
 "26
-[; ;main.c: 26:     char speedDisp[] = "Speed: " ;
+[; ;main.c: 26: int volatile BPM;
+[v _BPM `Vi ~T0 @X0 1 e ]
+"27
+[; ;main.c: 27: adc_result_t volatile Signal;
+[v _Signal `Vus ~T0 @X0 1 e ]
+"28
+[; ;main.c: 28: int volatile IBI = 600;
+[v _IBI `Vi ~T0 @X0 1 e ]
+[i _IBI
+-> 600 `i
+]
+"29
+[; ;main.c: 29: unsigned long int volatile sampleCounter = 0;
+[v _sampleCounter `Vul ~T0 @X0 1 e ]
+[i _sampleCounter
+-> -> -> 0 `i `l `ul
+]
+"30
+[; ;main.c: 30: unsigned long int volatile lastBeatTime = 0;
+[v _lastBeatTime `Vul ~T0 @X0 1 e ]
+[i _lastBeatTime
+-> -> -> 0 `i `l `ul
+]
+"31
+[; ;main.c: 31: _Bool volatile firstBeat = 1;
+[v _firstBeat `Va ~T0 @X0 1 e ]
+[i _firstBeat
+-> -> 1 `i `a
+]
+"32
+[; ;main.c: 32: _Bool volatile secondBeat = 0;
+[v _secondBeat `Va ~T0 @X0 1 e ]
+[i _secondBeat
+-> -> 0 `i `a
+]
+"33
+[; ;main.c: 33: _Bool volatile Pulse = 0;
+[v _Pulse `Va ~T0 @X0 1 e ]
+[i _Pulse
+-> -> 0 `i `a
+]
+"34
+[; ;main.c: 34: _Bool volatile QS = 0;
+[v _QS `Va ~T0 @X0 1 e ]
+[i _QS
+-> -> 0 `i `a
+]
+"45
+[; ;main.c: 45:     char speedDisp[] = "Speed: " ;
 [v _speedDisp `uc ~T0 @X0 -> 8 `i e ]
 [i _speedDisp
 :U ..
@@ -1454,8 +1545,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"27
-[; ;main.c: 27:     char distanceDisp[] = "Distance: " ;
+"46
+[; ;main.c: 46:     char distanceDisp[] = "Distance: " ;
 [v _distanceDisp `uc ~T0 @X0 -> 11 `i e ]
 [i _distanceDisp
 :U ..
@@ -1472,8 +1563,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"28
-[; ;main.c: 28:     char hrDisp[] = "Heart Rate: " ;
+"47
+[; ;main.c: 47:     char hrDisp[] = "Heart Rate: " ;
 [v _hrDisp `uc ~T0 @X0 -> 13 `i e ]
 [i _hrDisp
 :U ..
@@ -1493,207 +1584,396 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"34
-[; ;main.c: 34: void main(void)
+"53
+[; ;main.c: 53: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"35
-[; ;main.c: 35: {
+"54
+[; ;main.c: 54: {
 {
 [e :U _main ]
 [f ]
-"37
-[; ;main.c: 37:     SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
-"40
-[; ;main.c: 40:     TMR0_SetInterruptHandler( timerISR ) ;
-[e ( _TMR0_SetInterruptHandler (1 &U _timerISR ]
-"41
-[; ;main.c: 41:     IOCCF7_SetInterruptHandler( speedCalc ) ;
-[e ( _IOCCF7_SetInterruptHandler (1 &U _speedCalc ]
-"44
-[; ;main.c: 44:     _delay((unsigned long)((1000)*(16000000/4000.0))) ;
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"45
-[; ;main.c: 45:     resetCursor() ;
-[e ( _resetCursor ..  ]
-"51
-[; ;main.c: 51:     (INTCONbits.GIE = 1);
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"52
-[; ;main.c: 52:     (INTCONbits.PEIE = 1);
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-"54
-[; ;main.c: 54:     while(1){
-[e :U 1222 ]
-{
-"55
-[; ;main.c: 55:         setCursor(1,0) ;
-[e ( _setCursor (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
 "56
-[; ;main.c: 56:         writeString(speedDisp);
-[e ( _writeString (1 &U _speedDisp ]
-"57
-[; ;main.c: 57:         setCursor(2,0) ;
-[e ( _setCursor (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-"58
-[; ;main.c: 58:         writeString(distanceDisp);
-[e ( _writeString (1 &U _distanceDisp ]
+[; ;main.c: 56:     SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
 "59
-[; ;main.c: 59:         setCursor(3,0) ;
-[e ( _setCursor (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 59:     TMR0_SetInterruptHandler( timerISR ) ;
+[e ( _TMR0_SetInterruptHandler (1 &U _timerISR ]
 "60
-[; ;main.c: 60:         writeString(hrDisp);
-[e ( _writeString (1 &U _hrDisp ]
-"61
-[; ;main.c: 61:         setCursor(4,0) ;
-[e ( _setCursor (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
-"64
-[; ;main.c: 64:         if (adcCounter == 2000 ){
-[e $ ! == _adcCounter -> -> 2000 `i `l 1224  ]
+[; ;main.c: 60:     IOCCF7_SetInterruptHandler( speedCalc ) ;
+[e ( _IOCCF7_SetInterruptHandler (1 &U _speedCalc ]
+"63
+[; ;main.c: 63:     _delay((unsigned long)((1000)*(16000000/4000.0))) ;
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"65
+[; ;main.c: 65:     resetCursor() ;
+[e ( _resetCursor ..  ]
+"67
+[; ;main.c: 67:     (INTCONbits.GIE = 1);
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+"68
+[; ;main.c: 68:     (INTCONbits.PEIE = 1);
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"70
+[; ;main.c: 70:     while(1){
+[e :U 1223 ]
 {
-"69
-[; ;main.c: 69:         }
-}
-[e :U 1224 ]
 "73
-[; ;main.c: 73:         setCursor(1,7) ;
-[e ( _setCursor (2 , -> -> 1 `i `uc -> -> 7 `i `uc ]
+[; ;main.c: 73:         setCursor(1,0) ;
+[e ( _setCursor (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
 "74
-[; ;main.c: 74:         if( counter <= 15000 ){
-[e $ ! <= _counter -> -> 15000 `i `l 1225  ]
-{
+[; ;main.c: 74:         writeString(speedDisp);
+[e ( _writeString (1 &U _speedDisp ]
 "75
-[; ;main.c: 75:             speedLo = (int)speed % 1 ;
-[e = _speedLo % -> _speed `i -> 1 `i ]
+[; ;main.c: 75:         setCursor(2,0) ;
+[e ( _setCursor (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
 "76
-[; ;main.c: 76:             if( speed >= 10 ){
-[e $ ! >= _speed -> -> 10 `i `f 1226  ]
-{
+[; ;main.c: 76:         writeString(distanceDisp);
+[e ( _writeString (1 &U _distanceDisp ]
 "77
-[; ;main.c: 77:                 printf( "%d kph     ", (int)speed ) ;
-[e ( _printf , (. :s 1C -> _speed `i ]
+[; ;main.c: 77:         setCursor(3,0) ;
+[e ( _setCursor (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
 "78
-[; ;main.c: 78:             }
-}
-[e $U 1227  ]
+[; ;main.c: 78:         writeString(hrDisp);
+[e ( _writeString (1 &U _hrDisp ]
 "79
-[; ;main.c: 79:             else{
-[e :U 1226 ]
-{
-"81
-[; ;main.c: 81:                 printf( "%d.%d kph   " , (int)speed , speedLo ) ;
-[e ( _printf , , (. :s 2C -> _speed `i _speedLo ]
+[; ;main.c: 79:         setCursor(4,0) ;
+[e ( _setCursor (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
 "82
-[; ;main.c: 82:                 }
-}
-[e :U 1227 ]
-"83
-[; ;main.c: 83:             }
-}
-[e $U 1228  ]
+[; ;main.c: 82:         if (adcCounter == 2){
+[e $ ! == _adcCounter -> -> 2 `i `l 1225  ]
+{
 "84
-[; ;main.c: 84:         else{
-[e :U 1225 ]
-{
+[; ;main.c: 84:             adcVal = ADC_GetConversion( 0x04 ) ;
+[e = _adcVal ( _ADC_GetConversion (1 -> -> 4 `i `E9645 ]
 "85
-[; ;main.c: 85:             printf( "0 kph        " ) ;
-[e ( _printf :s 3C ]
+[; ;main.c: 85:             heartBeatCalc( adcVal ) ;
+[e ( _heartBeatCalc (1 _adcVal ]
 "86
-[; ;main.c: 86:         }
+[; ;main.c: 86:             adcCounter = 0 ;
+[e = _adcCounter -> -> 0 `i `l ]
+"87
+[; ;main.c: 87:             QS = 0 ;
+[e = _QS -> -> 0 `i `a ]
+"88
+[; ;main.c: 88:         }
 }
-[e :U 1228 ]
-"89
-[; ;main.c: 89:         setCursor(2,10) ;
-[e ( _setCursor (2 , -> -> 2 `i `uc -> -> 10 `i `uc ]
-"90
-[; ;main.c: 90:         if( distance > 1000 ){
-[e $ ! > _distance -> -> 1000 `i `f 1229  ]
-{
+[e :U 1225 ]
 "91
-[; ;main.c: 91:             distLo = (int)distance % 1000 ;
-[e = _distLo % -> _distance `i -> 1000 `i ]
+[; ;main.c: 91:         setCursor(1,7) ;
+[e ( _setCursor (2 , -> -> 1 `i `uc -> -> 7 `i `uc ]
 "92
-[; ;main.c: 92:             distHi = distance / 1000 ;
-[e = _distHi -> / _distance -> -> 1000 `i `f `i ]
+[; ;main.c: 92:         if( counter <= 15000 ) {
+[e $ ! <= _counter -> -> 15000 `i `f 1226  ]
+{
 "93
-[; ;main.c: 93:             printf( "%d.%d km" , distHi, distLo );
-[e ( _printf , , (. :s 4C _distHi _distLo ]
+[; ;main.c: 93:             printf( "%d.%d kph     ", speedHi, speedLo ) ;
+[e ( _printf , , (. :s 1C _speedHi _speedLo ]
 "94
 [; ;main.c: 94:         }
 }
-[e $U 1230  ]
+[e $U 1227  ]
 "95
-[; ;main.c: 95:         else{
-[e :U 1229 ]
+[; ;main.c: 95:         else {
+[e :U 1226 ]
 {
 "96
-[; ;main.c: 96:             printf( "%d m     " , (int)distance ) ;
-[e ( _printf , (. :s 5C -> _distance `i ]
+[; ;main.c: 96:             printf( "0 kph        " ) ;
+[e ( _printf :s 2C ]
 "97
 [; ;main.c: 97:         }
 }
-[e :U 1230 ]
+[e :U 1227 ]
 "100
-[; ;main.c: 100:         setCursor(3,13) ;
-[e ( _setCursor (2 , -> -> 3 `i `uc -> -> 13 `i `uc ]
+[; ;main.c: 100:         setCursor(2,10) ;
+[e ( _setCursor (2 , -> -> 2 `i `uc -> -> 10 `i `uc ]
 "101
-[; ;main.c: 101:         hrInt = heartRate ;
-[e = _hrInt -> _heartRate `i ]
-"102
-[; ;main.c: 102:         printf( "%d bpm   " , hrInt ) ;
-[e ( _printf , (. :s 6C _hrInt ]
+[; ;main.c: 101:         printf( "%d.%d km" , distHi, distLo );
+[e ( _printf , , (. :s 3C _distHi _distLo ]
 "104
-[; ;main.c: 104:     }
-}
-[e :U 1221 ]
-[e $U 1222  ]
-[e :U 1223 ]
+[; ;main.c: 104:         setCursor(3,13) ;
+[e ( _setCursor (2 , -> -> 3 `i `uc -> -> 13 `i `uc ]
+"105
+[; ;main.c: 105:         printf( "%d bpm   " , adcVal ) ;
+[e ( _printf , (. :s 4C -> _adcVal `ui ]
 "106
-[; ;main.c: 106: }
-[e :UE 1220 ]
+[; ;main.c: 106:     }
 }
+[e :U 1222 ]
+[e $U 1223  ]
+[e :U 1224 ]
 "108
-[; ;main.c: 108: void timerISR ( void ){
+[; ;main.c: 108: }
+[e :UE 1221 ]
+}
+"110
+[; ;main.c: 110: void timerISR ( void ){
 [v _timerISR `(v ~T0 @X0 1 ef ]
 {
 [e :U _timerISR ]
 [f ]
-"109
-[; ;main.c: 109:     counter++ ;
-[e ++ _counter -> -> 1 `i `Vl ]
-"110
-[; ;main.c: 110:     adcCounter++ ;
-[e ++ _adcCounter -> -> 1 `i `Vl ]
-"111
-[; ;main.c: 111: }
-[e :UE 1231 ]
-}
+"112
+[; ;main.c: 112:     counter++ ;
+[e ++ _counter -> -> 1 `i `Vf ]
 "113
-[; ;main.c: 113: void speedCalc ( void ){
+[; ;main.c: 113:     adcCounter++ ;
+[e ++ _adcCounter -> -> 1 `i `Vl ]
+"115
+[; ;main.c: 115: }
+[e :UE 1228 ]
+}
+"117
+[; ;main.c: 117: void speedCalc ( void ){
 [v _speedCalc `(v ~T0 @X0 1 ef ]
 {
 [e :U _speedCalc ]
 [f ]
-"115
-[; ;main.c: 115:     rpm = ( ( 1000 / counter ) * 60 ) ;
-[e = _rpm -> * / -> -> 1000 `i `l _counter -> -> 60 `i `l `f ]
-"118
-[; ;main.c: 118:     speed = 2 * rpm * (0.06) ;
-[e = _speed -> * -> * -> -> 2 `i `f _rpm `d .0.06 `f ]
-"121
-[; ;main.c: 121:     counter = 0 ;
-[e = _counter -> -> 0 `i `l ]
+"120
+[; ;main.c: 120:     rpm = ( ( 1000 / counter ) * 60 ) ;
+[e = _rpm * / -> -> 1000 `i `f _counter -> -> 60 `i `f ]
 "122
-[; ;main.c: 122:     distance = distance + 2 ;
-[e = _distance + _distance -> -> 2 `i `f ]
-"123
-[; ;main.c: 123: }
-[e :UE 1232 ]
+[; ;main.c: 122:     speed = 2 * rpm * (0.06) ;
+[e = _speed -> * -> * -> -> 2 `i `f _rpm `d .0.06 `f ]
+"125
+[; ;main.c: 125:     speedHi = speed ;
+[e = _speedHi -> _speed `i ]
+"126
+[; ;main.c: 126:     speedLo = ( (int)(speed*10.0) % 10 ) ;
+[e = _speedLo % -> * -> _speed `d .10.0 `i -> 10 `i ]
+"129
+[; ;main.c: 129:     counter = 0 ;
+[e = _counter -> -> 0 `i `f ]
+"130
+[; ;main.c: 130:     distance = distance + 2 ;
+[e = _distance + _distance -> 2 `i ]
+"132
+[; ;main.c: 132:     distLo = distance % 1000 ;
+[e = _distLo % _distance -> 1000 `i ]
+"133
+[; ;main.c: 133:     distHi = distance / 1000 ;
+[e = _distHi / _distance -> 1000 `i ]
+"135
+[; ;main.c: 135: }
+[e :UE 1229 ]
+}
+"137
+[; ;main.c: 137: void heartBeatCalc ( adc_result_t adcVal ){
+[v _heartBeatCalc `(v ~T0 @X0 1 ef1`us ]
+{
+[e :U _heartBeatCalc ]
+[v _adcVal `us ~T0 @X0 1 r1 ]
+[f ]
+"138
+[; ;main.c: 138:     Signal = adcVal ;
+[e = _Signal _adcVal ]
+"139
+[; ;main.c: 139:     sampleCounter += 2;
+[e =+ _sampleCounter -> -> 2 `i `Vul ]
+"140
+[; ;main.c: 140:     int N = sampleCounter - lastBeatTime;
+[v _N `i ~T0 @X0 1 a ]
+[e = _N -> - _sampleCounter _lastBeatTime `i ]
+"143
+[; ;main.c: 143:     if (Signal < thresh && N > (IBI / 5)*3) {
+[e $ ! && < -> _Signal `ui -> _thresh `ui > _N * / _IBI -> 5 `i -> 3 `i 1231  ]
+{
+"144
+[; ;main.c: 144:         if (Signal < T) {
+[e $ ! < -> _Signal `ui -> _T `ui 1232  ]
+{
+"145
+[; ;main.c: 145:             T = Signal;
+[e = _T _Signal ]
+"146
+[; ;main.c: 146:         }
+}
+[e :U 1232 ]
+"147
+[; ;main.c: 147:     }
+}
+[e :U 1231 ]
+"148
+[; ;main.c: 148:         if (Signal > thresh && Signal > P) {
+[e $ ! && > -> _Signal `ui -> _thresh `ui > -> _Signal `ui -> _P `ui 1233  ]
+{
+"149
+[; ;main.c: 149:         P = Signal;
+[e = _P _Signal ]
+"150
+[; ;main.c: 150:     }
+}
+[e :U 1233 ]
+"154
+[; ;main.c: 154:     if (N > 250) {
+[e $ ! > _N -> 250 `i 1234  ]
+{
+"155
+[; ;main.c: 155:         if ((Signal > thresh) && (Pulse == 0) && (N > (IBI / 5)*3)) {
+[e $ ! && && > -> _Signal `ui -> _thresh `ui == -> _Pulse `i -> 0 `i > _N * / _IBI -> 5 `i -> 3 `i 1235  ]
+{
+"156
+[; ;main.c: 156:             Pulse = 1;
+[e = _Pulse -> -> 1 `i `a ]
+"157
+[; ;main.c: 157:             IBI = sampleCounter - lastBeatTime;
+[e = _IBI -> - _sampleCounter _lastBeatTime `i ]
+"158
+[; ;main.c: 158:             lastBeatTime = sampleCounter;
+[e = _lastBeatTime _sampleCounter ]
+"160
+[; ;main.c: 160:             if (secondBeat) {
+[e $ ! != -> _secondBeat `i -> 0 `i 1236  ]
+{
+"161
+[; ;main.c: 161:                 secondBeat = 0;
+[e = _secondBeat -> -> 0 `i `a ]
+"162
+[; ;main.c: 162:                 int i;
+[v _i `i ~T0 @X0 1 a ]
+"163
+[; ;main.c: 163:                 for (i = 0; i <= 9; i++) {
+{
+[e = _i -> 0 `i ]
+[e $ <= _i -> 9 `i 1237  ]
+[e $U 1238  ]
+[e :U 1237 ]
+{
+"164
+[; ;main.c: 164:                     rate[i] = IBI;
+[e = *U + &U _rate * -> -> _i `ui `ux -> -> # *U &U _rate `ui `ux _IBI ]
+"165
+[; ;main.c: 165:                 }
+}
+[e ++ _i -> 1 `i ]
+[e $ <= _i -> 9 `i 1237  ]
+[e :U 1238 ]
+}
+"166
+[; ;main.c: 166:             }
+}
+[e :U 1236 ]
+"168
+[; ;main.c: 168:             if (firstBeat) {
+[e $ ! != -> _firstBeat `i -> 0 `i 1240  ]
+{
+"169
+[; ;main.c: 169:                 firstBeat = 0;
+[e = _firstBeat -> -> 0 `i `a ]
+"170
+[; ;main.c: 170:                 secondBeat = 1;
+[e = _secondBeat -> -> 1 `i `a ]
+"172
+[; ;main.c: 172:                 return;
+[e $UE 1230  ]
+"173
+[; ;main.c: 173:             }
+}
+[e :U 1240 ]
+"176
+[; ;main.c: 176:             uint16_t runningTotal = 0;
+[v _runningTotal `us ~T0 @X0 1 a ]
+[e = _runningTotal -> -> 0 `i `us ]
+"177
+[; ;main.c: 177:             int i;
+[v _i `i ~T0 @X0 1 a ]
+"178
+[; ;main.c: 178:             for (i = 0; i <= 8; i++) {
+{
+[e = _i -> 0 `i ]
+[e $ <= _i -> 8 `i 1241  ]
+[e $U 1242  ]
+[e :U 1241 ]
+{
+"179
+[; ;main.c: 179:                 rate[i] = rate[i + 1];
+[e = *U + &U _rate * -> -> _i `ui `ux -> -> # *U &U _rate `ui `ux *U + &U _rate * -> -> + _i -> 1 `i `ui `ux -> -> # *U &U _rate `ui `ux ]
+"180
+[; ;main.c: 180:                 runningTotal += rate[i];
+[e =+ _runningTotal -> *U + &U _rate * -> -> _i `ui `ux -> -> # *U &U _rate `ui `ux `us ]
+"181
+[; ;main.c: 181:             }
+}
+[e ++ _i -> 1 `i ]
+[e $ <= _i -> 8 `i 1241  ]
+[e :U 1242 ]
+}
+"183
+[; ;main.c: 183:             rate[9] = IBI;
+[e = *U + &U _rate * -> -> -> 9 `i `ui `ux -> -> # *U &U _rate `ui `ux _IBI ]
+"184
+[; ;main.c: 184:             runningTotal += rate[9];
+[e =+ _runningTotal -> *U + &U _rate * -> -> -> 9 `i `ui `ux -> -> # *U &U _rate `ui `ux `us ]
+"185
+[; ;main.c: 185:             runningTotal /= 10;
+[e =/ _runningTotal -> -> 10 `i `ui ]
+"186
+[; ;main.c: 186:             BPM = 60000 / runningTotal;
+[e = _BPM -> / -> 60000 `l -> _runningTotal `l `i ]
+"187
+[; ;main.c: 187:             QS = 1;
+[e = _QS -> -> 1 `i `a ]
+"189
+[; ;main.c: 189:         }
+}
+[e :U 1235 ]
+"190
+[; ;main.c: 190:     }
+}
+[e :U 1234 ]
+"191
+[; ;main.c: 191:     if (Signal < thresh && Pulse == 1) {
+[e $ ! && < -> _Signal `ui -> _thresh `ui == -> _Pulse `i -> 1 `i 1244  ]
+{
+"192
+[; ;main.c: 192:         Pulse = 0;
+[e = _Pulse -> -> 0 `i `a ]
+"193
+[; ;main.c: 193:         amp = P - T;
+[e = _amp -> - -> _P `ui -> _T `ui `i ]
+"194
+[; ;main.c: 194:         thresh = amp / 2 + T;
+[e = _thresh -> + -> / _amp -> 2 `i `ui -> _T `ui `i ]
+"195
+[; ;main.c: 195:         P = thresh;
+[e = _P -> _thresh `us ]
+"196
+[; ;main.c: 196:         T = thresh;
+[e = _T -> _thresh `us ]
+"197
+[; ;main.c: 197:     }
+}
+[e :U 1244 ]
+"199
+[; ;main.c: 199:     if (N > 2500) {
+[e $ ! > _N -> 2500 `i 1245  ]
+{
+"200
+[; ;main.c: 200:         thresh = 530;
+[e = _thresh -> 530 `i ]
+"201
+[; ;main.c: 201:         P = 512;
+[e = _P -> -> 512 `i `us ]
+"202
+[; ;main.c: 202:         T = 512;
+[e = _T -> -> 512 `i `us ]
+"203
+[; ;main.c: 203:         lastBeatTime = sampleCounter;
+[e = _lastBeatTime _sampleCounter ]
+"204
+[; ;main.c: 204:         firstBeat = 1;
+[e = _firstBeat -> -> 1 `i `a ]
+"205
+[; ;main.c: 205:         secondBeat = 0;
+[e = _secondBeat -> -> 0 `i `a ]
+"206
+[; ;main.c: 206:     }
+}
+[e :U 1245 ]
+"208
+[; ;main.c: 208: }
+[e :UE 1230 ]
 }
 [p f _printf 8388736 ]
-[a 4C 37 100 46 37 100 32 107 109 0 ]
-[a 6C 37 100 32 98 112 109 32 32 32 0 ]
-[a 2C 37 100 46 37 100 32 107 112 104 32 32 32 0 ]
-[a 5C 37 100 32 109 32 32 32 32 32 0 ]
-[a 1C 37 100 32 107 112 104 32 32 32 32 32 0 ]
-[a 3C 48 32 107 112 104 32 32 32 32 32 32 32 32 0 ]
+[a 3C 37 100 46 37 100 32 107 109 0 ]
+[a 4C 37 100 32 98 112 109 32 32 32 0 ]
+[a 1C 37 100 46 37 100 32 107 112 104 32 32 32 32 32 0 ]
+[a 2C 48 32 107 112 104 32 32 32 32 32 32 32 32 0 ]

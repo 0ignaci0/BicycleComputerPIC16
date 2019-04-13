@@ -16927,17 +16927,17 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 2 3
 # 54 "mcc_generated_files/pin_manager.h" 2
-# 110 "mcc_generated_files/pin_manager.h"
+# 130 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 122 "mcc_generated_files/pin_manager.h"
+# 142 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 135 "mcc_generated_files/pin_manager.h"
+# 155 "mcc_generated_files/pin_manager.h"
 void IOCCF7_ISR(void);
-# 158 "mcc_generated_files/pin_manager.h"
+# 178 "mcc_generated_files/pin_manager.h"
 void IOCCF7_SetInterruptHandler(void (* InterruptHandler)(void));
-# 182 "mcc_generated_files/pin_manager.h"
+# 202 "mcc_generated_files/pin_manager.h"
 extern void (*IOCCF7_InterruptHandler)(void);
-# 206 "mcc_generated_files/pin_manager.h"
+# 226 "mcc_generated_files/pin_manager.h"
 void IOCCF7_DefaultInterruptHandler(void);
 # 1 "mcc_generated_files/pin_manager.c" 2
 

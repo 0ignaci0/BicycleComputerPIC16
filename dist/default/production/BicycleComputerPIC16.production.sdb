@@ -3,8 +3,15 @@
 [d edition pro ]
 [d chip 16F1619 ]
 [d frameptr 6 ]
-"86 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/adc.c
+"36 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/adc.c
 [e E9635 . `uc
+channel_AN4 4
+channel_Temp 29
+channel_DAC 30
+channel_FVR 31
+]
+"128 C:\Users\igna\BicycleComputerPIC16\main.c
+[e E9662 . `uc
 channel_AN4 4
 channel_Temp 29
 channel_DAC 30
@@ -20,7 +27,6 @@ channel_FVR 31
 [v ___aomod __aomod `(o  1 e 8 0 ]
 "5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-[v i1___awdiv __awdiv `(i  1 e 2 0 ]
 "5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
 "72 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c
@@ -35,8 +41,6 @@ channel_FVR 31
 [v ___flge __flge `(b  1 e 0 0 ]
 "43 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 "8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputs.c
@@ -67,18 +71,16 @@ channel_FVR 31
 [v _resetCursor resetCursor `(v  1 e 1 0 ]
 "52 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _main main `(v  1 e 1 0 ]
-"109
+"101
 [v _timerISR timerISR `(v  1 e 1 0 ]
-"116
+"106
 [v _speedCalc speedCalc `(v  1 e 1 0 ]
-"136
-[v _heartBeatCalc heartBeatCalc `(v  1 e 1 0 ]
-"65 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/adc.c
+"126
+[v _heartRateISR heartRateISR `(v  1 e 1 0 ]
+"15 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/adc.c
 [v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
-"94
-[v _ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
-"107
-[v _ADC_GetConversionResult ADC_GetConversionResult `(us  1 e 2 0 ]
+"63
+[v _ADC_GetConversion ADC_GetConversion `(i  1 e 2 0 ]
 "65 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/eusart.c
 [v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
 "93
@@ -105,7 +107,7 @@ channel_FVR 31
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 "4 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
-"13
+"14
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 "6 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
@@ -125,7 +127,17 @@ channel_FVR 31
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
 "83
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
-[s S350 . 1 `uc 1 IOCIF 1 0 :1:0 
+"15 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/tmr1.c
+[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
+"71
+[v _TMR1_WriteTimer TMR1_WriteTimer `(v  1 e 1 0 ]
+"108
+[v _TMR1_ISR TMR1_ISR `(v  1 e 1 0 ]
+"122
+[v _TMR1_SetInterruptHandler TMR1_SetInterruptHandler `(v  1 e 1 0 ]
+"126
+[v _TMR1_DefaultInterruptHandler TMR1_DefaultInterruptHandler `(v  1 e 1 0 ]
+[s S354 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 IOCIE 1 0 :1:3 
@@ -135,13 +147,13 @@ channel_FVR 31
 `uc 1 GIE 1 0 :1:7 
 ]
 "374 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f1619.h
-[s S359 . 1 `uc 1 . 1 0 :2:0 
+[s S363 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 T0IE 1 0 :1:5 
 ]
-[u S364 . 1 `S350 1 . 1 0 `S359 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES364  1 e 1 @11 ]
+[u S368 . 1 `S354 1 . 1 0 `S363 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES368  1 e 1 @11 ]
 [s S68 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
@@ -156,15 +168,65 @@ channel_FVR 31
 [v _PIR1bits PIR1bits `VES77  1 e 1 @16 ]
 "868
 [v _TMR0 TMR0 `VEuc  1 e 1 @21 ]
+"895
+[v _TMR1L TMR1L `VEuc  1 e 1 @22 ]
+"915
+[v _TMR1H TMR1H `VEuc  1 e 1 @23 ]
+"935
+[v _T1CON T1CON `VEuc  1 e 1 @24 ]
+[s S802 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1CS 1 0 :2:6 
+]
+"957
+[s S809 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 TMR1CS0 1 0 :1:6 
+`uc 1 TMR1CS1 1 0 :1:7 
+]
+[u S815 . 1 `S802 1 . 1 0 `S809 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES815  1 e 1 @24 ]
+"1002
+[v _T1GCON T1GCON `VEuc  1 e 1 @25 ]
+[s S832 . 1 `uc 1 T1GSS 1 0 :2:0 
+`uc 1 T1GVAL 1 0 :1:2 
+`uc 1 T1GGO_nDONE 1 0 :1:3 
+`uc 1 T1GSPM 1 0 :1:4 
+`uc 1 T1GTM 1 0 :1:5 
+`uc 1 T1GPOL 1 0 :1:6 
+`uc 1 TMR1GE 1 0 :1:7 
+]
+"1022
+[s S840 . 1 `uc 1 T1GSS0 1 0 :1:0 
+`uc 1 T1GSS1 1 0 :1:1 
+]
+[u S843 . 1 `S832 1 . 1 0 `S840 1 . 1 0 ]
+[v _T1GCONbits T1GCONbits `VES843  1 e 1 @25 ]
 "1614
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
 "1664
 [v _TRISB TRISB `VEuc  1 e 1 @141 ]
 "1703
 [v _TRISC TRISC `VEuc  1 e 1 @142 ]
+[s S511 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSP1IE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+"1782
+[u S520 . 1 `S511 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES520  1 e 1 @144 ]
 "2053
 [v _OPTION_REG OPTION_REG `VEuc  1 e 1 @149 ]
-[s S239 . 1 `uc 1 PS 1 0 :3:0 
+[s S243 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 TMR0SE 1 0 :1:4 
 `uc 1 TMR0CS 1 0 :1:5 
@@ -172,15 +234,15 @@ channel_FVR 31
 `uc 1 nWPUEN 1 0 :1:7 
 ]
 "2076
-[s S246 . 1 `uc 1 PS0 1 0 :1:0 
+[s S250 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
 ]
-[u S253 . 1 `S239 1 . 1 0 `S246 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES253  1 e 1 @149 ]
+[u S257 . 1 `S243 1 . 1 0 `S250 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES257  1 e 1 @149 ]
 "2198
 [v _OSCTUNE OSCTUNE `VEuc  1 e 1 @152 ]
 "2256
@@ -191,12 +253,12 @@ channel_FVR 31
 [v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
 "2431
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @157 ]
-[s S664 . 1 `uc 1 ADON 1 0 :1:0 
+[s S573 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :5:2 
 ]
 "2456
-[s S668 . 1 `uc 1 . 1 0 :1:0 
+[s S577 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADGO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -204,11 +266,11 @@ channel_FVR 31
 `uc 1 CHS3 1 0 :1:5 
 `uc 1 CHS4 1 0 :1:6 
 ]
-[s S676 . 1 `uc 1 . 1 0 :1:0 
+[s S585 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
-[u S679 . 1 `S664 1 . 1 0 `S668 1 . 1 0 `S676 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES679  1 e 1 @157 ]
+[u S588 . 1 `S573 1 . 1 0 `S577 1 . 1 0 `S585 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES588  1 e 1 @157 ]
 "2511
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @158 ]
 "2577
@@ -283,7 +345,7 @@ channel_FVR 31
 [v _SLRCONB SLRCONB `VEuc  1 e 1 @781 ]
 "6886
 [v _SLRCONC SLRCONC `VEuc  1 e 1 @782 ]
-[s S319 . 1 `uc 1 IOCCP0 1 0 :1:0 
+[s S323 . 1 `uc 1 IOCCP0 1 0 :1:0 
 `uc 1 IOCCP1 1 0 :1:1 
 `uc 1 IOCCP2 1 0 :1:2 
 `uc 1 IOCCP3 1 0 :1:3 
@@ -293,9 +355,9 @@ channel_FVR 31
 `uc 1 IOCCP7 1 0 :1:7 
 ]
 "7407
-[u S328 . 1 `S319 1 . 1 0 ]
-[v _IOCCPbits IOCCPbits `VES328  1 e 1 @919 ]
-[s S298 . 1 `uc 1 IOCCN0 1 0 :1:0 
+[u S332 . 1 `S323 1 . 1 0 ]
+[v _IOCCPbits IOCCPbits `VES332  1 e 1 @919 ]
+[s S302 . 1 `uc 1 IOCCN0 1 0 :1:0 
 `uc 1 IOCCN1 1 0 :1:1 
 `uc 1 IOCCN2 1 0 :1:2 
 `uc 1 IOCCN3 1 0 :1:3 
@@ -305,9 +367,9 @@ channel_FVR 31
 `uc 1 IOCCN7 1 0 :1:7 
 ]
 "7469
-[u S307 . 1 `S298 1 . 1 0 ]
-[v _IOCCNbits IOCCNbits `VES307  1 e 1 @920 ]
-[s S277 . 1 `uc 1 IOCCF0 1 0 :1:0 
+[u S311 . 1 `S302 1 . 1 0 ]
+[v _IOCCNbits IOCCNbits `VES311  1 e 1 @920 ]
+[s S281 . 1 `uc 1 IOCCF0 1 0 :1:0 
 `uc 1 IOCCF1 1 0 :1:1 
 `uc 1 IOCCF2 1 0 :1:2 
 `uc 1 IOCCF3 1 0 :1:3 
@@ -317,8 +379,8 @@ channel_FVR 31
 `uc 1 IOCCF7 1 0 :1:7 
 ]
 "7531
-[u S286 . 1 `S277 1 . 1 0 ]
-[v _IOCCFbits IOCCFbits `VES286  1 e 1 @921 ]
+[u S290 . 1 `S281 1 . 1 0 ]
+[v _IOCCFbits IOCCFbits `VES290  1 e 1 @921 ]
 "22989
 [v _RB7PPS RB7PPS `VEuc  1 e 1 @3743 ]
 "55 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c
@@ -329,58 +391,54 @@ channel_FVR 31
 [v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
 "69
 [v _nout nout `i  1 s 2 nout ]
-"6 C:\Users\igna\BicycleComputerPIC16\main.c
+"8 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _counter counter `VEf  1 e 4 0 ]
-"7
-[v _rpm rpm `VEf  1 e 4 0 ]
-"8
-[v _speed speed `VEf  1 e 4 0 ]
 "9
-[v _distance distance `VEi  1 e 2 0 ]
+[v _rpm rpm `VEf  1 e 4 0 ]
 "10
-[v _heartRate heartRate `VEf  1 e 4 0 ]
+[v _speed speed `VEf  1 e 4 0 ]
+"11
+[v _distance distance `VEi  1 e 2 0 ]
 "12
-[v _distHi distHi `VEi  1 e 2 0 ]
-"13
-[v _distLo distLo `VEi  1 e 2 0 ]
+[v _heartRate heartRate `VEf  1 e 4 0 ]
 "14
-[v _speedLo speedLo `VEi  1 e 2 0 ]
+[v _distHi distHi `VEi  1 e 2 0 ]
 "15
-[v _speedHi speedHi `VEi  1 e 2 0 ]
+[v _distLo distLo `VEi  1 e 2 0 ]
+"16
+[v _speedLo speedLo `VEi  1 e 2 0 ]
 "17
+[v _speedHi speedHi `VEi  1 e 2 0 ]
+"19
 [v _hrInt hrInt `VEi  1 e 2 0 ]
-"18
-[v _adcCounter adcCounter `VEl  1 e 4 0 ]
 "20
-[v _adcVal adcVal `VEi  1 e 2 0 ]
-"21
-[v _rate rate `VE[10]i  1 e 20 0 ]
+[v _adcCounter adcCounter `VEl  1 e 4 0 ]
 "22
-[v _P P `VEi  1 e 2 0 ]
+[v _rate rate `VE[10]i  1 e 20 0 ]
 "23
-[v _T T `VEi  1 e 2 0 ]
+[v _P P `VEi  1 e 2 0 ]
 "24
-[v _thresh thresh `VEi  1 e 2 0 ]
+[v _T T `VEi  1 e 2 0 ]
 "25
-[v _amp amp `VEi  1 e 2 0 ]
+[v _thresh thresh `VEi  1 e 2 0 ]
 "26
-[v _BPM BPM `VEi  1 e 2 0 ]
+[v _amp amp `VEi  1 e 2 0 ]
 "27
-[v _Signal Signal `VEi  1 e 2 0 ]
+[v _BPM BPM `VEi  1 e 2 0 ]
 "28
-[v _IBI IBI `VEi  1 e 2 0 ]
+[v _Signal Signal `VEi  1 e 2 0 ]
 "29
-[v _sampleCounter sampleCounter `VEul  1 e 4 0 ]
+[v _IBI IBI `VEi  1 e 2 0 ]
 "30
-[v _lastBeatTime lastBeatTime `VEul  1 e 4 0 ]
+[v _sampleCounter sampleCounter `VEul  1 e 4 0 ]
 "31
-[v _firstBeat firstBeat `VEa  1 e 1 0 ]
+[v _lastBeatTime lastBeatTime `VEul  1 e 4 0 ]
 "32
-[v _secondBeat secondBeat `VEa  1 e 1 0 ]
+[v _firstBeat firstBeat `VEa  1 e 1 0 ]
 "33
-[v _Pulse Pulse `VEa  1 e 1 0 ]
+[v _secondBeat secondBeat `VEa  1 e 1 0 ]
 "34
-[v _QS QS `VEa  1 e 1 0 ]
+[v _Pulse Pulse `VEa  1 e 1 0 ]
 "44
 [v _speedDisp speedDisp `[8]uc  1 e 8 0 ]
 "45
@@ -407,10 +465,14 @@ channel_FVR 31
 [v _timer0ReloadVal timer0ReloadVal `VEuc  1 e 1 0 ]
 "13
 [v _TMR0_InterruptHandler TMR0_InterruptHandler `*.37(v  1 e 2 0 ]
+"8 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/tmr1.c
+[v _timer1ReloadVal timer1ReloadVal `VEus  1 e 2 0 ]
+"9
+[v _TMR1_InterruptHandler TMR1_InterruptHandler `*.37(v  1 e 2 0 ]
 "52 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"107
+"99
 } 0
 "11 C:\Users\igna\BicycleComputerPIC16\displayOptions.c
 [v _writeString writeString `(v  1 e 1 0 ]
@@ -457,40 +519,40 @@ channel_FVR 31
 "1368 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\doprnt.c
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
 {
-[s S745 _IO_FILE 0 ]
-[v vfprintf@fp fp `*.1S745  1 a 1 wreg ]
+[s S926 _IO_FILE 0 ]
+[v vfprintf@fp fp `*.1S926  1 a 1 wreg ]
 "1371
 [v vfprintf@cfmt cfmt `*.25uc  1 a 2 1 ]
 "1368
-[v vfprintf@fp fp `*.1S745  1 a 1 wreg ]
+[v vfprintf@fp fp `*.1S926  1 a 1 wreg ]
 [v vfprintf@fmt fmt `*.25DCuc  1 p 2 74 ]
 [v vfprintf@ap ap `*.5*.5v  1 p 1 76 ]
 "1373
 "1368
-[v vfprintf@fp fp `*.1S745  1 a 1 0 ]
+[v vfprintf@fp fp `*.1S926  1 a 1 0 ]
 "1382
 } 0
 "670
 [v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
 {
-[s S745 _IO_FILE 0 ]
-[v vfpfcnvrt@fp fp `*.1S745  1 a 1 wreg ]
+[s S926 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.1S926  1 a 1 wreg ]
 "674
 [v vfpfcnvrt@ll ll `o  1 a 8 65 ]
 "670
-[v vfpfcnvrt@fp fp `*.1S745  1 a 1 wreg ]
+[v vfpfcnvrt@fp fp `*.1S926  1 a 1 wreg ]
 [v vfpfcnvrt@fmt fmt `*.5*.25uc  1 p 1 58 ]
 [v vfpfcnvrt@ap ap `*.5*.5v  1 p 1 59 ]
 "680
 "670
-[v vfpfcnvrt@fp fp `*.1S745  1 a 1 73 ]
+[v vfpfcnvrt@fp fp `*.1S926  1 a 1 73 ]
 "1365
 } 0
 "274
 [v _dtoa dtoa `(i  1 s 2 dtoa ]
 {
-[s S745 _IO_FILE 0 ]
-[v dtoa@fp fp `*.1S745  1 a 1 wreg ]
+[s S926 _IO_FILE 0 ]
+[v dtoa@fp fp `*.1S926  1 a 1 wreg ]
 "277
 [v dtoa@n n `o  1 a 8 48 ]
 "276
@@ -499,28 +561,28 @@ channel_FVR 31
 [v dtoa@w w `i  1 a 2 44 ]
 [v dtoa@p p `i  1 a 2 41 ]
 "274
-[v dtoa@fp fp `*.1S745  1 a 1 wreg ]
+[v dtoa@fp fp `*.1S926  1 a 1 wreg ]
 [v dtoa@d d `o  1 p 8 28 ]
 "280
 "274
-[v dtoa@fp fp `*.1S745  1 a 1 43 ]
+[v dtoa@fp fp `*.1S926  1 a 1 43 ]
 "315
 } 0
 "72
 [v _pad pad `(i  1 s 2 pad ]
 {
-[s S745 _IO_FILE 0 ]
-[v pad@fp fp `*.1S745  1 a 1 wreg ]
+[s S926 _IO_FILE 0 ]
+[v pad@fp fp `*.1S926  1 a 1 wreg ]
 "74
 [v pad@w w `i  1 a 2 25 ]
 [v pad@i i `i  1 a 2 23 ]
 "72
-[v pad@fp fp `*.1S745  1 a 1 wreg ]
+[v pad@fp fp `*.1S926  1 a 1 wreg ]
 [v pad@buf buf `*.6uc  1 p 1 19 ]
 [v pad@p p `i  1 p 2 20 ]
 "77
 "72
-[v pad@fp fp `*.1S745  1 a 1 27 ]
+[v pad@fp fp `*.1S926  1 a 1 27 ]
 "95
 } 0
 "12 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\strlen.c
@@ -544,16 +606,16 @@ channel_FVR 31
 [v fputs@c c `uc  1 a 1 16 ]
 "8
 [v fputs@s s `*.26DCuc  1 p 2 10 ]
-[s S1091 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputs@fp fp `*.1S1091  1 p 1 12 ]
+[s S1272 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputs@fp fp `*.1S1272  1 p 1 12 ]
 "19
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 2 ]
-[s S1091 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
-[v fputc@fp fp `*.1S1091  1 p 1 4 ]
+[s S1272 _IO_FILE 5 `*.1uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputc@fp fp `*.1S1272  1 p 1 4 ]
 "21
 } 0
 "151 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/eusart.c
@@ -603,69 +665,6 @@ channel_FVR 31
 [v ___aodiv@dividend dividend `o  1 p 8 8 ]
 "43
 } 0
-"136 C:\Users\igna\BicycleComputerPIC16\main.c
-[v _heartBeatCalc heartBeatCalc `(v  1 e 1 0 ]
-{
-"161
-[v heartBeatCalc@i i `i  1 a 2 21 ]
-"176
-[v heartBeatCalc@i_630 i `i  1 a 2 25 ]
-"175
-[v heartBeatCalc@runningTotal runningTotal `us  1 a 2 19 ]
-"139
-[v heartBeatCalc@N N `i  1 a 2 23 ]
-"136
-[v heartBeatCalc@adcVal adcVal `i  1 p 2 15 ]
-"207
-} 0
-"15 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
-{
-"17
-[v ___wmul@product product `ui  1 a 2 13 ]
-"15
-[v ___wmul@multiplier multiplier `ui  1 p 2 9 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 11 ]
-"53
-} 0
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-{
-"10
-[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
-"11
-[v ___lwdiv@counter counter `uc  1 a 1 7 ]
-"5
-[v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
-[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
-"30
-} 0
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
-{
-"10
-[v ___awdiv@quotient quotient `i  1 a 2 7 ]
-"11
-[v ___awdiv@sign sign `uc  1 a 1 6 ]
-[v ___awdiv@counter counter `uc  1 a 1 5 ]
-"5
-[v ___awdiv@divisor divisor `i  1 p 2 0 ]
-[v ___awdiv@dividend dividend `i  1 p 2 2 ]
-"41
-} 0
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\aldiv.c
-[v ___aldiv __aldiv `(l  1 e 4 0 ]
-{
-"10
-[v ___aldiv@quotient quotient `l  1 a 4 11 ]
-"11
-[v ___aldiv@sign sign `uc  1 a 1 10 ]
-[v ___aldiv@counter counter `uc  1 a 1 9 ]
-"5
-[v ___aldiv@divisor divisor `l  1 p 4 0 ]
-[v ___aldiv@dividend dividend `l  1 p 4 4 ]
-"41
-} 0
 "4 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\flge.c
 [v ___flge __flge `(b  1 e 0 0 ]
 {
@@ -676,7 +675,18 @@ channel_FVR 31
 "4 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
-"11
+"12
+} 0
+"15 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/tmr1.c
+[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
+{
+"42
+} 0
+"122
+[v _TMR1_SetInterruptHandler TMR1_SetInterruptHandler `(v  1 e 1 0 ]
+{
+[v TMR1_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
+"124
 } 0
 "18 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
@@ -700,10 +710,10 @@ channel_FVR 31
 [v IOCCF7_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 0 ]
 "103
 } 0
-"13 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/mcc.c
+"14 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
-"21
+"22
 } 0
 "65 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/eusart.c
 [v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
@@ -728,25 +738,76 @@ channel_FVR 31
 [v EUSART_SetErrorHandler@interruptHandler interruptHandler `*.37(v  1 p 2 0 ]
 "181
 } 0
-"65 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/adc.c
+"15 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/adc.c
 [v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
 {
-"84
-} 0
-"94
-[v _ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
-{
-"98
-} 0
-"107
-[v _ADC_GetConversionResult ADC_GetConversionResult `(us  1 e 2 0 ]
-{
-"111
+"34
 } 0
 "4 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 {
-"19
+"30
+} 0
+"108 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/tmr1.c
+[v _TMR1_ISR TMR1_ISR `(v  1 e 1 0 ]
+{
+"119
+} 0
+"126
+[v _TMR1_DefaultInterruptHandler TMR1_DefaultInterruptHandler `(v  1 e 1 0 ]
+{
+"129
+} 0
+"126 C:\Users\igna\BicycleComputerPIC16\main.c
+[v _heartRateISR heartRateISR `(v  1 e 1 0 ]
+{
+"152
+[v heartRateISR@i i `i  1 a 2 10 ]
+"166
+[v heartRateISR@i_743 i `i  1 a 2 14 ]
+"165
+[v heartRateISR@runningTotal runningTotal `i  1 a 2 8 ]
+"130
+[v heartRateISR@N N `i  1 a 2 12 ]
+"197
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 0 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 9 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 11 ]
+"53
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+{
+"10
+[v ___aldiv@quotient quotient `l  1 a 4 2 ]
+"11
+[v ___aldiv@sign sign `uc  1 a 1 1 ]
+[v ___aldiv@counter counter `uc  1 a 1 0 ]
+"5
+[v ___aldiv@divisor divisor `l  1 p 4 0 ]
+[v ___aldiv@dividend dividend `l  1 p 4 4 ]
+"41
+} 0
+"63 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/adc.c
+[v _ADC_GetConversion ADC_GetConversion `(i  1 e 2 0 ]
+{
+[v ADC_GetConversion@channel channel `E9635  1 a 1 wreg ]
+[v ADC_GetConversion@channel channel `E9635  1 a 1 wreg ]
+"66
+[v ADC_GetConversion@channel channel `E9635  1 a 1 3 ]
+"84
+} 0
+"71 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/tmr1.c
+[v _TMR1_WriteTimer TMR1_WriteTimer `(v  1 e 1 0 ]
+{
+[v TMR1_WriteTimer@timerVal timerVal `us  1 p 2 0 ]
+"91
 } 0
 "62 C:\Users\igna\BicycleComputerPIC16\mcc_generated_files/tmr0.c
 [v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
@@ -758,10 +819,10 @@ channel_FVR 31
 {
 "86
 } 0
-"109 C:\Users\igna\BicycleComputerPIC16\main.c
+"101 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _timerISR timerISR `(v  1 e 1 0 ]
 {
-"114
+"104
 } 0
 "10 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
@@ -794,20 +855,10 @@ channel_FVR 31
 {
 "111
 } 0
-"116 C:\Users\igna\BicycleComputerPIC16\main.c
+"106 C:\Users\igna\BicycleComputerPIC16\main.c
 [v _speedCalc speedCalc `(v  1 e 1 0 ]
 {
-"134
-} 0
-"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\awdiv.c
-[v i1___awdiv __awdiv `(i  1 e 2 0 ]
-{
-[v i1___awdiv@quotient __awdiv `i  1 a 2 7 ]
-[v i1___awdiv@sign __awdiv `uc  1 a 1 6 ]
-[v i1___awdiv@counter __awdiv `uc  1 a 1 5 ]
-[v i1___awdiv@divisor divisor `i  1 p 2 0 ]
-[v i1___awdiv@dividend dividend `i  1 p 2 2 ]
-"41
+"124
 } 0
 "43 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
@@ -822,17 +873,17 @@ channel_FVR 31
 "8 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S947 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S1128 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S952 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S955 . 4 `l 1 i 4 0 `d 1 f 4 0 `S947 1 fAsBytes 4 0 `S952 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S955  1 a 4 33 ]
+[s S1133 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S1136 . 4 `l 1 i 4 0 `d 1 f 4 0 `S1128 1 fAsBytes 4 0 `S1133 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S1136  1 a 4 33 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 27 ]
-[s S1024 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S1205 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S1027 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S1024 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S1027  1 a 2 37 ]
+[u S1208 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S1205 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S1208  1 a 2 37 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 32 ]
 "11
@@ -888,4 +939,17 @@ channel_FVR 31
 [v ___awmod@divisor divisor `i  1 p 2 50 ]
 [v ___awmod@dividend dividend `i  1 p 2 52 ]
 "34
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
 } 0

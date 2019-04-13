@@ -16932,17 +16932,17 @@ extern __bank0 __bit __timeout;
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 110 "./mcc_generated_files/pin_manager.h"
+# 130 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 122 "./mcc_generated_files/pin_manager.h"
+# 142 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 135 "./mcc_generated_files/pin_manager.h"
+# 155 "./mcc_generated_files/pin_manager.h"
 void IOCCF7_ISR(void);
-# 158 "./mcc_generated_files/pin_manager.h"
+# 178 "./mcc_generated_files/pin_manager.h"
 void IOCCF7_SetInterruptHandler(void (* InterruptHandler)(void));
-# 182 "./mcc_generated_files/pin_manager.h"
+# 202 "./mcc_generated_files/pin_manager.h"
 extern void (*IOCCF7_InterruptHandler)(void);
-# 206 "./mcc_generated_files/pin_manager.h"
+# 226 "./mcc_generated_files/pin_manager.h"
 void IOCCF7_DefaultInterruptHandler(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
@@ -17037,6 +17037,42 @@ typedef uint32_t uint_fast32_t;
 # 1 "./mcc_generated_files/interrupt_manager.h" 1
 # 54 "./mcc_generated_files/mcc.h" 2
 
+# 1 "./mcc_generated_files/adc.h" 1
+# 26 "./mcc_generated_files/adc.h"
+typedef uint16_t adc_result_t;
+
+
+
+
+typedef struct
+{
+    adc_result_t adcResult1;
+    adc_result_t adcResult2;
+} adc_sync_double_result_t;
+# 49 "./mcc_generated_files/adc.h"
+typedef enum
+{
+    channel_AN4 = 0x4,
+    channel_Temp = 0x1D,
+    channel_DAC = 0x1E,
+    channel_FVR = 0x1F
+} adc_channel_t;
+# 90 "./mcc_generated_files/adc.h"
+void ADC_Initialize(void);
+# 120 "./mcc_generated_files/adc.h"
+void ADC_SelectChannel(adc_channel_t channel);
+# 147 "./mcc_generated_files/adc.h"
+void ADC_StartConversion();
+# 179 "./mcc_generated_files/adc.h"
+_Bool ADC_IsConversionDone();
+# 212 "./mcc_generated_files/adc.h"
+adc_result_t ADC_GetConversionResult(void);
+# 242 "./mcc_generated_files/adc.h"
+adc_result_t ADC_GetConversion(adc_channel_t channel);
+# 270 "./mcc_generated_files/adc.h"
+void ADC_TemperatureAcquisitionDelay(void);
+# 55 "./mcc_generated_files/mcc.h" 2
+
 # 1 "./mcc_generated_files/tmr0.h" 1
 # 98 "./mcc_generated_files/tmr0.h"
 void TMR0_Initialize(void);
@@ -17054,7 +17090,7 @@ void TMR0_ISR(void);
 extern void (*TMR0_InterruptHandler)(void);
 # 274 "./mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
-# 55 "./mcc_generated_files/mcc.h" 2
+# 56 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/eusart.h" 1
 # 57 "./mcc_generated_files/eusart.h"
@@ -17225,10 +17261,10 @@ void EUSART_SetFramingErrorHandler(void (* interruptHandler)(void));
 void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void));
 # 399 "./mcc_generated_files/eusart.h"
 void EUSART_SetErrorHandler(void (* interruptHandler)(void));
-# 56 "./mcc_generated_files/mcc.h" 2
-# 71 "./mcc_generated_files/mcc.h"
+# 57 "./mcc_generated_files/mcc.h" 2
+# 72 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 84 "./mcc_generated_files/mcc.h"
+# 85 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
 # 1 "main.c" 2
 
@@ -17253,22 +17289,41 @@ void writePrintf( char *string );
 
 
 
-
-long int volatile counter = 0 ;
-long int volatile adcCounter = 0 ;
+float volatile counter = 0 ;
 float volatile rpm = 0 ;
 float volatile speed = 0 ;
-float volatile distance = 0 ;
+int volatile distance = 0 ;
 float volatile heartRate = 0 ;
-int volatile speedInt = 0 ;
+
 int volatile distHi = 0 ;
 int volatile distLo = 0 ;
 int volatile speedLo = 0 ;
+int volatile speedHi = 0 ;
+
 int volatile hrInt = 0 ;
+long int volatile adcCounter = 0 ;
+
+adc_result_t volatile adcVal = 0 ;
+int volatile rate[10];
+adc_result_t volatile P = 512 ;
+adc_result_t volatile T = 512 ;
+int volatile thresh = 530 ;
+int volatile amp = 0;
+int volatile BPM;
+adc_result_t volatile Signal;
+int volatile IBI = 600;
+unsigned long int volatile sampleCounter = 0;
+unsigned long int volatile lastBeatTime = 0;
+_Bool volatile firstBeat = 1;
+_Bool volatile secondBeat = 0;
+_Bool volatile Pulse = 0;
+_Bool volatile QS = 0;
 
 
     void timerISR ( void ) ;
     void speedCalc ( void ) ;
+    void heartRateISR ( void ) ;
+    void heartBeatCalc ( adc_result_t adcVal );
 
 
 
@@ -17292,16 +17347,15 @@ void main(void)
 
 
     _delay((unsigned long)((1000)*(16000000/4000.0))) ;
+
     resetCursor() ;
-
-
-
-
 
     (INTCONbits.GIE = 1);
     (INTCONbits.PEIE = 1);
 
     while(1){
+
+
         setCursor(1,0) ;
         writeString(speedDisp);
         setCursor(2,0) ;
@@ -17311,63 +17365,130 @@ void main(void)
         setCursor(4,0) ;
 
 
-        if (adcCounter == 2000 ){
+        if (adcCounter == 2){
 
-
-
-
+            adcVal = ADC_GetConversion( 0x04 ) ;
+            heartBeatCalc( adcVal ) ;
+            adcCounter = 0 ;
+            QS = 0 ;
         }
 
 
-
         setCursor(1,7) ;
-        if( counter <= 15000 ){
-            speedLo = (int)speed % 1 ;
-            if( speed >= 10 ){
-                printf( "%d kph     ", (int)speed ) ;
-            }
-            else{
-
-                printf( "%d.%d kph   " , (int)speed , speedLo ) ;
-                }
-            }
-        else{
+        if( counter <= 15000 ) {
+            printf( "%d.%d kph     ", speedHi, speedLo ) ;
+        }
+        else {
             printf( "0 kph        " ) ;
         }
 
 
         setCursor(2,10) ;
-        if( distance > 1000 ){
-            distLo = (int)distance % 1000 ;
-            distHi = distance / 1000 ;
-            printf( "%d.%d km" , distHi, distLo );
-        }
-        else{
-            printf( "%d m     " , (int)distance ) ;
-        }
+        printf( "%d.%d km" , distHi, distLo );
 
 
         setCursor(3,13) ;
-        hrInt = heartRate ;
-        printf( "%d bpm   " , hrInt ) ;
-
+        printf( "%d bpm   " , adcVal ) ;
     }
 
 }
 
 void timerISR ( void ){
+
     counter++ ;
     adcCounter++ ;
+
 }
 
 void speedCalc ( void ){
 
-    rpm = ( ( 1000 / counter ) * 60 ) ;
 
+    rpm = ( ( 1000 / counter ) * 60 ) ;
 
     speed = 2 * rpm * (0.06) ;
 
 
+    speedHi = speed ;
+    speedLo = ( (int)(speed*10.0) % 10 ) ;
+
+
     counter = 0 ;
     distance = distance + 2 ;
+
+    distLo = distance % 1000 ;
+    distHi = distance / 1000 ;
+
+}
+
+void heartBeatCalc ( adc_result_t adcVal ){
+    Signal = adcVal ;
+    sampleCounter += 2;
+    int N = sampleCounter - lastBeatTime;
+
+
+    if (Signal < thresh && N > (IBI / 5)*3) {
+        if (Signal < T) {
+            T = Signal;
+        }
+    }
+        if (Signal > thresh && Signal > P) {
+        P = Signal;
+    }
+
+
+
+    if (N > 250) {
+        if ((Signal > thresh) && (Pulse == 0) && (N > (IBI / 5)*3)) {
+            Pulse = 1;
+            IBI = sampleCounter - lastBeatTime;
+            lastBeatTime = sampleCounter;
+
+            if (secondBeat) {
+                secondBeat = 0;
+                int i;
+                for (i = 0; i <= 9; i++) {
+                    rate[i] = IBI;
+                }
+            }
+
+            if (firstBeat) {
+                firstBeat = 0;
+                secondBeat = 1;
+
+                return;
+            }
+
+
+            uint16_t runningTotal = 0;
+            int i;
+            for (i = 0; i <= 8; i++) {
+                rate[i] = rate[i + 1];
+                runningTotal += rate[i];
+            }
+
+            rate[9] = IBI;
+            runningTotal += rate[9];
+            runningTotal /= 10;
+            BPM = 60000 / runningTotal;
+            QS = 1;
+
+        }
+    }
+    if (Signal < thresh && Pulse == 1) {
+        Pulse = 0;
+        amp = P - T;
+        thresh = amp / 2 + T;
+        P = thresh;
+        T = thresh;
+    }
+
+    if (N > 2500) {
+        thresh = 530;
+        P = 512;
+        T = 512;
+        lastBeatTime = sampleCounter;
+        firstBeat = 1;
+        secondBeat = 0;
+    }
+
 }

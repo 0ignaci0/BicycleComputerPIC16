@@ -17037,9 +17037,36 @@ typedef uint32_t uint_fast32_t;
 # 1 "mcc_generated_files/interrupt_manager.h" 1
 # 54 "mcc_generated_files/mcc.h" 2
 
+# 1 "mcc_generated_files/tmr1.h" 1
+# 100 "mcc_generated_files/tmr1.h"
+void TMR1_Initialize(void);
+# 129 "mcc_generated_files/tmr1.h"
+void TMR1_StartTimer(void);
+# 161 "mcc_generated_files/tmr1.h"
+void TMR1_StopTimer(void);
+# 196 "mcc_generated_files/tmr1.h"
+uint16_t TMR1_ReadTimer(void);
+# 235 "mcc_generated_files/tmr1.h"
+void TMR1_WriteTimer(uint16_t timerVal);
+# 271 "mcc_generated_files/tmr1.h"
+void TMR1_Reload(void);
+# 310 "mcc_generated_files/tmr1.h"
+void TMR1_StartSinglePulseAcquisition(void);
+# 349 "mcc_generated_files/tmr1.h"
+uint8_t TMR1_CheckGateValueStatus(void);
+# 367 "mcc_generated_files/tmr1.h"
+void TMR1_ISR(void);
+# 385 "mcc_generated_files/tmr1.h"
+ void TMR1_SetInterruptHandler(void (* InterruptHandler)(void));
+# 403 "mcc_generated_files/tmr1.h"
+extern void (*TMR1_InterruptHandler)(void);
+# 421 "mcc_generated_files/tmr1.h"
+void TMR1_DefaultInterruptHandler(void);
+# 55 "mcc_generated_files/mcc.h" 2
+
 # 1 "mcc_generated_files/adc.h" 1
-# 72 "mcc_generated_files/adc.h"
-typedef uint16_t adc_result_t;
+# 26 "mcc_generated_files/adc.h"
+typedef int adc_result_t;
 
 
 
@@ -17049,7 +17076,7 @@ typedef struct
     adc_result_t adcResult1;
     adc_result_t adcResult2;
 } adc_sync_double_result_t;
-# 95 "mcc_generated_files/adc.h"
+# 49 "mcc_generated_files/adc.h"
 typedef enum
 {
     channel_AN4 = 0x4,
@@ -17057,21 +17084,21 @@ typedef enum
     channel_DAC = 0x1E,
     channel_FVR = 0x1F
 } adc_channel_t;
-# 136 "mcc_generated_files/adc.h"
+# 90 "mcc_generated_files/adc.h"
 void ADC_Initialize(void);
-# 166 "mcc_generated_files/adc.h"
+# 120 "mcc_generated_files/adc.h"
 void ADC_SelectChannel(adc_channel_t channel);
-# 193 "mcc_generated_files/adc.h"
+# 147 "mcc_generated_files/adc.h"
 void ADC_StartConversion();
-# 225 "mcc_generated_files/adc.h"
+# 179 "mcc_generated_files/adc.h"
 _Bool ADC_IsConversionDone();
-# 258 "mcc_generated_files/adc.h"
+# 212 "mcc_generated_files/adc.h"
 adc_result_t ADC_GetConversionResult(void);
-# 288 "mcc_generated_files/adc.h"
+# 242 "mcc_generated_files/adc.h"
 adc_result_t ADC_GetConversion(adc_channel_t channel);
-# 316 "mcc_generated_files/adc.h"
+# 270 "mcc_generated_files/adc.h"
 void ADC_TemperatureAcquisitionDelay(void);
-# 55 "mcc_generated_files/mcc.h" 2
+# 56 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/tmr0.h" 1
 # 98 "mcc_generated_files/tmr0.h"
@@ -17090,7 +17117,7 @@ void TMR0_ISR(void);
 extern void (*TMR0_InterruptHandler)(void);
 # 274 "mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
-# 56 "mcc_generated_files/mcc.h" 2
+# 57 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/eusart.h" 1
 # 57 "mcc_generated_files/eusart.h"
@@ -17261,10 +17288,10 @@ void EUSART_SetFramingErrorHandler(void (* interruptHandler)(void));
 void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void));
 # 399 "mcc_generated_files/eusart.h"
 void EUSART_SetErrorHandler(void (* interruptHandler)(void));
-# 57 "mcc_generated_files/mcc.h" 2
-# 72 "mcc_generated_files/mcc.h"
+# 58 "mcc_generated_files/mcc.h" 2
+# 73 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 85 "mcc_generated_files/mcc.h"
+# 86 "mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
 # 1 "mcc_generated_files/mcc.c" 2
 
@@ -17274,6 +17301,7 @@ void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
+    TMR1_Initialize();
     ADC_Initialize();
     TMR0_Initialize();
     EUSART_Initialize();
