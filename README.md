@@ -43,10 +43,12 @@ Principle of Operation
 3. Rider heart-rate 
 
    Uses the World Famous Electronics LLC Pulse Sensor and the PIC16 analog-digital converter. 
-   *(To be implemented.)*
+   Arduino routine ported to PIC microprocessor. Adapted from work done by World Famouse Electronics LLC (http://www.pulsesensor.com), CircuitDigest 
+   (https://circuitdigest.com/microcontroller-projects/heartbeat-monitoring-using-pic-microcontroller-and-pulse-sensor), and Segun Ilori (https://libstock.mikroe.com/projects/view/951/pic-heartrate-monitor).
 
 4. Display
 
     All sensor data is displayed to user via a 4 row, 20 column dot-matrix LCD. The Sparkfun 
     SerLCD is a fully integrated display package with its own on-board ATmega328P controller 
     handling text formatting and display. The PIC16 simply sends sensor data and text over UART.
+
